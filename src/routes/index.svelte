@@ -26,9 +26,9 @@
         <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
           <div class="pr-12">
             <h1 class="flex align-items-center text-white font-semibold text-6xl ">
-              <img class="mr-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
+              <img class="-mt-4 mr-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
               Cape Central High - Class of 1973
-              <img class="ml-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
+              <img class="-mt-4 ml-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
             <h2 class="text-white font-semibold text-4xl m-4">
               Your story started here!
