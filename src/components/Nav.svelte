@@ -52,7 +52,7 @@
 	<ul>
 		<li>
 			<a href=".">
-				<img class="w-10 h-10" src="chs_tiger.jpeg" alt="CHS Tiger"/>
+				<img class="w-12 h-10" src="chs_tiger.png" alt="CHS Tiger"/>
 			</a>
 		</li>
 		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
