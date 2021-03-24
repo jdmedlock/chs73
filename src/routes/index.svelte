@@ -132,7 +132,7 @@
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <img
                   alt="..."
-                  src="chs_basketball.png"
+                  src="chs_basketball.jpeg"
                   class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
                   <svg
