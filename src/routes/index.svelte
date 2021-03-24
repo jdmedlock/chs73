@@ -183,17 +183,12 @@
       <div class="items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
           <img
-            alt="..."
+            alt="Stay tuned"
             class="max-w-full rounded-lg shadow-lg"
-            src="" />
+            src="chs_stay_tuned.png" />
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12">
-            <div
-              class="text-pink-600 p-3 text-center inline-flex items-center
-              justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300">
-              <i class="fas fa-rocket text-xl" />
-            </div>
             <h3 class="text-3xl font-semibold">More information is on the way...</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
               Check back frequently to get the latest news and information 
@@ -244,8 +239,8 @@
             <div class="flex-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">We want to hear from you!</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Complete this form and Dale Hahs, Mayor McCheese of the
-								CHS '73 Organizing Committee, will get back to you in 24 hours.
+                Complete this form and we will get back to you as soon as
+                soon as possible.
               </p>
               <div class="relative w-full mb-3 mt-8">
                 <label
