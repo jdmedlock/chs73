@@ -24,16 +24,16 @@
     <div class="container relative mx-auto">
       <div class="items-center flex flex-wrap">
         <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
-          <div class="pr-12">
-            <h1 class="flex align-items-center text-white font-semibold text-6xl ">
-              <img class="-mt-4 mr-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
+          <div class="pr-none lg:pr-12">
+            <h1 class="flex align-items-center text-white font-semibold text-3xl lg:text-6xl ">
+              <img class="lg:-mt-4 mr-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
               Cape Central High - Class of 1973
-              <img class="-mt-4 ml-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
+              <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
-            <h2 class="text-white font-semibold text-4xl m-4">
+            <h2 class="text-white font-semibold text-xl lg:text-4xl m-4">
               Your story started here!
             </h2>
-            <p class="mt-4 text-2xl text-gray-300">
+            <p class="mt-4 text-lg lg:text-2xl text-gray-300">
               These were your formative years. This is the crucible where you
               developed your identity, your independence, and your drive. It
               was where you established lifelong friendships, as well as 
@@ -59,12 +59,13 @@
         x="0"
         y="0">
         <polygon
-          class="text-gray-300 fill-current"
+          class="text-gray-900 fill-current"
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
   </div>
-  <section class="pb-20 bg-gray-300 -mt-24">
+  
+  <section class="pb-20 bg-gray-900 -mt-24">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
 
@@ -196,7 +197,7 @@
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
           <img
             alt="Stay tuned"
-            class="max-w-full rounded-lg shadow-lg"
+            class="max-w-full rounded-lg shadow-lg mb-8 lg:mb-none"
             src="chs_stay_tuned.png" />
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
