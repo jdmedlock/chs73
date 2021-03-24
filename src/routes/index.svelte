@@ -65,7 +65,7 @@
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <img
                   alt="..."
-                  src="chs_friends.png"
+                  src="chs_friends.jpeg"
                   class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
                   <svg
@@ -99,7 +99,7 @@
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <img
                   alt="..."
-                  src="chs_graduation.png"
+                  src="chs_graduation.jpeg"
                   class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
                   <svg
