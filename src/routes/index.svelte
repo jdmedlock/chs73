@@ -1,5 +1,8 @@
 <script>
-
+  let emailSubject = 'CHS73 message from:'
+  let emailName = ''
+  let emailFrom = ''
+  let emailBody = ''
 </script>
 
 <style>
@@ -241,58 +244,60 @@
                 Complete this form and we will get back to you as soon as
                 soon as possible.
               </p>
-              <div class="relative w-full mb-3 mt-8">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  for="full-name">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                  bg-white rounded text-sm shadow focus:outline-none focus:ring
-                  w-full"
-                  placeholder="Full Name"
-                  style="transition: all 0.15s ease 0s;" />
-              </div>
-              <div class="relative w-full mb-3">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  for="email">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                  bg-white rounded text-sm shadow focus:outline-none focus:ring
-                  w-full"
-                  placeholder="Email"
-                  style="transition: all 0.15s ease 0s;" />
-              </div>
-              <div class="relative w-full mb-3">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  for="message">
-                  Message
-                </label>
-                <textarea
-                  rows="4"
-                  cols="80"
-                  class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                  bg-white rounded text-sm shadow focus:outline-none focus:ring
-                  w-full"
-                  placeholder="Type a message..." />
-              </div>
-              <div class="text-center mt-6">
-                <button
-                  class="bg-gray-900 text-white active:bg-gray-700 text-sm
-                  font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-                  outline-none focus:outline-none mr-1 mb-1"
-                  type="submit" value="Submit"
-                  style="transition: all 0.15s ease 0s;">
-                  Send Message
-                </button>
-              </div>
+              <form action="mailto:daleshouse@kc.rr.com?from={ emailFrom }&subject={ emailSubject }+{ emailName }&body={ emailBody }" 
+                  method="post" enctype="text/plain" >
+                <div class="relative w-full mb-3 mt-8">
+                  <label
+                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    for="full-name">
+                    Full Name
+                  </label>
+                  <input bind:value={ emailName }
+                    type="text"
+                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                    bg-white rounded text-sm shadow focus:outline-none focus:ring
+                    w-full"
+                    placeholder="Full Name"
+                    style="transition: all 0.15s ease 0s;" />
+                </div>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    for="email">
+                    Email
+                  </label>
+                  <input bind:value={ emailFrom }
+                    type="email"
+                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                    bg-white rounded text-sm shadow focus:outline-none focus:ring
+                    w-full"
+                    placeholder="Email"
+                    style="transition: all 0.15s ease 0s;" />
+                </div>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    for="message">
+                    Message
+                  </label>
+                  <textarea bind:value={ emailBody }
+                    rows="4"
+                    cols="80"
+                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                    bg-white rounded text-sm shadow focus:outline-none focus:ring
+                    w-full"
+                    placeholder="Type a message..." />
+                </div>
+                <div class="text-center mt-6">
+                  <button
+                    class="bg-gray-900 text-white active:bg-gray-700 text-sm
+                    font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+                    outline-none focus:outline-none mr-1 mb-1"
+                    style="transition: all 0.15s ease 0s;">
+                    Send Message
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
