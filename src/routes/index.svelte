@@ -57,7 +57,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
 
-				<div class="pt-6 w-full md:w-4/12 px-4 text-center">
+				<div class="pt-16 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -83,7 +83,7 @@
                   </h4>
                   <p class="text-md font-light mt-2 text-black">
 										It's going to be a lot of fun and it's the perfect time and it's
-                		a famtastoc way to reconnect with old friends and acquaintances.                  
+                		a fantastic way to reconnect with old friends and acquaintances.                  
 									</p>
                 </blockquote>
               </div>
@@ -91,7 +91,7 @@
           </div>
         </div>				
 
-        <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-0 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -124,7 +124,7 @@
           </div>
         </div>
 
-        <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-16 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -161,6 +161,7 @@
 
     </div>
   </section>
+
   <section class="relative py-20">
     <div
       class="bottom-auto top-0 left-0 right-0 w-full absolute
@@ -201,7 +202,7 @@
     </div>
   </section>
 
-  <section class="pb-20 relative block bg-gray-900">
+  <section class="pb-20 relative block bg-gray-900" id="contact">
     <div
       class="bottom-auto top-0 left-0 right-0 w-full absolute
       pointer-events-none overflow-hidden -mt-20"
@@ -219,7 +220,7 @@
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
-    <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+    <div class="container mx-auto px-4 lg:pt-10 lg:pb-56">
       <div class="flex flex-wrap text-center justify-center">
         <div class="w-full lg:w-6/12 px-4">
           <h2 class="text-4xl font-semibold text-white">Get involved!</h2>
@@ -233,9 +234,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
         <div class="w-full lg:w-6/12 px-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words w-full mb-6
-            shadow-lg rounded-lg bg-gray-300">
+          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
             <div class="flex-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">We want to hear from you!</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
@@ -289,7 +288,7 @@
                   class="bg-gray-900 text-white active:bg-gray-700 text-sm
                   font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
                   outline-none focus:outline-none mr-1 mb-1"
-                  type="button"
+                  type="submit" value="Submit"
                   style="transition: all 0.15s ease 0s;">
                   Send Message
                 </button>
