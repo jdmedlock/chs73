@@ -25,14 +25,22 @@
       <div class="items-center flex flex-wrap">
         <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
           <div class="pr-12">
-            <h1 class="text-white font-semibold text-5xl">
-              Your story started here!
+            <h1 class="flex align-items-center text-white font-semibold text-6xl ">
+              <img class="mr-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
+              Cape Central High - Class of 1973
+              <img class="ml-2 w-36 h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
-            <p class="mt-4 text-lg text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            <h2 class="text-white font-semibold text-4xl m-4">
+              Your story started here!
+            </h2>
+            <p class="mt-4 text-2xl text-gray-300">
+              These were your formative years. This is the crucible where you
+              developed your identity, your independence, and your drive. It
+              was where you established lifelong friendships, as well as 
+              personal and professional interests.
+            </p>
+            <p class="mt-4 text-2xl font-semibold text-gray-300">
+              It was the start of your journey...but, certainly not the end!
             </p>
           </div>
         </div>
@@ -60,7 +68,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
 
-				<div class="pt-16 w-full md:w-4/12 px-4 text-center">
+				<div class="pt-40 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -94,7 +102,7 @@
           </div>
         </div>				
 
-        <div class="pt-0 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-32 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -127,7 +135,7 @@
           </div>
         </div>
 
-        <div class="pt-16 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-24 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
