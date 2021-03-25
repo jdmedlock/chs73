@@ -16,7 +16,7 @@
 <!-- Based on https://www.creative-tim.com/learning-lab/tailwind-starter-kit/landing -->
 <main>
   <div
-    class="relative pt-16 pb-32 flex content-center items-center justify-center"
+    class="relative pt-16 pb-28 flex content-center items-center justify-center"
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
@@ -30,16 +30,16 @@
               Cape Central High - Class of 1973
               <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
-            <h2 class="text-white font-semibold text-xl lg:text-4xl m-4">
+            <h2 class="text-white font-semibold text-xl lg:text-4xl m-4 mt-10">
               Your story started here!
             </h2>
-            <p class="mt-4 text-lg lg:text-2xl text-gray-300">
+            <p class="mt-10 text-lg lg:text-2xl text-gray-300">
               These were your formative years. This is the crucible where you
               developed your identity, your independence, and your drive. It
               was where you established lifelong friendships, as well as 
               personal and professional interests.
             </p>
-            <p class="mt-4 text-2xl font-semibold text-gray-300">
+            <p class="mt-10 text-white text-2xl font-semibold text-gray-300">
               It was the start of your journey...but, certainly not the end!
             </p>
           </div>
@@ -72,11 +72,10 @@
 				<div class="pt-40 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white
+              <div class="relative flex flex-col min-w-0 break-words bg-white
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <img
-                  alt="..."
+                  alt="Friends"
                   src="chs_friends.jpeg"
                   class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
@@ -90,10 +89,10 @@
                       points="-30,95 583,95 583,65"
                       class="text-sepia-300 fill-current" />
                   </svg>
-                  <h4 class="text-xl font-bold text-black">
+                  <div class="text-xl lg:2xl font-bold text-black">
                     Renew old friendships
-                  </h4>
-                  <p class="text-md font-light mt-2 text-black">
+                  </div>
+                  <p class="text-lg lg:xl font-light mt-2 text-black">
 										It's going to be a lot of fun and it's the perfect time and it's
                 		a fantastic way to reconnect with old friends and acquaintances.                  
 									</p>
@@ -103,14 +102,14 @@
           </div>
         </div>				
 
-        <div class="pt-32 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-14 lg:pt-32 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <img
-                  alt="..."
+                  alt="Graduation"
                   src="chs_graduation.jpeg"
                   class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
@@ -124,11 +123,13 @@
                       points="-30,95 583,95 583,65"
                       class="text-sepia-300 fill-current" />
                   </svg>
-                  <h4 class="text-xl font-bold text-black">
+                  <div class="text-xl font-bold text-black">
                     Our 50th Reunion!
-                  </h4>
+                  </div>
                   <p class="text-md font-light mt-2 text-black">
-                    Our 50th reunion in 2023 is closer than you think. It's a time to prepare!
+                    Our 50th reunion in 2023 is closer than you think. It's 
+                    time think back to our time together and to start getting
+                    ready!
                   </p>
                 </blockquote>
               </div>
@@ -136,14 +137,14 @@
           </div>
         </div>
 
-        <div class="pt-24 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-14 lg:pt-24 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <img
-                  alt="..."
+                  alt="Basketball"
                   src="chs_basketball.jpeg"
                   class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
@@ -174,7 +175,7 @@
     </div>
   </section>
 
-  <section class="relative py-20">
+  <section class="relative py-12 lg:py-20">
     <div
       class="bottom-auto top-0 left-0 right-0 w-full absolute
       pointer-events-none overflow-hidden -mt-20"
@@ -193,14 +194,14 @@
       </svg>
     </div>
     <div class="container mx-auto px-4">
-      <div class="items-center flex flex-wrap">
-        <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+      <div class="flex flex-wrap">
+        <div class="flex justify-center w-full md:w-4/12 m-auto px-4">
           <img
             alt="Stay tuned"
             class="max-w-full rounded-lg shadow-lg mb-8 lg:mb-none"
             src="chs_stay_tuned.png" />
         </div>
-        <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+        <div class="w-full md:w-5/12 m-auto px-4">
           <div class="md:pr-12">
             <h3 class="text-3xl font-semibold">More information is on the way...</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
@@ -232,17 +233,16 @@
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
-    <div class="container mx-auto px-4 lg:pt-10 lg:pb-56">
+    <div class="container mx-auto px-4 pt-8 lg:pt-10 lg:pb-56">
       <div class="flex flex-wrap text-center justify-center">
         <div class="w-full lg:w-6/12 px-4">
           <h2 class="text-4xl font-semibold text-white">Get involved!</h2>
-          <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-          </p>
         </div>
       </div>
     </div>
   </section>
-  <section class="relative block py-24 lg:pt-0 bg-gray-900">
+
+  <section class="relative block py-24 pt-32 lg:pt-0 bg-gray-900">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
         <div class="w-full lg:w-6/12 px-4">
