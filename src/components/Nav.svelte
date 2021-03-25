@@ -7,6 +7,7 @@
 		border-bottom: 1px solid rgba(255,62,0,0.1);
 		font-weight: 300;
 		padding: 0 1em;
+		scroll-behavior: smooth;
 	}
 
 	ul {
@@ -48,7 +49,7 @@
 	}
 </style>
 
-<nav>
+<nav class="bg-gray-900 text-white">
 	<ul>
 		<li>
 			<a href=".">
