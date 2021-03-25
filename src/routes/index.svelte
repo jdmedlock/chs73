@@ -39,7 +39,7 @@
               was where you established lifelong friendships, as well as 
               personal and professional interests.
             </p>
-            <p class="mt-12 text-white text-2xl font-semibold text-gray-300">
+            <p class="pt-12 text-white text-2xl font-semibold text-gray-300">
               It was the start of your journey...but, certainly not the end!
             </p>
           </div>
