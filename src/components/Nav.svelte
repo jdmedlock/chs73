@@ -16,25 +16,18 @@
 
 <style>
 	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
+		@apply font-light pr-1;
 		scroll-behavior: smooth;
 	}
 
 	[aria-current] {
-		position: relative;
-		display: inline-block;
+		@apply relative inline-block;
 	}
 
 	[aria-current]::after {
-		position: absolute;
+		@apply absolute w-full h-0.5 bg-orange-500 block -bottom-1;
 		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
+		/* background-color: rgb(255,62,0); */
 	}
 
 	a {
