@@ -5,6 +5,9 @@
 </script>
 
 <style>
+body {
+	@apply flex flex-col h-screen;
+}
 
 </style>
 

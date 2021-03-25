@@ -16,7 +16,7 @@
 <!-- Based on https://www.creative-tim.com/learning-lab/tailwind-starter-kit/landing -->
 <main>
   <div
-    class="relative pt-16 pb-28 flex content-center items-center justify-center"
+    class="relative pt-24 pb-28 flex content-center items-center justify-center"
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"

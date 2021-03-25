@@ -49,7 +49,7 @@
 	}
 </style>
 
-<nav class="bg-gray-900 text-white">
+<nav class="fixed w-full z-10 top-0 bg-gray-900 text-white">
 	<ul>
 		<li>
 			<a href=".">
