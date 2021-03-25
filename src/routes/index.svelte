@@ -39,7 +39,7 @@
               was where you established lifelong friendships, as well as 
               personal and professional interests.
             </p>
-            <p class="mt-10 text-white text-2xl font-semibold text-gray-300">
+            <p class="mt-12 text-white text-2xl font-semibold text-gray-300">
               It was the start of your journey...but, certainly not the end!
             </p>
           </div>
@@ -102,7 +102,7 @@
           </div>
         </div>				
 
-        <div class="pt-14 lg:pt-32 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-16 lg:pt-32 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -137,7 +137,7 @@
           </div>
         </div>
 
-        <div class="pt-14 lg:pt-24 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-16 lg:pt-24 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -193,7 +193,7 @@
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto py-8 lg:py-none px-4">
       <div class="flex flex-wrap">
         <div class="flex justify-center w-full md:w-4/12 m-auto px-4">
           <img
