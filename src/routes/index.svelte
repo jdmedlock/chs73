@@ -15,12 +15,13 @@
 
 <!-- Based on https://www.creative-tim.com/learning-lab/tailwind-starter-kit/landing -->
 <main>
-  <div
+  <section
     class="relative pt-32 lg:pt-24 pb-28 flex content-center items-center justify-center"
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_building.jpeg');" />
+      style="background-image: url('chs_building.jpeg');"
+    />
     <div class="container relative mx-auto">
       <div class="items-center flex flex-wrap">
         <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
@@ -63,7 +64,7 @@
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
-  </div>
+  </section>
   
   <section class="pb-20 bg-gray-900 -mt-24">
     <div class="container mx-auto px-4">
@@ -315,32 +316,4 @@
   </section>
 </main>
 
-<footer class="relative bg-gray-300 pt-8 pb-6">
-  <div
-    class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none
-    overflow-hidden -mt-20"
-    style="height: 80px;">
-    <svg
-      class="absolute bottom-0 overflow-hidden"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      version="1.1"
-      viewBox="0 0 2560 100"
-      x="0"
-      y="0">
-      <polygon
-        class="text-gray-300 fill-current"
-        points="2560 0 2560 100 0 100" />
-    </svg>
-  </div>
-  <div class="container mx-auto px-4">
-    <hr class="my-6 border-gray-400" />
-    <div class="flex flex-wrap items-center md:justify-between justify-center">
-      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-        <div class="text-sm text-gray-600 font-semibold py-1">
-          Copyright © 2021 CHS '73 Organizing Committee
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+

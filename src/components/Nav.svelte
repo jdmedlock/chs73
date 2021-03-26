@@ -27,7 +27,6 @@
 	[aria-current]::after {
 		@apply absolute w-full h-0.5 bg-orange-500 block -bottom-1;
 		content: '';
-		/* background-color: rgb(255,62,0); */
 	}
 
 	a {
