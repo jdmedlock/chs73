@@ -163,8 +163,9 @@
                     Be a Hero & Volunteer
                   </h4>
                   <p class="text-md font-light mt-2 text-black">
-                    Organizing this is a huge job and we need and we'd like need
-                    to everyone's help.
+                    Locating all of our classmates is a huge job and we’d love
+                    your help.  Our goal is to invite all to participate in 
+                    the when, where and what of OUR event.
                   </p>
                 </blockquote>
               </div>
