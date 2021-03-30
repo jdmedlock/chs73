@@ -26,21 +26,21 @@
       <div class="items-center flex flex-wrap">
         <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
           <div class="pr-none lg:pr-12">
-            <h1 class="flex align-items-center text-white font-semibold text-3xl lg:text-6xl ">
+            <h1 class="flex align-items-center text-sepia-300 font-semibold text-3xl lg:text-6xl ">
               <img class="lg:-mt-4 mr-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
               Cape Central High - Class of 1973
               <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
-            <h2 class="text-white font-semibold text-xl lg:text-4xl m-4 mt-10">
+            <h2 class="text-sepia-300 font-semibold text-xl lg:text-4xl m-4 mt-10">
               Your story started here!
             </h2>
-            <p class="mt-10 text-lg lg:text-2xl text-gray-300">
+            <p class="mt-10 text-lg lg:text-2xl text-sepia-300">
               These were your formative years. This is the crucible where you
               developed your identity, your independence, and your drive. It
               was where you established lifelong friendships, as well as 
               personal and professional interests.
             </p>
-            <p class="pt-12 text-white text-2xl font-semibold text-gray-300">
+            <p class="pt-8 text-sepia-300 text-2xl font-semibold text-gray-300">
               It was the start of your journey...but, certainly not the end!
             </p>
           </div>
