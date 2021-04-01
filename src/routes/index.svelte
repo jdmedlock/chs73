@@ -255,15 +255,15 @@
                 Complete this form and we will get back to you as soon as
                 soon as possible.
               </p>
-              <form action="mailto:daleshouse@kc.rr.com?from={ emailFrom }&subject={ emailSubject }+{ emailName }&body={ emailBody }" 
-                  method="post" enctype="text/plain" >
+              <form action="http://localhost:3100/message" 
+                  method="post" enctype="application/json" >
                 <div class="relative w-full mb-3 mt-8">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
                     for="full-name">
                     Full Name
                   </label>
-                  <input bind:value={ emailName }
+                  <input name="name" bind:value={ emailName } 
                     type="text"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
@@ -277,7 +277,7 @@
                     for="email">
                     Email
                   </label>
-                  <input bind:value={ emailFrom }
+                  <input name="from" bind:value={ emailFrom }
                     type="email"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
@@ -291,7 +291,7 @@
                     for="message">
                     Message
                   </label>
-                  <textarea bind:value={ emailBody }
+                  <textarea name="message" bind:value={ emailBody }
                     rows="4"
                     cols="80"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
