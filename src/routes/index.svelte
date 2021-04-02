@@ -21,6 +21,9 @@
     })
     const reply = await request.json()
     console.log('Message response: ', JSON.stringify(reply))
+    emailFrom = ''
+    emailName = ''
+    emailMessage = ''
   }
 </script>
 
