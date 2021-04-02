@@ -2,7 +2,26 @@
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
   let emailFrom = ''
-  let emailBody = ''
+  let emailMessage = ''
+
+  const handleSubmit = async () => {
+    // TODO: Set the server URL based on some other set of parameters
+    const request = fetch('https://chs73be.herokuapp.com/message', {
+    // const request = await fetch('http://localhost:3100/message', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+			body: JSON.stringify({
+				from: emailFrom,
+				name: emailName,
+        message: emailMessage
+      })
+    })
+    const reply = await request.json()
+    console.log('Message response: ', JSON.stringify(reply))
+  }
 </script>
 
 <style>
@@ -255,7 +274,7 @@
                 Complete this form and we will get back to you as soon as
                 soon as possible.
               </p>
-              <form action="https://chs73be.herokuapp.com/message" 
+              <form on:submit|preventDefault={ handleSubmit } 
                 method="post" enctype="application/json" >
                 <div class="relative w-full mb-3 mt-8">
                   <label
@@ -291,7 +310,7 @@
                     for="message">
                     Message
                   </label>
-                  <textarea name="message" bind:value={ emailBody }
+                  <textarea name="message" bind:value={ emailMessage }
                     rows="4"
                     cols="80"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
@@ -300,7 +319,7 @@
                     placeholder="Type a message..." />
                 </div>
                 <div class="text-center mt-6">
-                  <button
+                  <button type="submit"
                     class="bg-gray-900 text-white active:bg-gray-700 text-sm
                     font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
                     outline-none focus:outline-none mr-1 mb-1"
