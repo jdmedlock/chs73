@@ -3,11 +3,12 @@
   let emailName = ''
   let emailFrom = ''
   let emailMessage = ''
+  let emailResult = ''
 
   const handleSubmit = async () => {
     // TODO: Set the server URL based on some other set of parameters
-    const request = await fetch('https://chs73be.herokuapp.com/message', {
-    // const request = await fetch('http://localhost:3100/message', {
+    // const request = await fetch('https://chs73be.herokuapp.com/message', {
+    const request = await fetch('http://localhost:3100/message', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -20,10 +21,11 @@
       })
     })
     const reply = await request.json()
-    console.log('Message response: ', JSON.stringify(reply))
+    console.log('Message response: ', reply.status)
     emailFrom = ''
     emailName = ''
     emailMessage = ''
+    emailResult = reply.status.concat('!')
   }
 </script>
 
@@ -232,7 +234,6 @@
               Check back frequently to get the latest news and information 
 							about your reunion!
             </p>
-          
           </div>
         </div>
       </div>
@@ -277,6 +278,9 @@
                 Complete this form and we will get back to you as soon as
                 soon as possible.
               </p>
+              {#if emailResult !== ''}
+                <h2 class="text-green-700 italic">{ emailResult }</h2>
+              {/if}
               <form on:submit|preventDefault={ handleSubmit } 
                 method="post" enctype="application/json" >
                 <div class="relative w-full mb-3 mt-8">
