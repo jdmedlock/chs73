@@ -255,8 +255,8 @@
                 Complete this form and we will get back to you as soon as
                 soon as possible.
               </p>
-              <form action="http://localhost:3100/message" 
-                  method="post" enctype="application/json" >
+              <form action="https://chs73be.herokuapp.com/message" 
+                method="post" enctype="application/json" >
                 <div class="relative w-full mb-3 mt-8">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
