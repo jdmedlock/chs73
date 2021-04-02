@@ -6,7 +6,7 @@
 
   const handleSubmit = async () => {
     // TODO: Set the server URL based on some other set of parameters
-    const request = fetch('https://chs73be.herokuapp.com/message', {
+    const request = await fetch('https://chs73be.herokuapp.com/message', {
     // const request = await fetch('http://localhost:3100/message', {
       method: 'POST',
       headers: {
