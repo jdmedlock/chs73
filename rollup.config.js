@@ -1,23 +1,25 @@
-import path from 'path';
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import url from '@rollup/plugin-url';
-import svelte from 'rollup-plugin-svelte';
-import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-import config from 'sapper/config/rollup.js';
-import pkg from './package.json';
-import sveltePreprocess from 'svelte-preprocess';
+import path from 'path'
+import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import commonjs from '@rollup/plugin-commonjs'
+import url from '@rollup/plugin-url'
+import svelte from 'rollup-plugin-svelte'
+import babel from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+import config from 'sapper/config/rollup.js'
+import pkg from './package.json'
+import sveltePreprocess from 'svelte-preprocess'
+import dotenv from "dotenv"
 
-const mode = process.env.NODE_ENV;
-const dev = mode === 'development';
-const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+dotenv.config()
+const mode = process.env.NODE_ENV
+const dev = mode === 'development'
+const legacy = !!process.env.SAPPER_LEGACY_BUILD
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
-	onwarn(warning);
+	onwarn(warning)
 
 export default {
 	client: {
@@ -33,7 +35,12 @@ export default {
 			}),
 			svelte({
 				emitCss: true,
-				preprocess: sveltePreprocess({ postcss: true }),
+				preprocess: sveltePreprocess({ 
+					postcss: true,
+					replace: [
+						["process.env.BE_URL", process.env.BE_URL]
+					],
+				}),
 				compilerOptions: {
 					dev,
 					hydratable: true
@@ -93,7 +100,12 @@ export default {
 					hydratable: true,
 				},
 				emitCss: false,
-				preprocess: sveltePreprocess({ postcss: true })
+				preprocess: sveltePreprocess({
+					postcss: true,
+						replace: [
+							["process.env.BE_URL", process.env.BE_URL]
+						],
+				}),
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -128,4 +140,4 @@ export default {
 		preserveEntrySignatures: false,
 		onwarn,
 	}
-};
+}
