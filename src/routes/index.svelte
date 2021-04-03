@@ -6,9 +6,7 @@
   let emailResult = ''
 
   const handleSubmit = async () => {
-    // TODO: Set the server URL based on some other set of parameters
-    // const request = await fetch('https://chs73be.herokuapp.com/message', {
-    const request = await fetch(`${ process.env.BE_URL }`, {
+    const request = await fetch(process.env.BE_URL, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
