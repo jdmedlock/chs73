@@ -1,3 +1,18 @@
+<script context="module">
+  export async function preload(page, session) {
+      const request = await this.fetch(`${ process.env.BE_URL }/wakeup`, {
+      method: 'get',
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    })
+    const reply = await request.json()
+    console.log('Wakeup response: ', reply.status)
+    return { session };
+  }
+</script>
+
 <script>
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
