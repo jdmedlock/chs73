@@ -9,6 +9,9 @@ import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 import sveltePreprocess from 'svelte-preprocess'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
@@ -29,7 +32,7 @@ export default {
 				values:{
 					'process.browser': true,
 					'process.env.NODE_ENV': JSON.stringify(mode),
-					'process.env.BE_URL': JSON.stringify('http://localhost:3100/message')
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL)
 				},
 			}),
 			svelte({
@@ -87,7 +90,7 @@ export default {
 				values:{
 					'process.browser': false,
 					'process.env.NODE_ENV': JSON.stringify(mode),
-					'process.env.BE_URL': JSON.stringify('https://chs73be.herokuapp.com/message')
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL)
 				},
 			}),
 			svelte({
