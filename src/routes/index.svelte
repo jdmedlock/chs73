@@ -21,7 +21,7 @@
   let emailResult = ''
 
   const handleSubmit = async () => {
-    const request = await fetch(process.env.BE_URL, {
+    const request = await fetch(`${ process.env.BE_URL }/message`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
