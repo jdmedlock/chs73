@@ -1,23 +1,23 @@
-import path from 'path';
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import url from '@rollup/plugin-url';
-import svelte from 'rollup-plugin-svelte';
-import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-import config from 'sapper/config/rollup.js';
-import pkg from './package.json';
-import sveltePreprocess from 'svelte-preprocess';
+import path from 'path'
+import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import commonjs from '@rollup/plugin-commonjs'
+import url from '@rollup/plugin-url'
+import svelte from 'rollup-plugin-svelte'
+import babel from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+import config from 'sapper/config/rollup.js'
+import pkg from './package.json'
+import sveltePreprocess from 'svelte-preprocess'
 
-const mode = process.env.NODE_ENV;
-const dev = mode === 'development';
-const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+const mode = process.env.NODE_ENV
+const dev = mode === 'development'
+const legacy = !!process.env.SAPPER_LEGACY_BUILD
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
-	onwarn(warning);
+	onwarn(warning)
 
 export default {
 	client: {
@@ -28,12 +28,15 @@ export default {
 				preventAssignment: true,
 				values:{
 					'process.browser': true,
-					'process.env.NODE_ENV': JSON.stringify(mode)
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.BE_URL': JSON.stringify('http://localhost:3100/message')
 				},
 			}),
 			svelte({
 				emitCss: true,
-				preprocess: sveltePreprocess({ postcss: true }),
+				preprocess: sveltePreprocess({ 
+					postcss: true,
+				}),
 				compilerOptions: {
 					dev,
 					hydratable: true
@@ -83,7 +86,8 @@ export default {
 				preventAssignment: true,
 				values:{
 					'process.browser': false,
-					'process.env.NODE_ENV': JSON.stringify(mode)
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.BE_URL': JSON.stringify('https://chs73be.herokuapp.com/message')
 				},
 			}),
 			svelte({
@@ -93,7 +97,9 @@ export default {
 					hydratable: true,
 				},
 				emitCss: false,
-				preprocess: sveltePreprocess({ postcss: true })
+				preprocess: sveltePreprocess({
+					postcss: true,
+				}),
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -128,4 +134,4 @@ export default {
 		preserveEntrySignatures: false,
 		onwarn,
 	}
-};
+}
