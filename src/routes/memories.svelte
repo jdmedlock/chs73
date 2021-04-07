@@ -57,7 +57,7 @@
           </p>
         </div>
       </div>
-      <div class="flex justify-center w-full md:w-4/12 m-auto px-4 border-gray-300 border-2 shadow-2xl">
+      <div class="flex justify-center w-full md:w-4/12 m-0 p-4 border-gray-300 border-2 shadow-2xl">
         <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
           <li>Paul Abbott</li>
           <li>Barbara Bahn Lohrman</li>
