@@ -27,29 +27,29 @@
       <div class="flex justify-center flex-wrap w-full md:w-7/12 m-auto">
         <img
           alt="Stay tuned"
-          class="self-stretch max-w-full h-56 rounded-lg shadow-lg mb-8 lg:mb-none"
+          class="max-w-full h-48 rounded-lg shadow-lg mb-8 lg:mb-none transform scale-x-250"
           src="chs_lorimer_cemetary.jpeg" />
         <div class="md:pr-12 text-center">
           <h3 class="text-3xl font-semibold">In Memoriam</h3>
-          <p class="mt-4 text-lg leading-relaxed text-gray-600">
+          <p class="mt-4 text-lg leading-normal text-gray-600">
             Reading the names on this list as you begin that morning cup overflow
             coffee changes your day. Every name brings back a memory....a class,
             a date, a conversation.
           </p>
-          <div class="text-3xl font-extrabold text-gray-400">~</div>
-          <p class="mt-4 text-lg leading-relaxed text-gray-600">
+          <div class="text-2xl font-extrabold text-gray-400 leading-snug">~</div>
+          <p class="mt-4 text-lg leading-normal text-gray-600">
             It was a life long ago, but yesterday. We were perched on the rim
             of the world, ready to jump in and make our mark. Hopefully every
             member of this lit got to experience life's thrills.
           </p>
-          <div class="text-3xl font-extrabold text-gray-400">~</div>
-          <p class="mt-4 text-lg leading-relaxed text-gray-600">
+          <div class="text-2xl font-extrabold text-gray-400 leading-snug">~</div>
+          <p class="mt-4 text-lg leading-normal text-gray-600">
             A child, an accomplishment, holding hands at the close of the day.
             ...a pat on the back when they needed it most and friends in the world
             final moments.
           </p>
-          <div class="text-3xl font-extrabold text-gray-400">~</div>
-          <p class="mt-4 text-lg leading-relaxed text-gray-600">
+          <div class="text-2xl font-extrabold text-gray-400 leading-snug">~</div>
+          <p class="mt-4 text-lg leading-normal text-gray-600">
             They were all an important part of our lives...our dreams. Hopefully
             those of us that remain will represent those who are gone with
             loving pride and honor these memories that make us smile and laugh.
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="flex justify-center w-full md:w-4/12 m-auto px-4 border-gray-300 border-2 shadow-2xl">
-        <ul class="mt-2 text-lg text-gray-600 leading-loose">
+        <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
           <li>Paul Abbott</li>
           <li>Barbara Bahn Lohrman</li>
           <li>John Bertrand</li>
@@ -80,7 +80,7 @@
           <li>Debra Klinkhardt</li>
           <li>Carl Long</li>
         </ul>
-        <ul class="ml-6 mt-2 text-lg text-gray-600 leading-loose">
+        <ul class="ml-6 mt-2 text-lg text-gray-600 leading-relaxed">
           <li>Jennifer Love</li>
           <li>David Lyons</li>
           <li>Larry McMackins</li>
