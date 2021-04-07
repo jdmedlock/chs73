@@ -1,5 +1,6 @@
 <script context="module">
   export async function preload(page, session) {
+      // TODO: Ignore errors if the BE is not responding
       const request = await this.fetch(`${ process.env.BE_URL }/wakeup`, {
       method: 'get',
       headers: {
