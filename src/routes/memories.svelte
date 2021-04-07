@@ -27,7 +27,7 @@
       <div class="flex justify-center flex-wrap w-full md:w-7/12 m-auto">
         <img
           alt="Stay tuned"
-          class="max-w-full h-56 rounded-lg shadow-lg mb-8 lg:mb-none"
+          class="self-stretch max-w-full h-56 rounded-lg shadow-lg mb-8 lg:mb-none"
           src="chs_lorimer_cemetary.jpeg" />
         <div class="md:pr-12 text-center">
           <h3 class="text-3xl font-semibold">In Memoriam</h3>
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="flex justify-center w-full md:w-4/12 m-auto px-4 border-gray-300 border-2 shadow-2xl">
-        <ul class="mt-2 text-lg leading-relaxed text-gray-600 leading-loose">
+        <ul class="mt-2 text-lg text-gray-600 leading-loose">
           <li>Paul Abbott</li>
           <li>Barbara Bahn Lohrman</li>
           <li>John Bertrand</li>
@@ -80,7 +80,7 @@
           <li>Debra Klinkhardt</li>
           <li>Carl Long</li>
         </ul>
-        <ul class="ml-6 mt-2 text-lg leading-relaxed text-gray-600 leading-loose">
+        <ul class="ml-6 mt-2 text-lg text-gray-600 leading-loose">
           <li>Jennifer Love</li>
           <li>David Lyons</li>
           <li>Larry McMackins</li>
