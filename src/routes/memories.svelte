@@ -29,12 +29,14 @@
         <div class="flex w-full justify-center m-0 p-0">
           <img
             alt="Light behind cemetary tree"
-            class="max-w-full h-20 md:h-28 lg:h-48 rounded-lg shadow-lg ml-0 md:ml-6 lg:ml-0 mb-8 lg:mb-none transform scale-x-250"
+            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 rounded-lg shadow-lg 
+              ml-0 md:ml-6 lg:ml-0 mb-8 lg:mb-none
+              transform scale-x-250"
             src="chs_lorimer_cemetary.jpeg" />
         </div>
         <div class="text-center">
           <p class="text-lg leading-normal text-gray-600">
-            Reading the names on this list as you begin that morning cup overflow
+            Reading the names on this list as you begin that morning cup of
             coffee changes your day. Every name brings back a memory....a class,
             a date, a conversation.
           </p>
@@ -42,12 +44,12 @@
           <p class="text-lg leading-normal text-gray-600">
             It was a life long ago, but yesterday. We were perched on the rim
             of the world, ready to jump in and make our mark. Hopefully every
-            member of this lit got to experience life's thrills.
+            member of this list got to experience life's thrills.
           </p>
           <div class="text-2xl font-extrabold text-gray-400 leading-snug">~</div>
           <p class="text-lg leading-normal text-gray-600">
             A child, an accomplishment, holding hands at the close of the day.
-            ...a pat on the back when they needed it most and friends in the world
+            ...a pat on the back when they needed it most and friends in the 
             final moments.
           </p>
           <div class="text-2xl font-extrabold text-gray-400 leading-snug">~</div>
