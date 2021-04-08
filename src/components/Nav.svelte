@@ -40,7 +40,7 @@
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 				the event data when we hover over the link or tap it on a touchscreen -->
 		<a rel=prefetch aria-current="{segment === 'events' ? 'page' : undefined}" href="events" on:click={ toggleNavbar }>events</a>
-		<a aria-current="{segment === 'memories' ? 'page' : undefined}" href="memories" on:click={ toggleNavbar }>memories</a>
+		<a aria-current="{segment === 'memories' ? 'page' : undefined}" href="memories" on:click={ toggleNavbar }>memoriam</a>
 		<a aria-current="{segment === 'contact' ? 'page' : undefined}" href="#contact" on:click={ toggleNavbar }>contact</a>
 	</div>
 </nav>
