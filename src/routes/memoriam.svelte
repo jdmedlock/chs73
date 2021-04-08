@@ -24,14 +24,14 @@
   </div>
   <div class="container w-full mx-auto lg:py-none px-4">
     <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">In Memoriam</h1>
-    <div class="flex flex-wrap justify-center">
-      <div class="flex flex-wrap w-full md:w-6/12 mb-4">
-        <div class="flex w-full justify-center m-0 p-0">
+    <div class="flex flex-wrap content-center">
+      <div class="flex flex-wrap w-full md:w-6/12 mb-4 content-start">
+        <div class="flex w-full m-0 p-0 justify-center">
           <img
             alt="Light behind cemetary tree"
-            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 rounded-lg shadow-lg 
+            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 shadow-lg 
               ml-0 md:ml-6 lg:ml-0 mb-8 lg:mb-none
-              transform scale-x-250"
+              transform scale-x-250 md:scale-x-150 lg:scape-x-250"
             src="chs_lorimer_cemetary.jpeg" />
         </div>
         <div class="text-center">
@@ -58,6 +58,10 @@
             those of us that remain will represent those who are gone with
             loving pride and honor these memories that make us smile and laugh.
             and remember that time....
+          </p>
+          <p class="mt-8 text-sm leading-normal text-gray-600">
+            An internet search of what to say here about our classmates who have gone before us turned up this note. 
+            Attributions to its author, Bob Condron
           </p>
         </div>
       </div>
