@@ -15,6 +15,7 @@
     "serve": "serve ___sapper__/export"
   },
   "dependencies": {
+    "@cloudinary/svelte": "^0.0.1-alpha.1",
     "compression": "^1.7.1",
     "dotenv": "^8.2.0",
     "polka": "next",

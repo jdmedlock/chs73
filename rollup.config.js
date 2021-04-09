@@ -32,7 +32,9 @@ export default {
 				values:{
 					'process.browser': true,
 					'process.env.NODE_ENV': JSON.stringify(mode),
-					'process.env.BE_URL': JSON.stringify(process.env.BE_URL)
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
+					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
 				},
 			}),
 			svelte({
@@ -90,7 +92,9 @@ export default {
 				values:{
 					'process.browser': false,
 					'process.env.NODE_ENV': JSON.stringify(mode),
-					'process.env.BE_URL': JSON.stringify(process.env.BE_URL)
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
+					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
 				},
 			}),
 			svelte({
