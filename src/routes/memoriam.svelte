@@ -1,4 +1,18 @@
 <script>
+  import deceased from '../assets/memorial.json'
+
+  console.log('deceased: ', deceased.length)
+  const classmateColumn1Lth = Math.floor(deceased.length / 2)
+  let classmateColumn1 = []
+  for (let i = 0; i < classmateColumn1Lth; i++) {
+    classmateColumn1.push(deceased[i])
+  }
+
+  const classmateColumn2Lth = deceased.length - classmateColumn1Lth
+  let classmateColumn2 = []
+  for (let i = classmateColumn1Lth; i < deceased.length; i++) {
+    classmateColumn2.push(deceased[i])
+  }
 </script>
 
 <style>
@@ -67,47 +81,14 @@
       </div>
       <div class="flex justify-center w-full md:w-4/12 ml-1 md:ml-12 lg:ml-20 p-4 border-gray-300 border-2 shadow-2xl">
         <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
-          <li>Paul Abbott</li>
-          <li><a href="obituary?name=Barbara%20Bahn%20Lohrman">Barbara Bahn Lohrman</a></li>
-          <li>John Bertrand</li>
-          <li>Carol Bess</li>
-          <li>Brad Bock</li>
-          <li>Jennifer Cochran</li>
-          <li>Wilfred "Willie" Colon</li>
-          <li>David Davis</li>
-          <li>Marcia England</li>
-          <li>Eddie Eudy</li>
-          <li>Kip Fee</li>
-          <li>Robert Fehr</li>
-          <li>Scott Fischer</li>
-          <li>Terry Gockel</li>
-          <li>Gene Hedden</li>
-          <li>Walter Heimbaugh</li>
-          <li>Eddie Kaiser</li>
-          <li>Kim Kelly Davis</li>
-          <li>Debra Klinkhardt</li>
-          <li>Carl Long</li>
+          {#each classmateColumn1 as classmate}
+            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }">{ classmate.name }</a></li>
+          {/each}
         </ul>
         <ul class="ml-6 mt-2 text-lg text-gray-600 leading-relaxed">
-          <li>Jennifer Love</li>
-          <li>David Lyons</li>
-          <li>Larry McMackins</li>
-          <li>Randy Mehrle</li>
-          <li>Steve Niswonger</li>
-          <li>Jamie Pelts</li>
-          <li>Deborah Pender</li>
-          <li>Harold Primm</li>
-          <li>Mark Rexroad</li>
-          <li>Robert Schearf</li>
-          <li>Terry Siebert</li>
-          <li>Pam Sitze</li>
-          <li>Mattie Smith</li>
-          <li>Ethel Smith</li>
-          <li>Mark Stoval</li>
-          <li>Mary Volkerding Porter</li>
-          <li>Mark Waldrup</li>
-          <li>Jeff Woods</li>
-          <li>William Mason</li>
+          {#each classmateColumn2 as classmate}
+            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }">{ classmate.name }</a></li>
+          {/each}
         </ul>
       </div>
     </div>
