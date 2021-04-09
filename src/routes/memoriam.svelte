@@ -68,7 +68,7 @@
       <div class="flex justify-center w-full md:w-4/12 ml-1 md:ml-12 lg:ml-20 p-4 border-gray-300 border-2 shadow-2xl">
         <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
           <li>Paul Abbott</li>
-          <li><a href="obituary">Barbara Bahn Lohrman</a></li>
+          <li><a href="obituary?name=Barbara%20Bahn%20Lohrman">Barbara Bahn Lohrman</a></li>
           <li>John Bertrand</li>
           <li>Carol Bess</li>
           <li>Brad Bock</li>
