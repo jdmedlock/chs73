@@ -1,7 +1,6 @@
 <script>
   import deceased from '../assets/memorial.json'
 
-  console.log('deceased: ', deceased.length)
   const classmateColumn1Lth = Math.floor(deceased.length / 2)
   let classmateColumn1 = []
   for (let i = 0; i < classmateColumn1Lth; i++) {

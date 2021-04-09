@@ -6,6 +6,8 @@
   const name = params.get('name')
   const cloudinaryId = params.get('photoId')
 
+  console.log(`name: ${ name } cloudinaryId: ${ cloudinaryId }`)
+
   const handleBack = async () => {
     await goto('/memoriam')
   }
@@ -16,13 +18,15 @@
 
 <section>
   <div class="flex flex-wrap items-center content-center ml-8 mt-40">
-    <Image cloud_name="{ process.env.CLOUDINARY_NAME }" 
-      public_id={ cloudinaryId }
-      transformation="{[
-        { width: 400, height: 400, gravity: 'face', radius: 'max', crop: 'crop' },
-        { width: 200, crop: 'scale' }
-      ]}" />
-      <p class="ml-8 text-6xl font-semibold">{ name }</p>
+    {#if cloudinaryId !== ""}
+      <Image cloud_name="{ process.env.CLOUDINARY_NAME }" 
+        public_id={ cloudinaryId }
+        transformation="{[
+          { width: 400, height: 400, gravity: 'face', radius: 'max', crop: 'crop' },
+          { width: 200, crop: 'scale' }
+        ]}" />
+    {/if}
+    <p class="ml-8 text-6xl font-semibold">{ name }</p>
   </div>
   <div class="flex flex-wrap items-center content-center w-full ml-8 mt-40">
     <div class="text-center w-full mt-6">
