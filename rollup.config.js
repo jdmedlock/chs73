@@ -9,6 +9,7 @@ import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 import sveltePreprocess from 'svelte-preprocess'
+import json from '@rollup/plugin-json';
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -32,7 +33,9 @@ export default {
 				values:{
 					'process.browser': true,
 					'process.env.NODE_ENV': JSON.stringify(mode),
-					'process.env.BE_URL': JSON.stringify(process.env.BE_URL)
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
+					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
 				},
 			}),
 			svelte({
@@ -54,6 +57,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			json(),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -90,7 +94,9 @@ export default {
 				values:{
 					'process.browser': false,
 					'process.env.NODE_ENV': JSON.stringify(mode),
-					'process.env.BE_URL': JSON.stringify(process.env.BE_URL)
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
+					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
 				},
 			}),
 			svelte({
@@ -112,7 +118,8 @@ export default {
 			resolve({
 				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 		preserveEntrySignatures: 'strict',
