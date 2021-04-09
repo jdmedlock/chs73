@@ -1,5 +1,7 @@
 <script>
   import { Image } from '@cloudinary/svelte';
+
+  export let classmateId
 </script>
 
 <style>
