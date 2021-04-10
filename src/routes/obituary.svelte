@@ -16,19 +16,20 @@
 <style>
 </style>
 
-<section>
-  <div class="flex flex-wrap items-center content-center ml-8 mt-40">
+<section class="flex flex-wrap place-content-center w-full">
+  <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-32">
     {#if cloudinaryId !== ""}
-      <Image cloud_name="{ process.env.CLOUDINARY_NAME }" 
+      <Image class="text-center"
+        cloud_name="{ process.env.CLOUDINARY_NAME }" 
         public_id={ cloudinaryId }
         transformation="{[
           { width: 400, height: 400, gravity: 'face', radius: 'max', crop: 'crop' },
           { width: 200, crop: 'scale' }
         ]}" />
     {/if}
-    <p class="ml-8 text-6xl font-semibold">{ name }</p>
+    <p class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">{ name }</p>
   </div>
-  <div class="flex flex-wrap items-center content-center w-full ml-8 mt-40">
+  <div class="flex flex-wrap items-center content-center w-full ml-0 md:ml-8 mt-20">
     <div class="text-center w-full mt-6">
       <button on:click={ handleBack }
         class="bg-orange-500 text-white active:bg-gray-700 text-sm
