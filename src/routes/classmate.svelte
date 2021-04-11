@@ -7,8 +7,6 @@
   const cloudinaryId = params.get('photoId')
   const deceased = params.get('deceased')
 
-  console.log(`name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
-
   const handleBack = async () => {
     await goto('/classmates')
   }

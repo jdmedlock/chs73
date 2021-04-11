@@ -5,8 +5,7 @@
   const params = new URLSearchParams(window.location.search);
   const name = params.get('name')
   const cloudinaryId = params.get('photoId')
-
-  console.log(`name: ${ name } cloudinaryId: ${ cloudinaryId }`)
+  const deceased = params.get('deceased')
 
   const handleBack = async () => {
     await goto('/memoriam')
@@ -27,7 +26,12 @@
           { width: 200, crop: 'scale' }
         ]}" />
     {/if}
-    <p class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">{ name }</p>
+    <div class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">
+      <p class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">{ name }</p>
+      {#if deceased === 'TRUE'}
+        <p class="text-center w-full text-xl mt-4 md:text-3xl font-normal">(Deceased)</p>
+      {/if}
+    </div>
   </div>
   <div class="flex flex-wrap items-center content-center w-full ml-0 md:ml-8 mt-20">
     <div class="text-center w-full mt-6">

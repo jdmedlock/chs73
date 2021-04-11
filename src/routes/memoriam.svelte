@@ -1,17 +1,34 @@
 <script>
-  import deceased from '../assets/memorial.json'
+  import classmates from '../assets/classmates.json'
+
+  const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
+
+  const formatName = (firstName, lastName, marriedLastName) => {
+    const formattedName = marriedLastName !== '' ? firstName.concat(' (',lastName,') ',marriedLastName) : firstName.concat(' ',lastName)
+    return formattedName
+  }
+
+  const deceased = classmates.filter((classmate) => classmate.deceased === 'TRUE')
 
   const classmateColumn1Lth = Math.floor(deceased.length / 2)
   let classmateColumn1 = []
   for (let i = 0; i < classmateColumn1Lth; i++) {
-    classmateColumn1.push(deceased[i])
+    classmateColumn1.push({ 
+      name: formatName(deceased[i].firstName, deceased[i].lastName, deceased[i].marriedLastName),
+      cloudinaryId: deceased[i].cloudinaryId === '' ? photoPlaceholder : deceased[i].cloudinaryId,
+      deceased: deceased[i].deceased
+    })
   }
 
-  const classmateColumn2Lth = deceased.length - classmateColumn1Lth
+  const classmateColumn2Lth = classmates.length - classmateColumn1Lth
   let classmateColumn2 = []
   for (let i = classmateColumn1Lth; i < deceased.length; i++) {
-    classmateColumn2.push(deceased[i])
-  }
+    classmateColumn2.push({ 
+      name: formatName(deceased[i].firstName, deceased[i].lastName, deceased[i].marriedLastName),
+      cloudinaryId: deceased[i].cloudinaryId === '' ? photoPlaceholder : deceased[i].cloudinaryId,
+      deceased: deceased[i].deceased
+    })
+  } 
 </script>
 
 <style>
@@ -81,12 +98,14 @@
       <div class="flex justify-center w-full md:w-4/12 ml-1 md:ml-12 lg:ml-20 p-4 border-gray-300 border-2 shadow-2xl">
         <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
           {#each classmateColumn1 as classmate}
-            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }">{ classmate.name }</a></li>
+            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">
+              { classmate.name }</a></li>
           {/each}
         </ul>
         <ul class="ml-6 mt-2 text-lg text-gray-600 leading-relaxed">
           {#each classmateColumn2 as classmate}
-            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }">{ classmate.name }</a></li>
+            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">
+              { classmate.name }</a></li>
           {/each}
         </ul>
       </div>
