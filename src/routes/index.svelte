@@ -17,6 +17,11 @@
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
   let emailFrom = ''
+  let emailStreetAddr = ''
+  let emailCity = ''
+  let emailState = ''
+  let emailZipcode = ''
+  let emailPhone = ''
   let emailMessage = ''
   let emailResult = ''
 
@@ -300,28 +305,100 @@
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
                     for="full-name">
-                    Full Name
+                    Full Name (required)
                   </label>
                   <input name="name" bind:value={ emailName } 
                     type="text"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
-                    placeholder="Full Name"
+                    placeholder="Your full Name"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
                     for="email">
-                    Email
+                    Email (required)
                   </label>
                   <input name="from" bind:value={ emailFrom }
                     type="email"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
-                    placeholder="Email"
+                    placeholder="Your email"
+                    style="transition: all 0.15s ease 0s;" />
+                </div>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-gray-700 text-xs font-bold mb-3"
+                    for="street">
+                    Street 
+                  </label>
+                  <input name="from" bind:value={ emailStreetAddr }
+                    type="text"
+                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                    bg-white rounded text-sm shadow focus:outline-none focus:ring
+                    w-full"
+                    placeholder="Your street address"
+                    style="transition: all 0.15s ease 0s;" />
+                </div>
+                <div class="flex flex-wrap relative w-full mb-1">
+                  <span class="relaive w-8/12 mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="city">
+                      City 
+                    </label>
+                    <input name="from" bind:value={ emailCity }
+                      type="text"
+                      class="w-7/12 border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full"
+                      placeholder="Your city"
+                      style="transition: all 0.15s ease 0s;" />
+                  </span>
+                  <span class="relative w-14 ml-4 mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="state">
+                      State 
+                    </label>
+                    <input name="from" bind:value={ emailState }
+                      type="text"
+                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full"
+                      placeholder="XX"
+                      style="transition: all 0.15s ease 0s;" />
+                  </span>
+                  <span class="relative w-20 ml-0 md:ml-4 mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="phone">
+                      Zipcode
+                    </label>
+                    <input name="from" bind:value={ emailZipcode }
+                      type="text"
+                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full"
+                      placeholder="00000"
+                      style="transition: all 0.15s ease 0s;" />
+                  </span>
+                </div>
+                <div class="relative w-36 mb-3">
+                  <label
+                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    for="phone">
+                    Phone
+                  </label>
+                  <input name="from" bind:value={ emailPhone }
+                    type="tel"
+                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                    bg-white rounded text-sm shadow focus:outline-none focus:ring
+                    w-full"
+                    placeholder="(999) 999-9999"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
                 <div class="relative w-full mb-3">
@@ -338,6 +415,17 @@
                     w-full"
                     placeholder="Type a message..." />
                 </div>
+                <fieldset>
+                  <legend>I'd like to:</legend>
+                  <div>
+                    <input type="checkbox" id="help" name="preference" value="help">
+                    <label for="coding">Help with the reunion</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="contactMe" name="preference" value="contactMe">
+                    <label for="music">Keep me updated</label>
+                  </div>
+                </fieldset>
                 <div class="text-center mt-6">
                   <button type="submit"
                     class="bg-orange-500 text-white active:bg-gray-700 text-sm
