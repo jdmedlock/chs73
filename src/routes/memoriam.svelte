@@ -4,7 +4,9 @@
   const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
 
   const formatName = (firstName, lastName, marriedLastName) => {
-    const formattedName = marriedLastName !== '' ? firstName.concat(' (',lastName,') ',marriedLastName) : firstName.concat(' ',lastName)
+    const formattedName = marriedLastName !== '' 
+      ? firstName.concat(' (',lastName,') ',marriedLastName) 
+      : firstName.concat(' ',lastName)
     return formattedName
   }
 
