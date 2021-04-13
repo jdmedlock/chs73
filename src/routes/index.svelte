@@ -14,6 +14,8 @@
 </script>
 
 <script>
+  import Toast from '../components/Toast.svelte'
+
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
   let emailFrom = ''
@@ -308,11 +310,11 @@
                     Full Name (required)
                   </label>
                   <input name="name" bind:value={ emailName } 
-                    type="text"
+                    type="text" required aria-required="true"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
-                    placeholder="Your full Name"
+                    placeholder="First Last"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
                 <div class="relative w-full mb-3">
@@ -322,11 +324,11 @@
                     Email (required)
                   </label>
                   <input name="from" bind:value={ emailFrom }
-                    type="email"
+                    type="email" required aria-required="true"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
-                    placeholder="Your email"
+                    placeholder="jdoe@domain.com"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
                 <div class="relative w-full mb-3">
@@ -340,7 +342,7 @@
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
-                    placeholder="Your street address"
+                    placeholder="1111 Any St."
                     style="transition: all 0.15s ease 0s;" />
                 </div>
                 <div class="flex flex-wrap relative w-full mb-1">
@@ -352,10 +354,9 @@
                     </label>
                     <input name="from" bind:value={ emailCity }
                       type="text"
-                      class="w-7/12 border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
-                      placeholder="Your city"
+                      class="w-full border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring"
+                      placeholder="Anytown"
                       style="transition: all 0.15s ease 0s;" />
                   </span>
                   <span class="relative w-14 ml-4 mb-3">
@@ -405,25 +406,19 @@
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
                     for="message">
-                    Message
+                    Message (required)
                   </label>
                   <textarea name="message" bind:value={ emailMessage }
-                    rows="4"
-                    cols="80"
+                    rows="4" cols="80" required aria-required="true"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
+                    w-full" 
                     placeholder="Type a message..." />
                 </div>
                 <fieldset>
-                  <legend>I'd like to:</legend>
                   <div>
                     <input type="checkbox" id="help" name="preference" value="help">
-                    <label for="coding">Help with the reunion</label>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="contactMe" name="preference" value="contactMe">
-                    <label for="music">Keep me updated</label>
+                    <label for="coding">I'd like to help with the reunion</label>
                   </div>
                 </fieldset>
                 <div class="text-center mt-6">

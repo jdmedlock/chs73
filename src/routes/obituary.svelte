@@ -1,11 +1,18 @@
 <script>
-  import { goto } from '@sapper/app';
+  import { goto } from '@sapper/app'
+  	import { onMount } from 'svelte'
   import { Image } from '@cloudinary/svelte'
 
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get('name')
-  const cloudinaryId = params.get('photoId')
-  const deceased = params.get('deceased')
+  let params
+  let name
+  let cloudinaryId
+  let deceased
+  if (process.browser) {
+    params = new URLSearchParams(window.location.search)
+    name = params.get('name')
+    cloudinaryId = params.get('photoId')
+    deceased = params.get('deceased')
+  }
 
   const handleBack = async () => {
     await goto('/memoriam')
