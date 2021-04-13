@@ -327,7 +327,7 @@
     "marriedLastName": "",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Sharon_Brasher_plzygh.jpg"
   },
   {
     "confirmed": "TRUE",
@@ -1277,7 +1277,7 @@
     "marriedLastName": "",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Rick_Geringer_hwycob.jpg"
   },
   {
     "confirmed": "FALSE",
@@ -1547,7 +1547,7 @@
     "marriedLastName": "Reed",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Charisse_Hastings_z3csr3.jpg"
   },
   {
     "confirmed": "FALSE",
@@ -1847,7 +1847,7 @@
     "marriedLastName": "Williams",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Elizabeth_Huebel_nkpcg2.jpg"
   },
   {
     "confirmed": "FALSE",
@@ -1857,7 +1857,7 @@
     "marriedLastName": "Beussink",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Donna_Huey_ap7lqn.jpg"
   },
   {
     "confirmed": "FALSE",
@@ -1967,7 +1967,7 @@
     "marriedLastName": "Dement",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Drew_Jones_u0yed6.jpg"
   },
   {
     "confirmed": "TRUE",
@@ -3932,6 +3932,16 @@
   {
     "confirmed": "FALSE",
     "inYearbook": "TRUE",
+    "firstName": "Martin",
+    "lastName": "Ward",
+    "marriedLastName": "",
+    "volunteer": "FALSE",
+    "deceased": "FALSE",
+    "cloudinaryId": "Martin_Ward_bn37f1.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "TRUE",
     "firstName": "Joanna",
     "lastName": "Ware",
     "marriedLastName": "McCauley",
@@ -3988,6 +3998,16 @@
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": ""
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "TRUE",
+    "firstName": "Lisa",
+    "lastName": "Wells",
+    "marriedLastName": "",
+    "volunteer": "FALSE",
+    "deceased": "FALSE",
+    "cloudinaryId": "Lisa_Wells_u39ow8.jpg"
   },
   {
     "confirmed": "FALSE",
