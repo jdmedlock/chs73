@@ -25,6 +25,7 @@
   let emailZipcode = ''
   let emailPhone = ''
   let emailMessage = ''
+  let emailVolunteer = false
   let emailResult = ''
 
   const handleSubmit = async () => {
@@ -37,7 +38,13 @@
 			body: JSON.stringify({
 				from: emailFrom,
 				name: emailName,
-        message: emailMessage
+        message: emailMessage,
+        street: emailStreetAddr,
+        city: emailCity,
+        state: emailState,
+        zipcode: emailZipcode,
+        phone: emailPhone,
+        volunteer: emailVolunteer,
       })
     })
     const reply = await request.json()
@@ -45,6 +52,12 @@
     emailFrom = ''
     emailName = ''
     emailMessage = ''
+    emailStreetAddr = ''
+    emailCity = ''
+    emailState = ''
+    emailZipcode = ''
+    emailPhone = ''
+    emailVolunteer = false
     emailResult = reply.status.concat('!')
   }
 </script>
@@ -417,7 +430,7 @@
                 </div>
                 <fieldset>
                   <div>
-                    <input type="checkbox" id="help" name="preference" value="help">
+                    <input type="checkbox" id="help" name="preference" value="help" checked={ emailVolunteer }>
                     <label for="coding">I'd like to help with the reunion</label>
                   </div>
                 </fieldset>
