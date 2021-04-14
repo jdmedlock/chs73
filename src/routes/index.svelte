@@ -44,7 +44,7 @@
         state: emailState,
         zipcode: emailZipcode,
         phone: emailPhone,
-        volunteer: emailVolunteer ? 'Yes' : 'No',
+        volunteer: emailVolunteer === true ? 'Yes' : 'No',
       })
     })
     const reply = await request.json()
@@ -314,6 +314,7 @@
               {#if emailResult !== ''}
                 <h2 class="text-green-700 italic">{ emailResult }</h2>
               {/if}
+
               <form on:submit|preventDefault={ handleSubmit } 
                 method="post" enctype="application/json" >
                 <div class="relative w-full mb-3 mt-8">
@@ -323,27 +324,29 @@
                     Full Name (required)
                   </label>
                   <input name="name" bind:value={ emailName } 
-                    type="text" required aria-required="true"
+                    type="text" 
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
                     placeholder="First Last"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
+
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
                     for="email">
                     Email (required)
                   </label>
-                  <input name="from" bind:value={ emailFrom }
-                    type="email" required aria-required="true"
+                  <input name="from" bind:value={ emailFrom } 
+                    type="text" 
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
                     placeholder="jdoe@domain.com"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
+
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-3"
@@ -358,6 +361,7 @@
                     placeholder="1111 Any St."
                     style="transition: all 0.15s ease 0s;" />
                 </div>
+
                 <div class="flex flex-wrap relative w-full mb-1">
                   <span class="relaive w-8/12 mb-3">
                     <label
@@ -401,6 +405,7 @@
                       style="transition: all 0.15s ease 0s;" />
                   </span>
                 </div>
+
                 <div class="relative w-36 mb-3">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
@@ -415,6 +420,7 @@
                     placeholder="(999) 999-9999"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
+
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-gray-700 text-xs font-bold mb-2"
@@ -428,15 +434,14 @@
                     w-full" 
                     placeholder="Type a message..." />
                 </div>
-                <fieldset>
-                  <div>
-                    <input type="checkbox" id="help" name="preference" value="help" 
-                      bind:checked={ emailVolunteer }>
-                    <label for="coding">I'd like to help with the reunion</label>
-                  </div>
-                </fieldset>
+
+                <label>
+                  <input type="checkbox" bind:checked={ emailVolunteer }>
+                  I'd like to help with the reunion
+                </label>
+          
                 <div class="text-center mt-6">
-                  <button type="submit"
+                  <button type="submit" 
                     class="bg-orange-500 text-white active:bg-gray-700 text-sm
                     font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
                     outline-none focus:outline-none mr-1 mb-1"
