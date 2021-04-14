@@ -44,7 +44,7 @@
         state: emailState,
         zipcode: emailZipcode,
         phone: emailPhone,
-        volunteer: emailVolunteer,
+        volunteer: emailVolunteer ? 'Yes' : 'No',
       })
     })
     const reply = await request.json()
@@ -430,7 +430,8 @@
                 </div>
                 <fieldset>
                   <div>
-                    <input type="checkbox" id="help" name="preference" value="help" checked={ emailVolunteer }>
+                    <input type="checkbox" id="help" name="preference" value="help" 
+                      bind:checked={ emailVolunteer }>
                     <label for="coding">I'd like to help with the reunion</label>
                   </div>
                 </fieldset>
