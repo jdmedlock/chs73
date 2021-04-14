@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "chs73",
+  "description": "chs73",
   "version": "0.0.1",
   "scripts": {
     "watch:css": "postcss src/assets/global.pcss -o static/global.css -w",
