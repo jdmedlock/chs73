@@ -15,6 +15,7 @@
 
 <script>
   import Toast from '../components/Toast.svelte'
+  import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
@@ -28,7 +29,39 @@
   let emailVolunteer = false
   let emailResult = ''
 
+  let isEmailValid = true
+  let isNameValid = true
+  let isStateValid = true
+  let isZipcodeValid = true
+
+  const validateEmail = () => {
+    const result = emailValidator(emailFrom)
+    isEmailValid = result === true ? true : false
+    return
+  }
+
+  const validateName = () => {
+    const result = nameValidator(emailName)
+    isNameValid = result === true ? true : false
+    return
+  }
+
+  const validateState = () => {
+    const result = stateValidator(emailState)
+    isStateValid = result === true ? true : false
+    return
+  }
+
+  const validateZipcode = () => {
+    const result = zipcodeValidator(emailZipcode)
+    isZipcodeValid = result === true ? true : false
+    return
+  }
+
   const handleSubmit = async () => {
+    if (!isNameValid || !isEmailValid || !isStateValid || !isZipcodeValid) {
+      return
+    }
     const request = await fetch(`${ process.env.BE_URL }/message`, {
       method: 'POST',
       headers: {
@@ -59,6 +92,10 @@
     emailPhone = ''
     emailVolunteer = false
     emailResult = reply.status.concat('!')
+    isEmailValid = true
+    isNameValid = true
+    isStateValid = true
+    isZipcodeValid = true
   }
 </script>
 
@@ -324,13 +361,21 @@
                     Full Name (required)
                   </label>
                   <input name="name" bind:value={ emailName } 
-                    type="text" 
+                    type="text" required aria-required="true"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
                     placeholder="First Last"
-                    style="transition: all 0.15s ease 0s;" />
+                    style="transition: all 0.15s ease 0s;"
+                    on:input={ validateName } />
                 </div>
+                {#if !isNameValid}
+                  <div class="flex justify-end">
+                    <div class="place-self-end text-red-500">
+                      Please enter your first & last name
+                    </div>
+                  </div>
+                {/if}
 
                 <div class="relative w-full mb-3">
                   <label
@@ -339,13 +384,21 @@
                     Email (required)
                   </label>
                   <input name="from" bind:value={ emailFrom } 
-                    type="text" 
+                    type="text" required aria-required="true"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
                     w-full"
                     placeholder="jdoe@domain.com"
-                    style="transition: all 0.15s ease 0s;" />
+                    style="transition: all 0.15s ease 0s;"
+                    on:input={ validateEmail } />
                 </div>
+                {#if !isEmailValid}
+                  <div class="flex justify-end">
+                    <div class="place-self-end text-red-500">
+                      Please enter a valid email
+                    </div>
+                  </div>
+                {/if}
 
                 <div class="relative w-full mb-3">
                   <label
@@ -388,7 +441,8 @@
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full"
                       placeholder="XX"
-                      style="transition: all 0.15s ease 0s;" />
+                      style="transition: all 0.15s ease 0s;"
+                      on:input={ validateState } />
                   </span>
                   <span class="relative w-20 ml-0 md:ml-4 mb-3">
                     <label
@@ -402,9 +456,24 @@
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full"
                       placeholder="00000"
-                      style="transition: all 0.15s ease 0s;" />
+                      style="transition: all 0.15s ease 0s;"
+                      on:input={ validateZipcode }  />
                   </span>
                 </div>
+                {#if !isStateValid}
+                  <div class="flex justify-end">
+                    <div class="place-self-end text-red-500">
+                      Please enter a valid 2-character state
+                    </div>
+                  </div>
+                {/if}
+                {#if !isZipcodeValid}
+                  <div class="flex justify-end">
+                    <div class="place-self-end text-red-500">
+                      Please enter a valid 5-digit zipcode
+                    </div>
+                  </div>
+                {/if}
 
                 <div class="relative w-36 mb-3">
                   <label
@@ -441,7 +510,7 @@
                 </label>
           
                 <div class="text-center mt-6">
-                  <button type="submit" 
+                  <button type="submit"
                     class="bg-orange-500 text-white active:bg-gray-700 text-sm
                     font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
                     outline-none focus:outline-none mr-1 mb-1"
