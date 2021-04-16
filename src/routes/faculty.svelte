@@ -56,12 +56,15 @@
     <div class="flex justify-center w-full">
       <div class="flex max-ww-full mb-4 content-start">
         <div class="flex flex-wrap w-full m-0 p-0 justify-center">
-          <img
-            alt="Homecoming"
-            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-lg 
-              ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
-              transform scale-200 md:scale-150 lg:scale-100"
-            src="chs_faculty_hero.png" />
+          <picture>
+            <img
+              alt="Homecoming"
+              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-lg 
+                ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
+                transform scale-200 md:scale-150 lg:scale-100"
+              src="chs_faculty_hero.avif" />
+            <source srcset="chs_faculty_hero.png" type={`image/png`} />
+          </picture>
         </div>
       </div>
     </div>

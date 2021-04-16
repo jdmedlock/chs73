@@ -169,10 +169,13 @@
             <div class="w-full px-4 mr-auto ml-auto">
               <div class="relative flex flex-col min-w-0 break-words bg-white
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
-                <img
-                  alt="Friends"
-                  src="chs_friends.jpeg"
-                  class="w-full align-middle rounded-t-lg" />
+                <picture>
+                  <img
+                    alt="Friends"
+                    src="chs_friends.avif"
+                    class="w-full align-middle rounded-t-lg" />
+                  <source srcset="friends.jpeg" type={`image/jpeg`} />
+                </picture>
                 <blockquote class="relative p-8 mb-4">
                   <svg
                     preserveAspectRatio="none"
@@ -203,10 +206,13 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
-                <img
-                  alt="Graduation"
-                  src="chs_graduation.jpeg"
-                  class="w-full align-middle rounded-t-lg" />
+                <picture>
+                  <img
+                    alt="Graduation"
+                    src="chs_graduation.avif"
+                    class="w-full align-middle rounded-t-lg" />
+                  <source srcset="chs_graduation.jpeg" type={`image/jpeg`} />
+                </picture>
                 <blockquote class="relative p-8 mb-4">
                   <svg
                     preserveAspectRatio="none"
@@ -238,10 +244,13 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
-                <img
-                  alt="Basketball"
-                  src="chs_basketball.jpeg"
-                  class="w-full align-middle rounded-t-lg" />
+                <picture>
+                  <img
+                    alt="Basketball"
+                    src="chs_basketball.avif"
+                    class="w-full align-middle rounded-t-lg" />
+                  <source srcset="chs_basketball.jpeg" type={`image/jpeg`} />
+                </picture>
                 <blockquote class="relative p-8 mb-4">
                   <svg
                     preserveAspectRatio="none"
