@@ -16,6 +16,8 @@
     position = params.get('position')
     deceased = params.get('deceased')
   }
+
+  console.log(cloudinaryId)
   
   const handleBack = async () => {
     await goto('/faculty')
