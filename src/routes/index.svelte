@@ -345,8 +345,17 @@
             <div class="flex-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">We want to hear from you!</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Complete this form and we will get back to you as soon as
-                soon as possible.
+                Complete this form so we can stay in touch and provide valuable 
+                updates as they become available.
+              </p>
+              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+                We'll be reaching out in the coming months to get your input
+                on the when, where and what you’d 
+                like to see in your 50th High School Class Reunion.
+              </p>
+              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+                Please share your thoughts and questions and we'll get back 
+                to you as soon as possible.
               </p>
               {#if emailResult !== ''}
                 <h2 class="text-green-700 italic">{ emailResult }</h2>
