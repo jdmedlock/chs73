@@ -3,6 +3,8 @@
     "inYearbook": "",
     "firstName": "Dallas",
     "lastName": "Albers",
+    "department": "Administration",
+    "position": "Title III Project Director",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -10,6 +12,8 @@
     "inYearbook": "",
     "firstName": "Lawrence",
     "lastName": "Aeschlimann",
+    "department": "Practical Arts",
+    "position": "Typing",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -17,6 +21,8 @@
     "inYearbook": "",
     "firstName": "Jewell",
     "lastName": "Beauchamp",
+    "department": "Vocational Technical",
+    "position": "Technical Design and Drafting",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -24,6 +30,8 @@
     "inYearbook": "",
     "firstName": "Jo Ann",
     "lastName": "Bock",
+    "department": "English",
+    "position": "English II",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -31,6 +39,8 @@
     "inYearbook": "",
     "firstName": "Joyce",
     "lastName": "Bowen",
+    "department": "Library",
+    "position": "Librarian",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -38,13 +48,17 @@
     "inYearbook": "",
     "firstName": "Leon",
     "lastName": "Brinkopf",
-    "deceased": "",
+    "department": "Administration",
+    "position": "Assistant Principal",
+    "deceased": "TRUE",
     "cloudinaryId": ""
   },
   {
     "inYearbook": "",
     "firstName": "Roy",
     "lastName": "Brunkhorst",
+    "department": "Vocational Technical",
+    "position": "Auto Mechanics",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -52,6 +66,8 @@
     "inYearbook": "",
     "firstName": "Norval",
     "lastName": "Cannon",
+    "department": "Mathematics",
+    "position": "Refresher, 1A-1B, Intermediate, Consumer",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -59,6 +75,8 @@
     "inYearbook": "",
     "firstName": "Mary",
     "lastName": "Carter",
+    "department": "History",
+    "position": "Government, Family Relations",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -66,6 +84,8 @@
     "inYearbook": "",
     "firstName": "Wilma",
     "lastName": "Copeland",
+    "department": "Practical Arts",
+    "position": "Home Economics",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -73,6 +93,8 @@
     "inYearbook": "",
     "firstName": "Polly",
     "lastName": "Crowley",
+    "department": "Mathematics",
+    "position": "II-III",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -80,6 +102,8 @@
     "inYearbook": "",
     "firstName": "Claire",
     "lastName": "Decker",
+    "department": "Library",
+    "position": "Head Librarian",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -87,6 +111,8 @@
     "inYearbook": "",
     "firstName": "John",
     "lastName": "Decker",
+    "department": "History",
+    "position": "World Geography, American History",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -94,6 +120,8 @@
     "inYearbook": "",
     "firstName": "Charles",
     "lastName": "Dickens",
+    "department": "Vocational Technical",
+    "position": "Technical Electronics",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -101,6 +129,8 @@
     "inYearbook": "",
     "firstName": "William",
     "lastName": "East",
+    "department": "Counseling",
+    "position": "Sophomore Counselor",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -108,6 +138,8 @@
     "inYearbook": "",
     "firstName": "Barbara",
     "lastName": "Ellison",
+    "department": "Practical Arts",
+    "position": "Basic Business",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -115,6 +147,8 @@
     "inYearbook": "",
     "firstName": "Bill",
     "lastName": "Ewing",
+    "department": "Music",
+    "position": "Instrumental",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -122,6 +156,8 @@
     "inYearbook": "",
     "firstName": "Clarence",
     "lastName": "Findley",
+    "department": "History",
+    "position": "American History",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -129,6 +165,8 @@
     "inYearbook": "",
     "firstName": "Ralph",
     "lastName": "Ford",
+    "department": "Vocational Technical",
+    "position": "Counselor",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -136,6 +174,8 @@
     "inYearbook": "",
     "firstName": "Robert",
     "lastName": "Gau",
+    "department": "Science",
+    "position": "Earth, Chemistry, & General",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -143,6 +183,8 @@
     "inYearbook": "",
     "firstName": "Joy",
     "lastName": "Gilbert",
+    "department": "English",
+    "position": "Speech I-II, Drama",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -150,6 +192,8 @@
     "inYearbook": "",
     "firstName": "Gary",
     "lastName": "Gilbert",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -157,6 +201,8 @@
     "inYearbook": "",
     "firstName": "Melvin",
     "lastName": "Gilhaus",
+    "department": "Music",
+    "position": "Orchestra",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -164,13 +210,17 @@
     "inYearbook": "",
     "firstName": "Weldon",
     "lastName": "Hager",
-    "deceased": "",
+    "department": "Administration",
+    "deceased": "Director of Student Activities",
+    "position": "",
     "cloudinaryId": ""
   },
   {
     "inYearbook": "",
     "firstName": "Sharon",
     "lastName": "Hulcy",
+    "department": "Physical Education",
+    "position": "P.E., Health",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -178,6 +228,8 @@
     "inYearbook": "",
     "firstName": "David",
     "lastName": "Jaynes",
+    "department": "Practical Arts",
+    "position": "Power Mechanics, Metal Work",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -185,6 +237,8 @@
     "inYearbook": "",
     "firstName": "Norris",
     "lastName": "Johnson",
+    "department": "Science",
+    "position": "Physics & Chemistry",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -192,6 +246,8 @@
     "inYearbook": "",
     "firstName": "Bettye",
     "lastName": "Kester",
+    "department": "Art",
+    "position": "Art I-II, Painting & Drawing",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -199,6 +255,8 @@
     "inYearbook": "",
     "firstName": "Vivian",
     "lastName": "Kies",
+    "department": "History",
+    "position": "American History",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -206,6 +264,8 @@
     "inYearbook": "",
     "firstName": "Beverly",
     "lastName": "King",
+    "department": "Library",
+    "position": "Library Assistant",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -213,6 +273,8 @@
     "inYearbook": "",
     "firstName": "Robert",
     "lastName": "King",
+    "department": "Administration, Drivers Ed.",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -220,6 +282,8 @@
     "inYearbook": "",
     "firstName": "Paul",
     "lastName": "Kitchen",
+    "department": "Physical Education",
+    "position": "P.E., Health",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -227,6 +291,8 @@
     "inYearbook": "",
     "firstName": "Robert",
     "lastName": "Knight",
+    "department": "History",
+    "position": "Contemporary Issues, Government, Economics",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -234,6 +300,8 @@
     "inYearbook": "",
     "firstName": "Orville",
     "lastName": "Krauss",
+    "department": "Vocational Technical",
+    "position": "Marketing, COE, DE",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -241,6 +309,8 @@
     "inYearbook": "",
     "firstName": "Donald",
     "lastName": "Lang",
+    "department": "Vocational Technical",
+    "position": "Marketing, COE, DE",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -248,6 +318,8 @@
     "inYearbook": "",
     "firstName": "Leon",
     "lastName": "Lefler",
+    "department": "Physical Education",
+    "position": "P.E.",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -255,6 +327,8 @@
     "inYearbook": "",
     "firstName": "Leonard",
     "lastName": "Little",
+    "department": "Practical arts",
+    "position": "Electricity, Woodworking",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -262,6 +336,8 @@
     "inYearbook": "",
     "firstName": "Elizabeth",
     "lastName": "Lockhart",
+    "department": "English",
+    "position": "Journalism I-II, Newspaper, Yearbook",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -269,6 +345,8 @@
     "inYearbook": "",
     "firstName": "Barbara",
     "lastName": "Lohr",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -276,6 +354,8 @@
     "inYearbook": "",
     "firstName": "Raymond",
     "lastName": "Long",
+    "department": "English",
+    "position": "English II, Speech I-II",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -283,6 +363,8 @@
     "inYearbook": "",
     "firstName": "Gary",
     "lastName": "Lynch",
+    "department": "Science",
+    "position": "Biology",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -290,6 +372,8 @@
     "inYearbook": "",
     "firstName": "Sheila",
     "lastName": "Lynch",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -297,6 +381,8 @@
     "inYearbook": "",
     "firstName": "Jan",
     "lastName": "Mabrey",
+    "department": "Administration",
+    "position": "Secretary",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -304,6 +390,8 @@
     "inYearbook": "",
     "firstName": "Thomas J.",
     "lastName": "Mcferron",
+    "department": "Vocational Technical",
+    "position": "Auto Body and Fender",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -311,6 +399,8 @@
     "inYearbook": "",
     "firstName": "Chrolotte",
     "lastName": "Malahy",
+    "department": "English",
+    "position": "Latin I-II",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -318,6 +408,8 @@
     "inYearbook": "",
     "firstName": "Doris",
     "lastName": "Mason",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -325,6 +417,8 @@
     "inYearbook": "",
     "firstName": "Dale",
     "lastName": "Meier",
+    "department": "Counseling",
+    "position": "Sr. Counselor",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -332,6 +426,8 @@
     "inYearbook": "",
     "firstName": "Dan",
     "lastName": "Milligan",
+    "department": "Physical Education",
+    "position": "P.E.",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -339,6 +435,8 @@
     "inYearbook": "",
     "firstName": "Billy",
     "lastName": "Mize",
+    "department": "Vocational Technical",
+    "position": "Graphic Arts",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -346,6 +444,8 @@
     "inYearbook": "",
     "firstName": "Alta",
     "lastName": "Muegge",
+    "department": "History",
+    "position": "American History",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -353,6 +453,8 @@
     "inYearbook": "",
     "firstName": "Melba",
     "lastName": "Myers",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -360,6 +462,8 @@
     "inYearbook": "",
     "firstName": "Ford",
     "lastName": "Phillips",
+    "department": "English",
+    "position": "English III",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -367,6 +471,8 @@
     "inYearbook": "",
     "firstName": "Everett",
     "lastName": "Plunk",
+    "department": "Mathematics",
+    "position": "III, Intermediate II",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -374,6 +480,8 @@
     "inYearbook": "",
     "firstName": "Karen",
     "lastName": "Profilet",
+    "department": "Science",
+    "position": "Biology",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -381,6 +489,8 @@
     "inYearbook": "",
     "firstName": "Dorothy",
     "lastName": "Pulley",
+    "department": "Practical Arts",
+    "position": "Home Economics",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -388,6 +498,8 @@
     "inYearbook": "",
     "firstName": "Fred",
     "lastName": "Pulley",
+    "department": "Drivers Ed.",
+    "position": "Instructor",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -395,6 +507,8 @@
     "inYearbook": "",
     "firstName": "Josephine",
     "lastName": "Renfrow",
+    "department": "Art",
+    "position": "Ceramics and Art Appreciation",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -402,6 +516,8 @@
     "inYearbook": "",
     "firstName": "Payne",
     "lastName": "Rose",
+    "department": "Vocational Technical",
+    "position": "Welding",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -409,6 +525,8 @@
     "inYearbook": "",
     "firstName": "Jack",
     "lastName": "Russell",
+    "department": "Drivers Ed.",
+    "position": "Instructor",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -416,6 +534,8 @@
     "inYearbook": "",
     "firstName": "Alene",
     "lastName": "Sadler",
+    "department": "English",
+    "position": "English IV, Humanities",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -423,6 +543,8 @@
     "inYearbook": "",
     "firstName": "Joyce",
     "lastName": "Sander",
+    "department": "Vocational Technical",
+    "position": "Child Care, Vocational Sewing",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -430,6 +552,8 @@
     "inYearbook": "",
     "firstName": "Norma",
     "lastName": "Sander",
+    "department": "Physical Education",
+    "position": "P.E.",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -437,6 +561,8 @@
     "inYearbook": "",
     "firstName": "Charlotte",
     "lastName": "Scherer",
+    "department": "Practical Arts",
+    "position": "Business",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -444,6 +570,8 @@
     "inYearbook": "",
     "firstName": "Anthony",
     "lastName": "Schuch",
+    "department": "Art",
+    "position": "Painting",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -451,6 +579,8 @@
     "inYearbook": "",
     "firstName": "Raymond",
     "lastName": "Seyer",
+    "department": "Vocational Technical",
+    "position": "Auto Mechanics",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -458,6 +588,8 @@
     "inYearbook": "",
     "firstName": "Barbara",
     "lastName": "Shock",
+    "department": "English",
+    "position": "Special Ed.",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -465,6 +597,8 @@
     "inYearbook": "",
     "firstName": "Eugene",
     "lastName": "Sifford",
+    "department": "Administration",
+    "position": "Principal",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -472,6 +606,8 @@
     "inYearbook": "",
     "firstName": "Mary",
     "lastName": "Sivia",
+    "department": "English",
+    "position": "French I-IV",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -479,6 +615,8 @@
     "inYearbook": "",
     "firstName": "Inez",
     "lastName": "Smith",
+    "department": "English",
+    "position": "Enclish IV, Composition",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -486,6 +624,8 @@
     "inYearbook": "",
     "firstName": "Gail",
     "lastName": "Snider",
+    "department": "English",
+    "position": "Reading Improvement, English III",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -493,6 +633,8 @@
     "inYearbook": "",
     "firstName": "Margaret",
     "lastName": "Snider",
+    "department": "Counseling",
+    "position": "Junior Counselor",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -500,6 +642,8 @@
     "inYearbook": "",
     "firstName": "Mike",
     "lastName": "Sturm",
+    "department": "Physical Education",
+    "position": "P.E., Study Hall",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -507,6 +651,8 @@
     "inYearbook": "",
     "firstName": "Marsha",
     "lastName": "Taylor",
+    "department": "English",
+    "position": "English III",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -514,6 +660,8 @@
     "inYearbook": "",
     "firstName": "Ann",
     "lastName": "Teeters",
+    "department": "Administration",
+    "position": "Secretary",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -521,6 +669,8 @@
     "inYearbook": "",
     "firstName": "Ellen",
     "lastName": "Towse",
+    "department": "Physical Education",
+    "position": "P.E.",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -528,6 +678,8 @@
     "inYearbook": "",
     "firstName": "Marie",
     "lastName": "Trucky",
+    "department": "Physical Education",
+    "position": "School Nurse",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -535,6 +687,8 @@
     "inYearbook": "",
     "firstName": "Jess",
     "lastName": "Varnon",
+    "department": "Practical Arts",
+    "position": "Drafting, Metal Work",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -542,6 +696,8 @@
     "inYearbook": "",
     "firstName": "Glennata",
     "lastName": "Vogelsang",
+    "department": "Administration",
+    "position": "Secretary",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -549,6 +705,8 @@
     "inYearbook": "",
     "firstName": "Mildred",
     "lastName": "Vogelsang",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -556,6 +714,8 @@
     "inYearbook": "",
     "firstName": "Eugene",
     "lastName": "Warner",
+    "department": "Vocational Technical",
+    "position": "Refrigeration",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -563,6 +723,8 @@
     "inYearbook": "",
     "firstName": "Joe",
     "lastName": "Warren",
+    "department": "Vocational Technical",
+    "position": "Refrigeration, Air Conditioning",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -570,6 +732,8 @@
     "inYearbook": "",
     "firstName": "Grace",
     "lastName": "Williams",
+    "department": "Mathematics",
+    "position": "II, III, IV, V",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -577,6 +741,8 @@
     "inYearbook": "",
     "firstName": "Judy",
     "lastName": "Williams",
+    "department": "Music",
+    "position": "Vocal",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -584,6 +750,8 @@
     "inYearbook": "",
     "firstName": "Linda",
     "lastName": "Williams",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -591,6 +759,8 @@
     "inYearbook": "",
     "firstName": "Roscoe",
     "lastName": "Williams",
+    "department": "Vocational Technical",
+    "position": "Data Processing",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -598,6 +768,8 @@
     "inYearbook": "",
     "firstName": "Fred",
     "lastName": "Withrow",
+    "department": "History",
+    "position": "American History",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -605,6 +777,8 @@
     "inYearbook": "",
     "firstName": "Jerry",
     "lastName": "Witvoet",
+    "department": "History",
+    "position": "Psychology, Sociology, American History",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -612,6 +786,8 @@
     "inYearbook": "",
     "firstName": "Jerry",
     "lastName": "Woemmel",
+    "department": "Practical Arts",
+    "position": "Typing, Business",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -619,6 +795,8 @@
     "inYearbook": "",
     "firstName": "Irene",
     "lastName": "Wright",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -626,6 +804,8 @@
     "inYearbook": "",
     "firstName": "Katherine",
     "lastName": "Wulfers",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   },
@@ -633,6 +813,8 @@
     "inYearbook": "",
     "firstName": "Opal",
     "lastName": "Young",
+    "department": "",
+    "position": "",
     "deceased": "",
     "cloudinaryId": ""
   }
