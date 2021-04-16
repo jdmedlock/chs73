@@ -120,7 +120,7 @@
       <div class="items-center flex flex-wrap">
         <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
           <div class="pr-none lg:pr-12">
-            <h1 class="flex align-items-center text-sepia-300 font-semibold text-3xl lg:text-6xl ">
+            <h1 class="flex align-items-center text-sepia-300 font-semibold text-3xl lg:text-6xl">
               <img class="lg:-mt-4 mr-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
               Cape Central High - Class of 1973
               <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
