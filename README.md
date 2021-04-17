@@ -1,157 +1,97 @@
-# sapper-template
+# chs73
 
-The default template for setting up a [Sapper](https://github.com/sveltejs/sapper) project. Can use either Rollup or webpack as bundler.
 
+[contributors-shield]: https://img.shields.io/github/contributors/jdmedlock/chs73.svg?style=for-the-badge
+[contributors-url]: https://github.com/jdmedlock/chs73/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jdmedlock/chs73.svg?style=for-the-badge
+[forks-url]: https://github.com/jdmedlock/chs73/network/members
+[stars-shield]: https://img.shields.io/github/stars/jdmedlock/chs73.svg?style=for-the-badge
+[stars-url]: https://github.com/jdmedlock/chs73/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jdmedlock/chs73.svg?style=for-the-badge
+[issues-url]: https://github.com/jdmedlock/chs73/issues
 
-## Getting started
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+## Table of Contents
 
+* [Overview](#overview)
+* [Application Architecture](#application-architecture)
+* [Installation & Configuration](#installation-configuration)
+* [Release History](#release-history)
+* [License](#license)
 
-### Using `degit`
+## Overview
 
-To create a new Sapper project based on Rollup locally, run
+CHS73 is the frontend application for the Central High School Class of 1973
+reunion website. The goal of the website is to generate anticipation among
+alumni, inform them about reunion news and upcoming events, and to periodically
+poll members for their opinions.
 
-```bash
-npx degit "sveltejs/sapper-template#rollup" my-app
-```
+## Application Architecture
 
-For a webpack-based project, instead run
+The application consists of a web frontend (this repo) and a backend 
+application server located in this [repo](https://github.com/jdmedlock/chs73be).
 
-```bash
-npx degit "sveltejs/sapper-template#webpack" my-app
-```
+### FE
 
-[`degit`](https://github.com/Rich-Harris/degit) is a scaffolding tool that lets you create a directory from a branch in a repository.
+The frontend is built using these libraries, services, and tools:
 
-Replace `my-app` with the path where you wish to create the project.
+| Dependency  | Description                 |
+|-------------|-----------------------------|
+| Svelte      | Frontend framework          |
+| Sapper      | Web application framework   |
+| Cloudinary  | Photo management service    |
+| TailwindCSS | Utility-first CSS framework |
+| Netlify     | Website host                |
 
+Note that since Sveltekit 1.0 is still in beta at the time of this writing,
+we are intentionally relying on Sapper. Once Sveltekit reaches a stable
+release consideration will be given to migrating to it.
 
-### Using GitHub templates
+### BE
 
-Alternatively, you can create the new project as a GitHub repository using GitHub's template feature.
+The following backend services are invoked using a REST API:
 
-Go to either [sapper-template-rollup](https://github.com/sveltejs/sapper-template-rollup) or [sapper-template-webpack](https://github.com/sveltejs/sapper-template-webpack) and click on "Use this template" to create a new project repository initialized by the template.
+| Route   | Description                                       |
+|---------|---------------------------------------------------|
+| wakeup  | Wakes up the backend when the first FE page loads |
+| message | Send an message entered by the user via an email to the reunion organizer |
+## Installation & Configuration
 
+1. Clone or fork this repo using git. Don't forget that to create a runnable application you'll also need the backend.
 
-### Running the project
+2. `npm install`
 
-Once you have created the project, install dependencies and run the project in development mode:
+3. To run the app locally enter `npm run dev`
 
-```bash
-cd my-app
-npm install # or yarn
-npm run dev
-```
+4. Open a new browser window and navigate to the URL `http://localhost:3000`. This assumes that you haven't changed the default port number.
 
-This will start the development server on [localhost:3000](http://localhost:3000). Open it and click around.
+### Environment variables
 
-You now have a fully functional Sapper project! To get started developing, consult [sapper.svelte.dev](https://sapper.svelte.dev).
+The following environment variables must be set up for the app to run properly:
 
-### Using TypeScript
+| Key             | Value                                |
+|-----------------|--------------------------------------|
+| BE_URL          | http://localhost:3100                |
+| CLOUDINARY_URL  | cloudinary://<api-key>:<api-secret>  |
+| CLOUDINARY_NAME | <your 9-character unique cloud name> |
 
-By default, the template uses plain JavaScript. If you wish to use TypeScript instead, you need some changes to the project:
+## Release History
 
- * Add `typescript` as well as typings as dependences in `package.json`
- * Configure the bundler to use [`svelte-preprocess`](https://github.com/sveltejs/svelte-preprocess) and transpile the TypeScript code.
- * Add a `tsconfig.json` file
- * Update the project code to TypeScript
+You can find what changed, when in the [release history](./docs/RELEASE_HISTORY.md)
 
-The template comes with a script that will perform these changes for you by running
+## License
 
-```bash
-node scripts/setupTypeScript.js
-```
+Copyright 2021 <COPYRIGHT Jim D. Medlock>
 
-`@sapper` dependencies are resolved through `src/node_modules/@sapper`, which is created during the build. You therefore need to run or build the project once to avoid warnings about missing dependencies.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-The script does not support webpack at the moment.
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-## Directory structure
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-Sapper expects to find two directories in the root of your project —  `src` and `static`.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-
-### src
-
-The [src](src) directory contains the entry points for your app — `client.js`, `server.js` and (optionally) a `service-worker.js` — along with a `template.html` file and a `routes` directory.
-
-
-#### src/routes
-
-This is the heart of your Sapper app. There are two kinds of routes — *pages*, and *server routes*.
-
-**Pages** are Svelte components written in `.svelte` files. When a user first visits the application, they will be served a server-rendered version of the route in question, plus some JavaScript that 'hydrates' the page and initialises a client-side router. From that point forward, navigating to other pages is handled entirely on the client for a fast, app-like feel. (Sapper will preload and cache the code for these subsequent pages, so that navigation is instantaneous.)
-
-**Server routes** are modules written in `.js` files, that export functions corresponding to HTTP methods. Each function receives Express `request` and `response` objects as arguments, plus a `next` function. This is useful for creating a JSON API, for example.
-
-There are three simple rules for naming the files that define your routes:
-
-* A file called `src/routes/about.svelte` corresponds to the `/about` route. A file called `src/routes/blog/[slug].svelte` corresponds to the `/blog/:slug` route, in which case `params.slug` is available to the route
-* The file `src/routes/index.svelte` (or `src/routes/index.js`) corresponds to the root of your app. `src/routes/about/index.svelte` is treated the same as `src/routes/about.svelte`.
-* Files and directories with a leading underscore do *not* create routes. This allows you to colocate helper modules and components with the routes that depend on them — for example you could have a file called `src/routes/_helpers/datetime.js` and it would *not* create a `/_helpers/datetime` route.
-
-
-#### src/node_modules/images
-
-Images added to `src/node_modules/images` can be imported into your code using `import 'images/<filename>'`. They will be given a dynamically generated filename containing a hash, allowing for efficient caching and serving the images on a CDN.
-
-See [`index.svelte`](src/routes/index.svelte) for an example.
-
-
-#### src/node_modules/@sapper
-
-This directory is managed by Sapper and generated when building. It contains all the code you import from `@sapper` modules.
-
-
-### static
-
-The [static](static) directory contains static assets that should be served publicly. Files in this directory will be available directly under the root URL, e.g. an `image.jpg` will be available as `/image.jpg`.
-
-The default [service-worker.js](src/service-worker.js) will preload and cache these files, by retrieving a list of `files` from the generated manifest:
-
-```js
-import { files } from '@sapper/service-worker';
-```
-
-If you have static files you do not want to cache, you should exclude them from this list after importing it (and before passing it to `cache.addAll`).
-
-Static files are served using [sirv](https://github.com/lukeed/sirv).
-
-
-## Bundler configuration
-
-Sapper uses Rollup or webpack to provide code-splitting and dynamic imports, as well as compiling your Svelte components. With webpack, it also provides hot module reloading. As long as you don't do anything daft, you can edit the configuration files to add whatever plugins you'd like.
-
-
-## Production mode and deployment
-
-To start a production version of your app, run `npm run build && npm start`. This will disable live reloading, and activate the appropriate bundler plugins.
-
-You can deploy your application to any environment that supports Node 10 or above. As an example, to deploy to [Vercel Now](https://vercel.com) when using `sapper export`, run these commands:
-
-```bash
-npm install -g vercel
-vercel
-```
-
-If your app can't be exported to a static site, you can use the [vercel-sapper](https://github.com/thgh/vercel-sapper) builder. You can find instructions on how to do so in its [README](https://github.com/thgh/vercel-sapper#basic-usage).
-
-
-## Using external components
-
-When using Svelte components installed from npm, such as [@sveltejs/svelte-virtual-list](https://github.com/sveltejs/svelte-virtual-list), Svelte needs the original component source (rather than any precompiled JavaScript that ships with the component). This allows the component to be rendered server-side, and also keeps your client-side app smaller.
-
-Because of that, it's essential that the bundler doesn't treat the package as an *external dependency*. You can either modify the `external` option under `server` in [rollup.config.js](rollup.config.js) or the `externals` option in [webpack.config.js](webpack.config.js), or simply install the package to `devDependencies` rather than `dependencies`, which will cause it to get bundled (and therefore compiled) with your app:
-
-```bash
-npm install -D @sveltejs/svelte-virtual-list
-```
-
-## Troubleshooting
-
-Using Windows and WSL2? 
-
-If your project lives outside the WSL root directory, [this limitation](https://github.com/microsoft/WSL/issues/4169) is known to cause live-reloading to fail. See [this issue](https://github.com/sveltejs/sapper/issues/1150) for details.
-
-## Bugs and feedback
-
-Sapper is in early development, and may have the odd rough edge here and there. Please be vocal over on the [Sapper issue tracker](https://github.com/sveltejs/sapper/issues).
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
