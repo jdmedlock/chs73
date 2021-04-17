@@ -100,13 +100,13 @@
       <div class="flex justify-center w-full md:w-5/12 ml-1 md:ml-12 lg:ml-20 p-4 border-gray-300 border-2 shadow-2xl">
         <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
           {#each classmateColumn1 as classmate}
-            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">
+            <li><a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">
               { classmate.name }</a></li>
           {/each}
         </ul>
         <ul class="ml-6 mt-2 text-lg text-gray-600 leading-relaxed">
           {#each classmateColumn2 as classmate}
-            <li><a href="obituary?name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">
+            <li><a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">
               { classmate.name }</a></li>
           {/each}
         </ul>
