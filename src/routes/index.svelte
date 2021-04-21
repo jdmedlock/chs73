@@ -9,7 +9,7 @@
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
   let emailFrom = ''
-  let emailStreetAddr = ''
+  let emailStreet = ''
   let emailCity = ''
   let emailState = ''
   let emailZipcode = ''
@@ -52,61 +52,63 @@
       return
     }
 
+    emailZipcode = parseInt(emailZipcode)
+
     return client(fetch)
       .request({
         query: `
-          mutation {
-            sendMessage (message: {
-              fromEmail: "jdmedlock@gmail.com"
-              fullName: "Jim Medlock"
-              street: "111 Main Ave."
-              city: "Clarkson"
-              state: "MO"
-              zipcode: 63999
-              phone: "5735551212"
-              message: "This is an awesome test messgage that has been handcrafted just for you"
-            }) {
+          mutation sendMessage(
+            $emailFrom: String!
+            $emailName: String!
+            $emailStreet: String
+            $emailCity: String
+            $emailState: String
+            $emailZipcode: Int
+            $emailPhone: String
+            $emailMessage: String!
+            $emailVolunteer: Boolean
+          ) {
+            sendMessage (
+              fromEmail: $emailFrom
+              fullName: $emailName
+              street: $emailStreet
+              city: $emailCity
+              state: $emailState
+              zipcode: $emailZipcode
+              phone: $emailPhone
+              message: $emailMessage
+              volunteer: $emailVolunteer
+            ) {
               result {
                 message
                 code
               }
             }
           }        
-        `
+        `,
+        variables: {
+          emailFrom,
+          emailName,
+          emailStreet,
+          emailCity,
+          emailState,
+          emailZipcode,
+          emailPhone,
+          emailMessage,
+          emailVolunteer,
+        }
       })
       .then(response => {
-        console.log(response)
+        console.log('response: ', response)
         return {
           response
         }
       });
 
-    /*
-    const request = await fetch(`${ process.env.BE_URL }/message`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-			body: JSON.stringify({
-				from: emailFrom,
-				name: emailName,
-        message: emailMessage,
-        street: emailStreetAddr,
-        city: emailCity,
-        state: emailState,
-        zipcode: emailZipcode,
-        phone: emailPhone,
-        volunteer: emailVolunteer === true ? 'Yes' : 'No',
-      })
-    })
-    const reply = await request.json()
-    console.log('Message response: ', reply.status)
-    */
     emailFrom = ''
     emailName = ''
     emailMessage = ''
-    emailStreetAddr = ''
+    emailStreet = ''
     emailCity = ''
     emailState = ''
     emailZipcode = ''
@@ -445,7 +447,7 @@
                     for="street">
                     Street 
                   </label>
-                  <input name="from" bind:value={ emailStreetAddr }
+                  <input name="from" bind:value={ emailStreet }
                     type="text"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
