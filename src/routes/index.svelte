@@ -174,7 +174,7 @@
                     alt="Friends"
                     src="chs_friends.avif"
                     class="w-full align-middle rounded-t-lg" />
-                  <source srcset="friends.jpeg" type={`image/jpeg`} />
+                  <source srcset="chs_friends.jpeg" type={`image/jpeg`} />
                 </picture>
                 <blockquote class="relative p-8 mb-4">
                   <svg
