@@ -100,25 +100,28 @@
       })
       .then(response => {
         console.log('response: ', response)
+
+        emailFrom = ''
+        emailName = ''
+        emailMessage = ''
+        emailStreet = ''
+        emailCity = ''
+        emailState = ''
+        emailZipcode = ''
+        emailPhone = ''
+        emailVolunteer = false
+        emailResult = response.sendMessage.result.code === "OK" 
+          ? "Your message was successfully sent!"
+          : "An error occurred sending your message. Please try later"
+        isEmailValid = true
+        isNameValid = true
+        isStateValid = true
+        isZipcodeValid = true
+        
         return {
           response
         }
       });
-
-    emailFrom = ''
-    emailName = ''
-    emailMessage = ''
-    emailStreet = ''
-    emailCity = ''
-    emailState = ''
-    emailZipcode = ''
-    emailPhone = ''
-    emailVolunteer = false
-    emailResult = reply.status.concat('!')
-    isEmailValid = true
-    isNameValid = true
-    isStateValid = true
-    isZipcodeValid = true
   }
 </script>
 
@@ -151,13 +154,13 @@
             <h2 class="text-sepia-300 font-semibold text-xl lg:text-4xl m-4 mt-10">
               Your story started here!
             </h2>
-            <p class="mt-10 text-lg lg:text-2xl text-sepia-300">
+            <p class="mt-10 text-lg lg:text-3xl text-sepia-300">
               These were your formative years. This is the crucible where you
               developed your identity, your independence, and your drive. It
               was where you established lifelong friendships, as well as 
               personal and professional interests.
             </p>
-            <p class="pt-8 text-sepia-300 text-2xl font-semibold text-gray-300">
+            <p class="pt-8 text-sepia-300 text-3xl font-semibold">
               It was the start of your journey...but, certainly not the end!
             </p>
           </div>
