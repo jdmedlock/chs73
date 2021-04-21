@@ -1,5 +1,8 @@
+<script context="module">
+</script>
 
 <script>
+  import { client } from '../utils/graphql.js'
   import Toast from '../components/Toast.svelte'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
@@ -48,6 +51,37 @@
     if (!isNameValid || !isEmailValid || !isStateValid || !isZipcodeValid) {
       return
     }
+
+    return client(fetch)
+      .request({
+        query: `
+          mutation {
+            sendMessage (message: {
+              fromEmail: "jdmedlock@gmail.com"
+              fullName: "Jim Medlock"
+              street: "111 Main Ave."
+              city: "Clarkson"
+              state: "MO"
+              zipcode: 63999
+              phone: "5735551212"
+              message: "This is an awesome test messgage that has been handcrafted just for you"
+            }) {
+              result {
+                message
+                code
+              }
+            }
+          }        
+        `
+      })
+      .then(response => {
+        console.log(response)
+        return {
+          response
+        }
+      });
+
+    /*
     const request = await fetch(`${ process.env.BE_URL }/message`, {
       method: 'POST',
       headers: {
@@ -68,6 +102,7 @@
     })
     const reply = await request.json()
     console.log('Message response: ', reply.status)
+    */
     emailFrom = ''
     emailName = ''
     emailMessage = ''
