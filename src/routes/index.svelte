@@ -1,17 +1,3 @@
-<script context="module">
-  export async function preload(page, session) {
-      // TODO: Ignore errors if the BE is not responding
-      const request = await this.fetch(`${ process.env.BE_URL }/wakeup`, {
-      method: 'get',
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-    })
-    const reply = await request.json()
-    return { session };
-  }
-</script>
 
 <script>
   import Toast from '../components/Toast.svelte'
