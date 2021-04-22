@@ -6,7 +6,6 @@
   import Toast from '../components/Toast.svelte'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
-  let emailSubject = 'CHS73 message from:'
   let emailName = ''
   let emailFrom = ''
   let emailStreet = ''
