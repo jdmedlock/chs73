@@ -1,12 +1,15 @@
+<script context="module">
+</script>
 
 <script>
+  import { client } from '../utils/graphql.js'
   import Toast from '../components/Toast.svelte'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   let emailSubject = 'CHS73 message from:'
   let emailName = ''
   let emailFrom = ''
-  let emailStreetAddr = ''
+  let emailStreet = ''
   let emailCity = ''
   let emailState = ''
   let emailZipcode = ''
@@ -48,40 +51,77 @@
     if (!isNameValid || !isEmailValid || !isStateValid || !isZipcodeValid) {
       return
     }
-    const request = await fetch(`${ process.env.BE_URL }/message`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-			body: JSON.stringify({
-				from: emailFrom,
-				name: emailName,
-        message: emailMessage,
-        street: emailStreetAddr,
-        city: emailCity,
-        state: emailState,
-        zipcode: emailZipcode,
-        phone: emailPhone,
-        volunteer: emailVolunteer === true ? 'Yes' : 'No',
+
+    emailZipcode = parseInt(emailZipcode)
+
+    return client(fetch)
+      .request({
+        query: `
+          mutation sendMessage(
+            $emailFrom: String!
+            $emailName: String!
+            $emailStreet: String
+            $emailCity: String
+            $emailState: String
+            $emailZipcode: Int
+            $emailPhone: String
+            $emailMessage: String!
+            $emailVolunteer: Boolean
+          ) {
+            sendMessage (
+              fromEmail: $emailFrom
+              fullName: $emailName
+              street: $emailStreet
+              city: $emailCity
+              state: $emailState
+              zipcode: $emailZipcode
+              phone: $emailPhone
+              message: $emailMessage
+              volunteer: $emailVolunteer
+            ) {
+              result {
+                message
+                code
+              }
+            }
+          }        
+        `,
+        variables: {
+          emailFrom,
+          emailName,
+          emailStreet,
+          emailCity,
+          emailState,
+          emailZipcode,
+          emailPhone,
+          emailMessage,
+          emailVolunteer,
+        }
       })
-    })
-    const reply = await request.json()
-    console.log('Message response: ', reply.status)
-    emailFrom = ''
-    emailName = ''
-    emailMessage = ''
-    emailStreetAddr = ''
-    emailCity = ''
-    emailState = ''
-    emailZipcode = ''
-    emailPhone = ''
-    emailVolunteer = false
-    emailResult = reply.status.concat('!')
-    isEmailValid = true
-    isNameValid = true
-    isStateValid = true
-    isZipcodeValid = true
+      .then(response => {
+        console.log('response: ', response)
+
+        emailFrom = ''
+        emailName = ''
+        emailMessage = ''
+        emailStreet = ''
+        emailCity = ''
+        emailState = ''
+        emailZipcode = ''
+        emailPhone = ''
+        emailVolunteer = false
+        emailResult = response.sendMessage.result.code === "OK" 
+          ? "Your message was successfully sent!"
+          : "An error occurred sending your message. Please try later"
+        isEmailValid = true
+        isNameValid = true
+        isStateValid = true
+        isZipcodeValid = true
+        
+        return {
+          response
+        }
+      });
   }
 </script>
 
@@ -114,13 +154,13 @@
             <h2 class="text-sepia-300 font-semibold text-xl lg:text-4xl m-4 mt-10">
               Your story started here!
             </h2>
-            <p class="mt-10 text-lg lg:text-2xl text-sepia-300">
+            <p class="mt-10 text-lg lg:text-3xl text-sepia-300">
               These were your formative years. This is the crucible where you
               developed your identity, your independence, and your drive. It
               was where you established lifelong friendships, as well as 
               personal and professional interests.
             </p>
-            <p class="pt-8 text-sepia-300 text-2xl font-semibold text-gray-300">
+            <p class="pt-8 text-sepia-300 text-3xl font-semibold">
               It was the start of your journey...but, certainly not the end!
             </p>
           </div>
@@ -410,7 +450,7 @@
                     for="street">
                     Street 
                   </label>
-                  <input name="from" bind:value={ emailStreetAddr }
+                  <input name="from" bind:value={ emailStreet }
                     type="text"
                     class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                     bg-white rounded text-sm shadow focus:outline-none focus:ring
