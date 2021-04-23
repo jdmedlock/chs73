@@ -1,12 +1,23 @@
+<script context="module">
+	export async function preload(page, session) {
+		return { 
+      params: {
+        back: page.query.back,
+        classmateName: page.query.name,
+        cloudinaryId: page.query.photoId,
+        deceased: page.query.deceased,
+      }
+    }
+  }
+</script>
+
 <script>
   import { goto } from '@sapper/app'
   import { Image } from '@cloudinary/svelte'
 
-  let params
-  let back
-  let classmateName
-  let cloudinaryId
-  let deceased
+  export let params
+  let { back, classmateName, cloudinaryId, deceased } = params
+  console.log(`back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
 
   let posterName = ''
   let posterEmail = ''
@@ -28,61 +39,57 @@
   let isClassmateStateValid = true
   let isClassmateZipcodeValid = true
 
-  if (process.browser) {
-    params = new URLSearchParams(window.location.search)
-    back = params.get('back')
-    name = params.get('name')
-    cloudinaryId = params.get('photoId')
-    deceased = params.get('deceased')
+  let emailResult = ''
+
+  const validateEmail = () => {
+    const result = emailValidator(emailFrom)
+    isEmailValid = result === true ? true : false
+    return
+  }
+
+  const validateName = () => {
+    const result = nameValidator(emailName)
+    isNameValid = result === true ? true : false
+    return
+  }
+
+  const validateState = () => {
+    const result = stateValidator(emailState)
+    isStateValid = result === true ? true : false
+    return
+  }
+
+  const validateZipcode = () => {
+    const result = zipcodeValidator(emailZipcode)
+    isZipcodeValid = result === true ? true : false
+    return
+  }
+
+  const handleSubmit = () => {
+
   }
 
   const handleBack = async () => {
-    await goto(back)
+    await goto(`classmate?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
   }
 </script>
 
 <style>
 </style>
 
-<section class="flex flex-wrap place-content-center w-full">
-  <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-32">
-    {#if cloudinaryId !== ""}
-      <Image class="text-center"
-        cloud_name="{ process.env.CLOUDINARY_NAME }" 
-        public_id={ cloudinaryId }
-        transformation="{[
-          { width: 400, height: 400, gravity: 'face', radius: 'max', crop: 'crop' },
-          { width: 200, crop: 'scale' }
-        ]}" />
-    {/if}
-    <div class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">
-      <p class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">{ name }</p>
-      {#if deceased === 'TRUE'}
-        <p class="text-center w-full text-xl mt-4 md:text-3xl font-normal">(Deceased)</p>
-      {/if}
-    </div>
-  </div>
-
-  <section class="relative block py-24 pt-32 lg:pt-0 bg-gray-900">
+<section class="flex flex-wrap place-content-center w-full pt-24 pb-24">
+  <section class="relative block bg-gray-900 pt-24">
     <div class="container mx-auto px-4">
-      <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
+      <div class="flex flex-wrap justify-center">
         <div class="w-full lg:w-6/12 px-4">
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
             <div class="flex-auto p-5 lg:p-10">
-              <h4 class="text-2xl font-semibold">We want to hear from you!</h4>
+              <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Complete this form so we can stay in touch and provide valuable 
-                updates as they become available.
+                Complete this form if you know more about this classmate to
+                help us keep everyone updated about our upcoming reunion!
               </p>
-              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                We'll be reaching out in the coming months to get your input
-                on the when, where and what you’d 
-                like to see in your 50th High School Class Reunion.
-              </p>
-              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Please share your thoughts and questions and we'll get back 
-                to you as soon as possible.
-              </p>
+
               {#if emailResult !== ''}
                 <h2 class="text-green-700 italic">{ emailResult }</h2>
               {/if}
@@ -104,7 +111,7 @@
                     style="transition: all 0.15s ease 0s;"
                     on:input={ validateName } />
                 </div>
-                {#if !isNameValid}
+                {#if !isClassmateNameValid}
                   <div class="flex justify-end">
                     <div class="place-self-end text-red-500">
                       Please enter your first & last name
@@ -127,7 +134,7 @@
                     style="transition: all 0.15s ease 0s;"
                     on:input={ validateEmail } />
                 </div>
-                {#if !isEmailValid}
+                {#if !isClassmateEmailValid}
                   <div class="flex justify-end">
                     <div class="place-self-end text-red-500">
                       Please enter a valid email
@@ -264,18 +271,6 @@
         outline-none focus:outline-none mr-1 mb-1"
         style="transition: all 0.15s ease 0s;">
         Back
-      </button>
-      <button on:click={ handleBack }
-        class="bg-orange-500 text-white active:bg-gray-700 text-sm
-        font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-        outline-none focus:outline-none pt-3 mb-1"
-        style="transition: all 0.15s ease 0s;">
-        <div class="flex flex-wrap place-self-center w-full m-0">
-          <img src="chs_tiger_36.png" alt="CHS Tiger"/>
-          <div class="ml-2 self-center">
-            Tiger Hunt
-          </div>
-        </div>
       </button>
     </div>
   </div>

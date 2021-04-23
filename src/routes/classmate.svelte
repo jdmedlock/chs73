@@ -20,7 +20,7 @@
   }
 
   const handleTigerHunt = async () => {
-    await goto('tigerhunt')
+    await goto(`tigerhunt?back=classmates&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
   }
 </script>
 
