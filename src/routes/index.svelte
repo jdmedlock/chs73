@@ -168,6 +168,7 @@
         </div>
       </div>
     </div>
+    
     <div
       class="top-auto bottom-0 left-0 right-0 w-full absolute
       pointer-events-none overflow-hidden"

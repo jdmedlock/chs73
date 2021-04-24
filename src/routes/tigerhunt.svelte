@@ -77,9 +77,10 @@
 <style>
 </style>
 
-<section class="flex flex-wrap place-content-center w-full pt-24 pb-24">
-  <section class="relative block bg-gray-900 pt-24">
+<section class="flex flex-wrap place-content-center w-full pt-12 pb-0">
+  <div class="relative block bg-gray-900 pt-24 pb-20 w-full">
     <div class="container w-full px-4">
+
       <div class="flex flex-wrap justify-center">
         <div class="w-full lg:w-6/12 px-4">
           <div class="relative flex flex-col min-w-0 break-words mb-6 
@@ -97,8 +98,8 @@
 
               <form on:submit|preventDefault={ handleSubmit } 
                 method="post" enctype="application/json" >
-                <div  class="relative w-full mt-8">
-                  <h2>
+                <div class="relative w-full mt-8">
+                  <h2 class="text-white bg-gray-900 text-center">
                     About You
                   </h2>
                   <div class="relative w-full mb-3 mt-1">
@@ -149,7 +150,7 @@
                 </div>
 
                 <div class="relative w-full mb-3 mt-8">
-                  <h2>
+                  <h2 class="text-white bg-gray-900 text-center">
                     About { classmateName }
                   </h2>
 
@@ -287,7 +288,7 @@
                     font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
                     outline-none focus:outline-none mr-1 mb-1"
                     style="transition: all 0.15s ease 0s;">
-                    Send Message
+                    Submit Info
                   </button>
                 </div>
               </form>
@@ -296,17 +297,36 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <div class="flex flex-wrap place-content-center w-full ml-0 md:ml-8 mt-8">
-    <div class="flex place-content-center text-center w-full mt-6">
-      <button on:click={ handleBack }
-        class="bg-orange-500 text-white active:bg-gray-700 text-sm
-        font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-        outline-none focus:outline-none mr-1 mb-1"
-        style="transition: all 0.15s ease 0s;">
-        Back
-      </button>
-    </div>
+  <div
+    class="bottom-auto top-0 left-0 right-0 w-full relative
+    pointer-events-none overflow-hidden -mt-20"
+    >
+    <svg
+      class="absolute bottom-0 overflow-hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      version="1.1"
+      viewBox="0 0 2560 100"
+      x="0"
+      y="0">
+      <polygon
+        class="text-white fill-current"
+        points="2560 0 2560 100 0 100" />
+    </svg>
+  </div>
+
+</section>
+
+<section class="flex flex-wrap place-content-center w-full h-48 ml-0 md:ml-8 -mt-8">
+  <div class="flex place-content-center text-center w-full -mt-2">
+    <button on:click={ handleBack }
+      class="bg-orange-500 text-white active:bg-gray-700 text-sm
+      font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+      outline-none focus:outline-none mr-1 mb-1"
+      style="transition: all 0.15s ease 0s;">
+      Back
+    </button>
   </div>
 </section>
