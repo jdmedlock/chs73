@@ -79,10 +79,11 @@
 
 <section class="flex flex-wrap place-content-center w-full pt-24 pb-24">
   <section class="relative block bg-gray-900 pt-24">
-    <div class="container mx-auto px-4">
+    <div class="container w-full px-4">
       <div class="flex flex-wrap justify-center">
         <div class="w-full lg:w-6/12 px-4">
-          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
+          <div class="relative flex flex-col min-w-0 break-words mb-6 
+            shadow-lg rounded-lg bg-gray-300">
             <div class="flex-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
@@ -96,154 +97,188 @@
 
               <form on:submit|preventDefault={ handleSubmit } 
                 method="post" enctype="application/json" >
+                <div  class="relative w-full mt-8">
+                  <h2>
+                    About You
+                  </h2>
+                  <div class="relative w-full mb-3 mt-1">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="full-name">
+                      Full Name (required)
+                    </label>
+                    <input name="name" bind:value={ posterName } 
+                      type="text" required aria-required="true"
+                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full"
+                      placeholder="First Last"
+                      style="transition: all 0.15s ease 0s;"
+                      on:input={ validateName } />
+                  </div>
+                  {#if !isPosterNameValid}
+                    <div class="flex justify-end">
+                      <div class="place-self-end text-red-500">
+                        Please enter your first & last name
+                      </div>
+                    </div>
+                  {/if}
+
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="email">
+                      Email (required)
+                    </label>
+                    <input name="from" bind:value={ posterEmail } 
+                      type="text" required aria-required="true"
+                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full"
+                      placeholder="jdoe@domain.com"
+                      style="transition: all 0.15s ease 0s;"
+                      on:input={ validateEmail } />
+                  </div>
+                  {#if !isPosterEmailValid}
+                    <div class="flex justify-end">
+                      <div class="place-self-end text-red-500">
+                        Please enter a valid email
+                      </div>
+                    </div>
+                  {/if}
+                </div>
+
                 <div class="relative w-full mb-3 mt-8">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    for="full-name">
-                    Full Name (required)
-                  </label>
-                  <input name="name" bind:value={ classmateName } 
-                    type="text" required aria-required="true"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
-                    placeholder="First Last"
-                    style="transition: all 0.15s ease 0s;"
-                    on:input={ validateName } />
-                </div>
-                {#if !isClassmateNameValid}
-                  <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
-                      Please enter your first & last name
-                    </div>
-                  </div>
-                {/if}
+                  <h2>
+                    About { classmateName }
+                  </h2>
 
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    for="email">
-                    Email (required)
-                  </label>
-                  <input name="from" bind:value={ classmateEmail } 
-                    type="text" required aria-required="true"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
-                    placeholder="jdoe@domain.com"
-                    style="transition: all 0.15s ease 0s;"
-                    on:input={ validateEmail } />
-                </div>
-                {#if !isClassmateEmailValid}
-                  <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
-                      Please enter a valid email
-                    </div>
-                  </div>
-                {/if}
-
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-3"
-                    for="street">
-                    Street 
-                  </label>
-                  <input name="from" bind:value={ classmateStreet }
-                    type="text"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
-                    placeholder="1111 Any St."
-                    style="transition: all 0.15s ease 0s;" />
-                </div>
-
-                <div class="flex flex-wrap relative w-full mb-1">
-                  <span class="relaive w-8/12 mb-3">
+                  <div class="relative w-full mt-1 mb-3">
                     <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      for="city">
-                      City 
+                      class="block uppercase text-gray-700 text-xs font-bold mt-2 mb-2"
+                      for="email">
+                      Email
                     </label>
-                    <input name="from" bind:value={ classmateCity }
-                      type="text"
-                      class="w-full border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring"
-                      placeholder="Anytown"
-                      style="transition: all 0.15s ease 0s;" />
-                  </span>
-                  <span class="relative w-14 ml-4 mb-3">
+                    <input name="from" bind:value={ classmateEmail } 
+                      type="text" required aria-required="true"
+                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full"
+                      placeholder="jdoe@domain.com"
+                      style="transition: all 0.15s ease 0s;"
+                      on:input={ validateEmail } />
+                  </div>
+                  {#if !isClassmateEmailValid}
+                    <div class="flex justify-end">
+                      <div class="place-self-end text-red-500">
+                        Please enter a valid email
+                      </div>
+                    </div>
+                  {/if}
+
+                  <div class="relative w-full mb-3">
                     <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      for="state">
-                      State 
+                      class="block uppercase text-gray-700 text-xs font-bold mb-3"
+                      for="street">
+                      Street 
                     </label>
-                    <input name="from" bind:value={ classmateState }
+                    <input name="from" bind:value={ classmateStreet }
                       type="text"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full"
-                      placeholder="XX"
-                      style="transition: all 0.15s ease 0s;"
-                      on:input={ validateState } />
-                  </span>
-                  <span class="relative w-20 ml-0 md:ml-4 mb-3">
+                      placeholder="1111 Any St."
+                      style="transition: all 0.15s ease 0s;" />
+                  </div>
+
+                  <div class="flex flex-wrap relative w-full mb-1">
+                    <span class="relaive w-8/12 mb-3">
+                      <label
+                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                        for="city">
+                        City 
+                      </label>
+                      <input name="from" bind:value={ classmateCity }
+                        type="text"
+                        class="w-full border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                        bg-white rounded text-sm shadow focus:outline-none focus:ring"
+                        placeholder="Anytown"
+                        style="transition: all 0.15s ease 0s;" />
+                    </span>
+                    <span class="relative w-14 ml-4 mb-3">
+                      <label
+                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                        for="state">
+                        State 
+                      </label>
+                      <input name="from" bind:value={ classmateState }
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                        bg-white rounded text-sm shadow focus:outline-none focus:ring
+                        w-full"
+                        placeholder="XX"
+                        style="transition: all 0.15s ease 0s;"
+                        on:input={ validateState } />
+                    </span>
+                    <span class="relative w-20 ml-0 md:ml-4 mb-3">
+                      <label
+                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                        for="phone">
+                        Zipcode
+                      </label>
+                      <input name="from" bind:value={ classmateZipcode }
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                        bg-white rounded text-sm shadow focus:outline-none focus:ring
+                        w-full"
+                        placeholder="00000"
+                        style="transition: all 0.15s ease 0s;"
+                        on:input={ validateZipcode }  />
+                    </span>
+                  </div>
+                  {#if !isClassmateStateValid}
+                    <div class="flex justify-end">
+                      <div class="place-self-end text-red-500">
+                        Please enter a valid 2-character state
+                      </div>
+                    </div>
+                  {/if}
+                  {#if !isClassmateZipcodeValid}
+                    <div class="flex justify-end">
+                      <div class="place-self-end text-red-500">
+                        Please enter a valid 5-digit zipcode
+                      </div>
+                    </div>
+                  {/if}
+
+                  <div class="relative w-36 mb-3">
                     <label
                       class="block uppercase text-gray-700 text-xs font-bold mb-2"
                       for="phone">
-                      Zipcode
+                      Phone
                     </label>
-                    <input name="from" bind:value={ classmateZipcode }
-                      type="text"
+                    <input name="from" bind:value={ classmatePhone }
+                      type="tel"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full"
-                      placeholder="00000"
-                      style="transition: all 0.15s ease 0s;"
-                      on:input={ validateZipcode }  />
-                  </span>
-                </div>
-                {#if !isClassmateStateValid}
-                  <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
-                      Please enter a valid 2-character state
-                    </div>
+                      placeholder="(999) 999-9999"
+                      style="transition: all 0.15s ease 0s;" />
                   </div>
-                {/if}
-                {#if !isClassmateZipcodeValid}
-                  <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
-                      Please enter a valid 5-digit zipcode
-                    </div>
+
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="message">
+                      Message (required)
+                    </label>
+                    <textarea name="message" bind:value={ classmateInfo }
+                      rows="4" cols="80" required aria-required="true"
+                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none focus:ring
+                      w-full" 
+                      placeholder="Type a message..." />
                   </div>
-                {/if}
-
-                <div class="relative w-36 mb-3">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    for="phone">
-                    Phone
-                  </label>
-                  <input name="from" bind:value={ classmatePhone }
-                    type="tel"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
-                    placeholder="(999) 999-9999"
-                    style="transition: all 0.15s ease 0s;" />
-                </div>
-
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    for="message">
-                    Message (required)
-                  </label>
-                  <textarea name="message" bind:value={ classmateInfo }
-                    rows="4" cols="80" required aria-required="true"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full" 
-                    placeholder="Type a message..." />
                 </div>
           
                 <div class="text-center mt-6">
@@ -263,7 +298,7 @@
     </div>
   </section>
 
-  <div class="flex flex-wrap place-content-center w-full ml-0 md:ml-8 mt-20">
+  <div class="flex flex-wrap place-content-center w-full ml-0 md:ml-8 mt-8">
     <div class="flex place-content-center text-center w-full mt-6">
       <button on:click={ handleBack }
         class="bg-orange-500 text-white active:bg-gray-700 text-sm

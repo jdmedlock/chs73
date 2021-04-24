@@ -150,7 +150,7 @@
               Cape Central High - Class of 1973
               <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
-            <div class="bg-gray-900 bg-opacity-40">
+            <div class="rounded bg-sepia-800 bg-opacity-40">
               <h2 class="text-white font-semibold text-xl lg:text-4xl m-4 mt-10">
                 Your story started here!
               </h2>
@@ -160,7 +160,7 @@
                 was where you established lifelong friendships, as well as 
                 personal and professional interests.
               </p>
-              <p class="pt-8 text-orange-500 text-3xl font-semibold">
+              <p class="pt-8 text-orange-300 text-3xl font-bold">
                 It was the start of your journey...but, certainly not the end!
               </p>
             </div>
