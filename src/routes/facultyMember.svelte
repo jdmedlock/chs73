@@ -1,23 +1,24 @@
+<script context="module">
+	export async function preload(page, session) {
+		return { 
+      params: {
+        back: page.query.back,
+        name: page.query.name,
+        cloudinaryId: page.query.photoId,
+        department: page.query.department,
+        position: page.query.position,
+        deceased: page.query.deceased,
+      }
+    }
+  }
+</script>
+
 <script>
   import { goto } from '@sapper/app';
   import { Image } from '@cloudinary/svelte'
 
- let params
-  let name
-  let cloudinaryId
-  let department
-  let position
-  let deceased
-  if (process.browser) {
-    params = new URLSearchParams(window.location.search)
-    name = params.get('name')
-    cloudinaryId = params.get('photoId')
-    department = params.get('department')
-    position = params.get('position')
-    deceased = params.get('deceased')
-  }
-
-  console.log(cloudinaryId)
+  export let params
+  let { name, cloudinaryId, department, position, deceased } = params
   
   const handleBack = async () => {
     await goto('/faculty')
@@ -45,7 +46,7 @@
         <p class="text-center w-full text-xl mt-4 md:text-3xl font-normal">(Deceased)</p>
       {/if}
     </div>
-    <div class="flex flex-wrap items-center content-center w-full md:ml-8 mt-20">
+    <div class="flex flex-wrap items-center content-center w-full md:ml-8 mt-12">
       <div class="text-center w-full mt-6">
         <button on:click={ handleBack }
           class="bg-orange-500 text-white active:bg-gray-700 text-sm

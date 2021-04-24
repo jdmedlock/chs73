@@ -1,26 +1,30 @@
+<script context="module">
+	export async function preload(page, session) {
+		return { 
+      params: {
+        back: page.query.back,
+        classmateName: page.query.name,
+        cloudinaryId: page.query.photoId,
+        deceased: page.query.deceased,
+      }
+    }
+  }
+</script>
+
 <script>
   import { goto } from '@sapper/app'
   import { Image } from '@cloudinary/svelte'
 
-  let params
-  let back
-  let name
-  let cloudinaryId
-  let deceased
-  if (process.browser) {
-    params = new URLSearchParams(window.location.search)
-    back = params.get('back')
-    name = params.get('name')
-    cloudinaryId = params.get('photoId')
-    deceased = params.get('deceased')
-  }
+  export let params
+  let { back, classmateName, cloudinaryId, deceased } = params
+  console.log(`back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
 
   const handleBack = async () => {
     await goto(back)
   }
 
   const handleTigerHunt = async () => {
-    await goto(`tigerhunt?back=classmates&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
+    await goto(`tigerhunt?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
   }
 </script>
 
@@ -39,7 +43,7 @@
         ]}" />
     {/if}
     <div class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">
-      <p class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">{ name }</p>
+      <p class="place-self-center ml-0 md:ml-8 text-3xl md:text-6xl font-semibold">{ classmateName }</p>
       {#if deceased === 'TRUE'}
         <p class="text-center w-full text-xl mt-4 md:text-3xl font-normal">(Deceased)</p>
       {/if}
