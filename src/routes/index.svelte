@@ -44,7 +44,7 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_building.jpeg');"
+      style="background-image: url('chs_graduation.jpeg');"
     />
     <div class="container relative mx-auto">
       <div class="items-center flex flex-wrap">
