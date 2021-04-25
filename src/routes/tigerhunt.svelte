@@ -14,6 +14,7 @@
 <script>
   import { goto } from '@sapper/app'
   import { Image } from '@cloudinary/svelte'
+  import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
   let { back, classmateName, cloudinaryId, deceased } = params
@@ -32,41 +33,123 @@
   let classmateInfo = ''
   let classmateResult = ''
 
-  let isClassmateEmailValid = true
   let isPosterEmailValid = true
   let isPosterNameValid = true
-  let isClassmateNameValid
+  let isClassmateEmailValid = true
   let isClassmateStateValid = true
   let isClassmateZipcodeValid = true
 
   let emailResult = ''
 
-  const validateEmail = () => {
-    const result = emailValidator(emailFrom)
-    isEmailValid = result === true ? true : false
+  const validatePosterEmail = () => {
+    const result = emailValidator(posterEmail)
+    isPosterEmailValid = result === true ? true : false
     return
   }
 
-  const validateName = () => {
-    const result = nameValidator(emailName)
-    isNameValid = result === true ? true : false
+  const validateClassmateEmail = () => {
+    const result = emailValidator(classmateEmail)
+    isClassmateEmailValid = result === true ? true : false
     return
   }
 
-  const validateState = () => {
+  const validatePosterName = () => {
+    const result = nameValidator(posterName)
+    isPosterNameValid = result === true ? true : false
+    return
+  }
+
+  const validateClassmateState = () => {
     const result = stateValidator(emailState)
     isStateValid = result === true ? true : false
     return
   }
 
-  const validateZipcode = () => {
-    const result = zipcodeValidator(emailZipcode)
-    isZipcodeValid = result === true ? true : false
+  const validateClassmateZipcode = () => {
+    const result = zipcodeValidator(classmateZipcode)
+    isClassmateZipcodeValid = result === true ? true : false
     return
   }
 
   const handleSubmit = () => {
+    if (!isPosterNameValid || !isPosterEmailValid || 
+        !isClassmateEmailValid || !isClassmateStateValid || 
+        !isClassmateZipcodeValid) {
+      return
+    }
 
+    classmateZipcode = parseInt(classmateZipcode)
+
+    return client(fetch)
+      .request({
+        query: `
+          mutation sendTigerHunt(
+            $emailFrom: String!
+            $emailName: String!
+            $emailStreet: String
+            $emailCity: String
+            $emailState: String
+            $emailZipcode: Int
+            $emailPhone: String
+            $emailMessage: String!
+            $emailVolunteer: Boolean
+          ) {
+            sendTigerHunt (
+              fromEmail: $emailFrom
+              fullName: $emailName
+              street: $emailStreet
+              city: $emailCity
+              state: $emailState
+              zipcode: $emailZipcode
+              phone: $emailPhone
+              message: $emailMessage
+              volunteer: $emailVolunteer
+            ) {
+              result {
+                message
+                code
+              }
+            }
+          }        
+        `,
+        variables: {
+          posterName,
+          posterEmail,
+          classmateName,
+          classmateEmail,
+          classmateStreet,
+          classmateCity,
+          classmateState,
+          classmateZipcode,
+          classmatePhone,
+          classmateMessage,
+          isClassmateDeceased,
+        }
+      })
+      .then(response => {
+        console.log('response: ', response)
+
+        emailFrom = ''
+        emailName = ''
+        emailMessage = ''
+        emailStreet = ''
+        emailCity = ''
+        emailState = ''
+        emailZipcode = ''
+        emailPhone = ''
+        emailVolunteer = false
+        emailResult = response.sendMessage.result.code === "OK" 
+          ? "Your message was successfully sent!"
+          : "An error occurred sending your message. Please try later"
+        isEmailValid = true
+        isNameValid = true
+        isStateValid = true
+        isZipcodeValid = true
+        
+        return {
+          response
+        }
+      });
   }
 
   const handleBack = async () => {
@@ -115,7 +198,7 @@
                       w-full"
                       placeholder="First Last"
                       style="transition: all 0.15s ease 0s;"
-                      on:input={ validateName } />
+                      on:input={ validatePosterName } />
                   </div>
                   {#if !isPosterNameValid}
                     <div class="flex justify-end">
@@ -138,7 +221,7 @@
                       w-full"
                       placeholder="jdoe@domain.com"
                       style="transition: all 0.15s ease 0s;"
-                      on:input={ validateEmail } />
+                      on:input={ validatePosterEmail } />
                   </div>
                   {#if !isPosterEmailValid}
                     <div class="flex justify-end">
@@ -167,7 +250,7 @@
                       w-full"
                       placeholder="jdoe@domain.com"
                       style="transition: all 0.15s ease 0s;"
-                      on:input={ validateEmail } />
+                      on:input={ validateClassmateEmail } />
                   </div>
                   {#if !isClassmateEmailValid}
                     <div class="flex justify-end">
@@ -219,7 +302,7 @@
                         w-full"
                         placeholder="XX"
                         style="transition: all 0.15s ease 0s;"
-                        on:input={ validateState } />
+                        on:input={ validateClassmateState } />
                     </span>
                     <span class="relative w-20 ml-0 md:ml-4 mb-3">
                       <label
@@ -234,7 +317,7 @@
                         w-full"
                         placeholder="00000"
                         style="transition: all 0.15s ease 0s;"
-                        on:input={ validateZipcode }  />
+                        on:input={ validateClassmateZipcode }  />
                     </span>
                   </div>
                   {#if !isClassmateStateValid}
@@ -271,7 +354,7 @@
                     <label
                       class="block uppercase text-gray-700 text-xs font-bold mb-2"
                       for="message">
-                      Message (required)
+                      Info about this classmate
                     </label>
                     <textarea name="message" bind:value={ classmateInfo }
                       rows="4" cols="80" required aria-required="true"
