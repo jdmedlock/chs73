@@ -139,7 +139,7 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_graduation.jpeg');"
+      style="background-image: url('chs_graduation.webp');"
     />
     <div class="container relative mx-auto">
       <div class="items-center flex flex-wrap">
@@ -150,19 +150,21 @@
               Cape Central High - Class of 1973
               <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
             </h1>
-            <div class="rounded bg-sepia-800 bg-opacity-40">
-              <h2 class="text-white font-semibold text-xl lg:text-4xl m-4 mt-10">
-                Your story started here!
-              </h2>
-              <p class="mt-10 text-lg lg:text-3xl text-white">
-                These were your formative years. This is the crucible where you
-                developed your identity, your independence, and your drive. It
-                was where you established lifelong friendships, as well as 
-                personal and professional interests.
-              </p>
-              <p class="pt-8 text-orange-300 text-3xl font-bold">
-                It was the start of your journey...but, certainly not the end!
-              </p>
+            <div class="flex flex-col rounded bg-sepia-800 bg-opacity-40 m-10">
+              <div class="m-4">
+                <h2 class="text-white font-semibold text-xl lg:text-4xl">
+                  Your story started here!
+                </h2>
+                <p class="mt-10 text-lg lg:text-3xl text-white">
+                  These were your formative years. This is the crucible where you
+                  developed your identity, your independence, and your drive. It
+                  was where you established lifelong friendships, as well as 
+                  personal and professional interests.
+                </p>
+                <p class="pt-8 text-orange-300 text-3xl font-bold">
+                  It was the start of your journey...but, certainly not the end!
+                </p>
+              </div>
             </div>
           </div>
         </div>
