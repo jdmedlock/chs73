@@ -141,16 +141,24 @@
       style="background-image: url('chs_graduation.webp');"
     />
     <div class="container relative mx-auto">
-      <div class="items-center flex flex-wrap">
-        <div class="w-full lg:w-10/12 px-4 ml-auto mr-auto text-center">
-          <div class="pr-none lg:pr-12">
-            <h1 class="flex align-items-center text-orange-500 font-semibold text-3xl lg:text-6xl">
-              <img class="lg:-mt-4 mr-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
-              Cape Central High - Class of 1973
-              <img class="lg:-mt-4 ml-2 w-16 h-12 lg:w-36 lg:h-28" src="chs_tiger.png" alt="CHS Tiger"/>
-            </h1>
-            <div class="flex flex-col rounded bg-sepia-800 bg-opacity-40 m-10">
-              <div class="m-4">
+      <div class="justify-items-center flex flex-wrap">
+        <div class="items-center w-full lg:w-11/12 px-4 ml-auto mr-auto text-center">
+          <div class="bg-sepia-800 bg-opacity-40 pr-none">
+            <div class="flex flex-row h-full w-full justify-center pt-4">
+              <div class="place-self-center pt-4 lg:pt-0">
+                <img class="w-16 h-12 lg:w-36 lg:h-28 invisible md:visible" 
+                  src="chs_tiger.png" alt="CHS Tiger"/>
+              </div>
+              <h1 class="text-orange-500 pt-6 font-semibold text-3xl lg:text-6xl">
+                Cape Central High - Class of 1973
+              </h1>
+              <div class="place-self-center pt-4 lg:pt-0">
+                <img class="w-16 h-12 lg:w-36 lg:h-28 invisible md:visible" 
+                  src="chs_tiger.png" alt="CHS Tiger"/>
+              </div>
+            </div>
+            <div class="flex flex-col rounded m-auto">
+              <div class="m-">
                 <h2 class="text-white font-semibold text-xl lg:text-4xl">
                   Your story started here!
                 </h2>
@@ -160,7 +168,7 @@
                   was where you established lifelong friendships, as well as 
                   personal and professional interests.
                 </p>
-                <p class="pt-8 text-orange-300 text-3xl font-bold">
+                <p class="pt-8 pb-4 text-orange-300 text-3xl font-bold">
                   It was the start of your journey...but, certainly not the end!
                 </p>
               </div>
@@ -558,7 +566,7 @@
           
                 <div class="text-center mt-6">
                   <button type="submit"
-                    class="bg-orange-500 text-white active:bg-gray-700 text-sm
+                    class="bg-orange-500 text-white active:bg-gray-700 text-lg
                     font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
                     outline-none focus:outline-none mr-1 mb-1"
                     style="transition: all 0.15s ease 0s;">

@@ -79,13 +79,14 @@
 
     classmateZipcode = parseInt(classmateZipcode)
     
-
+/*
     console.log(`Poster name: ${ posterName } email: ${ posterEmail }`)
     console.log(`Classmate name: ${ classmateName } email: ${ classmateEmail }`)
     console.log(`...Street: ${ classmateStreet }`)
     console.log(`...City: ${ classmateCity} State: ${ classmateState } Zip: ${ classmateZipcode }`)
     console.log(`...Phone: ${ classmatePhone } Deceased: ${ isClassmateDeceased }`)
     console.log(`...Info: ${ classmateInfo }`)
+*/
 
     return client(fetch)
       .request({
@@ -174,13 +175,13 @@
 
 <section class="flex flex-wrap place-content-center w-full pt-12 pb-0">
   <div class="relative block bg-gray-900 pt-24 pb-20 w-full">
-    <div class="container w-full px-4">
+    <div class="container w-full justify-center m-auto px-4">
 
       <div class="flex flex-wrap justify-center">
-        <div class="w-full lg:w-6/12 px-4">
+        <div class="lg:w-6/12 px-4">
           <div class="relative flex flex-col min-w-0 break-words mb-6 
             shadow-lg rounded-lg bg-gray-300">
-            <div class="flex-auto p-5 lg:p-10">
+            <div class="flex-auto m-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                 Complete this form if you know more about this classmate to

@@ -16,12 +16,22 @@
 <script>
   import { goto } from '@sapper/app';
   import { Image } from '@cloudinary/svelte'
+  import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
   let { name, cloudinaryId, department, position, deceased } = params
   
   const handleBack = async () => {
     await goto('/faculty')
+  }
+
+  const handleTigerHunt = async () => {
+    await goto(`tigerhunt?back=classmates&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
+  }
+
+  let showModal = false
+  const toggleModal = () => {
+    showModal = !showModal;
   }
 </script>
 
@@ -46,16 +56,37 @@
         <p class="text-center w-full text-xl mt-4 md:text-3xl font-normal">(Deceased)</p>
       {/if}
     </div>
-    <div class="flex flex-wrap items-center content-center w-full md:ml-8 mt-12">
-      <div class="text-center w-full mt-6">
+
+    <div class="flex flex-wrap place-content-center w-full ml-0 md:ml-8 mt-20">
+      <div class="flex place-content-center text-center w-full mt-6">
         <button on:click={ handleBack }
-          class="bg-orange-500 text-white active:bg-gray-700 text-sm
+          class="bg-orange-500 text-white active:bg-gray-700 text-lg
           font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
           outline-none focus:outline-none mr-1 mb-1"
           style="transition: all 0.15s ease 0s;">
           Back
         </button>
+        <div class="flex flex-col">
+          <button on:click={ handleTigerHunt }
+            class="bg-orange-500 text-white active:bg-gray-700 text-lg
+            font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+            outline-none focus:outline-none pt-3 mb-1"
+            style="transition: all 0.15s ease 0s;">
+            <div class="flex flex-wrap place-self-center w-full m-0">
+              <img src="chs_tiger_36.png" alt="CHS Tiger"/>
+              <div class="ml-2 self-center">
+                Tiger Hunt
+              </div>
+            </div>
+          </button>
+        </div>
       </div>
+      <div class="text-lg ml-3 justify-self-end" on:click={ toggleModal }>
+        What's this?
+      </div>
+      {#if showModal}
+        <TigerHuntInfoModal action={ toggleModal }/>
+      {/if}
     </div>
   </div>
 </section>

@@ -58,7 +58,7 @@
   <div class="flex flex-wrap place-content-center w-full ml-0 md:ml-8 mt-20">
     <div class="flex place-content-center text-center w-full mt-6">
       <button on:click={ handleBack }
-        class="bg-orange-500 text-white active:bg-gray-700 text-sm
+        class="bg-orange-500 text-white active:bg-gray-700 text-lg
         font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
         outline-none focus:outline-none mr-1 mb-1"
         style="transition: all 0.15s ease 0s;">
@@ -66,7 +66,7 @@
       </button>
       <div class="flex flex-col">
         <button on:click={ handleTigerHunt }
-          class="bg-orange-500 text-white active:bg-gray-700 text-sm
+          class="bg-orange-500 text-white active:bg-gray-700 text-lg
           font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
           outline-none focus:outline-none pt-3 mb-1"
           style="transition: all 0.15s ease 0s;">
@@ -79,7 +79,7 @@
         </button>
       </div>
     </div>
-    <div class="text-sm justify-self-end" on:click={ toggleModal }>
+    <div class="text-lg ml-3 justify-self-end" on:click={ toggleModal }>
       What's this?
     </div>
     {#if showModal}

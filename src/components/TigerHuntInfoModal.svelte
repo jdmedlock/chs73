@@ -33,7 +33,7 @@
               everyone gets information & updates for our 50th reunion.
             </p>
             <p class="mt-3 text-xl text-gray-500">
-              TigerHunt lets you help with that by providing up to date contact 
+              TigerHunt lets you help by providing up-to-date contact 
               information for Classmates you are in contact with.
             </p>
             <p class="mt-3 text-xl text-gray-500">
