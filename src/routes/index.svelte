@@ -3,7 +3,6 @@
 
 <script>
   import { client } from '../utils/graphql.js'
-  import Toast from '../components/Toast.svelte'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   let emailName = ''

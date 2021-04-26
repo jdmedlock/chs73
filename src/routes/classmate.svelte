@@ -14,6 +14,7 @@
 <script>
   import { goto } from '@sapper/app'
   import { Image } from '@cloudinary/svelte'
+  import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
   let { back, classmateName, cloudinaryId, deceased } = params
@@ -25,6 +26,11 @@
 
   const handleTigerHunt = async () => {
     await goto(`tigerhunt?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
+  }
+
+  let showModal = false
+  const toggleModal = () => {
+    showModal = !showModal;
   }
 </script>
 
@@ -58,18 +64,26 @@
         style="transition: all 0.15s ease 0s;">
         Back
       </button>
-      <button on:click={ handleTigerHunt }
-        class="bg-orange-500 text-white active:bg-gray-700 text-sm
-        font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-        outline-none focus:outline-none pt-3 mb-1"
-        style="transition: all 0.15s ease 0s;">
-        <div class="flex flex-wrap place-self-center w-full m-0">
-          <img src="chs_tiger_36.png" alt="CHS Tiger"/>
-          <div class="ml-2 self-center">
-            Tiger Hunt
+      <div class="flex flex-col">
+        <button on:click={ handleTigerHunt }
+          class="bg-orange-500 text-white active:bg-gray-700 text-sm
+          font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+          outline-none focus:outline-none pt-3 mb-1"
+          style="transition: all 0.15s ease 0s;">
+          <div class="flex flex-wrap place-self-center w-full m-0">
+            <img src="chs_tiger_36.png" alt="CHS Tiger"/>
+            <div class="ml-2 self-center">
+              Tiger Hunt
+            </div>
           </div>
-        </div>
-      </button>
+        </button>
+      </div>
     </div>
+    <div class="text-sm justify-self-end" on:click={ toggleModal }>
+      What's this?
+    </div>
+    {#if showModal}
+      <TigerHuntInfoModal action={ toggleModal }/>
+    {/if}
   </div>
 </section>
