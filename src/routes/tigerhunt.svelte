@@ -13,7 +13,7 @@
 
 <script>
   import { goto } from '@sapper/app'
-  import { Image } from '@cloudinary/svelte'
+  import { client } from '../utils/graphql.js'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
@@ -24,14 +24,13 @@
   let posterEmail = ''
 
   let classmateEmail = ''
-  let isClassmateDeceased
+  let isClassmateDeceased = deceased === 'TRUE' ? true : false
   let classmateStreet = ''
   let classmateCity = ''
   let classmateState = ''
   let classmateZipcode = ''
   let classmatePhone = ''
   let classmateInfo = ''
-  let classmateResult = ''
 
   let isPosterEmailValid = true
   let isPosterNameValid = true
@@ -39,7 +38,7 @@
   let isClassmateStateValid = true
   let isClassmateZipcodeValid = true
 
-  let emailResult = ''
+  let tigerhuntResult = ''
 
   const validatePosterEmail = () => {
     const result = emailValidator(posterEmail)
@@ -60,8 +59,8 @@
   }
 
   const validateClassmateState = () => {
-    const result = stateValidator(emailState)
-    isStateValid = result === true ? true : false
+    const result = stateValidator(classmateState)
+    isClassmateStateValid = result === true ? true : false
     return
   }
 
@@ -79,31 +78,43 @@
     }
 
     classmateZipcode = parseInt(classmateZipcode)
+    
+
+    console.log(`Poster name: ${ posterName } email: ${ posterEmail }`)
+    console.log(`Classmate name: ${ classmateName } email: ${ classmateEmail }`)
+    console.log(`...Street: ${ classmateStreet }`)
+    console.log(`...City: ${ classmateCity} State: ${ classmateState } Zip: ${ classmateZipcode }`)
+    console.log(`...Phone: ${ classmatePhone } Deceased: ${ isClassmateDeceased }`)
+    console.log(`...Info: ${ classmateInfo }`)
 
     return client(fetch)
       .request({
         query: `
           mutation sendTigerHunt(
-            $emailFrom: String!
-            $emailName: String!
-            $emailStreet: String
-            $emailCity: String
-            $emailState: String
-            $emailZipcode: Int
-            $emailPhone: String
-            $emailMessage: String!
-            $emailVolunteer: Boolean
+            $posterEmail: String!
+            $posterName: String!
+            $classmateName: String!
+            $classmateEmail: String
+            $classmateStreet: String
+            $classmateCity: String
+            $classmateState: String
+            $classmateZipcode: Int
+            $classmatePhone: String
+            $classmateInfo: String
+            $isClassmateDeceased: Boolean
           ) {
             sendTigerHunt (
-              fromEmail: $emailFrom
-              fullName: $emailName
-              street: $emailStreet
-              city: $emailCity
-              state: $emailState
-              zipcode: $emailZipcode
-              phone: $emailPhone
-              message: $emailMessage
-              volunteer: $emailVolunteer
+              fromEmail: $posterEmail
+              fromName: $posterName
+              classmateName: $classmateName
+              classmateEmail: $classmateEmail
+              classmateStreet: $classmateStreet
+              classmateCity: $classmateCity
+              classmateState: $classmateState
+              classmateZipcode: $classmateZipcode
+              classmatePhone: $classmatePhone
+              isClassmateDeceased: $isClassmateDeceased
+              classmateInfo: $classmateInfo
             ) {
               result {
                 message
@@ -122,29 +133,30 @@
           classmateState,
           classmateZipcode,
           classmatePhone,
-          classmateMessage,
           isClassmateDeceased,
+          classmateInfo,
         }
       })
       .then(response => {
         console.log('response: ', response)
 
-        emailFrom = ''
-        emailName = ''
-        emailMessage = ''
-        emailStreet = ''
-        emailCity = ''
-        emailState = ''
-        emailZipcode = ''
-        emailPhone = ''
-        emailVolunteer = false
-        emailResult = response.sendMessage.result.code === "OK" 
+        posterEmail = ''
+        posterName = ''
+        classmateInfo = ''
+        classmateStreet = ''
+        classmateCity = ''
+        classmateState = ''
+        classmateZipcode = ''
+        classmatePhone = ''
+        isClassmateDeceased = deceased === 'TRUE' ? true : false
+        tigerhuntResult = response.sendTigerHunt.result.code === "OK" 
           ? "Your message was successfully sent!"
           : "An error occurred sending your message. Please try later"
-        isEmailValid = true
-        isNameValid = true
-        isStateValid = true
-        isZipcodeValid = true
+        isPosterEmailValid = true
+        isPosterNameValid = true
+        isClassmateEmailValid = true
+        isClassmateStateValid = true
+        isClassmateZipcodeValid = true
         
         return {
           response
@@ -175,8 +187,8 @@
                 help us keep everyone updated about our upcoming reunion!
               </p>
 
-              {#if emailResult !== ''}
-                <h2 class="text-green-700 italic">{ emailResult }</h2>
+              {#if tigerhuntResult !== ''}
+                <h2 class="text-green-700 italic">{ tigerhuntResult }</h2>
               {/if}
 
               <form on:submit|preventDefault={ handleSubmit } 
@@ -243,8 +255,7 @@
                       for="email">
                       Email
                     </label>
-                    <input name="from" bind:value={ classmateEmail } 
-                      type="text" required aria-required="true"
+                    <input name="from" bind:value={ classmateEmail } type="text"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full"
@@ -335,20 +346,30 @@
                     </div>
                   {/if}
 
-                  <div class="relative w-36 mb-3">
-                    <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      for="phone">
-                      Phone
-                    </label>
-                    <input name="from" bind:value={ classmatePhone }
-                      type="tel"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
-                      placeholder="(999) 999-9999"
-                      style="transition: all 0.15s ease 0s;" />
-                  </div>
+                  <div class="flex flex-wrap relative w-full mb-1">
+                    <span class="relative w-36 mb-3">
+                      <label
+                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                        for="phone">
+                        Phone
+                      </label>
+                      <input name="from" bind:value={ classmatePhone }
+                        type="tel"
+                        class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                        bg-white rounded text-sm shadow focus:outline-none focus:ring
+                        w-full"
+                        placeholder="(999) 999-9999"
+                        style="transition: all 0.15s ease 0s;" />
+                    </span>
+                    <span class="flex flex-col w-20 ml-6">
+                      <label for="deceased">
+                        Deceased
+                      </label>
+                      <input class="self-center w-full h-6 mt-2"
+                        name="deceased" type="checkbox" 
+                        bind:checked={ isClassmateDeceased }/>
+                    </span> 
+                  </div>        
 
                   <div class="relative w-full mb-3">
                     <label
@@ -357,7 +378,7 @@
                       Info about this classmate
                     </label>
                     <textarea name="message" bind:value={ classmateInfo }
-                      rows="4" cols="80" required aria-required="true"
+                      rows="4" cols="80" aria-required="false"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full" 
