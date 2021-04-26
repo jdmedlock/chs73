@@ -7,7 +7,7 @@
   let facultyColumn1 = []
   for (let i = 0; i < facultyColumn1Lth; i++) {
     facultyColumn1.push({ 
-      name: faculty[i].firstName.concat(', ',faculty[i].lastName),
+      name: faculty[i].firstName.concat(' ',faculty[i].lastName),
       cloudinaryId: faculty[i].cloudinaryId === '' ? photoPlaceholder : faculty[i].cloudinaryId,
       department: faculty[i].department,
       position: faculty[i].position,
@@ -19,7 +19,7 @@
   let facultyColumn2 = []
   for (let i = facultyColumn1Lth; i < faculty.length; i++) {
     facultyColumn2.push({ 
-      name: faculty[i].firstName.concat(', ',faculty[i].lastName),
+      name: faculty[i].firstName.concat(' ',faculty[i].lastName),
       cloudinaryId: faculty[i].cloudinaryId === '' ? photoPlaceholder : faculty[i].cloudinaryId,
       department: faculty[i].department,
       position: faculty[i].position,
