@@ -8,6 +8,7 @@
         department: page.query.department,
         position: page.query.position,
         deceased: page.query.deceased,
+        confirmed: page.query.confirmed,
       }
     }
   }
@@ -19,7 +20,7 @@
   import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
-  let { name, cloudinaryId, department, position, deceased } = params
+  let { name, cloudinaryId, department, position, deceased, confirmed } = params
   
   const handleBack = async () => {
     await goto('/faculty')
@@ -66,26 +67,30 @@
           style="transition: all 0.15s ease 0s;">
           Back
         </button>
-        <div class="flex flex-col">
-          <button on:click={ handleTigerHunt }
-            class="bg-orange-500 text-white active:bg-gray-700 text-lg
-            font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-            outline-none focus:outline-none pt-3 mb-1"
-            style="transition: all 0.15s ease 0s;">
-            <div class="flex flex-wrap place-self-center w-full m-0">
-              <img src="chs_tiger_36.png" alt="CHS Tiger"/>
-              <div class="ml-2 self-center">
-                Tiger Hunt
+        {#if confirmed === "FALSE"}
+          <div class="flex flex-col">
+            <button on:click={ handleTigerHunt }
+              class="bg-orange-500 text-white active:bg-gray-700 text-lg
+              font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+              outline-none focus:outline-none pt-3 mb-1"
+              style="transition: all 0.15s ease 0s;">
+              <div class="flex flex-wrap place-self-center w-full m-0">
+                <img src="chs_tiger_36.png" alt="CHS Tiger"/>
+                <div class="ml-2 self-center">
+                  Tiger Hunt
+                </div>
               </div>
-            </div>
-          </button>
+            </button>
+          </div>
+        {/if}
+      </div>
+      {#if confirmed === "FALSE"}
+        <div class="text-lg ml-3 justify-self-end" on:click={ toggleModal }>
+          What's this?
         </div>
-      </div>
-      <div class="text-lg ml-3 justify-self-end" on:click={ toggleModal }>
-        What's this?
-      </div>
-      {#if showModal}
-        <TigerHuntInfoModal action={ toggleModal }/>
+        {#if showModal}
+          <TigerHuntInfoModal action={ toggleModal }/>
+        {/if}
       {/if}
     </div>
   </div>
