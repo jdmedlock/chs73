@@ -16,7 +16,8 @@
     classmateColumn1.push({ 
       name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
       cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
-      deceased: classmates[i].deceased
+      deceased: classmates[i].deceased,
+      confirmed: classmates[i].confirmed,
     })
   }
 
@@ -26,7 +27,8 @@
     classmateColumn2.push({ 
       name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
       cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
-      deceased: classmates[i].deceased
+      deceased: classmates[i].deceased,
+      confirmed: classmates[i].confirmed,
     })
   }
 </script>
@@ -71,12 +73,12 @@
     <div class="flex justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
       <ul class="mt-2 text-lg text-gray-600 leading-tight">
         {#each classmateColumn1 as classmate}
-          <li class="mt-2"><a href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">{ classmate.name }</a></li>
+          <li class="mt-2"><a href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">{ classmate.name }</a></li>
         {/each}
       </ul>
       <ul class="ml-2 mt-2 text-lg text-gray-600 leading-tight">
         {#each classmateColumn2 as classmate}
-          <li class="mt-2"><a href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }">{ classmate.name }</a></li>
+          <li class="mt-2"><a href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">{ classmate.name }</a></li>
         {/each}
       </ul>
     </div>

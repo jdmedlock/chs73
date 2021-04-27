@@ -6,6 +6,7 @@
         classmateName: page.query.name,
         cloudinaryId: page.query.photoId,
         deceased: page.query.deceased,
+        confirmed: page.query.confirmed,
       }
     }
   }
@@ -17,15 +18,15 @@
   import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
-  let { back, classmateName, cloudinaryId, deceased } = params
-  console.log(`back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
+  let { back, classmateName, cloudinaryId, deceased, confirmed } = params
+  console.log(`back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   const handleBack = async () => {
     await goto(back)
   }
 
   const handleTigerHunt = async () => {
-    await goto(`tigerhunt?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
+    await goto(`tigerhunt?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased } confirmed: ${ confirmed }`)
   }
 
   let showModal = false
@@ -70,27 +71,31 @@
         style="transition: all 0.15s ease 0s;">
         Back
       </button>
-      <div class="flex flex-col">
-        <button on:click={ handleTigerHunt }
-          class="bg-orange-500 text-white active:bg-gray-700 
-          font-bold uppercase rounded shadow hover:shadow-lg
-          outline-none focus:outline-none 
-          mb-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
-          style="transition: all 0.15s ease 0s;">
-          <div class="flex flex-wrap place-self-center w-full m-0">
-            <img src="chs_tiger_36.png" alt="CHS Tiger"/>
-            <div class="ml-2 self-center">
-              Tiger Hunt
+      {#if confirmed === 'FALSE'}
+        <div class="flex flex-col">
+          <button on:click={ handleTigerHunt }
+            class="bg-orange-500 text-white active:bg-gray-700 
+            font-bold uppercase rounded shadow hover:shadow-lg
+            outline-none focus:outline-none 
+            mb-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
+            style="transition: all 0.15s ease 0s;">
+            <div class="flex flex-wrap place-self-center w-full m-0">
+              <img src="chs_tiger_36.png" alt="CHS Tiger"/>
+              <div class="ml-2 self-center">
+                Tiger Hunt
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
+      {/if}
+    </div>
+    {#if confirmed === 'FALSE'}
+      <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
+        What's this?
       </div>
-    </div>
-    <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
-      What's this?
-    </div>
-    {#if showModal}
-      <TigerHuntInfoModal action={ toggleModal }/>
+      {#if showModal}
+        <TigerHuntInfoModal action={ toggleModal }/>
+      {/if}
     {/if}
   </div>
 </section>
