@@ -55,7 +55,7 @@
         { classmateName }
       </p>
       {#if deceased === 'TRUE'}
-        <p class="text-center w-full text-xl mt-0 md:text-3xl font-normal">(Deceased)</p>
+        <p class="text-center w-full text-xl mt-0 md:text-2xl font-normal">(Deceased)</p>
       {/if}
     </div>
   </div>
