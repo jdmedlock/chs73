@@ -44,8 +44,8 @@
         cloud_name="{ process.env.CLOUDINARY_NAME }" 
         public_id={ cloudinaryId }
         transformation="{[
-          { width: 400, height: 400, gravity: 'face', radius: 'max', crop: 'crop' },
-          { width: 200, crop: 'scale' }
+          { width: 300, height: 300, gravity: 'face', radius: 'max', crop: 'crop' },
+          { width: 100, crop: 'scale' }
         ]}" />
     {/if}
     <div class="flex flex-col w-full
