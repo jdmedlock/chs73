@@ -19,10 +19,14 @@
 
   export let params
   let { back, classmateName, cloudinaryId, deceased, confirmed } = params
-  console.log(`classmate - back: ${ back } nameame: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
+  console.log(`classmate - back: ${ back } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   const handleBack = async () => {
-    await goto(back)
+    if (back === "classmate") {
+      await goto("/classmates")
+    } else {
+      await goto(back)
+    }
   }
 
   const handleTigerHunt = async () => {
