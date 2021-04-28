@@ -19,14 +19,14 @@
 
   export let params
   let { back, classmateName, cloudinaryId, deceased, confirmed } = params
-  console.log(`back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
+  console.log(`classmate - back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   const handleBack = async () => {
     await goto(back)
   }
 
   const handleTigerHunt = async () => {
-    await goto(`tigerhunt?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased } confirmed: ${ confirmed }`)
+    await goto(`tigerhunt?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
   }
 
   let showModal = false
