@@ -1,414 +1,55 @@
-<script context="module">
-	export async function preload(page, session) {
-		return { 
-      params: {
-        back: page.query.back,
-        classmateName: page.query.name,
-        cloudinaryId: page.query.photoId,
-        deceased: page.query.deceased,
-        confirmed: page.query.confirmed,
-      }
-    }
-  }
-</script>
-
 <script>
   import { goto } from '@sapper/app'
-  import { client } from '../utils/graphql.js'
-  import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
+  import classmates from '../assets/classmates.json'
 
-  export let params
-  let { back, classmateName, cloudinaryId, deceased, confirmed } = params
-  console.log(`tigerhunt - back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
+  const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
 
-  let posterName = ''
-  let posterEmail = ''
-
-  let classmateEmail = ''
-  let isClassmateDeceased = deceased === 'TRUE' ? true : false
-  let classmateStreet = ''
-  let classmateCity = ''
-  let classmateState = ''
-  let classmateZipcode = ''
-  let classmatePhone = ''
-  let classmateInfo = ''
-
-  let isPosterEmailValid = true
-  let isPosterNameValid = true
-  let isClassmateEmailValid = true
-  let isClassmateStateValid = true
-  let isClassmateZipcodeValid = true
-
-  let tigerhuntResult = ''
-
-  const validatePosterEmail = () => {
-    const result = emailValidator(posterEmail)
-    isPosterEmailValid = result === true ? true : false
-    return
+  const formatName = (firstName, lastName, marriedLastName) => {
+    const formattedName = marriedLastName !== '' 
+      ? firstName.concat(' (',lastName,') ',marriedLastName) 
+      : firstName.concat(' ',lastName)
+    return formattedName
   }
 
-  const validateClassmateEmail = () => {
-    const result = emailValidator(classmateEmail)
-    isClassmateEmailValid = result === true ? true : false
-    return
-  }
-
-  const validatePosterName = () => {
-    const result = nameValidator(posterName)
-    isPosterNameValid = result === true ? true : false
-    return
-  }
-
-  const validateClassmateState = () => {
-    const result = stateValidator(classmateState)
-    isClassmateStateValid = result === true ? true : false
-    return
-  }
-
-  const validateClassmateZipcode = () => {
-    const result = zipcodeValidator(classmateZipcode)
-    isClassmateZipcodeValid = result === true ? true : false
-    return
-  }
-
-  const handleSubmit = () => {
-    if (!isPosterNameValid || !isPosterEmailValid || 
-        !isClassmateEmailValid || !isClassmateStateValid || 
-        !isClassmateZipcodeValid) {
-      return
-    }
-
-    classmateZipcode = parseInt(classmateZipcode)
-    
-/*
-    console.log(`Poster name: ${ posterName } email: ${ posterEmail }`)
-    console.log(`Classmate name: ${ classmateName } email: ${ classmateEmail }`)
-    console.log(`...Street: ${ classmateStreet }`)
-    console.log(`...City: ${ classmateCity} State: ${ classmateState } Zip: ${ classmateZipcode }`)
-    console.log(`...Phone: ${ classmatePhone } Deceased: ${ isClassmateDeceased }`)
-    console.log(`...Info: ${ classmateInfo }`)
-*/
-
-    return client(fetch)
-      .request({
-        query: `
-          mutation sendTigerHunt(
-            $posterEmail: String!
-            $posterName: String!
-            $classmateName: String!
-            $classmateEmail: String
-            $classmateStreet: String
-            $classmateCity: String
-            $classmateState: String
-            $classmateZipcode: Int
-            $classmatePhone: String
-            $classmateInfo: String
-            $isClassmateDeceased: Boolean
-          ) {
-            sendTigerHunt (
-              fromEmail: $posterEmail
-              fromName: $posterName
-              classmateName: $classmateName
-              classmateEmail: $classmateEmail
-              classmateStreet: $classmateStreet
-              classmateCity: $classmateCity
-              classmateState: $classmateState
-              classmateZipcode: $classmateZipcode
-              classmatePhone: $classmatePhone
-              isClassmateDeceased: $isClassmateDeceased
-              classmateInfo: $classmateInfo
-            ) {
-              result {
-                message
-                code
-              }
-            }
-          }        
-        `,
-        variables: {
-          posterName,
-          posterEmail,
-          classmateName,
-          classmateEmail,
-          classmateStreet,
-          classmateCity,
-          classmateState,
-          classmateZipcode,
-          classmatePhone,
-          isClassmateDeceased,
-          classmateInfo,
-        }
+  const classmateColumn1Lth = Math.floor(classmates.length / 2)
+  let classmateColumn1 = []
+  for (let i = 0; i < classmateColumn1Lth; i++) {
+    if (classmates[i].confirmed.toUpperCase() !== "TRUE") {
+      classmateColumn1.push({ 
+        name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
+        cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
+        deceased: classmates[i].deceased,
+        confirmed: classmates[i].confirmed,
       })
-      .then(response => {
-        console.log('response: ', response)
-
-        posterEmail = ''
-        posterName = ''
-        classmateInfo = ''
-        classmateStreet = ''
-        classmateCity = ''
-        classmateState = ''
-        classmateZipcode = ''
-        classmatePhone = ''
-        isClassmateDeceased = deceased === 'TRUE' ? true : false
-        tigerhuntResult = response.sendTigerHunt.result.code === "OK" 
-          ? "Your message was successfully sent!"
-          : "An error occurred sending your message. Please try later"
-        isPosterEmailValid = true
-        isPosterNameValid = true
-        isClassmateEmailValid = true
-        isClassmateStateValid = true
-        isClassmateZipcodeValid = true
-        
-        return {
-          response
-        }
-      });
+    }
   }
 
-  const handleBack = async () => {
-    await goto(`classmate?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
+  const classmateColumn2Lth = classmates.length - classmateColumn1Lth
+  let classmateColumn2 = []
+  for (let i = classmateColumn1Lth; i < classmates.length; i++) {
+    if (classmates[i].confirmed.toUpperCase() !== "TRUE") {
+      classmateColumn2.push({ 
+        name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
+        cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
+        deceased: classmates[i].deceased,
+        confirmed: classmates[i].confirmed,
+      })
+    }
+  }
+
+  const handleTigerHunt = async (classmate) => {
+    await goto(`updatecontact?back=tigerhunt&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
   }
 </script>
 
 <style>
 </style>
 
-<section class="flex flex-wrap place-content-center w-full pt-12 pb-0">
-  <div class="relative block bg-gray-900 pt-24 pb-20 w-full">
-    <div class="container w-full justify-center m-auto px-4">
-
-      <div class="flex flex-wrap justify-center">
-        <div class="lg:w-6/12 px-4">
-          <div class="relative flex flex-col min-w-0 break-words mb-6 
-            shadow-lg rounded-lg bg-gray-300">
-            <div class="flex-auto m-auto p-5 lg:p-10">
-              <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
-              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Complete this form if you know more about this individual to
-                help us keep everyone updated about our upcoming reunion!
-              </p>
-
-              {#if tigerhuntResult !== ''}
-                <h2 class="text-green-700 italic">{ tigerhuntResult }</h2>
-              {/if}
-
-              <form on:submit|preventDefault={ handleSubmit } 
-                method="post" enctype="application/json" >
-                <div class="relative w-full mt-8">
-                  <h2 class="text-white bg-gray-900 text-center">
-                    About You
-                  </h2>
-                  <div class="relative w-full mb-3 mt-1">
-                    <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      for="full-name">
-                      Full Name (required)
-                    </label>
-                    <input name="name" bind:value={ posterName } 
-                      type="text" required aria-required="true"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
-                      placeholder="First Last"
-                      style="transition: all 0.15s ease 0s;"
-                      on:input={ validatePosterName } />
-                  </div>
-                  {#if !isPosterNameValid}
-                    <div class="flex justify-end">
-                      <div class="place-self-end text-red-500">
-                        Please enter your first & last name
-                      </div>
-                    </div>
-                  {/if}
-
-                  <div class="relative w-full mb-3">
-                    <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      for="email">
-                      Email (required)
-                    </label>
-                    <input name="from" bind:value={ posterEmail } 
-                      type="text" required aria-required="true"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
-                      placeholder="jdoe@domain.com"
-                      style="transition: all 0.15s ease 0s;"
-                      on:input={ validatePosterEmail } />
-                  </div>
-                  {#if !isPosterEmailValid}
-                    <div class="flex justify-end">
-                      <div class="place-self-end text-red-500">
-                        Please enter a valid email
-                      </div>
-                    </div>
-                  {/if}
-                </div>
-
-                <div class="relative w-full mb-3 mt-8">
-                  <h2 class="text-white bg-gray-900 text-center">
-                    About { classmateName }
-                  </h2>
-
-                  <div class="relative w-full mt-1 mb-3">
-                    <label
-                      class="block uppercase text-gray-700 text-xs font-bold mt-2 mb-2"
-                      for="email">
-                      Email
-                    </label>
-                    <input name="from" bind:value={ classmateEmail } type="text"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
-                      placeholder="jdoe@domain.com"
-                      style="transition: all 0.15s ease 0s;"
-                      on:input={ validateClassmateEmail } />
-                  </div>
-                  {#if !isClassmateEmailValid}
-                    <div class="flex justify-end">
-                      <div class="place-self-end text-red-500">
-                        Please enter a valid email
-                      </div>
-                    </div>
-                  {/if}
-
-                  <div class="relative w-full mb-3">
-                    <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-3"
-                      for="street">
-                      Street 
-                    </label>
-                    <input name="from" bind:value={ classmateStreet }
-                      type="text"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
-                      placeholder="1111 Any St."
-                      style="transition: all 0.15s ease 0s;" />
-                  </div>
-
-                  <div class="flex flex-wrap relative w-full mb-1">
-                    <span class="relaive w-8/12 mb-3">
-                      <label
-                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        for="city">
-                        City 
-                      </label>
-                      <input name="from" bind:value={ classmateCity }
-                        type="text"
-                        class="w-full border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                        bg-white rounded text-sm shadow focus:outline-none focus:ring"
-                        placeholder="Anytown"
-                        style="transition: all 0.15s ease 0s;" />
-                    </span>
-                    <span class="relative w-14 ml-4 mb-3">
-                      <label
-                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        for="state">
-                        State 
-                      </label>
-                      <input name="from" bind:value={ classmateState }
-                        type="text"
-                        class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                        bg-white rounded text-sm shadow focus:outline-none focus:ring
-                        w-full"
-                        placeholder="XX"
-                        style="transition: all 0.15s ease 0s;"
-                        on:input={ validateClassmateState } />
-                    </span>
-                    <span class="relative w-20 ml-0 md:ml-4 mb-3">
-                      <label
-                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        for="phone">
-                        Zipcode
-                      </label>
-                      <input name="from" bind:value={ classmateZipcode }
-                        type="text"
-                        class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                        bg-white rounded text-sm shadow focus:outline-none focus:ring
-                        w-full"
-                        placeholder="00000"
-                        style="transition: all 0.15s ease 0s;"
-                        on:input={ validateClassmateZipcode }  />
-                    </span>
-                  </div>
-                  {#if !isClassmateStateValid}
-                    <div class="flex justify-end">
-                      <div class="place-self-end text-red-500">
-                        Please enter a valid 2-character state
-                      </div>
-                    </div>
-                  {/if}
-                  {#if !isClassmateZipcodeValid}
-                    <div class="flex justify-end">
-                      <div class="place-self-end text-red-500">
-                        Please enter a valid 5-digit zipcode
-                      </div>
-                    </div>
-                  {/if}
-
-                  <div class="flex flex-wrap relative w-full mb-1">
-                    <span class="relative w-36 mb-3">
-                      <label
-                        class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        for="phone">
-                        Phone
-                      </label>
-                      <input name="from" bind:value={ classmatePhone }
-                        type="tel"
-                        class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                        bg-white rounded text-sm shadow focus:outline-none focus:ring
-                        w-full"
-                        placeholder="(999) 999-9999"
-                        style="transition: all 0.15s ease 0s;" />
-                    </span>
-                    <span class="flex flex-col w-20 ml-6">
-                      <label for="deceased">
-                        Deceased
-                      </label>
-                      <input class="self-center w-full h-6 mt-2"
-                        name="deceased" type="checkbox" 
-                        bind:checked={ isClassmateDeceased }/>
-                    </span> 
-                  </div>        
-
-                  <div class="relative w-full mb-3">
-                    <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      for="message">
-                      Info about this classmate
-                    </label>
-                    <textarea name="message" bind:value={ classmateInfo }
-                      rows="4" cols="80" aria-required="false"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full" 
-                      placeholder="Type a message..." />
-                  </div>
-                </div>
-          
-                <div class="text-center mt-6">
-                  <button type="submit"
-                    class="bg-orange-500 text-white active:bg-gray-700 text-sm
-                    font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-                    outline-none focus:outline-none mr-1 mb-1"
-                    style="transition: all 0.15s ease 0s;">
-                    Submit Info
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<section class="relative py-12 lg:py-20">
   <div
-    class="bottom-auto top-0 left-0 right-0 w-full relative
+    class="bottom-auto top-0 left-0 right-0 w-full absolute
     pointer-events-none overflow-hidden -mt-20"
-    >
+    style="height: 80px;">
     <svg
       class="absolute bottom-0 overflow-hidden"
       xmlns="http://www.w3.org/2000/svg"
@@ -422,17 +63,52 @@
         points="2560 0 2560 100 0 100" />
     </svg>
   </div>
+  <div class="container flex flex-wrap justify-center w-full mx-auto lg:py-none px-4">
+    <div class="flex flex-col w-full justify-center text-center">
+      <h1 class="my-12 text-3xl md:text-5xl font-semibold">TigerHunt!</h1>   
+    </div>
+    <div class="flex justify-center w-full">
+      <div class="flex flex-col max-ww-full mb-4 content-start">
+        <div class="flex flex-wrap w-full m-4 md:m-0 p-0 justify-center">
+          <picture>
+            <img
+              alt="TigerHunt"
+              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-lg 
+                ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
+                transform scale-200 md:scale-150 lg:scale-100"
+              src="chs_tigerhunt.webp" />
+            <source srcset="chs_tigerhunt.png" type={`image/png`} />
+          </picture>
+        </div>
+        
+        <div class="flex flex-col w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
+          <p class="">
+            We need your help in locating Classmates to make sure
+            everyone gets information & updates for our 50th reunion.
+          </p>
+          <p class="mt-3">
+            TigerHunt lets you help by providing up-to-date contact 
+            information for people you are in contact with.
+          </p>
+          <p class="mt-3">
+            Just click on a classmates name if you have contact info to 
+            share with us.
+          </p>
+        </div>
+      </div>
+    </div>
 
-</section>
-
-<section class="flex flex-wrap place-content-center w-full h-48 ml-0 md:ml-8 -mt-8">
-  <div class="flex place-content-center text-center w-full -mt-2">
-    <button on:click={ handleBack }
-      class="bg-orange-500 text-white active:bg-gray-700 text-sm
-      font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-      outline-none focus:outline-none mr-1 mb-1"
-      style="transition: all 0.15s ease 0s;">
-      Back
-    </button>
+    <div class="flex justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <ul class="mt-2 text-lg text-gray-600 leading-tight">
+        {#each classmateColumn1 as classmate}
+          <li class="mt-2" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
+        {/each}
+      </ul>
+      <ul class="ml-2 mt-2 text-lg text-gray-600 leading-tight">
+        {#each classmateColumn2 as classmate}
+          <li class="mt-2" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
+        {/each}
+      </ul>
+    </div>
   </div>
 </section>
