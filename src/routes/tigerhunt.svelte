@@ -185,7 +185,7 @@
             <div class="flex-auto m-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Complete this form if you know more about this classmate to
+                Complete this form if you know more about this individual to
                 help us keep everyone updated about our upcoming reunion!
               </p>
 
