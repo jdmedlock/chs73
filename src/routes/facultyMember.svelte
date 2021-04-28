@@ -41,7 +41,7 @@
 </style>
 
 <section class="flex flex-wrap place-content-center w-full">
-  <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-32">
+  <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-16 md:mt-20">
     {#if cloudinaryId !== ""}
       <Image class="text-center"
         cloud_name="{ process.env.CLOUDINARY_NAME }" 
