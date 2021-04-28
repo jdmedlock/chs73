@@ -28,7 +28,7 @@
   }
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=facultymember&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
+    await goto(`updatecontact?back=facultymember&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty`)
   }
 
   let showModal = false

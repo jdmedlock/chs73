@@ -3,10 +3,11 @@
 		return { 
       params: {
         back: page.query.back,
-        classmateName: page.query.name,
+        name: page.query.name,
         cloudinaryId: page.query.photoId,
         deceased: page.query.deceased,
         confirmed: page.query.confirmed,
+        type: page.query.type,
       }
     }
   }
@@ -18,26 +19,26 @@
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
-  let { back, classmateName, cloudinaryId, deceased, confirmed } = params
-  console.log(`updatecontact - back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
+  let { back, name, cloudinaryId, deceased, confirmed, type } = params
+  console.log(`updatecontact - back: ${ back } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } type: ${ type }`)
 
   let posterName = ''
   let posterEmail = ''
 
-  let classmateEmail = ''
-  let isClassmateDeceased = deceased === 'TRUE' ? true : false
-  let classmateStreet = ''
-  let classmateCity = ''
-  let classmateState = ''
-  let classmateZipcode = ''
-  let classmatePhone = ''
-  let classmateInfo = ''
+  let contactEmail = ''
+  let isContactDeceased = deceased === 'TRUE' ? true : false
+  let contactStreet = ''
+  let contactCity = ''
+  let contactState = ''
+  let contactZipcode = ''
+  let contactPhone = ''
+  let contactInfo = ''
 
   let isPosterEmailValid = true
   let isPosterNameValid = true
-  let isClassmateEmailValid = true
-  let isClassmateStateValid = true
-  let isClassmateZipcodeValid = true
+  let isContactEmailValid = true
+  let isContactStateValid = true
+  let isContactZipcodeValid = true
 
   let tigerhuntResult = ''
 
@@ -48,8 +49,8 @@
   }
 
   const validateClassmateEmail = () => {
-    const result = emailValidator(classmateEmail)
-    isClassmateEmailValid = result === true ? true : false
+    const result = emailValidator(contactEmail)
+    isContactEmailValid = result === true ? true : false
     return
   }
 
@@ -60,33 +61,33 @@
   }
 
   const validateClassmateState = () => {
-    const result = stateValidator(classmateState)
-    isClassmateStateValid = result === true ? true : false
+    const result = stateValidator(contactState)
+    isContactStateValid = result === true ? true : false
     return
   }
 
   const validateClassmateZipcode = () => {
-    const result = zipcodeValidator(classmateZipcode)
-    isClassmateZipcodeValid = result === true ? true : false
+    const result = zipcodeValidator(contactZipcode)
+    isContactZipcodeValid = result === true ? true : false
     return
   }
 
   const handleSubmit = () => {
     if (!isPosterNameValid || !isPosterEmailValid || 
-        !isClassmateEmailValid || !isClassmateStateValid || 
-        !isClassmateZipcodeValid) {
+        !isContactEmailValid || !isContactStateValid || 
+        !isContactZipcodeValid) {
       return
     }
 
-    classmateZipcode = parseInt(classmateZipcode)
+    contactZipcode = parseInt(contactZipcode)
     
 /*
     console.log(`Poster name: ${ posterName } email: ${ posterEmail }`)
-    console.log(`Classmate name: ${ classmateName } email: ${ classmateEmail }`)
-    console.log(`...Street: ${ classmateStreet }`)
-    console.log(`...City: ${ classmateCity} State: ${ classmateState } Zip: ${ classmateZipcode }`)
-    console.log(`...Phone: ${ classmatePhone } Deceased: ${ isClassmateDeceased }`)
-    console.log(`...Info: ${ classmateInfo }`)
+    console.log(`Classmate name: ${ name } email: ${ contactEmail }`)
+    console.log(`...Street: ${ contactStreet }`)
+    console.log(`...City: ${ contactCity} State: ${ contactState } Zip: ${ contactZipcode }`)
+    console.log(`...Phone: ${ contactPhone } Deceased: ${ isContactDeceased }`)
+    console.log(`...Info: ${ contactInfo }`)
 */
 
     return client(fetch)
@@ -95,28 +96,30 @@
           mutation sendTigerHunt(
             $posterEmail: String!
             $posterName: String!
-            $classmateName: String!
-            $classmateEmail: String
-            $classmateStreet: String
-            $classmateCity: String
-            $classmateState: String
-            $classmateZipcode: Int
-            $classmatePhone: String
-            $classmateInfo: String
-            $isClassmateDeceased: Boolean
+            $name: String!
+            $contactEmail: String
+            $contactStreet: String
+            $contactCity: String
+            $contactState: String
+            $contactZipcode: Int
+            $contactPhone: String
+            $contactInfo: String
+            $isContactDeceased: Boolean
+            $type: String
           ) {
             sendTigerHunt (
               fromEmail: $posterEmail
               fromName: $posterName
-              classmateName: $classmateName
-              classmateEmail: $classmateEmail
-              classmateStreet: $classmateStreet
-              classmateCity: $classmateCity
-              classmateState: $classmateState
-              classmateZipcode: $classmateZipcode
-              classmatePhone: $classmatePhone
-              isClassmateDeceased: $isClassmateDeceased
-              classmateInfo: $classmateInfo
+              contactName: $name
+              contactEmail: $contactEmail
+              contactStreet: $contactStreet
+              contactCity: $contactCity
+              contactState: $contactState
+              contactZipcode: $contactZipcode
+              contactPhone: $contactPhone
+              isContactDeceased: $isContactDeceased
+              contactInfo: $contactInfo
+              contactType: $type
             ) {
               result {
                 message
@@ -128,15 +131,16 @@
         variables: {
           posterName,
           posterEmail,
-          classmateName,
-          classmateEmail,
-          classmateStreet,
-          classmateCity,
-          classmateState,
-          classmateZipcode,
-          classmatePhone,
-          isClassmateDeceased,
-          classmateInfo,
+          name,
+          contactEmail,
+          contactStreet,
+          contactCity,
+          contactState,
+          contactZipcode,
+          contactPhone,
+          isContactDeceased,
+          contactInfo,
+          type
         }
       })
       .then(response => {
@@ -144,21 +148,21 @@
 
         posterEmail = ''
         posterName = ''
-        classmateInfo = ''
-        classmateStreet = ''
-        classmateCity = ''
-        classmateState = ''
-        classmateZipcode = ''
-        classmatePhone = ''
-        isClassmateDeceased = deceased === 'TRUE' ? true : false
+        contactInfo = ''
+        contactStreet = ''
+        contactCity = ''
+        contactState = ''
+        contactZipcode = ''
+        contactPhone = ''
+        isContactDeceased = deceased === 'TRUE' ? true : false
         tigerhuntResult = response.sendTigerHunt.result.code === "OK" 
           ? "Your message was successfully sent!"
           : "An error occurred sending your message. Please try later"
         isPosterEmailValid = true
         isPosterNameValid = true
-        isClassmateEmailValid = true
-        isClassmateStateValid = true
-        isClassmateZipcodeValid = true
+        isContactEmailValid = true
+        isContactStateValid = true
+        isContactZipcodeValid = true
         
         return {
           response
@@ -167,7 +171,7 @@
   }
 
   const handleBack = async () => {
-    await goto(`${ back }?back=${ back }&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
+    await goto(`${ back }?back=${ back }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
   }
 </script>
 
@@ -183,7 +187,7 @@
           <div class="relative flex flex-col min-w-0 break-words mb-6 
             shadow-lg rounded-lg bg-gray-300">
             <div class="flex-auto m-auto p-5 lg:p-10">
-              <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
+              <h4 class="text-2xl font-semibold">Do you know how to contact { name }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                 Complete this form if you know more about this individual to
                 help us keep everyone updated about our upcoming reunion!
@@ -248,7 +252,7 @@
 
                 <div class="relative w-full mb-3 mt-8">
                   <h2 class="text-white bg-gray-900 text-center">
-                    About { classmateName }
+                    About { name }
                   </h2>
 
                   <div class="relative w-full mt-1 mb-3">
@@ -257,7 +261,7 @@
                       for="email">
                       Email
                     </label>
-                    <input name="from" bind:value={ classmateEmail } type="text"
+                    <input name="from" bind:value={ contactEmail } type="text"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
                       w-full"
@@ -265,7 +269,7 @@
                       style="transition: all 0.15s ease 0s;"
                       on:input={ validateClassmateEmail } />
                   </div>
-                  {#if !isClassmateEmailValid}
+                  {#if !isContactEmailValid}
                     <div class="flex justify-end">
                       <div class="place-self-end text-red-500">
                         Please enter a valid email
@@ -279,7 +283,7 @@
                       for="street">
                       Street 
                     </label>
-                    <input name="from" bind:value={ classmateStreet }
+                    <input name="from" bind:value={ contactStreet }
                       type="text"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
@@ -295,7 +299,7 @@
                         for="city">
                         City 
                       </label>
-                      <input name="from" bind:value={ classmateCity }
+                      <input name="from" bind:value={ contactCity }
                         type="text"
                         class="w-full border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                         bg-white rounded text-sm shadow focus:outline-none focus:ring"
@@ -308,7 +312,7 @@
                         for="state">
                         State 
                       </label>
-                      <input name="from" bind:value={ classmateState }
+                      <input name="from" bind:value={ contactState }
                         type="text"
                         class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                         bg-white rounded text-sm shadow focus:outline-none focus:ring
@@ -323,7 +327,7 @@
                         for="phone">
                         Zipcode
                       </label>
-                      <input name="from" bind:value={ classmateZipcode }
+                      <input name="from" bind:value={ contactZipcode }
                         type="text"
                         class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                         bg-white rounded text-sm shadow focus:outline-none focus:ring
@@ -333,14 +337,14 @@
                         on:input={ validateClassmateZipcode }  />
                     </span>
                   </div>
-                  {#if !isClassmateStateValid}
+                  {#if !isContactStateValid}
                     <div class="flex justify-end">
                       <div class="place-self-end text-red-500">
                         Please enter a valid 2-character state
                       </div>
                     </div>
                   {/if}
-                  {#if !isClassmateZipcodeValid}
+                  {#if !isContactZipcodeValid}
                     <div class="flex justify-end">
                       <div class="place-self-end text-red-500">
                         Please enter a valid 5-digit zipcode
@@ -355,7 +359,7 @@
                         for="phone">
                         Phone
                       </label>
-                      <input name="from" bind:value={ classmatePhone }
+                      <input name="from" bind:value={ contactPhone }
                         type="tel"
                         class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                         bg-white rounded text-sm shadow focus:outline-none focus:ring
@@ -369,7 +373,7 @@
                       </label>
                       <input class="self-center w-full h-6 mt-2"
                         name="deceased" type="checkbox" 
-                        bind:checked={ isClassmateDeceased }/>
+                        bind:checked={ isContactDeceased }/>
                     </span> 
                   </div>        
 
@@ -379,7 +383,7 @@
                       for="message">
                       Info about this classmate
                     </label>
-                    <textarea name="message" bind:value={ classmateInfo }
+                    <textarea name="message" bind:value={ contactInfo }
                       rows="4" cols="80" aria-required="false"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                       bg-white rounded text-sm shadow focus:outline-none focus:ring
