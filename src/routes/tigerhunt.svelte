@@ -6,6 +6,7 @@
         classmateName: page.query.name,
         cloudinaryId: page.query.photoId,
         deceased: page.query.deceased,
+        confirmed: page.query.confirmed,
       }
     }
   }
@@ -17,8 +18,8 @@
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
-  let { back, classmateName, cloudinaryId, deceased } = params
-  console.log(`back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
+  let { back, classmateName, cloudinaryId, deceased, confirmed } = params
+  console.log(`tigerhunt - back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
 
   let posterName = ''
   let posterEmail = ''
@@ -166,7 +167,7 @@
   }
 
   const handleBack = async () => {
-    await goto(`classmate?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }`)
+    await goto(`classmate?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
   }
 </script>
 
@@ -184,7 +185,7 @@
             <div class="flex-auto m-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">Do you know how to contact { classmateName }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                Complete this form if you know more about this classmate to
+                Complete this form if you know more about this individual to
                 help us keep everyone updated about our upcoming reunion!
               </p>
 

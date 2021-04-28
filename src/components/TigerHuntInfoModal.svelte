@@ -29,12 +29,12 @@
           </h3>
           <div class="my-3">
             <p class="text-xl text-gray-500">
-              We need your help in locating Classmates to make sure
+              We need your help in locating Classmates & Faculty to make sure
               everyone gets information & updates for our 50th reunion.
             </p>
             <p class="mt-3 text-xl text-gray-500">
               TigerHunt lets you help by providing up-to-date contact 
-              information for Classmates you are in contact with.
+              information for people you are in contact with.
             </p>
             <p class="mt-3 text-xl text-gray-500">
               Click the TigerHunt button to help out.
