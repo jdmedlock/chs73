@@ -22,7 +22,7 @@
   console.log(`classmate - back: ${ back } nameame: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   const handleBack = async () => {
-    await goto("/classmates")
+    await goto(back)
   }
 
   const handleTigerHunt = async () => {
