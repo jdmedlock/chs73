@@ -24,11 +24,11 @@
   console.log(`faculty - back: ${ back } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
   
   const handleBack = async () => {
-    await goto(back)
+    await goto("/faculty")
   }
 
   const handleTigerHunt = async () => {
-    await goto(`tigerhunt?back=classmates&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
+    await goto(`updatecontact?back=facultymember&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
   }
 
   let showModal = false

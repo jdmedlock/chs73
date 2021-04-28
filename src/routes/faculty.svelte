@@ -73,12 +73,12 @@
     <div class="flex justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
       <ul class="mt-2 text-lg text-gray-600 leading-tight">
         {#each facultyColumn1 as facultyMember}
-          <li class="mt-2"><a href="facultyMember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">{ facultyMember.name }</a></li>
+          <li class="mt-2"><a href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">{ facultyMember.name }</a></li>
         {/each}
       </ul>
       <ul class="ml-2 mt-2 text-lg text-gray-600 leading-tight">
         {#each facultyColumn2 as facultyMember}
-          <li class="mt-2"><a href="facultyMember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">{ facultyMember.name }</a></li>
+          <li class="mt-2"><a href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">{ facultyMember.name }</a></li>
         {/each}
       </ul>
     </div>

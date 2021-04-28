@@ -19,7 +19,7 @@
 
   export let params
   let { back, classmateName, cloudinaryId, deceased, confirmed } = params
-  console.log(`tigerhunt - back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
+  console.log(`updatecontact - back: ${ back } classmateName: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased }`)
 
   let posterName = ''
   let posterEmail = ''
@@ -167,7 +167,7 @@
   }
 
   const handleBack = async () => {
-    await goto(`classmate?back=classmates&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
+    await goto(`${ back }?back=${ back }&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
   }
 </script>
 
