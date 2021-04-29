@@ -5,9 +5,7 @@
 
   const unconfirmedClassmates = classmates.filter(classmate => classmate.confirmed === "FALSE")
 
-  const classmateColumns = createPersonGroups(unconfirmedClassmates)
-  const classmateColumn1 = classmateColumns.personsGrouping1
-  const classmateColumn2 = classmateColumns.personsGrouping2
+  const [classmateColumn1, classmateColumn2] = createPersonGroups(unconfirmedClassmates)
 
   const handleTigerHunt = async (classmate) => {
     await goto(`updatecontact?back=tigerhunt&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
@@ -41,11 +39,11 @@
     </div>
     <div class="flex justify-center w-full">
       <div class="flex flex-col max-ww-full mb-4 content-start">
-        <div class="flex flex-wrap w-full m-4 md:m-0 p-0 justify-center">
+        <div class="flex flex-wrap w-full m-4 p-0 justify-center">
           <picture>
             <img
               alt="TigerHunt"
-              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-lg 
+              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-2xl
                 ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
                 transform scale-200 md:scale-150 lg:scale-100"
               src="chs_tigerhunt.webp" />
@@ -70,13 +68,15 @@
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
-      <ul class="mt-2 text-lg text-gray-600 leading-tight">
+    <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 
+      ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <ul class="mt-2 text-lg md:text-xl text-gray-600 leading-tight">
         {#each classmateColumn1 as classmate}
           <li class="mt-2" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
         {/each}
       </ul>
-      <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-tight">
+      <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg md:text-xl text-gray-600 
+        leading-tight">
         {#each classmateColumn2 as classmate}
           <li class="mt-2" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
         {/each}

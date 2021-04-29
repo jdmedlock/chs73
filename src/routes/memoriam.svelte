@@ -4,9 +4,7 @@
 
   const deceased = classmates.filter((classmate) => classmate.deceased === 'TRUE')
 
-  const classmateColumns = createPersonGroups(deceased)
-  const classmateColumn1 = classmateColumns.personsGrouping1
-  const classmateColumn2 = classmateColumns.personsGrouping2
+  const [classmateColumn1, classmateColumn2] = createPersonGroups(deceased)
 </script>
 
 <style>
@@ -37,7 +35,7 @@
         <div class="flex w-full m-0 p-0 justify-center">
           <img
             alt="Light behind cemetary tree"
-            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 shadow-lg 
+            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 shadow-2xl 
               ml-0 md:ml-6 lg:ml-0 mb-8 lg:mb-none
               transform scale-x-250 md:scale-x-150 lg:scale-x-250"
             src="chs_lorimer_cemetary.jpeg" />
