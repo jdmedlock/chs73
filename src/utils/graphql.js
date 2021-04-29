@@ -1,4 +1,4 @@
-const BE_URL = process.env.BE_URL || '';
+const BE_URL = process.env.BE_URL || ''
 
 export const client = (fetcher) => {
   return {
@@ -6,7 +6,7 @@ export const client = (fetcher) => {
       const body = JSON.stringify({
         query,
         variables: variables ? variables : {},
-      });
+      })
   
       const response = await fetcher(`${BE_URL}/graphql`, {
         method: "POST",
@@ -14,11 +14,11 @@ export const client = (fetcher) => {
           "Content-Type": "application/json",
         },
         body,
-      });
+      })
   
-      const result = await response.json();
+      const result = await response.json()
       if (response.ok && !result.errors) {
-        return result.data;
+        return result.data
       } else {
         console.error(
           new Error(
@@ -27,8 +27,8 @@ export const client = (fetcher) => {
             )}`
           )
         );
-        throw new Error(`[GraphQL Error]: ${JSON.stringify(result)}`);
+        throw new Error(`[GraphQL Error]: ${JSON.stringify(result)}`)
       }
     },
   }
-};
+}
