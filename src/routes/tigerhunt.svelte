@@ -11,30 +11,27 @@
     return formattedName
   }
 
-  const classmateColumn1Lth = Math.floor(classmates.length / 2)
+  const unconfirmedClassmates = classmates.filter(classmate => classmate.confirmed === "FALSE")
+  const classmateColumn1Lth = Math.floor(unconfirmedClassmates.length / 2)
   let classmateColumn1 = []
   for (let i = 0; i < classmateColumn1Lth; i++) {
-    if (classmates[i].confirmed.toUpperCase() !== "TRUE") {
-      classmateColumn1.push({ 
-        name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
-        cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
-        deceased: classmates[i].deceased,
-        confirmed: classmates[i].confirmed,
-      })
-    }
+    classmateColumn1.push({ 
+      name: formatName(unconfirmedClassmates[i].firstName, unconfirmedClassmates[i].lastName, unconfirmedClassmates[i].marriedLastName),
+      cloudinaryId: unconfirmedClassmates[i].cloudinaryId === '' ? photoPlaceholder : unconfirmedClassmates[i].cloudinaryId,
+      deceased: unconfirmedClassmates[i].deceased,
+      confirmed: unconfirmedClassmates[i].confirmed,
+    })
   }
 
-  const classmateColumn2Lth = classmates.length - classmateColumn1Lth
+  const classmateColumn2Lth = unconfirmedClassmates.length - classmateColumn1Lth
   let classmateColumn2 = []
-  for (let i = classmateColumn1Lth; i < classmates.length; i++) {
-    if (classmates[i].confirmed.toUpperCase() !== "TRUE") {
-      classmateColumn2.push({ 
-        name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
-        cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
-        deceased: classmates[i].deceased,
-        confirmed: classmates[i].confirmed,
+  for (let i = classmateColumn1Lth; i < unconfirmedClassmates.length; i++) {
+    classmateColumn2.push({ 
+      name: formatName(unconfirmedClassmates[i].firstName, unconfirmedClassmates[i].lastName, unconfirmedClassmates[i].marriedLastName),
+      cloudinaryId: unconfirmedClassmates[i].cloudinaryId === '' ? photoPlaceholder : unconfirmedClassmates[i].cloudinaryId,
+      deceased: unconfirmedClassmates[i].deceased,
+      confirmed: unconfirmedClassmates[i].confirmed,
       })
-    }
   }
 
   const handleTigerHunt = async (classmate) => {
