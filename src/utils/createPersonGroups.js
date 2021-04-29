@@ -25,6 +25,6 @@ export default function createPersonGroups(persons) {
     })
   }
 
-  return { personsGrouping1, personsGrouping2 }
+  return [ personsGrouping1, personsGrouping2 ]
 
 }

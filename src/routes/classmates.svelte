@@ -2,9 +2,7 @@
   import classmates from '../assets/classmates.json'  
   import createPersonGroups from '../utils/createPersonGroups'
 
-  const classmateColumns = createPersonGroups(classmates)
-  const classmateColumn1 = classmateColumns.personsGrouping1
-  const classmateColumn2 = classmateColumns.personsGrouping2
+  const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
 
 </script>
 
@@ -38,9 +36,10 @@
         <div class="flex flex-wrap w-full m-0 p-0 justify-center">
           <img
             alt="Homecoming"
-            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-lg 
+            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-2xl 
               ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
-              transform scale-200 md:scale-150 lg:scale-100"
+              transform scale-200 md:scale-150 lg:scale-100
+              border-0"
             src="chs_homecoming_float.jpeg" />
         </div>
       </div>
