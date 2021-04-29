@@ -1,36 +1,11 @@
 <script>
-  import classmates from '../assets/classmates.json'
+  import classmates from '../assets/classmates.json'  
+  import createPersonGroups from '../utils/createPersonGroups'
 
-  const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
+  const classmateColumns = createPersonGroups(classmates)
+  const classmateColumn1 = classmateColumns.personsGrouping1
+  const classmateColumn2 = classmateColumns.personsGrouping2
 
-  const formatName = (firstName, lastName, marriedLastName) => {
-    const formattedName = marriedLastName !== '' 
-      ? firstName.concat(' (',lastName,') ',marriedLastName) 
-      : firstName.concat(' ',lastName)
-    return formattedName
-  }
-
-  const classmateColumn1Lth = Math.floor(classmates.length / 2)
-  let classmateColumn1 = []
-  for (let i = 0; i < classmateColumn1Lth; i++) {
-    classmateColumn1.push({ 
-      name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
-      cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
-      deceased: classmates[i].deceased,
-      confirmed: classmates[i].confirmed,
-    })
-  }
-
-  const classmateColumn2Lth = classmates.length - classmateColumn1Lth
-  let classmateColumn2 = []
-  for (let i = classmateColumn1Lth; i < classmates.length; i++) {
-    classmateColumn2.push({ 
-      name: formatName(classmates[i].firstName, classmates[i].lastName, classmates[i].marriedLastName),
-      cloudinaryId: classmates[i].cloudinaryId === '' ? photoPlaceholder : classmates[i].cloudinaryId,
-      deceased: classmates[i].deceased,
-      confirmed: classmates[i].confirmed,
-    })
-  }
 </script>
 
 <style>

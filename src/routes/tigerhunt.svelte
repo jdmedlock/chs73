@@ -1,38 +1,13 @@
 <script>
   import { goto } from '@sapper/app'
   import classmates from '../assets/classmates.json'
-
-  const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
-
-  const formatName = (firstName, lastName, marriedLastName) => {
-    const formattedName = marriedLastName !== '' 
-      ? firstName.concat(' (',lastName,') ',marriedLastName) 
-      : firstName.concat(' ',lastName)
-    return formattedName
-  }
+  import createPersonGroups from '../utils/createPersonGroups'
 
   const unconfirmedClassmates = classmates.filter(classmate => classmate.confirmed === "FALSE")
-  const classmateColumn1Lth = Math.floor(unconfirmedClassmates.length / 2)
-  let classmateColumn1 = []
-  for (let i = 0; i < classmateColumn1Lth; i++) {
-    classmateColumn1.push({ 
-      name: formatName(unconfirmedClassmates[i].firstName, unconfirmedClassmates[i].lastName, unconfirmedClassmates[i].marriedLastName),
-      cloudinaryId: unconfirmedClassmates[i].cloudinaryId === '' ? photoPlaceholder : unconfirmedClassmates[i].cloudinaryId,
-      deceased: unconfirmedClassmates[i].deceased,
-      confirmed: unconfirmedClassmates[i].confirmed,
-    })
-  }
 
-  const classmateColumn2Lth = unconfirmedClassmates.length - classmateColumn1Lth
-  let classmateColumn2 = []
-  for (let i = classmateColumn1Lth; i < unconfirmedClassmates.length; i++) {
-    classmateColumn2.push({ 
-      name: formatName(unconfirmedClassmates[i].firstName, unconfirmedClassmates[i].lastName, unconfirmedClassmates[i].marriedLastName),
-      cloudinaryId: unconfirmedClassmates[i].cloudinaryId === '' ? photoPlaceholder : unconfirmedClassmates[i].cloudinaryId,
-      deceased: unconfirmedClassmates[i].deceased,
-      confirmed: unconfirmedClassmates[i].confirmed,
-      })
-  }
+  const classmateColumns = createPersonGroups(unconfirmedClassmates)
+  const classmateColumn1 = classmateColumns.personsGrouping1
+  const classmateColumn2 = classmateColumns.personsGrouping2
 
   const handleTigerHunt = async (classmate) => {
     await goto(`updatecontact?back=tigerhunt&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
