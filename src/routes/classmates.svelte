@@ -70,13 +70,13 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+    <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
       <ul class="mt-2 text-lg text-gray-600 leading-tight">
         {#each classmateColumn1 as classmate}
           <li class="mt-2"><a href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">{ classmate.name }</a></li>
         {/each}
       </ul>
-      <ul class="ml-2 mt-2 text-lg text-gray-600 leading-tight">
+      <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-tight">
         {#each classmateColumn2 as classmate}
           <li class="mt-2"><a href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">{ classmate.name }</a></li>
         {/each}
