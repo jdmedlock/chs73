@@ -61,7 +61,7 @@
           <picture>
             <img
               alt="Homecoming"
-              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-lg 
+              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-2xl 
                 ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
                 transform scale-200 md:scale-150 lg:scale-100"
               src="chs_faculty_hero.avif" />
