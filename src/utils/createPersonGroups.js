@@ -1,6 +1,6 @@
 import formatName from './formatName'
 
-export default function createPersonGroups(persons) {
+export default function createPersonGroups(persons,nameFormatter) {
 
   const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
 
@@ -12,6 +12,8 @@ export default function createPersonGroups(persons) {
       cloudinaryId: persons[i].cloudinaryId === '' ? photoPlaceholder : persons[i].cloudinaryId,
       deceased: persons[i].deceased,
       confirmed: persons[i].confirmed,
+      department: persons[i].department ? persons[i].department : '',
+      position: persons[i].position ? persons[i].position : '',
     })
   }
 
@@ -22,6 +24,8 @@ export default function createPersonGroups(persons) {
       cloudinaryId: persons[i].cloudinaryId === '' ? photoPlaceholder : persons[i].cloudinaryId,
       deceased: persons[i].deceased,
       confirmed: persons[i].confirmed,
+      department: persons[i].department ? persons[i].department : '',
+      position: persons[i].position ? persons[i].position : '',
     })
   }
 
