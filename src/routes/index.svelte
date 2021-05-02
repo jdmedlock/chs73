@@ -246,7 +246,7 @@
                 <picture>
                   <img
                     alt="Graduation"
-                    src="chs_graduation.avif"
+                    src="chs_graduation.webp"
                     class="w-full align-middle rounded-t-lg" />
                   <source srcset="chs_graduation.jpeg" type={`image/jpeg`} />
                 </picture>
@@ -283,10 +283,9 @@
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img
-                    alt="Basketball"
-                    src="chs_basketball.avif"
+                    alt="Track"
+                    src="chs_be_a_hero.jpeg"
                     class="w-full align-middle rounded-t-lg" />
-                  <source srcset="chs_basketball.jpeg" type={`image/jpeg`} />
                 </picture>
                 <blockquote class="relative p-8 mb-4">
                   <svg
