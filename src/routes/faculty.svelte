@@ -40,8 +40,7 @@
                 shadow-xl-orange lg:shadow-2xl-orange 
                 ml-0 md:ml-0 lg:ml-0 mb-12 md:mb-8 lg:mb-none
                 transform scale-200 md:scale-150 lg:scale-100"
-              src="chs_faculty_hero.avif" />
-            <source srcset="chs_faculty_hero.png" type={`image/png`} />
+              src="chs_faculty_finley.jpeg" />
           </picture>
         </div>
       </div>
