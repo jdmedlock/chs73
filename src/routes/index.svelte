@@ -123,10 +123,6 @@
   }
 </script>
 
-<style>
-
-</style>
-
 <svelte:head>
   <title>CHS73</title>
   <meta name="CHS73" content="Cape Girardeau Central High Class of 1973"/>
