@@ -1,11 +1,13 @@
 <script>
-	export let segment;
+	import PageScrollBar from './PageScrollBar.svelte'
+
+	export let segment
 
 	const toggleNavbar = () => {
-    var nav = document.getElementById('menu');
+    var nav = document.getElementById('menu')
 
-    nav.classList.toggle('flex');
-    nav.classList.toggle('hidden');
+    nav.classList.toggle('flex')
+    nav.classList.toggle('hidden')
 	}
 </script>
 
@@ -30,7 +32,7 @@
 
 </style>
 
-<nav class="fixed flex w-full z-10 top-0 bg-gray-900 text-white">
+<nav class="fixed flex flex-col w-full z-10 top-0 bg-gray-900 text-white">
 	<button id="menuBtn" class="block focus:outline-none" type="button" 
 		on:click={ toggleNavbar } aria-label="Menu">
 		<img class="md:hidden m-2 w-12 h-10" src="chs_tiger.png" alt="CHS Tiger"/>
@@ -48,4 +50,9 @@
 		<a aria-current="{segment === 'faculty' ? 'page' : undefined}" href="faculty" on:click={ toggleNavbar }>faculty</a>
 		<a aria-current="{segment === 'contact' ? 'page' : undefined}" href="#contact" on:click={ toggleNavbar }>contact</a>
 	</div>
+
+	<div class="w-full h-2 m-0">
+		<PageScrollBar class="w-full h-4"/>
+	</div>
+		
 </nav>

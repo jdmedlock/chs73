@@ -2,6 +2,13 @@
 	import Nav from '../components/Nav.svelte';
 
 	export let segment;
+
+	const toggleNavbar = () => {
+    var nav = document.getElementById('menu')
+
+    nav.classList.toggle('flex')
+    nav.classList.toggle('hidden')
+	}
 </script>
 
 <style>
@@ -13,13 +20,14 @@
 }
 </style>
 
-<Nav {segment}/>
+<Nav { segment }/>
 
 <div class="flex-wrapper">
+
 	<main>
 		<slot></slot>
 	</main>
-	
+
 	<footer class="relative bg-gray-300 pt-8 pb-6">
 		<div
 			class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none
