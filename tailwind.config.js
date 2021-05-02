@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
+        'xl-orange': '0 12px 12px -6px rgba(241, 90, 34, 1)',
         '2xl-orange': '0 25px 50px -12px rgba(241, 90, 34, 1)',
       },
       colors: {
