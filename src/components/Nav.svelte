@@ -31,7 +31,8 @@
 </style>
 
 <nav class="fixed flex w-full z-10 top-0 bg-gray-900 text-white">
-	<button id="menuBtn" class="block focus:outline-none" type="button" on:click={ toggleNavbar }>
+	<button id="menuBtn" class="block focus:outline-none" type="button" 
+		on:click={ toggleNavbar } aria-label="Menu">
 		<img class="md:hidden m-2 w-12 h-10" src="chs_tiger.png" alt="CHS Tiger"/>
 	</button>
 	<div id="menu" class="w-full sm:w-auto self-end sm:self-center sm:flex 

@@ -123,14 +123,6 @@
   }
 </script>
 
-<style>
-
-</style>
-
-<svelte:head>
-  <title>CHS73</title>
-</svelte:head>
-
 <!-- Based on https://www.creative-tim.com/learning-lab/tailwind-starter-kit/landing -->
 <main>
   <section
