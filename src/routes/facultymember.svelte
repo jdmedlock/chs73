@@ -22,10 +22,6 @@
   export let params
   let { back, name, cloudinaryId, department, position, deceased, confirmed } = params
   console.log(`faculty - back: ${ back } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
-  
-  const handleBack = async () => {
-    await goto("/faculty")
-  }
 
   const handleTigerHunt = async () => {
     await goto(`updatecontact?back=facultymember&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty`)
@@ -66,42 +62,45 @@
       {/if}
     </div>
 
-    <div class="flex flex-wrap place-content-center w-full 
-    ml-0 md:ml-8 mt-1 md:mt-2">
-    <div class="flex place-content-center text-center w-full">
-      <button on:click={ handleBack }
-        class="bg-orange-500 text-white active:bg-gray-700 
-        font-bold uppercase rounded shadow hover:shadow-lg
-        outline-none focus:outline-none mr-2
-        mb-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
-        style="transition: all 0.15s ease 0s;">
-        Back
-      </button>
-      {#if confirmed === 'FALSE'}
-        <div class="flex flex-col">
-          <button on:click={ handleTigerHunt }
-            class="bg-orange-500 text-white active:bg-gray-700 
-            font-bold uppercase rounded shadow hover:shadow-lg
-            outline-none focus:outline-none 
-            mb-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
-            style="transition: all 0.15s ease 0s;">
-            <div class="flex flex-wrap place-self-center w-full m-0">
-              <img src="chs_tiger_36.png" alt="CHS Tiger"/>
-              <div class="ml-2 self-center">
-                Tiger Hunt
+    <div class="flex flex-wrap place-content-center w-full
+      ml-0 md:ml-8 mt-1 md:mt-2">
+      <div class="flex place-content-center text-center w-full">
+        <a href="/faculty/#{ name.toLowerCase().replace(/\s+/g, '') }"
+          class="flex bg-orange-500 text-white active:bg-gray-700 
+          font-bold uppercase rounded shadow hover:shadow-lg
+          outline-none focus:outline-none
+          h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
+          style="transition: all 0.15s ease 0s;">
+          <div class="flex place-self-center">
+            Back
+          </div>
+        </a>
+        {#if confirmed === 'FALSE'}
+          <div class="flex flex-col">
+            <div on:click={ handleTigerHunt }
+              class="bg-orange-500 text-white active:bg-gray-700 
+              font-bold uppercase rounded shadow hover:shadow-lg
+              outline-none focus:outline-none 
+              h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
+              style="transition: all 0.15s ease 0s;">
+              <div class="flex flex-wrap place-self-center w-full m-0">
+                <img src="chs_tiger_36.png" alt="CHS Tiger"/>
+                <div class="ml-2 self-center">
+                  Tiger Hunt
+                </div>
               </div>
             </div>
-          </button>
+          </div>
+        {/if}
+      </div>
+      {#if confirmed === 'FALSE'}
+        <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
+          What's this?
         </div>
+        {#if showModal}
+          <TigerHuntInfoModal action={ toggleModal }/>
+        {/if}
       {/if}
     </div>
-    {#if confirmed === 'FALSE'}
-      <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
-        What's this?
-      </div>
-      {#if showModal}
-        <TigerHuntInfoModal action={ toggleModal }/>
-      {/if}
-    {/if}
   </div>
 </section>

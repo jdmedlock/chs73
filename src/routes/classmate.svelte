@@ -19,15 +19,10 @@
 
   export let params
   let { back, classmateName, cloudinaryId, deceased, confirmed } = params
+
   console.log(`classmate - back: ${ back } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
-  const handleBack = async () => {
-    if (back === "classmate") {
-      await goto("/classmates")
-    } else {
-      await goto(back)
-    }
-  }
+  let backPage = back === "classmate" ? "classmates" : back
 
   const handleTigerHunt = async () => {
     await goto(`updatecontact?back=classmate&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
@@ -67,21 +62,23 @@
   <div class="flex flex-wrap place-content-center w-full 
     ml-0 md:ml-8 mt-1 md:mt-2">
     <div class="flex place-content-center text-center w-full">
-      <button on:click={ handleBack }
-        class="bg-orange-500 text-white active:bg-gray-700 
+      <a href="/{ backPage }/#{ classmateName.toLowerCase().replace(/\s+/g, '') }"
+        class="flex bg-orange-500 text-white active:bg-gray-700 
         font-bold uppercase rounded shadow hover:shadow-lg
-        outline-none focus:outline-none mr-2
-        mb-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
+        outline-none focus:outline-none
+        h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
         style="transition: all 0.15s ease 0s;">
-        Back
-      </button>
+        <div class="flex place-self-center">
+          Back
+        </div>
+      </a>
       {#if confirmed === 'FALSE'}
         <div class="flex flex-col">
-          <button on:click={ handleTigerHunt }
+          <div on:click={ handleTigerHunt }
             class="bg-orange-500 text-white active:bg-gray-700 
             font-bold uppercase rounded shadow hover:shadow-lg
             outline-none focus:outline-none 
-            mb-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
+            h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
             style="transition: all 0.15s ease 0s;">
             <div class="flex flex-wrap place-self-center w-full m-0">
               <img src="chs_tiger_36.png" alt="CHS Tiger"/>
@@ -89,7 +86,7 @@
                 Tiger Hunt
               </div>
             </div>
-          </button>
+          </div>
         </div>
       {/if}
     </div>

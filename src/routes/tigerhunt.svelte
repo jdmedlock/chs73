@@ -71,13 +71,15 @@
       ml-1 p-4 border-gray-300 border-2 shadow-2xl">
       <ul class="mt-2 text-lg md:text-xl text-gray-600 leading-tight">
         {#each classmateColumn1 as classmate}
-          <li class="mt-2" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
+          <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+            class="mt-2 hover:text-orange-500" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
         {/each}
       </ul>
       <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg md:text-xl text-gray-600 
         leading-tight">
         {#each classmateColumn2 as classmate}
-          <li class="mt-2" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
+          <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+            class="mt-2 hover:text-orange-500" on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
         {/each}
       </ul>
     </div>

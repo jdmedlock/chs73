@@ -48,12 +48,24 @@
     <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
       <ul class="mt-2 text-lg text-gray-600 leading-tight">
         {#each facultyColumn1 as facultyMember}
-          <li class="mt-2"><a href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">{ facultyMember.name }</a></li>
+          <li class="mt-2">
+            <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
+              class="hover:text-orange-500"
+              href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+              { facultyMember.name }
+            </a>
+          </li>
         {/each}
       </ul>
       <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-tight">
         {#each facultyColumn2 as facultyMember}
-          <li class="mt-2"><a href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">{ facultyMember.name }</a></li>
+          <li class="mt-2">
+            <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
+              class="hover:text-orange-500"
+              href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+              { facultyMember.name }
+            </a>
+          </li>
         {/each}
       </ul>
     </div>
