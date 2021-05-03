@@ -38,7 +38,7 @@
 </style>
 
 <section class="flex flex-wrap place-content-center w-full">
-  <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-16 md:mt-20">
+  <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-20">
     {#if cloudinaryId !== ""}
       <Image class="text-center"
         cloud_name="{ process.env.CLOUDINARY_NAME }" 
@@ -66,20 +66,22 @@
         class="flex bg-orange-500 text-white active:bg-gray-700 
         font-bold uppercase rounded shadow hover:shadow-lg
         outline-none focus:outline-none
-        h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
-        style="transition: all 0.15s ease 0s;">
+        h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base
+        transition duration-300 ease-in-out 
+      hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
         <div class="flex place-self-center">
           Back
         </div>
       </a>
       {#if confirmed === 'FALSE'}
-        <div class="flex flex-col">
+        <div class="flex flex-col ml-2">
           <div on:click={ handleTigerHunt }
             class="bg-orange-500 text-white active:bg-gray-700 
             font-bold uppercase rounded shadow hover:shadow-lg
             outline-none focus:outline-none 
-            h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base"
-            style="transition: all 0.15s ease 0s;">
+            h-12 m-1 px-3 md:px-6 py-1 md:py-2 text-sm md:text-base
+            transition duration-300 ease-in-out 
+            hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
             <div class="flex flex-wrap place-self-center w-full m-0">
               <img src="chs_tiger_36.png" alt="CHS Tiger"/>
               <div class="ml-2 self-center">

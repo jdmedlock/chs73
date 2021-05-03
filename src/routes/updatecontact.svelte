@@ -396,8 +396,9 @@
                   <button type="submit"
                     class="bg-orange-500 text-white active:bg-gray-700 text-sm
                     font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-                    outline-none focus:outline-none mr-1 mb-1"
-                    style="transition: all 0.15s ease 0s;">
+                    outline-none focus:outline-none mr-1 mb-1
+                    transition duration-300 ease-in-out 
+                  hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
                     Submit Info
                   </button>
                 </div>
@@ -434,8 +435,9 @@
     <button on:click={ handleBack }
       class="bg-orange-500 text-white active:bg-gray-700 text-sm
       font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-      outline-none focus:outline-none mr-1 mb-1"
-      style="transition: all 0.15s ease 0s;">
+      outline-none focus:outline-none mr-1 mb-1
+      transition duration-300 ease-in-out 
+      hover:text-gray-700 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
       Back
     </button>
   </div>

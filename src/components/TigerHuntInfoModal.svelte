@@ -46,9 +46,10 @@
         <button type="button" on:click={ action }
           class="inline-flex justify-center w-full 
           rounded-md border border-transparent shadow-sm px-4 py-2
-          bg-orange-500 text-base font-medium text-white hover:bg-orange-700 
-          focus:outline-none focus:ring-2 focus:ring-offset-2 
-          focus:ring-black-500 text-sm md:text-xl">
+          bg-orange-500 text-base font-medium text-white  
+          text-sm md:text-xl
+          transition duration-300 ease-in-out 
+        hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
           Got it!
         </button>
       </div>
