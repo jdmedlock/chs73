@@ -43,7 +43,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      listStyleType: ['hover'],
+      listStyleType: ['hover', 'focus'],
+      transitionProperty: ['hover', 'focus'],
     },
   },
   plugins: [],
