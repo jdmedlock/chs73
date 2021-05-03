@@ -41,6 +41,10 @@ module.exports = {
       }
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      listStyleType: ['hover'],
+    },
+  },
   plugins: [],
 }

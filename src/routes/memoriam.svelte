@@ -74,13 +74,15 @@
       <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 md:ml-12 lg:ml-20 p-4 border-gray-300 border-2 shadow-2xl">
         <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
           {#each classmateColumn1 as classmate}
-            <li><a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+            <li><a class="hover:text-orange-500"
+              href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
               { classmate.name }</a></li>
           {/each}
         </ul>
         <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
           {#each classmateColumn2 as classmate}
-            <li><a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+            <li><a class="hover:text-orange-500" 
+              href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
               { classmate.name }</a></li>
           {/each}
         </ul>
