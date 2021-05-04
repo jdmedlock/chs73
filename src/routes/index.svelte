@@ -195,7 +195,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
 
-        <div class="pt-16 lg:pt-32 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-36 md:pt-48 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -232,7 +232,7 @@
           </div>
         </div>
 
-				<div class="pt-40 w-full md:w-4/12 px-4 text-center">
+				<div class="pt-8 md:pt-40 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div class="relative flex flex-col min-w-0 break-words bg-white
@@ -259,8 +259,8 @@
                     Renew old friendships
                   </div>
                   <p class="text-lg lg:xl font-light mt-2 text-black">
-										It's going to be a lot of fun and it's the perfect time and it's
-                		a fantastic way to reconnect with old friends and acquaintances.                  
+										It's going to be a lot of fun & it's the perfect time and 
+                		a great way to reconnect with old friends & acquaintances.                  
 									</p>
                 </blockquote>
               </div>
@@ -268,7 +268,7 @@
           </div>
         </div>				
 
-        <div class="pt-16 lg:pt-24 w-full md:w-4/12 px-4 text-center">
+        <div class="pt-8 lg:pt-32 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
@@ -295,7 +295,7 @@
                     Be a Hero & Volunteer
                   </h4>
                   <p class="text-md font-light mt-2 text-black">
-                    Locating all of our classmates is a huge job and we’d love
+                    Locating all of our classmates is a huge job & we’d love
                     your help.  Our goal is to invite all to participate in 
                     the when, where, what of OUR event.
                   </p>
