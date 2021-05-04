@@ -61,9 +61,8 @@
             information for people you are in contact with.
           </p>
           <div class="flex flex-wrap mt-3">
-            <p>Just</p>
-            <p class="font-semibold italic mx-2.5">click on a classmates name</p>
-            <p>if you have contact info to share with us.</p>
+            <p class="font-semibold italic mx-2.5">Click on a classmates name</p>
+            <p>if you have contact info to share.</p>
           </div>
         </div>
       </div>
