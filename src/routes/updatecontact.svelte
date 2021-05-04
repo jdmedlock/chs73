@@ -3,11 +3,14 @@
 		return { 
       params: {
         back: page.query.back,
+        firstName: page.query.firstName,
         name: page.query.name,
         cloudinaryId: page.query.photoId,
         deceased: page.query.deceased,
         confirmed: page.query.confirmed,
         type: page.query.type,
+        department: page.query.department, 
+        position: page.query.position,
       }
     }
   }
@@ -19,8 +22,14 @@
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
-  let { back, name, cloudinaryId, deceased, confirmed, type } = params
-  console.log(`updatecontact - back: ${ back } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } type: ${ type }`)
+  let { back, firstName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
+
+  /*
+  console.log(`updatecontact - back: ${ back } firstName: ${ firstName } \
+    name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } \
+    department: ${ department } position: ${ position } type: ${ type } \
+  `)
+  */
 
   let posterName = ''
   let posterEmail = ''
@@ -80,15 +89,6 @@
     }
 
     contactZipcode = parseInt(contactZipcode)
-    
-/*
-    console.log(`Poster name: ${ posterName } email: ${ posterEmail }`)
-    console.log(`Classmate name: ${ name } email: ${ contactEmail }`)
-    console.log(`...Street: ${ contactStreet }`)
-    console.log(`...City: ${ contactCity} State: ${ contactState } Zip: ${ contactZipcode }`)
-    console.log(`...Phone: ${ contactPhone } Deceased: ${ isContactDeceased }`)
-    console.log(`...Info: ${ contactInfo }`)
-*/
 
     return client(fetch)
       .request({
@@ -171,7 +171,7 @@
   }
 
   const handleBack = async () => {
-    await goto(`${ back }?back=${ back }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }`)
+    await goto(`${ back }?back=${ back }&firstName=${ firstName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&department=${ department }&position=${ position }`)
   }
 </script>
 

@@ -31,11 +31,11 @@
       <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">Faculty & Staff of 1973</h1>
     </div>
     <div class="flex justify-center w-full">
-      <div class="flex max-ww-full mb-4 content-start">
+      <div class="flex max-w-full mb-4 content-start">
         <div class="flex flex-wrap w-full m-0 p-0 justify-center">
           <picture>
             <img
-              alt="Homecoming"
+              alt="Faculty"
               class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 
                 shadow-xl-orange lg:shadow-2xl-orange 
                 ml-0 md:ml-0 lg:ml-0 mb-12 md:mb-8 lg:mb-none
@@ -45,22 +45,30 @@
         </div>
       </div>
     </div>
+
+    <div class="flex w-full mt-4 md:mt-0 mb-2 text-xl md:text-xl text-gray-500">
+      <div class="flex flex-wrap place-content-center w-full">
+        <p class="font-semibold italic mx-2">Click</p>
+        <p>on a name to see more.</p>
+      </div>
+    </div>
+
     <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
-      <ul class="mt-2 text-lg text-gray-600 leading-tight">
+      <ul class="text-lg text-gray-600 leading-tight">
         {#each facultyColumn1 as facultyMember}
           <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
             <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-              href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+              href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
               { facultyMember.name }
             </a>
           </li>
         {/each}
       </ul>
-      <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-tight">
+      <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
         {#each facultyColumn2 as facultyMember}
           <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
             <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-              href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+              href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
               { facultyMember.name }
             </a>
           </li>

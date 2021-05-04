@@ -3,6 +3,7 @@
 		return { 
       params: {
         back: page.query.back,
+        firstName: page.query.firstName,
         classmateName: page.query.name,
         cloudinaryId: page.query.photoId,
         deceased: page.query.deceased,
@@ -15,23 +16,18 @@
 <script>
   import { goto } from '@sapper/app'
   import { Image } from '@cloudinary/svelte'
-  import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
-  let { back, classmateName, cloudinaryId, deceased, confirmed } = params
+  let { back, firstName, classmateName, cloudinaryId, deceased, confirmed } = params
 
-  console.log(`classmate - back: ${ back } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
+  // console.log(`classmate - back: ${ back } firstName: ${ firstName } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   let backPage = back === "classmate" ? "classmates" : back
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=classmate&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
+    await goto(`updatecontact?back=classmate&firstName=${ firstName }&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
-  let showModal = false
-  const toggleModal = () => {
-    showModal = !showModal;
-  }
 </script>
 
 <style>
@@ -93,12 +89,9 @@
       {/if}
     </div>
     {#if confirmed === 'FALSE'}
-      <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
-        What's this?
+      <div class="text-sm md:text-lg mt-4 ml-3 justify-self-end">
+        Do you know how to contact { firstName }? Click on Tiger Hunt!
       </div>
-      {#if showModal}
-        <TigerHuntInfoModal action={ toggleModal }/>
-      {/if}
     {/if}
   </div>
 </section>
