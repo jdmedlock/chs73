@@ -20,12 +20,12 @@
   export let params
   let { back, firstName, classmateName, cloudinaryId, deceased, confirmed } = params
 
-  console.log(`classmate - back: ${ back } firstName: ${ firstName } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
+  // console.log(`classmate - back: ${ back } firstName: ${ firstName } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   let backPage = back === "classmate" ? "classmates" : back
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=classmate&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
+    await goto(`updatecontact?back=classmate&firstName=${ firstName }&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
 </script>
