@@ -37,7 +37,8 @@
             alt="Light behind cemetary tree"
             class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 shadow-2xl 
               ml-0 md:ml-6 lg:ml-0 mb-8 lg:mb-none
-              transform scale-x-250 md:scale-x-150 lg:scale-x-250"
+              transform scale-x-250 md:scale-x-150 lg:scale-x-250
+              shadow-xl-orange lg:shadow-2xl-orange"
             src="chs_lorimer_cemetary.jpeg" />
         </div>
         <div class="text-center">

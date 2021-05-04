@@ -383,7 +383,8 @@
               <h4 class="text-2xl font-semibold">We want to hear from you!</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                 Complete this form so we can stay in touch and provide valuable 
-                updates as they become available.
+                updates as they become available - especially if your contact
+                info has changed.
               </p>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                 We'll be reaching out in the coming months to get your input

@@ -39,7 +39,7 @@
             class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-2xl 
               ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
               transform scale-200 md:scale-150 lg:scale-100
-              border-0"
+              border-0 shadow-xl-orange lg:shadow-2xl-orange"
             src="chs_homecoming_float.jpeg" />
         </div>
       </div>
