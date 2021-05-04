@@ -50,7 +50,7 @@
         {#each facultyColumn1 as facultyMember}
           <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
             <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-              href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+              href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
               { facultyMember.name }
             </a>
           </li>
@@ -60,7 +60,7 @@
         {#each facultyColumn2 as facultyMember}
           <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
             <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-              href="facultymember?back=faculty&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+              href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
               { facultyMember.name }
             </a>
           </li>

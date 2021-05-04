@@ -7,7 +7,8 @@ export default function createPersonGroups(persons,nameFormatter) {
   const personsGrouping1Lth = Math.floor(persons.length / 2)
   let personsGrouping1 = []
   for (let i = 0; i < personsGrouping1Lth; i++) {
-    personsGrouping1.push({ 
+    personsGrouping1.push({
+      firstName: persons[i].firstName,
       name: formatName(persons[i].firstName, persons[i].lastName, persons[i].marriedLastName),
       cloudinaryId: persons[i].cloudinaryId === '' ? photoPlaceholder : persons[i].cloudinaryId,
       deceased: persons[i].deceased,
@@ -20,6 +21,7 @@ export default function createPersonGroups(persons,nameFormatter) {
   let personsGrouping2 = []
   for (let i = personsGrouping1Lth; i < persons.length; i++) {
     personsGrouping2.push({ 
+      firstName: persons[i].firstName,
       name: formatName(persons[i].firstName, persons[i].lastName, persons[i].marriedLastName),
       cloudinaryId: persons[i].cloudinaryId === '' ? photoPlaceholder : persons[i].cloudinaryId,
       deceased: persons[i].deceased,
