@@ -45,7 +45,7 @@
 				the event data when we hover over the link or tap it on a touchscreen -->
 		<a rel=prefetch aria-current="{segment === 'events' ? 'page' : undefined}" href="events" on:click={ toggleNavbar }>events</a>
 		<a aria-current="{segment === 'classmates' ? 'page' : undefined}" href="classmates" on:click={ toggleNavbar }>classmates</a>
-		<a aria-current="{segment === 'tigerhunt' ? 'page' : undefined}" href="tigerhunt" on:click={ toggleNavbar }>tigerhunt</a>
+		<a aria-current="{segment === 'tigerhunt' ? 'page' : undefined}" href="tigerhunt" on:click={ toggleNavbar }>tiger hunt</a>
 		<a aria-current="{segment === 'memoriam' ? 'page' : undefined}" href="memoriam" on:click={ toggleNavbar }>memoriam</a>
 		<a aria-current="{segment === 'faculty' ? 'page' : undefined}" href="faculty" on:click={ toggleNavbar }>faculty</a>
 		<a aria-current="{segment === 'contact' ? 'page' : undefined}" href="#contact" on:click={ toggleNavbar }>contact</a>
