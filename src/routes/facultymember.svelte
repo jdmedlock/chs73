@@ -21,10 +21,10 @@
 
   export let params
   let { back, firstName, name, cloudinaryId, department, position, deceased, confirmed } = params
-  console.log(`faculty - back: ${ back } firstName: ${ firstName } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
+  // console.log(`faculty - back: ${ back } firstName: ${ firstName } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=facultymember&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty`)
+    await goto(`updatecontact?back=facultymember&firstName=${ firstName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty&department=${ department }&position=${ position }`)
   }
 </script>
 
