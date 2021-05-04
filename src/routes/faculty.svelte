@@ -48,7 +48,7 @@
 
     <div class="flex w-full mt-4 md:mt-0 mb-2 text-xl md:text-xl text-gray-500">
       <div class="flex flex-wrap place-content-center w-full">
-        <p class="font-semibold italic mx-2.5">Click</p>
+        <p class="font-semibold italic mx-2">Click</p>
         <p>on a name to see more.</p>
       </div>
     </div>

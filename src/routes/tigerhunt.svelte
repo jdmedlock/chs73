@@ -53,15 +53,12 @@
         
         <div class="flex flex-col w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
           <p class="">
-            We need your help in locating Classmates to make sure
-            everyone gets information & updates for our 50th reunion.
+            TigerHunt lets you help locate Classmates by providing up-to-date contact 
+            information for people you are in contact with. Help us spread the
+            word about our 50th reunion.
           </p>
-          <p class="mt-3">
-            TigerHunt lets you help by providing up-to-date contact 
-            information for people you are in contact with.
-          </p>
-          <div class="flex flex-wrap mt-3">
-            <p class="font-semibold italic mx-2.5">Click on a classmates name</p>
+          <div class="flex flex-wrap place-self-center mt-3">
+            <p class="font-semibold italic mx-2.5">Click on a name</p>
             <p>if you have contact info to share.</p>
           </div>
         </div>
