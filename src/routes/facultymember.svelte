@@ -92,7 +92,7 @@
       </div>
       {#if confirmed === 'FALSE'}
         <div class="text-sm md:text-lg mt-4 ml-3 justify-self-end">
-          Do you know how to contact { firstName }? Click on Tiger Hunt!
+          Do you know how to contact { name }? Click on Tiger Hunt!
         </div>
       {/if}
     </div>
