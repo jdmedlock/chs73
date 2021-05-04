@@ -60,10 +60,11 @@
             TigerHunt lets you help by providing up-to-date contact 
             information for people you are in contact with.
           </p>
-          <p class="mt-3">
-            Just click on a classmates name if you have contact info to 
-            share with us.
-          </p>
+          <div class="flex flex-wrap mt-3">
+            <p>Just</p>
+            <p class="font-semibold italic mx-2.5">click on a classmates name</p>
+            <p>if you have contact info to share with us.</p>
+          </div>
         </div>
       </div>
     </div>
