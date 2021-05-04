@@ -3,6 +3,7 @@
 		return { 
       params: {
         back: page.query.back,
+        firstName: page.query.firstName,
         name: page.query.name,
         cloudinaryId: page.query.photoId,
         department: page.query.department,
@@ -17,19 +18,13 @@
 <script>
   import { goto } from '@sapper/app';
   import { Image } from '@cloudinary/svelte'
-  import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
-  let { back, name, cloudinaryId, department, position, deceased, confirmed } = params
-  console.log(`faculty - back: ${ back } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
+  let { back, firstName, name, cloudinaryId, department, position, deceased, confirmed } = params
+  console.log(`faculty - back: ${ back } firstName: ${ firstName } name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
 
   const handleTigerHunt = async () => {
     await goto(`updatecontact?back=facultymember&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty`)
-  }
-
-  let showModal = false
-  const toggleModal = () => {
-    showModal = !showModal;
   }
 </script>
 
@@ -96,12 +91,9 @@
         {/if}
       </div>
       {#if confirmed === 'FALSE'}
-        <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
-          What's this?
+        <div class="text-sm md:text-lg ml-3 justify-self-end">
+          Do you know how to contact { firstName }? Click on Tiger Hunt!
         </div>
-        {#if showModal}
-          <TigerHuntInfoModal action={ toggleModal }/>
-        {/if}
       {/if}
     </div>
   </div>

@@ -154,12 +154,14 @@
                 <h2 class="text-white font-semibold text-xl lg:text-4xl">
                   Your story started here!
                 </h2>
+                <!--
                 <p class="mt-10 text-lg lg:text-3xl text-white">
                   These were your formative years. This is the crucible where you
                   developed your identity, your independence, and your drive. It
                   was where you established lifelong friendships, as well as 
                   personal and professional interests.
                 </p>
+                -->
                 <p class="pt-8 pb-4 text-orange-300 text-3xl font-bold">
                   It was the start of your journey...but, certainly not the end!
                 </p>
@@ -192,6 +194,43 @@
   <section class="pb-20 bg-gray-900 -mt-24">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
+
+        <div class="pt-16 lg:pt-32 w-full md:w-4/12 px-4 text-center">
+          <div class="flex flex-wrap items-center">
+            <div class="w-full px-4 mr-auto ml-auto">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white
+                w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
+                <picture>
+                  <img
+                    alt="Graduation"
+                    src="chs_students_office.jpeg"
+                    class="w-full align-middle rounded-t-lg" />
+                </picture>
+                <blockquote class="relative p-8 mb-4">
+                  <svg
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 583 95"
+                    class="absolute left-0 w-full block"
+                    style="height: 95px; top: -94px;">
+                    <polygon
+                      points="-30,95 583,95 583,65"
+                      class="text-sepia-300 fill-current" />
+                  </svg>
+                  <div class="text-xl font-bold text-black">
+                    Our 50th Reunion!
+                  </div>
+                  <p class="text-md font-light mt-2 text-black">
+                    Our 50th reunion in 2023 is closer than you think. It's 
+                    time think back to our time together and to start getting
+                    ready!
+                  </p>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
 
 				<div class="pt-40 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
@@ -229,44 +268,6 @@
           </div>
         </div>				
 
-        <div class="pt-16 lg:pt-32 w-full md:w-4/12 px-4 text-center">
-          <div class="flex flex-wrap items-center">
-            <div class="w-full px-4 mr-auto ml-auto">
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white
-                w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
-                <picture>
-                  <img
-                    alt="Graduation"
-                    src="chs_graduation.webp"
-                    class="w-full align-middle rounded-t-lg" />
-                  <source srcset="chs_graduation.jpeg" type={`image/jpeg`} />
-                </picture>
-                <blockquote class="relative p-8 mb-4">
-                  <svg
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 583 95"
-                    class="absolute left-0 w-full block"
-                    style="height: 95px; top: -94px;">
-                    <polygon
-                      points="-30,95 583,95 583,65"
-                      class="text-sepia-300 fill-current" />
-                  </svg>
-                  <div class="text-xl font-bold text-black">
-                    Our 50th Reunion!
-                  </div>
-                  <p class="text-md font-light mt-2 text-black">
-                    Our 50th reunion in 2023 is closer than you think. It's 
-                    time think back to our time together and to start getting
-                    ready!
-                  </p>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="pt-16 lg:pt-24 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
@@ -296,7 +297,7 @@
                   <p class="text-md font-light mt-2 text-black">
                     Locating all of our classmates is a huge job and we’d love
                     your help.  Our goal is to invite all to participate in 
-                    the when, where and what of OUR event.
+                    the when, where, what of OUR event.
                   </p>
                 </blockquote>
               </div>

@@ -49,7 +49,7 @@
         {#each classmateColumn1 as classmate}
           <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
             <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
-              href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
+              href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
               { classmate.name }
             </a>
           </li>
@@ -60,7 +60,7 @@
           <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
             <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
               class="" 
-              href="classmate?back=classmates&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+              href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
               { classmate.name }
             </a>
           </li>
