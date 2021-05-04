@@ -130,7 +130,11 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
+<<<<<<< HEAD
       style="background-image: url('chs_graduation.webp');"
+=======
+      style="background-image: url('chs_graduation.jpeg');"
+>>>>>>> 61c513c540e2e3a4f7144bfd93bd162dd3f14f55
     />
     <div class="container relative mx-auto">
       <div class="justify-items-center flex flex-wrap">
