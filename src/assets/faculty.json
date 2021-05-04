@@ -1,0 +1,911 @@
+[
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Dallas",
+    "lastName": "Albers",
+    "department": "Administration",
+    "position": "Title III Project Director",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Dallas_Albers_vijwud.png"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Lawrence",
+    "lastName": "Aeschlimann",
+    "department": "Practical Arts",
+    "position": "Typing",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Lawrence_Aeschilmann_wvj3hq.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jewell",
+    "lastName": "Beauchamp",
+    "department": "Vocational Technical",
+    "position": "Technical Design and Drafting",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jewel_Beauchamp_i2yrkp.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jo Ann",
+    "lastName": "Bock",
+    "department": "English",
+    "position": "English II",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jo_Ann_Bock_p7jibn.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Joyce",
+    "lastName": "Bowen",
+    "department": "Library",
+    "position": "Librarian",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Joyce_Bowen_qgbkwi.jpg"
+  },
+  {
+    "confirmed": "TRUE",
+    "inYearbook": "",
+    "firstName": "Leon",
+    "lastName": "Brinkopf",
+    "department": "Administration",
+    "position": "Assistant Principal",
+    "deceased": "TRUE",
+    "cloudinaryId": "/chs_faculty/Leon_Brinkopf_j14is0.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Roy",
+    "lastName": "Brunkhorst",
+    "department": "Vocational Technical",
+    "position": "Auto Mechanics",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Roy_Brunkhorst_bmd8e4.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Norval",
+    "lastName": "Cannon",
+    "department": "Mathematics",
+    "position": "Refresher, 1A-1B, Intermediate, Consumer",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Narvol_Cannon_n1biqo.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Mary",
+    "lastName": "Carter",
+    "department": "History",
+    "position": "Government, Family Relations",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Mary_Carter_do0da5.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Wilma",
+    "lastName": "Copeland",
+    "department": "Practical Arts",
+    "position": "Home Economics",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Wilma_Copeland_mruz2t.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Polly",
+    "lastName": "Crowley",
+    "department": "Mathematics",
+    "position": "II-III",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Polly_Crowley_qwbgll.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Claire",
+    "lastName": "Decker",
+    "department": "Library",
+    "position": "Head Librarian",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Claire_Decker_zqu5ui.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "John",
+    "lastName": "Decker",
+    "department": "History",
+    "position": "World Geography, American History",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jonathan_Decker_x8ncho.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Charles",
+    "lastName": "Dickens",
+    "department": "Vocational Technical",
+    "position": "Technical Electronics",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Charles_Dickens_f5xsxs.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "William",
+    "lastName": "East",
+    "department": "Counseling",
+    "position": "Sophomore Counselor",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/William_East_qzwxca.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Barbara",
+    "lastName": "Ellison",
+    "department": "Practical Arts",
+    "position": "Basic Business",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Barbara_Ellison_ldwasb.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Bill",
+    "lastName": "Ewing",
+    "department": "Music",
+    "position": "Instrumental",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Bill_Ewing_dursck.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Clarence",
+    "lastName": "Findley",
+    "department": "History",
+    "position": "American History",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Clarence_Finley_ei78xr.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Ralph",
+    "lastName": "Ford",
+    "department": "Vocational Technical",
+    "position": "Counselor",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Ralph_Ford_wo1nl3.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Robert",
+    "lastName": "Gau",
+    "department": "Science",
+    "position": "Earth, Chemistry, & General",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Robert_Gau_xdbduc.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Joy",
+    "lastName": "Gilbert",
+    "department": "English",
+    "position": "Speech I-II, Drama",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Joy_Gilbert_wxstwq.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Gary",
+    "lastName": "Gilbert",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Melvin",
+    "lastName": "Gilhaus",
+    "department": "Music",
+    "position": "Orchestra",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Melvin_Gilhaus_j6ejju.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Weldon",
+    "lastName": "Hager",
+    "department": "Administration",
+    "deceased": "Director of Student Activities",
+    "position": "",
+    "cloudinaryId": "/chs_faculty/Weldon_Hager_v5z4cu.png"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Sharon",
+    "lastName": "Hulcy",
+    "department": "Physical Education",
+    "position": "P.E., Health",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Sharon_Hulcy_rvgfe1.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "David",
+    "lastName": "Jaynes",
+    "department": "Practical Arts",
+    "position": "Power Mechanics, Metal Work",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/David_Jaynes_w5bvri.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Norris",
+    "lastName": "Johnson",
+    "department": "Science",
+    "position": "Physics & Chemistry",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Norris_Johnson_pvkg0m.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Bettye",
+    "lastName": "Kester",
+    "department": "Art",
+    "position": "Art I-II, Painting & Drawing",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Bettye_Kester_spqhgn.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Vivian",
+    "lastName": "Kies",
+    "department": "History",
+    "position": "American History",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Vivian_Kies_beuusq.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Beverly",
+    "lastName": "King",
+    "department": "Library",
+    "position": "Library Assistant",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Beverly_King_fcdx4s.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Robert",
+    "lastName": "King",
+    "department": "Administration, Drivers Ed.",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Robert_King_qjproz.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Paul",
+    "lastName": "Kitchen",
+    "department": "Physical Education",
+    "position": "P.E., Health",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Paul_Kitchen_fxgqvi.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Robert",
+    "lastName": "Knight",
+    "department": "History",
+    "position": "Contemporary Issues, Government, Economics",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Robert_Knight_djry4j.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Orville",
+    "lastName": "Krauss",
+    "department": "Vocational Technical",
+    "position": "Marketing, COE, DE",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Orville_Krauss_hubyn8.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Donald",
+    "lastName": "Lang",
+    "department": "Vocational Technical",
+    "position": "Marketing, COE, DE",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Donald_Lang_u27zak.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Leon",
+    "lastName": "Lefler",
+    "department": "Physical Education",
+    "position": "P.E.",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Leon_Lefler_tqyi9i.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Leonard",
+    "lastName": "Little",
+    "department": "Practical arts",
+    "position": "Electricity, Woodworking",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Leonard_Little_m1ro2b.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Elizabeth",
+    "lastName": "Lockhart",
+    "department": "English",
+    "position": "Journalism I-II, Newspaper, Yearbook",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Elizabeth_Lockhart_ieixx7.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Barbara",
+    "lastName": "Lohr",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Raymond",
+    "lastName": "Long",
+    "department": "English",
+    "position": "English II, Speech I-II",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Raymond_Long_zbiweu.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Gary",
+    "lastName": "Lynch",
+    "department": "Science",
+    "position": "Biology",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Gary_Lynch_t7g01g.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Sheila",
+    "lastName": "Lynch",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Sheila_Lynch_rxx2jn.png"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jan",
+    "lastName": "Mabrey",
+    "department": "Administration",
+    "position": "Secretary",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jan_Mabrey_f5ilya.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Thomas J.",
+    "lastName": "McFerron",
+    "department": "Vocational Technical",
+    "position": "Auto Body and Fender",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/TJ_McFerron_es4kfp.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Chrolotte",
+    "lastName": "Malahy",
+    "department": "English",
+    "position": "Latin I-II",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Charlotte_Malahy_ltazgp.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Doris",
+    "lastName": "Mason",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Dale",
+    "lastName": "Meier",
+    "department": "Counseling",
+    "position": "Sr. Counselor",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Dale_Meier_wxws3t.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Dan",
+    "lastName": "Milligan",
+    "department": "Physical Education",
+    "position": "P.E.",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Dan_Milligan_mlbbji.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Billy",
+    "lastName": "Mize",
+    "department": "Vocational Technical",
+    "position": "Graphic Arts",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Billy_Mize_k6nwnp.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Alta",
+    "lastName": "Muegge",
+    "department": "History",
+    "position": "American History",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Alta_Muegge_w3pyus.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Melba",
+    "lastName": "Myers",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Ford",
+    "lastName": "Phillips",
+    "department": "English",
+    "position": "English III",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Ford_Phillips_pvknyt.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Everett",
+    "lastName": "Plunk",
+    "department": "Mathematics",
+    "position": "III, Intermediate II",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Everett_Plunk_q7ojym.jpg"
+  },
+  {
+    "inYearbook": "",
+    "firstName": "Karen",
+    "lastName": "Profilet",
+    "department": "Science",
+    "position": "Biology",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Karen_Profilet_nawwye.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Dorothy",
+    "lastName": "Pulley",
+    "department": "Practical Arts",
+    "position": "Home Economics",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Dorothy_Pulley_gwuede.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Fred",
+    "lastName": "Pulley",
+    "department": "Drivers Ed.",
+    "position": "Instructor",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Fred_Pulley_p5mfwu.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Josephine",
+    "lastName": "Renfrow",
+    "department": "Art",
+    "position": "Ceramics and Art Appreciation",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jo_Renfrow_unxqxe.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Payne",
+    "lastName": "Rose",
+    "department": "Vocational Technical",
+    "position": "Welding",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Payne_Rose_t1wyyr.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jack",
+    "lastName": "Russell",
+    "department": "Drivers Ed.",
+    "position": "Instructor",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jack_Russell_xtqrwm.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Alene",
+    "lastName": "Sadler",
+    "department": "English",
+    "position": "English IV, Humanities",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Alene_Sadler_rdu8wn.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Joyce",
+    "lastName": "Sander",
+    "department": "Vocational Technical",
+    "position": "Child Care, Vocational Sewing",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Joyce_Sander_tidzss.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Norma",
+    "lastName": "Sander",
+    "department": "Physical Education",
+    "position": "P.E.",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Norma_Sander_yof0iv.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Charlotte",
+    "lastName": "Scherer",
+    "department": "Practical Arts",
+    "position": "Business",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Charlotte_Scherer_temdwr.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Anthony",
+    "lastName": "Schuch",
+    "department": "Art",
+    "position": "Painting",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Anthony_Schuch_gmbdvx.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Raymond",
+    "lastName": "Seyer",
+    "department": "Vocational Technical",
+    "position": "Auto Mechanics",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Ray_Seyer_kjoct1.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Barbara",
+    "lastName": "Shock",
+    "department": "English",
+    "position": "Special Ed.",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Barbara_Shock_hwz6xg.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Eugene",
+    "lastName": "Sifford",
+    "department": "Administration",
+    "position": "Principal",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Eugene_Sifford_jacqyz.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Mary",
+    "lastName": "Sivia",
+    "department": "English",
+    "position": "French I-IV",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Mary_Siva_sxlpfk.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Inez",
+    "lastName": "Smith",
+    "department": "English",
+    "position": "English IV, Composition",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Inez_Smith_vmbrpf.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Gail",
+    "lastName": "Snider",
+    "department": "English",
+    "position": "Reading Improvement, English III",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Gail_Snider_hqbv10.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Margaret",
+    "lastName": "Snider",
+    "department": "Counseling",
+    "position": "Junior Counselor",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Margret_Snider_h3tixz.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Mike",
+    "lastName": "Sturm",
+    "department": "Physical Education",
+    "position": "P.E., Study Hall",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Mike_Sturm_tnpvic.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Marsha",
+    "lastName": "Taylor",
+    "department": "English",
+    "position": "English III",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Marsha_Taylor_faehuw.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Ann",
+    "lastName": "Teeters",
+    "department": "Administration",
+    "position": "Secretary",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Ann_Teeters_kkymsr.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Ellen",
+    "lastName": "Towse",
+    "department": "Physical Education",
+    "position": "P.E.",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Ellen_Towse_yekzsc.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Marie",
+    "lastName": "Trucky",
+    "department": "Physical Education",
+    "position": "School Nurse",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Marie_Truckey_vvjxp6.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jesse",
+    "lastName": "Varnon",
+    "department": "Practical Arts",
+    "position": "Drafting, Metal Work",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jesse_Varnon_rez5os.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Glennata",
+    "lastName": "Vogelsang",
+    "department": "Administration",
+    "position": "Secretary",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Glenneta_Vogelsang_ekrp04.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Mildred",
+    "lastName": "Vogelsang",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Eugene",
+    "lastName": "Warner",
+    "department": "Vocational Technical",
+    "position": "Refrigeration",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Joe",
+    "lastName": "Warren",
+    "department": "Vocational Technical",
+    "position": "Refrigeration, Air Conditioning",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Eugene_Warner_guwukg.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Grace",
+    "lastName": "Williams",
+    "department": "Mathematics",
+    "position": "II, III, IV, V",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Grace_Williams_v1vb9v.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Judy",
+    "lastName": "Williams",
+    "department": "Music",
+    "position": "Vocal",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Judy_Williams_co2ix8.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Linda",
+    "lastName": "Williams",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Roscoe",
+    "lastName": "Williams",
+    "department": "Vocational Technical",
+    "position": "Data Processing",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Roscoe_Williams_ckb1vz.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Fred",
+    "lastName": "Withrow",
+    "department": "History",
+    "position": "American History",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Fred_Withrow_s3akro.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jerry",
+    "lastName": "Witvoet",
+    "department": "History",
+    "position": "Psychology, Sociology, American History",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jerry_Witvoet_har15k.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Jerry",
+    "lastName": "Woemmel",
+    "department": "Practical Arts",
+    "position": "Typing, Business",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/Jerry_Woemmel_otvhkp.jpg"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Irene",
+    "lastName": "Wright",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Katherine",
+    "lastName": "Wulfers",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  },
+  {
+    "confirmed": "FALSE",
+    "inYearbook": "",
+    "firstName": "Opal",
+    "lastName": "Young",
+    "department": "",
+    "position": "",
+    "deceased": "",
+    "cloudinaryId": "/chs_faculty/"
+  }
+]

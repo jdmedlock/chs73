@@ -1,23 +1,27 @@
-import path from 'path';
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import url from '@rollup/plugin-url';
-import svelte from 'rollup-plugin-svelte';
-import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-import config from 'sapper/config/rollup.js';
-import pkg from './package.json';
-import sveltePreprocess from 'svelte-preprocess';
+import path from 'path'
+import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import commonjs from '@rollup/plugin-commonjs'
+import url from '@rollup/plugin-url'
+import svelte from 'rollup-plugin-svelte'
+import babel from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+import config from 'sapper/config/rollup.js'
+import pkg from './package.json'
+import sveltePreprocess from 'svelte-preprocess'
+import json from '@rollup/plugin-json';
+import dotenv from 'dotenv'
 
-const mode = process.env.NODE_ENV;
-const dev = mode === 'development';
-const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+dotenv.config()
+
+const mode = process.env.NODE_ENV
+const dev = mode === 'development'
+const legacy = !!process.env.SAPPER_LEGACY_BUILD
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
-	onwarn(warning);
+	onwarn(warning)
 
 export default {
 	client: {
@@ -28,12 +32,17 @@ export default {
 				preventAssignment: true,
 				values:{
 					'process.browser': true,
-					'process.env.NODE_ENV': JSON.stringify(mode)
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
+					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
 				},
 			}),
 			svelte({
 				emitCss: true,
-				preprocess: sveltePreprocess({ postcss: true }),
+				preprocess: sveltePreprocess({ 
+					postcss: true,
+				}),
 				compilerOptions: {
 					dev,
 					hydratable: true
@@ -48,6 +57,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			json(),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -83,7 +93,10 @@ export default {
 				preventAssignment: true,
 				values:{
 					'process.browser': false,
-					'process.env.NODE_ENV': JSON.stringify(mode)
+					'process.env.NODE_ENV': JSON.stringify(mode),
+					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
+					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
 				},
 			}),
 			svelte({
@@ -93,7 +106,9 @@ export default {
 					hydratable: true,
 				},
 				emitCss: false,
-				preprocess: sveltePreprocess({ postcss: true })
+				preprocess: sveltePreprocess({
+					postcss: true,
+				}),
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -103,7 +118,8 @@ export default {
 			resolve({
 				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+			json(),
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 		preserveEntrySignatures: 'strict',
@@ -128,4 +144,4 @@ export default {
 		preserveEntrySignatures: false,
 		onwarn,
 	}
-};
+}

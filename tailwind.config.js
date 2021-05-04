@@ -6,9 +6,22 @@ module.exports = {
   },
   theme: {
     extend: {
+      boxShadow: {
+        'xl-orange': '0 12px 12px -6px rgba(241, 90, 34, 1)',
+        '2xl-orange': '0 25px 50px -12px rgba(241, 90, 34, 1)',
+      },
       colors: {
         orange: {
-          500: '#ff3e00',
+          50:  "#ff10a10e",
+          100: "#fff4f0",
+          200: "#ffc6b3",
+          300: "#ff9c7a",
+          400: "#ff6e3d",
+          500: "#ff4000",
+          600: "#cc3300",
+          700: "#992600",
+          800: "#661a00",
+          900: "#330d00"
         },
         sepia: {
           100: '#fffaf5',
@@ -22,8 +35,17 @@ module.exports = {
           900: '#2a1500',
         },
       },
+      scale: {
+        '200': '2',
+        '250': '2.5',
+      }
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      listStyleType: ['hover', 'focus'],
+      transitionProperty: ['hover', 'focus'],
+    },
+  },
   plugins: [],
 }
