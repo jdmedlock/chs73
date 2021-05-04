@@ -17,6 +17,7 @@
 <script>
   import { goto } from '@sapper/app';
   import { Image } from '@cloudinary/svelte'
+  import TigerHuntInfoModal from '../components/TigerHuntInfoModal.svelte'
 
   export let params
   let { back, name, cloudinaryId, department, position, deceased, confirmed } = params
@@ -76,7 +77,7 @@
           </div>
         </a>
         {#if confirmed === 'FALSE'}
-          <div class="flex flex-col ml-2 w-52">
+          <div class="flex flex-col ml-2">
             <div on:click={ handleTigerHunt }
               class="bg-orange-500 text-white active:bg-gray-700 
               font-bold uppercase rounded shadow hover:shadow-lg
@@ -91,12 +92,17 @@
                 </div>
               </div>
             </div>
-            <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
-              Know how to get ahold of { name }? Click here
-            </div>
           </div>
         {/if}
       </div>
+      {#if confirmed === 'FALSE'}
+        <div class="text-sm md:text-lg ml-3 justify-self-end" on:click={ toggleModal }>
+          What's this?
+        </div>
+        {#if showModal}
+          <TigerHuntInfoModal action={ toggleModal }/>
+        {/if}
+      {/if}
     </div>
   </div>
 </section>
