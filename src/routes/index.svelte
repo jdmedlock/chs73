@@ -123,6 +123,8 @@
   }
 </script>
 
+<!-- svelte-ignore a11y-media-has-caption -->
+
 <!-- Based on https://www.creative-tim.com/learning-lab/tailwind-starter-kit/landing -->
 <main>
   <section
