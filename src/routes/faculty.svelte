@@ -53,14 +53,11 @@
       </div>
     </div>
 
-    <div class="flex w-full mt-4 md:mt-0 mb-2 text-xl md:text-xl text-gray-500">
-      <div class="flex flex-wrap place-content-center w-full">
-        <p class="font-semibold italic mx-2">Click</p>
-        <p>on a name to see more.</p>
-      </div>
-    </div>
-
     <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <div class="flex flex-wrap place-content-center w-full">
+        <p><em>Click</em> on a name to see more.</p>
+      </div>
+      
       <LetterIndex pageName="faculty" letterIndex={ letterIndex } />
 
       <div class="flex w-full justify-center">

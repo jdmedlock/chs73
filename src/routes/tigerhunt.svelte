@@ -64,15 +64,15 @@
             information for people you are in contact with. Help us spread the
             word about our 50th reunion.
           </p>
-          <div class="flex flex-row place-self-center mt-3">
-            <p class="font-semibold italic mr-0.5 md:mr-1.5">Click</p>
-            <p>on a name to share contact info.</p>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <div class="flex flex-wrap place-content-center w-full">
+        <p><em>Click</em> on a name to see more.</p>
+      </div>
+
       <LetterIndex pageName="tigerhunt" letterIndex={ letterIndex } />
 
       <div class="flex w-full justify-center">
