@@ -2,11 +2,11 @@
   import classmates from '../assets/classmates.json'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
+  import BackToTop from '../components/BackToTop.svelte'
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
 
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-  console.log('letterIndex: ', letterIndex)
 </script>
 
 <style>
@@ -85,11 +85,10 @@
           </li>
         {/each}
       </ul>
-    </div>
-  </div>
 
-  <div class="fixed bottom-0 right-0 ...">
-    <p>Absolute child</p>
+      <BackToTop/>
+    </div>
+
   </div>
 
 </section>
