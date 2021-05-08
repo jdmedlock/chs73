@@ -56,9 +56,9 @@
           3 Valuable Life Lessons Learned from a 50 Year Class Reunion
         </div>
         <div class="text-xl md:text-2xl text-center">
-          <a class="text-sm"
+          <a class="text-base"
             href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
-            by Ken Hill - Motivational Speakers
+            by Ken Hill - Motivational Speaker
           </a> 
         </div>
 
