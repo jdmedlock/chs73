@@ -24,13 +24,6 @@
   export let params
   let { back, firstName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
 
-  /*
-  console.log(`updatecontact - back: ${ back } firstName: ${ firstName } \
-    name: ${ name } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } \
-    department: ${ department } position: ${ position } type: ${ type } \
-  `)
-  */
-
   let posterName = ''
   let posterEmail = ''
 
