@@ -2,6 +2,8 @@
   // Based on: https://svelte.dev/repl/cb199730e83f41beb484ff522c64bec1?version=3.38.2
 
   export let showOnPx = 150;
+  export let back
+
   let hidden = true;
 
   function goTop() {
@@ -26,20 +28,21 @@
 </script>
 
 <style>
-  .back-to-top.hidden {
+  hidden {
     opacity: 0;
     visibility: hidden;
   }
 </style>
 
-<svelte:window on:scroll={handleOnScroll} />
+<svelte:window on:scroll={ handleOnScroll } />
 
-<div class="fixed visible z-50 bottom-8 place-self-center
+<a href="{ back }/#top"
+  class="fixed visible z-50 bottom-8 place-self-center
   bg-orange-500 text-white active:bg-gray-700 text-lg
   font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
   outline-none focus:outline-none mr-1 mb-1
   transition duration-300 ease-in-out 
   hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110" 
-  on:click={ goTop } class:hidden>
+  class:hidden>
   Back to top
-</div>
+</a>

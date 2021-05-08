@@ -1,8 +1,11 @@
 <script>
   import faculty from '../assets/faculty.json'
+  import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
+  import BackToTop from '../components/BackToTop.svelte'
 
   const [facultyColumn1, facultyColumn2] = createPersonGroups(faculty)
+  const letterIndex = createNameIndex(facultyColumn1.concat(facultyColumn2))
 </script>
 
 <style>
@@ -53,27 +56,39 @@
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
-      <ul class="text-lg text-gray-600 leading-tight">
-        {#each facultyColumn1 as facultyMember}
-          <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-            <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-              href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
-              { facultyMember.name }
-            </a>
-          </li>
-        {/each}
-      </ul>
-      <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
-        {#each facultyColumn2 as facultyMember}
-          <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-            <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-              href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
-              { facultyMember.name }
-            </a>
-          </li>
-        {/each}
-      </ul>
+    <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <div class="flex flex-col w-full place-items-center">
+        <div class="flex flex-wrap bg-gray-300 mb-2">
+          {#each letterIndex as indexLetter}
+            <a class="mr-0.5 md:ml-2 lg:ml-2 text-sm md:text-xl" href="faculty/{ indexLetter.name }">{ indexLetter.letter }</a>
+          {/each}
+        </div>
+      </div>
+
+      <div class="flex w-full justify-center">
+        <ul class="text-lg text-gray-600 leading-tight">
+          {#each facultyColumn1 as facultyMember}
+            <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+              <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
+                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+                { facultyMember.name }
+              </a>
+            </li>
+          {/each}
+        </ul>
+        <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
+          {#each facultyColumn2 as facultyMember}
+            <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+              <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
+                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+                { facultyMember.name }
+              </a>
+            </li>
+          {/each}
+        </ul>
+
+        <BackToTop back="faculty"/>
+      </div>
     </div>
   </div>
 </section>
