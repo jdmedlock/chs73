@@ -1,9 +1,12 @@
 <script>
-  import classmates from '../assets/classmates.json'  
+  import classmates from '../assets/classmates.json'
+  import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
+  import BackToTop from '../components/BackToTop.svelte'
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
 
+  const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
 </script>
 
 <style>
@@ -52,6 +55,14 @@
       </div>
     </div>
 
+    <div class="flex flex-col w-full place-items-center">
+      <div class="flex flex-wrap">
+        {#each letterIndex as indexLetter}
+          <a class="ml-2" href="classmates/{ indexLetter.name }">{ indexLetter.letter }</a>
+        {/each}
+      </div>
+    </div>
+
     <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
       <ul class="text-lg text-gray-600 leading-tight">
         {#each classmateColumn1 as classmate}
@@ -74,6 +85,10 @@
           </li>
         {/each}
       </ul>
+
+      <BackToTop/>
     </div>
+
   </div>
+
 </section>
