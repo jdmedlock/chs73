@@ -5,7 +5,6 @@
   import BackToTop from '../components/BackToTop.svelte'
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
-
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
 </script>
 
@@ -13,8 +12,7 @@
 </style>
 
 <section class="relative py-12 lg:py-20">
-  <div
-    class="bottom-auto top-0 left-0 right-0 w-full absolute
+  <div class="bottom-auto top-0 left-0 right-0 w-full absolute
     pointer-events-none overflow-hidden -mt-20"
     style="height: 80px;">
     <svg
@@ -30,10 +28,12 @@
         points="2560 0 2560 100 0 100" />
     </svg>
   </div>
+
   <div class="container flex flex-wrap justify-center w-full mx-auto lg:py-none px-4">
     <div class="flex w-full justify-center">
       <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">Class of 1973</h1>
     </div>
+
     <div class="flex justify-center w-full">
       <div class="flex max-w-full mb-4 content-start">
         <div class="flex flex-wrap w-full m-0 p-0 justify-center">
@@ -55,38 +55,42 @@
       </div>
     </div>
 
-    <div class="flex flex-col w-full place-items-center">
-      <div class="flex flex-wrap">
-        {#each letterIndex as indexLetter}
-          <a class="ml-2" href="classmates/{ indexLetter.name }">{ indexLetter.letter }</a>
-        {/each}
+    <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <div class="flex flex-col w-full place-items-center">
+        <div class="flex flex-wrap bg-gray-300 mb-2">
+          {#each letterIndex as indexLetter}
+            <a class="mr-0.5 md:ml-2 lg:ml-3 text-sm md:text-xl" href="classmates/{ indexLetter.name }">{ indexLetter.letter }</a>
+          {/each}
+        </div>
       </div>
-    </div>
 
-    <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
-      <ul class="text-lg text-gray-600 leading-tight">
-        {#each classmateColumn1 as classmate}
-          <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-            <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
-              href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
-              { classmate.name }
-            </a>
-          </li>
-        {/each}
-      </ul>
-      <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
-        {#each classmateColumn2 as classmate}
-          <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-            <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
-              class="" 
-              href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
-              { classmate.name }
-            </a>
-          </li>
-        {/each}
-      </ul>
+      <div class="flex w-full justify-center">
+        <ul class="text-lg text-gray-600 leading-tight">
+          {#each classmateColumn1 as classmate}
+            <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+              <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+                href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
+                { classmate.name }
+              </a>
+            </li>
+          {/each}
+        </ul>
 
-      <BackToTop/>
+        <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
+          {#each classmateColumn2 as classmate}
+            <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+              <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+                class="" 
+                href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                { classmate.name }
+              </a>
+            </li>
+          {/each}
+        </ul>
+
+        <BackToTop back="classmates"/>
+      </div>
+
     </div>
 
   </div>

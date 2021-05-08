@@ -32,7 +32,7 @@
 
 </style>
 
-<nav class="fixed flex flex-col w-full z-10 top-0 bg-gray-900 text-white">
+<nav class="fixed flex flex-col w-full z-10 top-0 bg-gray-900 text-white text-xl">
 	<button id="menuBtn" class="block focus:outline-none" type="button" 
 		on:click={ toggleNavbar } aria-label="Menu">
 		<img class="md:hidden m-2 w-12 h-10" src="chs_tiger.png" alt="CHS Tiger"/>
