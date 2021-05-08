@@ -62,7 +62,7 @@
             by Ken Hill - Motivational Speaker
           </a>
           <div on:click={ () => showGreeting = !showGreeting }>
-            (Click to display/hide greeting.)
+            (Click here to display/hide greeting)
           </div>
         </div>
 
