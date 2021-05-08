@@ -62,7 +62,7 @@
             by Ken Hill - Motivational Speaker
           </a>
           <div on:click={ () => showGreeting = !showGreeting }>
-            (Click here to display/hide greeting)
+            (Click here to display/hide)
           </div>
         </div>
 
@@ -92,7 +92,7 @@
               the gift of time together we had been given 50 years before.
             </p>
 
-            <li class="text-xl md:text-2xl font-bold">We shouldn’t allow time to erase past relationships.</li>
+            <li class="text-xl md:text-2xl font-bold mt-4">We shouldn’t allow time to erase past relationships.</li>
             <p class="mt-2 ml-0.5">
               You might ask, “Why should anyone try to keep in touch with 
               classmates from 50 years ago?” Because we were friends. Because 
@@ -155,7 +155,7 @@
     </div>
 
     <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 py-2 
-      border-gray-300 border-2 shadow-2xl">
+      border-gray-300 border-2 shadow-2xl mt-4">
       <div class="flex flex-wrap place-content-center w-full">
         <p><em>Click</em> on a name to see more.</p>
       </div>
