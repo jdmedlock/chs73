@@ -3,6 +3,7 @@
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
+  import LetterIndex from '../components/LetterIndex.svelte'
 
   const [facultyColumn1, facultyColumn2] = createPersonGroups(faculty)
   const letterIndex = createNameIndex(facultyColumn1.concat(facultyColumn2))
@@ -57,13 +58,7 @@
     </div>
 
     <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
-      <div class="flex flex-col w-full place-items-center">
-        <div class="flex flex-wrap bg-gray-300 mb-2">
-          {#each letterIndex as indexLetter}
-            <a class="mr-0.5 md:ml-2 lg:ml-2 text-sm md:text-xl" href="faculty/{ indexLetter.name }">{ indexLetter.letter }</a>
-          {/each}
-        </div>
-      </div>
+      <LetterIndex pageName="faculty" letterIndex={ letterIndex } />
 
       <div class="flex w-full justify-center">
         <ul class="text-lg text-gray-600 leading-tight">
