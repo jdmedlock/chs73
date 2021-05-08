@@ -7,6 +7,8 @@
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+
+  let showGreeting = false
 </script>
 
 <style>
@@ -55,97 +57,101 @@
         <div class="text-xl md:text-3xl font-bold md:font-extrabold underline italic text-center">
           3 Valuable Life Lessons Learned from a 50 Year Class Reunion
         </div>
-        <div class="text-xl md:text-2xl text-center">
-          <a class="text-base"
-            href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
+        <div class="text-xl md:text-2xl text-center text-base mb-4">
+          <a href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
             by Ken Hill - Motivational Speaker
-          </a> 
+          </a>
+          <div on:click={ () => showGreeting = !showGreeting }>
+            (Click to display/hide greeting.)
+          </div>
         </div>
 
-
-        <div class="mt-2">
-          <p>
-            Last month I attended my 50 year class reunion. Cotton High School. 
-            Class of 1946. It was a highlight of my year. I came away with 
-            some valuable insights I wish I had learned long ago.
-          </p>
-        </div>
-
-        <ol class="list-decimal mt-4">
-          <li class="text-xl md:text-2xl font-bold">Time is not on our side.</li>
-          <p class="mt-2 ml-0.5">
-            Time doesn’t take sides. Time can be an enemy or a friend. It’s what 
-            we make it. It is a window of opportunity. We are each given an 
-            unknown allotment of time to be optimized or wasted and every second 
-            of every day the allotment diminishes. This shouldn’t be depressing, 
-            it should be a motivating truth that drives us to cherish and 
-            maximize every moment.
-          </p>
-          <p class="mt-2 ml-0.5">
-            Several of my classmates were not with us because they had run 
-            out of time. All of us who were there knew time had changed us.  
-            We were grateful to use this day to renew friendships and remember 
-            the gift of time together we had been given 50 years before.
-          </p>
-
-          <li class="text-xl md:text-2xl font-bold">We shouldn’t allow time to erase past relationships.</li>
-          <p class="mt-2 ml-0.5">
-            You might ask, “Why should anyone try to keep in touch with 
-            classmates from 50 years ago?” Because we were friends. Because 
-            every one of our classmates are children of God. Time doesn’t 
-            change that.
-          </p>
-          <p class="mt-2 ml-0.5">
-            I spent 12 years with my classmates. Getting my diploma was not 
-            an excuse for not keeping aware of what is happening in their 
-            lives. Every relationship we have is a gift to be cherished and 
-            with today’s technology there is no excuse for not staying 
-            informed. I’m not suggesting that we have to constantly 
-            communicate with everyone we meet, but I regret not staying 
-            connected.
-          </p>
-          <p class="mt-2 ml-0.5">
-            Had I kept in touch, I could have known of the personal loss some 
-            of them suffered. I could have prayed for my friends as they 
-            faced challenges and cheered their victories. I can’t do it over 
-            but I am committed to keeping track of these wonderful people.
-          </p>
-          <p class="mt-2 ml-0.5">
-            I know that the busyness of our own personal lives and careers 
-            makes it hard to keep up with old friends. But I came away from 
-            this reunion wondering…
-          </p>
-          <div class="flex m-4 justify-center">
-            <p class="text-3xl font-bold italic">
-              “If we are too busy to nourish old relationships, perhaps we are 
-              too busy.”
+        {#if showGreeting}
+          <div class="mt-2">
+            <p>
+              Last month I attended my 50 year class reunion. Cotton High School. 
+              Class of 1946. It was a highlight of my year. I came away with 
+              some valuable insights I wish I had learned long ago.
             </p>
           </div>
 
-          <li class="text-xl md:text-2xl font-bold">Time destroys the artificial social structure 
-            of High School. Thank God!</li>
-          <p class="mt-2 ml-0.5">
-            High School was filled with intricate strata of cliques;  jocks, 
-            geeks, brains, cowboys, farmers, goody two shoes, quiet people, 
-            rowdy people, trouble makers, bookworms, the in crowd.
-          </p>
-          <p class="mt-2 ml-0.5">
-            <em>All of that nonsense dissolves with time.</em> The people at 
-            a 50 year reunion aren’t trying to impress anyone. We reveled in 
-            memories of youth and gloried in sharing the blessing and 
-            difficulties time has brought our way.
-          </p>
-          <p class="mt-2 ml-0.5">
-            I had more fun reconnecting and reminiscing with my old friends 
-            than I’ve have had in a long time. I want to thank Linda, Buddy, 
-            Gary, Patty, Kent, Curtis, Duane and Richard for taking time to 
-            come. You made my 50 year reunion a remarkable, memorable day. 
-            You reminded me of the relentless march of time and the importance 
-            of relationships. See you next year!
-          </p>
-        </ol>
+          <ol class="list-decimal mt-4">
+            <li class="text-xl md:text-2xl font-bold">Time is not on our side.</li>
+            <p class="mt-2 ml-0.5">
+              Time doesn’t take sides. Time can be an enemy or a friend. It’s what 
+              we make it. It is a window of opportunity. We are each given an 
+              unknown allotment of time to be optimized or wasted and every second 
+              of every day the allotment diminishes. This shouldn’t be depressing, 
+              it should be a motivating truth that drives us to cherish and 
+              maximize every moment.
+            </p>
+            <p class="mt-2 ml-0.5">
+              Several of my classmates were not with us because they had run 
+              out of time. All of us who were there knew time had changed us.  
+              We were grateful to use this day to renew friendships and remember 
+              the gift of time together we had been given 50 years before.
+            </p>
+
+            <li class="text-xl md:text-2xl font-bold">We shouldn’t allow time to erase past relationships.</li>
+            <p class="mt-2 ml-0.5">
+              You might ask, “Why should anyone try to keep in touch with 
+              classmates from 50 years ago?” Because we were friends. Because 
+              every one of our classmates are children of God. Time doesn’t 
+              change that.
+            </p>
+            <p class="mt-2 ml-0.5">
+              I spent 12 years with my classmates. Getting my diploma was not 
+              an excuse for not keeping aware of what is happening in their 
+              lives. Every relationship we have is a gift to be cherished and 
+              with today’s technology there is no excuse for not staying 
+              informed. I’m not suggesting that we have to constantly 
+              communicate with everyone we meet, but I regret not staying 
+              connected.
+            </p>
+            <p class="mt-2 ml-0.5">
+              Had I kept in touch, I could have known of the personal loss some 
+              of them suffered. I could have prayed for my friends as they 
+              faced challenges and cheered their victories. I can’t do it over 
+              but I am committed to keeping track of these wonderful people.
+            </p>
+            <p class="mt-2 ml-0.5">
+              I know that the busyness of our own personal lives and careers 
+              makes it hard to keep up with old friends. But I came away from 
+              this reunion wondering…
+            </p>
+            <div class="flex m-4 justify-center">
+              <p class="text-3xl font-bold italic">
+                “If we are too busy to nourish old relationships, perhaps we are 
+                too busy.”
+              </p>
+            </div>
+
+            <li class="text-xl md:text-2xl font-bold">Time destroys the artificial social structure 
+              of High School. Thank God!</li>
+            <p class="mt-2 ml-0.5">
+              High School was filled with intricate strata of cliques;  jocks, 
+              geeks, brains, cowboys, farmers, goody two shoes, quiet people, 
+              rowdy people, trouble makers, bookworms, the in crowd.
+            </p>
+            <p class="mt-2 ml-0.5">
+              <em>All of that nonsense dissolves with time.</em> The people at 
+              a 50 year reunion aren’t trying to impress anyone. We reveled in 
+              memories of youth and gloried in sharing the blessing and 
+              difficulties time has brought our way.
+            </p>
+            <p class="mt-2 ml-0.5">
+              I had more fun reconnecting and reminiscing with my old friends 
+              than I’ve have had in a long time. I want to thank Linda, Buddy, 
+              Gary, Patty, Kent, Curtis, Duane and Richard for taking time to 
+              come. You made my 50 year reunion a remarkable, memorable day. 
+              You reminded me of the relentless march of time and the importance 
+              of relationships. See you next year!
+            </p>
+          </ol>
+        {/if}
 
       </div>
+
     </div>
 
     <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 py-2 
