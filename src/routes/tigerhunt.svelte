@@ -38,10 +38,12 @@
     </svg>
   </div>
 
-  <div class="container flex flex-wrap justify-center w-full mx-auto lg:py-none px-4">
+  <div class="container flex flex-wrap justify-center w-full  lg:7/12 mx-auto lg:py-none px-4">
+
     <div class="flex flex-col w-full justify-center text-center">
       <h1 class="my-12 text-3xl md:text-5xl font-semibold">TigerHunt!</h1>   
     </div>
+
     <div class="flex justify-center w-full">
       <div class="flex flex-col max-ww-full mb-4 content-start">
         <div class="flex flex-wrap w-full m-4 p-0 justify-center">
@@ -56,15 +58,15 @@
           </picture>
         </div>
         
-        <div class="flex flex-col w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
+        <div class="flex flex-col w-full md:w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
           <p class="">
             TigerHunt lets you help locate Classmates by providing up-to-date contact 
             information for people you are in contact with. Help us spread the
             word about our 50th reunion.
           </p>
-          <div class="flex flex-wrap place-self-center mt-3">
-            <p class="font-semibold italic mx-2.5">Click on a name</p>
-            <p>if you have contact info to share.</p>
+          <div class="flex flex-row place-self-center mt-3">
+            <p class="font-semibold italic mr-0.5 md:mr-1.5">Click</p>
+            <p>on a name to share contact info.</p>
           </div>
         </div>
       </div>

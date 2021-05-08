@@ -30,10 +30,13 @@
         points="2560 0 2560 100 0 100" />
     </svg>
   </div>
-  <div class="container flex flex-wrap justify-center w-full mx-auto lg:py-none px-4">
+
+  <div class="container flex flex-wrap justify-center w-full lg:7/12 mx-auto lg:py-none px-4">
+
     <div class="flex w-full justify-center">
       <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">Faculty & Staff of 1973</h1>
     </div>
+
     <div class="flex justify-center w-full">
       <div class="flex max-w-full mb-4 content-start">
         <div class="flex flex-wrap w-full m-0 p-0 justify-center">
