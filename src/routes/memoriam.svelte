@@ -67,8 +67,9 @@
             and remember that time....
           </p>
           <p class="mt-8 text-sm leading-normal text-gray-600">
-            An internet search of what to say here about our classmates who have gone before us turned up this note. 
-            Attributions to its author, Bob Condron
+            An internet search of what to say here about our classmates who 
+            have gone before us turned up this note. Attributions to its 
+            author, Bob Condron
           </p>
         </div>
       </div>

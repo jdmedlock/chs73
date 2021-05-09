@@ -32,9 +32,12 @@
     </svg>
   </div>
 
-  <div class="container flex flex-wrap justify-center w-full lg:7/12 mx-auto lg:py-none px-4">
+  <div class="container flex flex-wrap justify-center w-full lg:7/12 mx-auto 
+    lg:py-none px-4">
     <div class="flex w-full justify-center">
-      <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">Class of 1973</h1>
+      <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">
+        Class of 1973
+      </h1>
     </div>
 
     <div class="flex justify-center w-full">
@@ -54,13 +57,17 @@
     <div class="flex flex-col w-full mt-4 md:mt-0 mb-2 text-xl md:text-xl text-gray-500">
       <div class="flex flex-col flex-wrap w-3/4 justify-center m-auto">
 
-        <div class="text-xl md:text-3xl font-bold md:font-extrabold underline italic text-center">
+        <div class="text-xl md:text-3xl font-bold md:font-extrabold underline 
+          italic text-center">
           3 Valuable Life Lessons Learned from a 50 Year Class Reunion
         </div>
         <div class="text-xl md:text-2xl text-center text-base mb-4">
+          <div>by Ken Hill</div>
+          <!--
           <a href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
             by Ken Hill - Motivational Speaker
           </a>
+          -->
           <div on:click={ () => showGreeting = !showGreeting }>
             (Click here to display/hide)
           </div>
@@ -163,9 +170,11 @@
       <LetterIndex pageName="classmates" letterIndex={ letterIndex } />
 
       <div class="flex w-full justify-center">
-        <ul class="text-lg text-gray-600 leading-tight">
+        <ul class="ml-2 text-lg text-gray-600 leading-tight">
           {#each classmateColumn1 as classmate}
-            <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+            <li class="mt-2 transition duration-300 ease-in-out 
+              hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
+              transform hover:-translate-y-0 hover:scale-110">
               <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
                 href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
                 { classmate.name }
@@ -176,7 +185,9 @@
 
         <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
           {#each classmateColumn2 as classmate}
-            <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+            <li class="mt-2 transition duration-300 ease-in-out 
+            hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
+              transform hover:-translate-y-0 hover:scale-110">
               <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
                 class="" 
                 href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
@@ -188,9 +199,7 @@
 
         <BackToTop back="classmates"/>
       </div>
-
     </div>
-
   </div>
 
 </section>
