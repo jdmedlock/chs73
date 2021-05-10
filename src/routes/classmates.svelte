@@ -57,19 +57,19 @@
     <div class="flex flex-col w-full mt-4 md:mt-0 mb-2 text-xl md:text-xl text-gray-500">
       <div class="flex flex-col flex-wrap w-3/4 justify-center m-auto">
 
-        <div class="text-xl md:text-3xl font-bold md:font-extrabold underline 
-          italic text-center">
-          3 Valuable Life Lessons Learned from a 50 Year Class Reunion
-        </div>
-        <div class="text-xl md:text-2xl text-center text-base mb-4">
-          <div>by Ken Hill</div>
-          <!--
-          <a href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
-            by Ken Hill - Motivational Speaker
-          </a>
-          -->
-          <div on:click={ () => showGreeting = !showGreeting }>
-            (Click here to display/hide)
+        <div on:click={ () => showGreeting = !showGreeting }>
+          <div class="text-xl md:text-3xl font-bold md:font-extrabold underline 
+            italic text-center">
+            3 Valuable Life Lessons Learned from a 50 Year Class Reunion
+          </div>
+          <div class="text-xl md:text-2xl text-center text-base mb-4">
+            <div>by Ken Hill - Motivational Speaker</div>
+            <!--
+            <a href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
+              by Ken Hill - Motivational Speaker
+            </a>
+            -->
+            (Click to display/hide)
           </div>
         </div>
 
