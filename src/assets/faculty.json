@@ -280,13 +280,13 @@
     "cloudinaryId": "/chs_faculty/Bettye_Kester_spqhgn.jpg"
   },
   {
-    "confirmed": "FALSE",
-    "inYearbook": "",
+    "confirmed": "TRUE",
+    "inYearbook": "TRUE",
     "firstName": "Vivian",
     "lastName": "Kies",
     "department": "History",
     "position": "American History",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Vivian_Kies_beuusq.jpg"
   },
   {
