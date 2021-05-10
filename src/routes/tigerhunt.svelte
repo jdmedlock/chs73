@@ -41,7 +41,7 @@
   <div class="container flex flex-wrap justify-center w-full  lg:7/12 mx-auto lg:py-none px-4">
 
     <div class="flex flex-col w-full justify-center text-center">
-      <h1 class="my-12 text-3xl md:text-5xl font-semibold">TigerHunt!</h1>   
+      <h1 class="my-12 text-3xl md:text-5xl font-semibold">Tiger Hunt!</h1>   
     </div>
 
     <div class="flex justify-center w-full">
@@ -60,7 +60,7 @@
         
         <div class="flex flex-col w-full md:w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
           <p class="">
-            TigerHunt lets you help locate Classmates by providing up-to-date contact 
+            Tiger Hunt lets you help locate Classmates by providing up-to-date contact 
             information for people you are in contact with. Help us spread the
             word about our 50th reunion.
           </p>
