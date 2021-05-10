@@ -67,29 +67,38 @@
             and remember that time....
           </p>
           <p class="mt-8 text-sm leading-normal text-gray-600">
-            An internet search of what to say here about our classmates who have gone before us turned up this note. 
-            Attributions to its author, Bob Condron
+            An internet search of what to say here about our classmates who 
+            have gone before us turned up this note. Attributions to its 
+            author, Bob Condron
           </p>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 ml-1 md:ml-12 lg:ml-20 p-4 border-gray-300 border-2 shadow-2xl">
-        <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
-          {#each classmateColumn1 as classmate}
-            <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-              <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
-                { classmate.name }
-              </a>
-            </li>          {/each}
-        </ul>
-        <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
-          {#each classmateColumn2 as classmate}
-            <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-              <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
-                { classmate.name }
-              </a>
-            </li>
-          {/each}
-        </ul>
+
+      <div class="flex flex-col justify-center w-full md:w-5/12 
+        ml-1 md:ml-12 lg:ml-20 px-4 border-gray-300 border-2 shadow-2xl">
+        <div class="flex flex-wrap place-content-center w-full">
+          <p><em>Click</em> on a name to see more.</p>
+        </div>
+
+        <div class="flex w-full justify-center">
+          <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
+            {#each classmateColumn1 as classmate}
+              <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+                <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                  { classmate.name }
+                </a>
+              </li>          {/each}
+          </ul>
+          <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
+            {#each classmateColumn2 as classmate}
+              <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+                <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                  { classmate.name }
+                </a>
+              </li>
+            {/each}
+          </ul>
+        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,15 @@
 <script>
   import { goto } from '@sapper/app'
   import classmates from '../assets/classmates.json'
+  import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
+  import BackToTop from '../components/BackToTop.svelte'
+  import LetterIndex from '../components/LetterIndex.svelte'
 
   const unconfirmedClassmates = classmates.filter(classmate => classmate.confirmed === "FALSE")
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(unconfirmedClassmates)
+  const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
 
   const handleTigerHunt = async (classmate) => {
     await goto(`updatecontact?back=tigerhunt&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
@@ -15,7 +19,7 @@
 <style>
 </style>
 
-<section class="relative py-12 lg:py-20">
+<section id="top" class="relative py-12 lg:py-20">
   <div
     class="bottom-auto top-0 left-0 right-0 w-full absolute
     pointer-events-none overflow-hidden -mt-20"
@@ -33,10 +37,13 @@
         points="2560 0 2560 100 0 100" />
     </svg>
   </div>
-  <div class="container flex flex-wrap justify-center w-full mx-auto lg:py-none px-4">
+
+  <div class="container flex flex-wrap justify-center w-full  lg:7/12 mx-auto lg:py-none px-4">
+
     <div class="flex flex-col w-full justify-center text-center">
       <h1 class="my-12 text-3xl md:text-5xl font-semibold">TigerHunt!</h1>   
     </div>
+
     <div class="flex justify-center w-full">
       <div class="flex flex-col max-ww-full mb-4 content-start">
         <div class="flex flex-wrap w-full m-4 p-0 justify-center">
@@ -51,37 +58,42 @@
           </picture>
         </div>
         
-        <div class="flex flex-col w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
+        <div class="flex flex-col w-full md:w-2/3 place-self-center text-center text-xl md:text-3xl text-gray-500">
           <p class="">
             TigerHunt lets you help locate Classmates by providing up-to-date contact 
             information for people you are in contact with. Help us spread the
             word about our 50th reunion.
           </p>
-          <div class="flex flex-wrap place-self-center mt-3">
-            <p class="font-semibold italic mx-2.5">Click on a name</p>
-            <p>if you have contact info to share.</p>
-          </div>
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center w-full md:w-5/12 
-      ml-1 p-4 border-gray-300 border-2 shadow-2xl">
-      <ul class="mt-2 text-lg md:text-xl text-gray-600 leading-tight">
-        {#each classmateColumn1 as classmate}
-          <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
-            class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
-            on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
-        {/each}
-      </ul>
-      <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg md:text-xl text-gray-600 
-        leading-tight">
-        {#each classmateColumn2 as classmate}
-          <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
-            class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
-            on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
-        {/each}
-      </ul>
+    <div class="md:flex-row justify-center w-full lg:w-1/2 ml-1 p-4 border-gray-300 border-2 shadow-2xl">
+      <div class="flex flex-wrap place-content-center w-full">
+        <p><em>Click</em> on a name to see more.</p>
+      </div>
+
+      <LetterIndex pageName="tigerhunt" letterIndex={ letterIndex } />
+
+      <div class="flex w-full justify-center">
+        <ul class="mt-2 text-md md:text-xl text-gray-600 leading-tight">
+          {#each classmateColumn1 as classmate}
+            <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+              class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
+              on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
+          {/each}
+        </ul>
+        <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg md:text-xl text-gray-600 
+          leading-tight">
+          {#each classmateColumn2 as classmate}
+            <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+              class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
+              on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
+          {/each}
+        </ul>
+
+        <BackToTop back="tigerhunt"/>
+      </div>
     </div>
   </div>
 </section>
