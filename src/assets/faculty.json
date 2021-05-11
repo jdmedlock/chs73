@@ -520,13 +520,13 @@
     "cloudinaryId": "/chs_faculty/Ford_Phillips_pvknyt.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Everett",
     "lastName": "Plunk",
     "department": "Mathematics",
     "position": "III, Intermediate II",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Everett_Plunk_q7ojym.jpg"
   },
   {
@@ -579,13 +579,13 @@
     "cloudinaryId": "/chs_faculty/Payne_Rose_t1wyyr.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Jack",
     "lastName": "Russell",
     "department": "Drivers Ed.",
     "position": "Instructor",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Jack_Russell_xtqrwm.jpg"
   },
   {
