@@ -235,8 +235,8 @@
     "firstName": "Weldon",
     "lastName": "Hager",
     "department": "Administration",
-    "deceased": "Director of Student Activities",
-    "position": "",
+    "position": "Director of Student Activities",
+    "deceased": "",
     "cloudinaryId": "/chs_faculty/Weldon_Hager_v5z4cu.png"
   },
   {
@@ -490,13 +490,13 @@
     "cloudinaryId": "/chs_faculty/Billy_Mize_k6nwnp.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Alta",
     "lastName": "Muegge",
     "department": "History",
     "position": "American History",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Alta_Muegge_w3pyus.jpg"
   },
   {
@@ -589,13 +589,13 @@
     "cloudinaryId": "/chs_faculty/Jack_Russell_xtqrwm.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Alene",
     "lastName": "Sadler",
     "department": "English",
     "position": "English IV, Humanities",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Alene_Sadler_rdu8wn.jpg"
   },
   {
@@ -679,13 +679,13 @@
     "cloudinaryId": "/chs_faculty/Mary_Siva_sxlpfk.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Inez",
     "lastName": "Smith",
     "department": "English",
     "position": "English IV, Composition",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Inez_Smith_vmbrpf.jpg"
   },
   {
@@ -809,13 +809,13 @@
     "cloudinaryId": "/chs_faculty/Eugene_Warner_guwukg.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Grace",
     "lastName": "Williams",
     "department": "Mathematics",
     "position": "II, III, IV, V",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Grace_Williams_v1vb9v.jpg"
   },
   {
