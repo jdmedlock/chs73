@@ -3044,7 +3044,7 @@
     "inYearbook": "TRUE",
     "firstName": "Nancy",
     "lastName": "Rehkoph",
-    "marriedLastName": "Krigbaum",
+    "marriedLastName": "Nicholas",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": ""
@@ -3130,7 +3130,7 @@
     "cloudinaryId": "Ellen_Rieck_ubaksg.png"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Peter",
     "lastName": "Ritchie",
