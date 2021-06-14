@@ -260,7 +260,7 @@
     "cloudinaryId": "Anita_Bolton_rrap3c.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Nancy",
     "lastName": "Bond",
@@ -450,7 +450,7 @@
     "cloudinaryId": "Cathie_Capshaw_oresh8.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Steve",
     "lastName": "Cardin",
@@ -830,13 +830,13 @@
     "cloudinaryId": "Kathy_Dunn_hzakdp.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Mary",
     "lastName": "Eaker",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": ""
   },
   {
@@ -2107,7 +2107,7 @@
     "marriedLastName": "",
     "volunteer": "FALSE",
     "deceased": "FALSE",
-    "cloudinaryId": ""
+    "cloudinaryId": "Mike_King_z5xkme.png"
   },
   {
     "confirmed": "FALSE",
@@ -2220,11 +2220,11 @@
     "cloudinaryId": "Kathy_Lamkin_rj2sxc.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Cheryl",
     "lastName": "Lange",
-    "marriedLastName": "",
+    "marriedLastName": "Pittman",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": ""
@@ -2580,7 +2580,7 @@
     "cloudinaryId": "Frank_Merkler_zhkwtp.png"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "FALSE",
     "firstName": "Carlotta \"Kim",
     "lastName": "Meyer",
@@ -3670,7 +3670,7 @@
     "cloudinaryId": "William_Stockman_cz9grj.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Frank",
     "lastName": "Stoffregan",
@@ -3870,7 +3870,7 @@
     "cloudinaryId": "Peggy_Vann_ylepnz.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Jim",
     "lastName": "Vanpelt",
@@ -4090,7 +4090,7 @@
     "cloudinaryId": "Wanda_Wheeler_xtem0k.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Penny",
     "lastName": "Wilhote",
