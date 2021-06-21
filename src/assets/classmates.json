@@ -920,7 +920,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Vicki",
     "lastName": "Ellis",
@@ -1840,13 +1840,13 @@
     "cloudinaryId": "Janey_Huckabay_oq2v8p.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "John",
     "lastName": "Huckabee",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": ""
   },
   {
@@ -3040,7 +3040,7 @@
     "cloudinaryId": "Don_Reed_x1f8dd.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Nancy",
     "lastName": "Rehkoph",
@@ -3520,7 +3520,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Beverly",
     "lastName": "Smiley",
