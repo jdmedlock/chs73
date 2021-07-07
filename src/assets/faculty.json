@@ -166,7 +166,7 @@
     "lastName": "Ewing",
     "department": "Music",
     "position": "Instrumental",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Bill_Ewing_dursck.jpg"
   },
   {
