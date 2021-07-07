@@ -160,13 +160,13 @@
     "cloudinaryId": "/chs_faculty/Barbara_Ellison_ldwasb.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Bill",
     "lastName": "Ewing",
     "department": "Music",
     "position": "Instrumental",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Bill_Ewing_dursck.jpg"
   },
   {
