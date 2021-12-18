@@ -1816,7 +1816,7 @@
     "lastName": "Howard",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": ""
   },
   {
@@ -3866,7 +3866,7 @@
     "lastName": "Vann",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Peggy_Vann_ylepnz.jpg"
   },
   {

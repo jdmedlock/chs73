@@ -665,7 +665,7 @@
     "lastName": "Sifford",
     "department": "Administration",
     "position": "Principal",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/Eugene_Sifford_jacqyz.jpg"
   },
   {
