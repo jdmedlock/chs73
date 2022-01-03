@@ -390,13 +390,13 @@
     "cloudinaryId": "Tony_Brown_qqvapq.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
-    "firstName": "William",
+    "firstName": "Fred William",
     "lastName": "Brown",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "William_Brown_iv7jtf.jpg"
   },
   {
@@ -1340,13 +1340,13 @@
     "cloudinaryId": "Terry_Gockel_vwj61c.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "John",
     "lastName": "Gohn",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": ""
   },
   {
@@ -1642,7 +1642,7 @@
   {
     "confirmed": "TRUE",
     "inYearbook": "TRUE",
-    "firstName": "Terry",
+    "firstName": "Terri",
     "lastName": "Hency",
     "marriedLastName": "Noland",
     "volunteer": "FALSE",
@@ -1764,7 +1764,7 @@
     "inYearbook": "FALSE",
     "firstName": "Debby",
     "lastName": "Hoeller",
-    "marriedLastName": "",
+    "marriedLastName": "Cooper",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": "Deborah_Hoeller_fydzan.png"
@@ -1800,7 +1800,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Bob",
     "lastName": "Hotop",
@@ -1810,7 +1810,7 @@
     "cloudinaryId": "Bob_Hotop_pappcb.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Dale",
     "lastName": "Howard",
@@ -1882,7 +1882,7 @@
   {
     "confirmed": "TRUE",
     "inYearbook": "TRUE",
-    "firstName": "Becky",
+    "firstName": "Rebecca",
     "lastName": "Huff",
     "marriedLastName": "Fulton",
     "volunteer": "FALSE",
@@ -2190,23 +2190,23 @@
     "cloudinaryId": "Kim_Kremer_lx32hj.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "FALSE",
     "firstName": "John",
     "lastName": "Krewinghaus",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "John_Krewinghaus_g9cbxw.png"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Carolyn",
     "lastName": "Kuehn",
     "marriedLastName": "Crump",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Carolyn_Kuehn_nyos7g.jpg"
   },
   {
@@ -2800,7 +2800,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Cheryl",
     "lastName": "Needham",
@@ -3000,13 +3000,13 @@
     "cloudinaryId": "Dennis_Raddle_myjuzb.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Pamela",
     "lastName": "Rains",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Pam_Rains_jnodwq.jpg"
   },
   {
@@ -3350,13 +3350,13 @@
     "cloudinaryId": "Roger_Schloss_kfd0pf.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Beth",
     "lastName": "Schmucker",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Beth_Schmucker_u0cfc3.jpg"
   },
   {
@@ -3450,13 +3450,13 @@
     "cloudinaryId": "Connie_Shirrell_lhomrl.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "FALSE",
     "firstName": "Terry",
     "lastName": "Sides",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Terry_Sides_nsh6jx.png"
   },
   {
@@ -3900,13 +3900,13 @@
     "cloudinaryId": "Tina_Voelker_t9ywnt.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Ann",
     "lastName": "Vogel",
     "marriedLastName": "Jones",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Ann_Vogel_ikvm1c.jpg"
   },
   {
