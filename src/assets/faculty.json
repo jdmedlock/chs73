@@ -500,13 +500,13 @@
     "cloudinaryId": "/chs_faculty/Alta_Muegge_w3pyus.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "",
     "firstName": "Melba",
     "lastName": "Myers",
     "department": "",
     "position": "",
-    "deceased": "",
+    "deceased": "TRUE",
     "cloudinaryId": "/chs_faculty/"
   },
   {
