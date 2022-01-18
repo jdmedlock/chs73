@@ -1040,7 +1040,7 @@
     "cloudinaryId": "Harold_Fallert_cumxhx.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Elaine",
     "lastName": "Farrar",
@@ -2310,7 +2310,7 @@
     "cloudinaryId": "Melinda_Linn_b1ciaf.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "David",
     "lastName": "Locke",
@@ -3630,7 +3630,7 @@
     "cloudinaryId": "Vickie_Statler_izhvxu.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Suzzanne",
     "lastName": "Steimle",
@@ -3750,7 +3750,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Brad",
     "lastName": "Teichman",
@@ -3860,7 +3860,7 @@
     "cloudinaryId": "Debbie_Turner_jg44m7.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Peggy",
     "lastName": "Vann",
