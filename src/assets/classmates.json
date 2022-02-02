@@ -270,7 +270,7 @@
     "cloudinaryId": "Nancy_Bond_rzcuvq.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Rick",
     "lastName": "Boston",
@@ -590,11 +590,11 @@
     "cloudinaryId": "Evelyn_Cooper_vnpevk.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Nancy",
     "lastName": "Corbin",
-    "marriedLastName": "",
+    "marriedLastName": "Frayser",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": "Nancy_Corbin_qdpmfr.jpg"
@@ -640,7 +640,7 @@
     "cloudinaryId": "Linda_Creighton_ladfbi.png"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "James",
     "lastName": "Curry",
@@ -910,13 +910,13 @@
     "cloudinaryId": "Donna_Eggiman_vtnfob.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Larry",
     "lastName": "Elliott",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": ""
   },
   {
@@ -1160,7 +1160,7 @@
     "cloudinaryId": "Phillip_Franklin_rcxrl8.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "William",
     "lastName": "Frayser",
@@ -1240,7 +1240,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Wade",
     "lastName": "Fuller",
@@ -1500,11 +1500,11 @@
     "cloudinaryId": "Mike_Hamilton_sgplcu.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Aloise",
     "lastName": "Hammonds",
-    "marriedLastName": "",
+    "marriedLastName": "Fulks",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": ""
@@ -1920,7 +1920,7 @@
     "cloudinaryId": "Luanne_Jackson_uz7mfj.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Mark",
     "lastName": "Jenkins",
@@ -2410,7 +2410,7 @@
     "cloudinaryId": ""
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Bill",
     "lastName": "Malone",
@@ -2680,7 +2680,7 @@
     "cloudinaryId": "Elizabeth_Morris_zdqi1z.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Betty",
     "lastName": "Mosley",
@@ -2730,7 +2730,7 @@
     "cloudinaryId": "Rick_Mullins_fjewrx.png"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Gary",
     "lastName": "Mungle",
@@ -2740,7 +2740,7 @@
     "cloudinaryId": "Gary_Mungle_qaliqo.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Donald",
     "lastName": "Murph",
@@ -2980,7 +2980,7 @@
     "cloudinaryId": "Harold_Primm_wwenp9.png"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Bloyse",
     "lastName": "Propst",
@@ -3640,7 +3640,7 @@
     "cloudinaryId": "Suzanne_Steimle_e4ssqw.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Ernest",
     "lastName": "Stevens",
@@ -4190,11 +4190,11 @@
     "cloudinaryId": "Dennis_Wooldridge_slwfli.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Linda",
     "lastName": "Wren",
-    "marriedLastName": "",
+    "marriedLastName": "Hornback",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": ""
