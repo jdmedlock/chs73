@@ -342,13 +342,11 @@
             <h3 class="text-3xl font-semibold">CHS '73 - 50th Reunion Questionnaire</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
               As we prepare for our 50th Reunion we need to know your 
-              preferences and feedback to help make this event both meaningful
-              and fun!
+              preferences to help make this event meaningful and fun for all!
             </p>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
               Take a few minutes to complete this survey to share your
-              thoughts. We'll share the results with you once the results
-              are in.
+              thoughts. We'll report back once the results are in.
             </p>
           </div>
           <div class="flex flex-col">
