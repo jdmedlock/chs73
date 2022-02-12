@@ -335,15 +335,28 @@
           <img
             alt="Stay tuned"
             class="max-w-full rounded-lg shadow-lg mb-8 lg:mb-none"
-            src="chs_stay_tuned.png" />
+            src="chs_memories.jpeg" />
         </div>
         <div class="w-full md:w-5/12 m-auto px-4">
           <div class="md:pr-12">
-            <h3 class="text-3xl font-semibold">More information is on the way...</h3>
+            <h3 class="text-3xl font-semibold">CHS '73 - 50th Reunion Questionnaire</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              Check back frequently to get the latest news and information 
-							about your reunion!
+              As we prepare for our 50th Reunion we need to know your 
+              preferences to help make this event meaningful and fun for all!
             </p>
+            <p class="mt-4 text-lg leading-relaxed text-gray-600">
+              Take a few minutes to complete this survey to share your
+              thoughts. We'll report back once the results are in.
+            </p>
+          </div>
+          <div class="flex flex-col">
+            <div id="questionnaire" class="flex flex-wrap place-self-center w-auto bg-orange-500 text-white active:bg-gray-700 text-lg
+            font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+            outline-none focus:outline-none mt-3 mb-1
+            transition duration-300 ease-in-out 
+            hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
+              <a class="self-center" href="https://forms.gle/Qh3JGkdBxkAscrxm6" target="_blank">Take me to the Questionnaire!</a>
+            </div>
           </div>
         </div>
       </div>
