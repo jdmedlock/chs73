@@ -611,6 +611,16 @@
   },
   {
     "confirmed": "FALSE",
+    "inYearbook": "TRUE",
+    "firstName": "David",
+    "lastName": "Cordia",
+    "marriedLastName": "",
+    "volunteer": "FALSE",
+    "deceased": "FALSE",
+    "cloudinaryId": "David_Cordia_vo6qsv.jpg"
+  },
+  {
+    "confirmed": "FALSE",
     "inYearbook": "FALSE",
     "firstName": "Lynn",
     "lastName": "Corn",
@@ -2130,11 +2140,11 @@
     "cloudinaryId": "Linda_Kincaid_zwn3bv.jpg"
   },
   {
-    "confirmed": "FALSE",
+    "confirmed": "TRUE",
     "inYearbook": "TRUE",
     "firstName": "Jean",
     "lastName": "Kirk",
-    "marriedLastName": "",
+    "marriedLastName": "Baca",
     "volunteer": "FALSE",
     "deceased": "FALSE",
     "cloudinaryId": "Jean_Kirk_zl5qqi.jpg"
