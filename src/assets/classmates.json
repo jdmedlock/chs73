@@ -2936,7 +2936,7 @@
     "lastName": "Pensel",
     "marriedLastName": "",
     "volunteer": "FALSE",
-    "deceased": "FALSE",
+    "deceased": "TRUE",
     "cloudinaryId": "Robin_Pensel_dgeh75.jpg"
   },
   {
