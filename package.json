@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@cloudinary/svelte": "^0.0.1-alpha.2",
+    "airtable": "^0.11.3",
     "compression": "^1.7.1",
     "dotenv": "^8.2.0",
     "polka": "next",

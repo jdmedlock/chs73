@@ -4,6 +4,13 @@
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
+  
+  import { getClassmatesJSON } from '../airtable/Classmates'
+  let xclassmates
+  (async () => {
+    xclassmates = await getClassmatesJSON()
+    console.log('classmates - xclassmates: ', xclassmates)
+  })()
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
