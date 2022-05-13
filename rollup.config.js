@@ -23,6 +23,8 @@ const onwarn = (warning, onwarn) =>
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning)
 
+console.log(`rollup.config - process.env.AIRTABLE_API_KEY: ${ process.env.AIRTABLE_API_KEY }`)
+
 export default {
 	client: {
 		input: config.client.input(),
@@ -36,6 +38,8 @@ export default {
 					'process.env.BE_URL': JSON.stringify(process.env.BE_URL),
 					'process.env.CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
 					'process.env.CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
+					'process.env.AIRTABLE_API_KEY': JSON.stringify(process.env.AIRTABLE_API_KEY),
+					'process.env.AIRTABLE_BASE': JSON.stringify(process.env.AIRTABLE_BASE),
 				},
 			}),
 			svelte({

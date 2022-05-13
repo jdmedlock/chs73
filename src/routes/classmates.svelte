@@ -69,7 +69,7 @@
             italic text-center">
             3 Valuable Life Lessons Learned from a 50 Year Class Reunion
           </div>
-          <div class="text-xl md:text-2xl text-center text-base mb-4">
+          <div class="text-xl md:text-2xl text-center mb-4">
             <div>by Ken Hill - Motivational Speaker</div>
             <!--
             <a href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
