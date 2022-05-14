@@ -5,7 +5,6 @@ import Airtable from 'airtable'
 const getClassmatesJSON = async () => {
   return new Promise(async (resolve, reject) => {
     const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE)
-    let recordCount = 0
     let classmates = []
 
     base('Classmates').select({ 
@@ -13,8 +12,6 @@ const getClassmatesJSON = async () => {
     }).eachPage(function page(records, fetchNextPage) {
       // This function (`page`) will get called for each page of records.
       records.forEach(function (record) {
-        //console.log('Retrieved', record.get('Date Created'))
-        recordCount++
         classmates.push({
           "confirmed": record.fields.Confirmed,
           "inYearbook": record.fields.inYearbook,

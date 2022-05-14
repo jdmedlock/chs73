@@ -9,17 +9,17 @@
 
   let classmates
   let letterIndex
-  let showGreeting
+  let showGreeting = false
+  let classmateColumn1
+  let classmateColumn2
   
+  // Retrieve the list of classmates and build the last name index
   (async () => {
     classmates = await getClassmatesJSON()
-    console.log('classmates - #1 classmates.length: ', classmates.length)
-
-    console.log('classmates - #2 classmates.length: ', classmates.length)
-    const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
+    const classmateColumns = createPersonGroups(classmates)
+    classmateColumn1 = classmateColumns[0]
+    classmateColumn2 = classmateColumns[1]
     letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-
-    showGreeting = false
   })()
 </script>
 
@@ -183,7 +183,7 @@
 
       <div class="flex w-full justify-center">
         <ul class="ml-2 text-lg text-gray-600 leading-tight">
-          {#each classmateColumn1 as classmate}
+          {#each classmateColumn1 || [] as classmate}
             <li class="mt-2 transition duration-300 ease-in-out 
               hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
               transform hover:-translate-y-0 hover:scale-110">
@@ -196,7 +196,7 @@
         </ul>
 
         <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
-          {#each classmateColumn2 as classmate}
+          {#each classmateColumn2 || [] as classmate}
             <li class="mt-2 transition duration-300 ease-in-out 
             hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
               transform hover:-translate-y-0 hover:scale-110">
