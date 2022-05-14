@@ -5,22 +5,40 @@ import Airtable from 'airtable'
 const getClassmatesJSON = async () => {
   return new Promise(async (resolve, reject) => {
     const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE)
+    let recordCount = 0
+    let classmates = []
 
     base('Classmates').select({ 
       view: 'Classmates' 
-    })
-    .firstPage((err, records) => {
-      if (err) { 
-        console.error(err) 
-        reject(err) 
-      }
+    }).eachPage(function page(records, fetchNextPage) {
+      // This function (`page`) will get called for each page of records.
+      records.forEach(function (record) {
+        //console.log('Retrieved', record.get('Date Created'))
+        recordCount++
+        classmates.push({
+          "confirmed": record.fields.Confirmed,
+          "inYearbook": record.fields.inYearbook,
+          "firstName": record.fields.firstName,
+          "lastName": record.fields.lastName,
+          "marriedLastName": record.fields.marriedLastName === undefined ? "" : record.fields.marriedLastName,
+          "volunteer": record.fields.volunteer,
+          "deceased": record.fields.deceased,
+          "cloudinaryId": record.fields.cloudinaryId === undefined ? "" : record.fields.cloudinaryId,
+        })
+      })
 
-      // Return the number of Applications submitted in this date range
-      if (records !== null && records !== undefined) {
-        console.log(`records.length: `, records.length)
-        resolve(records)
+      // To fetch the next page of records, call `fetchNextPage`.
+      // If there are more records, `page` will get called again.
+      // If there are no more records, `done` will get called.
+      fetchNextPage()
+    }, function done(err) {
+      if (err) { 
+        console.error(err)
+        return
       }
-      resolve(0)
+      //console.log(`Record count: ${ recordCount }`)
+      //console.log('Classmates: ', classmates)
+      resolve(classmates)
     })
   })
 }

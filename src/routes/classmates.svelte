@@ -1,21 +1,26 @@
 <script>
-  import classmates from '../assets/classmates.json'
+  //import classmates from '../assets/classmates.json'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
   
   import { getClassmatesJSON } from '../airtable/Classmates'
-  let xclassmates
+
+  let classmates
+  let letterIndex
+  let showGreeting
+  
   (async () => {
-    xclassmates = await getClassmatesJSON()
-    console.log('classmates - xclassmates: ', xclassmates)
+    classmates = await getClassmatesJSON()
+    console.log('classmates - #1 classmates.length: ', classmates.length)
+
+    console.log('classmates - #2 classmates.length: ', classmates.length)
+    const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
+    letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+
+    showGreeting = false
   })()
-
-  const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
-  const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-
-  let showGreeting = false
 </script>
 
 <style>
