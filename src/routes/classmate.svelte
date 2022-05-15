@@ -19,9 +19,6 @@
 
   export let params
   let { back, firstName, classmateName, cloudinaryId, deceased, confirmed } = params
-
-  // console.log(`classmate - back: ${ back } firstName: ${ firstName } name: ${ classmateName } cloudinaryId: ${ cloudinaryId } deceased: ${ deceased } confirmed: ${ confirmed }`)
-
   let backPage = back === "classmate" ? "classmates" : back
 
   const handleTigerHunt = async () => {

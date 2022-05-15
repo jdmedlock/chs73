@@ -1,13 +1,27 @@
+<script context="module">
+	export async function load({ fetch }) {
+    const response = await fetch(`${ process.env.BE_URL }/classmates`, {mode: 'no-cors'})
+    const classmates = await response.json()
+    
+    return {
+			props: {
+				classmates: { classmates }
+			}
+		}
+	}
+</script>
+
 <script>
-  //import classmates from '../assets/classmates.json'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
-  
-  import { getClassmatesJSON } from '../airtable/Classmates'
+  //import { getClassmatesJSON } from '../airtable/Classmates'
 
-  let classmates
+  export let classmates
+  console.log('classmates - classmates: ', classmates)
+
+  //let classmates
   let letterIndex
   let showGreeting = false
   let classmateColumn1
@@ -15,7 +29,7 @@
   
   // Retrieve the list of classmates and build the last name index
   (async () => {
-    classmates = await getClassmatesJSON()
+    //classmates = await getClassmatesJSON()
     const classmateColumns = createPersonGroups(classmates)
     classmateColumn1 = classmateColumns[0]
     classmateColumn2 = classmateColumns[1]
