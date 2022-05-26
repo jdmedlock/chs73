@@ -1,6 +1,3 @@
-<script context="module">
-</script>
-
 <script>
   import { client } from '../utils/graphql.js'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'

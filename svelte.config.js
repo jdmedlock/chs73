@@ -1,3 +1,7 @@
-import autoProcess from 'svelte-preprocess';
+import preprocess from 'svelte-preprocess'
 
-export const preprocess = autoProcess({ postcss: true });
+const config = {
+  preprocess: preprocess({ postcss: true })
+}
+
+export default config
