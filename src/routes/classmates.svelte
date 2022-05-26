@@ -1,40 +1,34 @@
-<script context="module">
-	export async function load({ fetch }) {
-    const response = await fetch(`${ process.env.BE_URL }/classmates`, {mode: 'no-cors'})
-    const classmates = await response.json()
-    
-    return {
-			props: {
-				classmates: { classmates }
-			}
-		}
-	}
-</script>
-
 <script>
+  import { onMount } from 'svelte' 
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
-  //import { getClassmatesJSON } from '../airtable/Classmates'
 
-  export let classmates
-  console.log('classmates - classmates: ', classmates)
-
-  //let classmates
+  let classmates = []
   let letterIndex
   let showGreeting = false
   let classmateColumn1
   let classmateColumn2
-  
-  // Retrieve the list of classmates and build the last name index
-  (async () => {
-    //classmates = await getClassmatesJSON()
-    const classmateColumns = createPersonGroups(classmates)
-    classmateColumn1 = classmateColumns[0]
-    classmateColumn2 = classmateColumns[1]
-    letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-  })()
+
+  onMount(async () => {
+		const url = `${ process.env.BE_URL }/classmates`
+    const response = await fetch(url)
+
+    if (response.ok) {
+      classmates = await response.json()
+      // Retrieve the list of classmates and build the last name index
+      if (classmates.length > 0) {
+        const classmateColumns = createPersonGroups(classmates)
+        classmateColumn1 = classmateColumns[0]
+        classmateColumn2 = classmateColumns[1]
+        letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+      }
+    } else {
+      console.log(`Error retrieving classmates ${ response.status }`)
+      throw new Error(`Could not load ${ url }`)
+    }
+	})
 </script>
 
 <style>
