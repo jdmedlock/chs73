@@ -1,4 +1,4 @@
-import preprocess from 'svelte-preprocess'
+const preprocess = require('svelte-preprocess')
 
 const config = {
   preprocess: preprocess({ postcss: true })
