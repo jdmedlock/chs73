@@ -22,7 +22,7 @@
 
 	console.log('_layout - segment: ', segment)
 	console.log('_layout - status: ', status)
-	console.log('_layout - classmates: ', classmates)
+	// console.log('_layout - classmates: ', classmates)
 
 	const toggleNavbar = () => {
     var nav = document.getElementById('menu')
