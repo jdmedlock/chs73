@@ -17,7 +17,7 @@
 </script>
 
 <script>
-  import { goto } from '@sapper/app'
+  import { goto } from '$app/navigation'
   import { client } from '../utils/graphql.js'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 

@@ -1,53 +1,37 @@
 {
-  "name": "chs73",
-  "description": "chs73",
-  "version": "0.0.1",
-  "scripts": {
-    "watch:css": "postcss src/assets/global.pcss -o static/global.css -w",
-    "watch:dev": "sapper dev",
-    "dev": "run-p watch:*",
-    "build": "run-s build:css build:sapper",
-    "build:css": "NODE_ENV=production postcss src/assets/global.pcss -o static/global.css",
-    "build:sapper": "sapper build",
-    "build:export": "sapper export",
-    "export": "run-s build:css build:export",
-    "start": "node __sapper__/build",
-    "serve": "serve ___sapper__/export"
-  },
-  "dependencies": {
-    "@cloudinary/svelte": "^0.0.1-alpha.2",
-    "airtable": "^0.11.3",
-    "compression": "^1.7.1",
-    "dotenv": "^8.2.0",
-    "node-fetch": "^3.2.4",
-    "polka": "next",
-    "sirv": "^1.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "@rollup/plugin-replace": "^2.4.2",
-    "@rollup/plugin-url": "^5.0.0",
-    "cssnano": "^4.1.10",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.2.8",
-    "postcss-cli": "^8.3.1",
-    "postcss-import": "^14.0.0",
-    "postcss-load-config": "^3.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "rollup": "^2.3.4",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "sapper": "^0.28.0",
-    "svelte": "^3.17.3",
-    "svelte-preprocess": "^4.6.9",
-    "tailwindcss": "^2.0.4"
-  }
+	"name": "chs73new",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build",
+		"package": "svelte-kit package",
+		"preview": "svelte-kit preview",
+		"prepare": "svelte-kit sync",
+		"check": "svelte-check --tsconfig ./jsconfig.json",
+		"check:watch": "svelte-check --tsconfig ./jsconfig.json --watch",
+		"test": "playwright test",
+		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
+		"format": "prettier --write --plugin-search-dir=. ."
+	},
+	"dependencies": {
+		"@cloudinary/svelte": "^1.0.0-beta.11"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.21.0",
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"autoprefixer": "^10.4.7",
+		"eslint": "^8.12.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"postcss": "^8.4.14",
+		"prettier": "^2.5.1",
+		"prettier-plugin-svelte": "^2.5.0",
+		"svelte": "^3.44.0",
+		"svelte-check": "^2.2.6",
+		"svelte-preprocess": "^4.10.6",
+		"tailwindcss": "^3.0.24",
+		"typescript": "~4.6.2"
+	},
+	"type": "module"
 }

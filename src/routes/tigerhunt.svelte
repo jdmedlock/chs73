@@ -1,5 +1,5 @@
 <script>
-  import { goto } from '@sapper/app'
+  import { goto } from '$app/navigation'
   import classmates from '../assets/classmates.json'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'

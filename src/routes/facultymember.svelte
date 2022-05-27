@@ -16,7 +16,7 @@
 </script>
 
 <script>
-  import { goto } from '@sapper/app';
+  import { goto } from '$app/navigation'
   import { Image } from '@cloudinary/svelte'
 
   export let params

@@ -12,7 +12,7 @@
   let classmateColumn2
 
   onMount(async () => {
-		const url = `${ process.env.BE_URL }/classmates`
+		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
     const response = await fetch(url)
 
     if (response.ok) {
