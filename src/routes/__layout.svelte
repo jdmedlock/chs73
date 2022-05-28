@@ -1,30 +1,8 @@
-<script context="module">
-	/*
-  export async function load({ params, fetch, session, stuff }) {
-		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
-    const response = await fetch(url)
-
-    return {
-			status: response.status,
-      props: {
-      	classmates: response.ok && (await response.json())
-      }
-    }
-  }
-	*/
-</script>
-
 <script>
 	import "../assets/app.css";
 	import Nav from '../components/Nav.svelte'
 
 	export let segment
-	// export let status
-	// export let classmates
-
-	// console.log('_layout - segment: ', segment)
-	// console.log('_layout - status: ', status)
-	// console.log('_layout - classmates: ', classmates)
 
 	const toggleNavbar = () => {
     var nav = document.getElementById('menu')

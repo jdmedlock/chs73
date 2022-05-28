@@ -17,7 +17,7 @@
 
 <script>
   import { goto } from '$app/navigation'
-  import { Image } from '@cloudinary/svelte'
+  //import { Image } from '@cloudinary/svelte'
 
   export let params
   let { back, firstName, name, cloudinaryId, department, position, deceased, confirmed } = params
