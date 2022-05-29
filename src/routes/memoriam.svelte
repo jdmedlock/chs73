@@ -1,6 +1,24 @@
+<script context="module">
+  export async function load({ params, fetch, session, stuff }) {
+		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
+    const response = await fetch(url)
+
+    return {
+      props: {
+				status: response.status,
+        url: url,
+      	classmates: response.ok && (await response.json())
+      }
+    }
+  }
+</script>
+
 <script>
-  import classmates from '../assets/classmates.json'
   import createPersonGroups from '../utils/createPersonGroups'
+
+  export let status
+  export let url
+  export let classmates = []
 
   const deceased = classmates.filter((classmate) => classmate.deceased === 'TRUE')
 
@@ -87,7 +105,8 @@
                 <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
                   { classmate.name }
                 </a>
-              </li>          {/each}
+              </li>          
+            {/each}
           </ul>
           <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
             {#each classmateColumn2 as classmate}

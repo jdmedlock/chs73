@@ -1,10 +1,28 @@
+<script context="module">
+  export async function load({ params, fetch, session, stuff }) {
+		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
+    const response = await fetch(url)
+
+    return {
+      props: {
+				status: response.status,
+        url: url,
+      	classmates: response.ok && (await response.json())
+      }
+    }
+  }
+</script>
+
 <script>
   import { goto } from '$app/navigation'
-  import classmates from '../assets/classmates.json'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
+
+  export let status
+  export let url
+  export let classmates = []
 
   const unconfirmedClassmates = classmates.filter(classmate => classmate.confirmed === "FALSE")
 

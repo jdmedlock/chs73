@@ -1,8 +1,6 @@
 <script>
-	import "../assets/app.css";
+	import "../assets/app.css"
 	import Nav from '../components/Nav.svelte'
-
-	export let segment
 
 	const toggleNavbar = () => {
     var nav = document.getElementById('menu')
@@ -21,7 +19,7 @@
 }
 </style>
 
-<Nav { segment }/>
+<Nav/>
 
 <div class="flex-wrapper">
 	<main>

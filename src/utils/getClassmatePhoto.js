@@ -1,5 +1,8 @@
 import { Cloudinary } from "@cloudinary/url-gen"
-import { fill } from "@cloudinary/url-gen/actions/resize"
+import { thumbnail } from "@cloudinary/url-gen/actions/resize";
+import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
+import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
+import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 
 export default function getClassmatePhote(cloudinaryId) {
 
@@ -14,12 +17,11 @@ export default function getClassmatePhote(cloudinaryId) {
   const myImage = cld.image(`${ cloudinaryId }`)
 
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  myImage.resize(fill().width(250).height(250))
+  //myImage.resize(fill().width(400).height(400))
+  myImage
+  .resize(thumbnail().width(400).height(400).gravity(focusOn(FocusOn.face())))  // Crop the image, focusing on the face.
+  .roundCorners(byRadius(200))
 
   // Render the image in an 'img' element.
-  //const imgElement = document.createElement('img')
-  //document.body.appendChild(imgElement)
-  //imgElement.src = myImage.toURL()
-
-  return myImage.toURL
+  return myImage.toURL()
 }

@@ -1,7 +1,5 @@
 <script context="module">
 	export async function load(params) {
-    console.log('classmate module - params.url.searchParams: ', params.url.searchParams)
-
     return { 
       props: {
         params: {
@@ -18,13 +16,10 @@
 </script>
 
 <script>
-  import { onMount } from 'svelte';
   import { goto } from '$app/navigation'
-  import { page } from '$app/stores';
   import getClassmatePhoto from '../utils/getClassmatePhoto.js'
 
   export let params
-  console.log('classmate - params: ', params)
 
   let { back, firstName, classmateName, cloudinaryId, deceased, confirmed } = params
   let backPage = back === "classmate" ? "classmates" : back
@@ -43,16 +38,7 @@
 <section class="flex flex-wrap place-content-center w-full">
   <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-20">
     {#if cloudinaryId !== ""}
-    <img src={ classmateImage } alt="Classmate photo"/>
-      <!--
-      <Image class="text-center"
-        cloud_name="{ import.meta.env.VITE_CLOUDINARY_NAME }" 
-        public_id={ cloudinaryId }
-        transformation="{[
-          { width: 400, height: 400, gravity: 'face', radius: 'max', crop: 'crop' },
-          { width: 200, crop: 'scale' }
-        ]}" />
-      -->
+      <img class="scale-75 md:transform-none" src={ classmateImage } alt="Classmate photo"/>
     {/if}
     <div class="flex flex-col w-full
       text-3xl md:text-6xl font-semibold">
