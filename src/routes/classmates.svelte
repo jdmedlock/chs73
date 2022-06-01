@@ -1,45 +1,25 @@
-<script context="module">
-  export async function load({ params, fetch, session, stuff }) {
-		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
-    const response = await fetch(url)
-
-    return {
-      props: {
-				status: response.status,
-        url: url,
-      	classmates: response.ok && (await response.json())
-      }
-    }
-  }
-</script>
-
 <script>
+  import classmatesStore from '../stores/classmates.js'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
-
-  export let status
-  export let url
-  export let classmates = []
 
   let letterIndex
   let showGreeting = false
   let classmateColumn1
   let classmateColumn2
 
-  if (status === 200) {
-      // Retrieve the list of classmates and build the last name index
-      if (classmates.length > 0) {
-        const classmateColumns = createPersonGroups(classmates)
-        classmateColumn1 = classmateColumns[0]
-        classmateColumn2 = classmateColumns[1]
-        letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-      }
-    } else {
-      console.log(`Error retrieving classmates ${ status }`)
-      throw new Error(`Could not load ${ url }`)
-    }
+  // Retrieve the list of classmates and build the last name index
+  if ($classmatesStore.length > 0) {
+    const classmateColumns = createPersonGroups($classmatesStore)
+    classmateColumn1 = classmateColumns[0]
+    classmateColumn2 = classmateColumns[1]
+    letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+  } else {
+    console.log(`Error retrieving classmates`)
+    throw new Error(`No classmates`)
+  }
 </script>
 
 <style>

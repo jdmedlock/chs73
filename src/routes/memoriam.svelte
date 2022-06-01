@@ -1,26 +1,8 @@
-<script context="module">
-  export async function load({ params, fetch, session, stuff }) {
-		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
-    const response = await fetch(url)
-
-    return {
-      props: {
-				status: response.status,
-        url: url,
-      	classmates: response.ok && (await response.json())
-      }
-    }
-  }
-</script>
-
 <script>
+  import classmatesStore from '../stores/classmates.js'
   import createPersonGroups from '../utils/createPersonGroups'
 
-  export let status
-  export let url
-  export let classmates = []
-
-  const deceased = classmates.filter((classmate) => classmate.deceased === 'TRUE')
+  const deceased = $classmatesStore.filter((classmate) => classmate.deceased === 'TRUE')
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(deceased)
 </script>

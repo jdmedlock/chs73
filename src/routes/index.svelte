@@ -1,3 +1,20 @@
+<script context="module">
+  import classmatesStore from '../stores/classmates.js'
+
+  export async function load({ params, fetch, session, stuff }) {
+		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
+    const response = await fetch(url)
+    classmatesStore.addClassmates(response.ok && (await response.json())) 
+
+    return {
+      props: {
+				status: response.status,
+        url: url,
+      }
+    }
+  }
+</script>
+
 <script>
   import { client } from '../utils/graphql.js'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
