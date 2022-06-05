@@ -2,7 +2,7 @@ import { writable } from 'svelte/store'
 
 const classmates = writable([])
 
-const customStore = {
+const classmatesStore = {
   // subscribe to the cart store
   subscribe: classmates.subscribe,
   // Add a new array of classmate JSON objects
@@ -14,4 +14,4 @@ const customStore = {
 }
 
 // export the custom store
-export default customStore
+export default classmatesStore
