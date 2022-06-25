@@ -4,7 +4,7 @@ import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 
-export default function getClassmatePhote(cloudinaryId) {
+export default function getCloudinaryPhoto(cloudinaryId) {
 
   // Create a Cloudinary instance and set your cloud name.
   const cld = new Cloudinary({

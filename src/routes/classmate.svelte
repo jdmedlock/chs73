@@ -17,7 +17,7 @@
 
 <script>
   import { goto } from '$app/navigation'
-  import getClassmatePhoto from '../utils/getClassmatePhoto.js'
+  import getCloudinaryPhoto from '../utils/getCloudinaryPhoto.js'
 
   export let params
 
@@ -28,7 +28,7 @@
     await goto(`updatecontact?back=classmate&firstName=${ firstName }&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
-  const classmateImage = getClassmatePhoto(cloudinaryId)
+  const classmateImage = getCloudinaryPhoto(cloudinaryId)
 
 </script>
 

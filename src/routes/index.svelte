@@ -1,15 +1,21 @@
 <script context="module">
   import classmatesStore from '../stores/classmates.js'
+  import facultyStore from '../stores/faculty.js'
 
   export async function load({ params, fetch, session, stuff }) {
-		const url = `${ import.meta.env.VITE_BE_URL }/classmates`
-    const response = await fetch(url)
-    classmatesStore.addClassmates(response.ok && (await response.json())) 
+		const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
+  	const facultyURL = `${ import.meta.env.VITE_BE_URL }/faculty`
+
+    const classmatesResponse = await fetch(classmatesURL)
+    classmatesStore.addClassmates(classmatesResponse.ok && (await classmatesResponse.json())) 
+
+    const facultyResponse = await fetch(facultyURL)
+    facultyStore.addFaculty(facultyResponse.ok && (await facultyResponse.json())) 
 
     return {
       props: {
-				status: response.status,
-        url: url,
+				status: classmatesResponse.status,
+        url: classmatesURL,
       }
     }
   }
