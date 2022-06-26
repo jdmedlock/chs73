@@ -8,7 +8,6 @@ const facultyStore = {
   // Add a new array of faculty JSON objects
   addFaculty(newFaculty) {
     faculty.update(() => {
-      console.log('facultyStore: ', newFaculty)
       return newFaculty
     })
   }

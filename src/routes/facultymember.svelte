@@ -6,7 +6,7 @@
           back: params.url.searchParams.get('back') || '',
           firstName: params.url.searchParams.get('firstName') || '',
           name: params.url.searchParams.get('name') || '',
-          cloudinaryId: params.url.searchParams.get('cloudinaryId') || '',
+          cloudinaryId: params.url.searchParams.get('photoId') || '',
           department: params.url.searchParams.get('department') || '',
           position: params.url.searchParams.get('position') || '',
           deceased: params.url.searchParams.get('deceased') || '',
@@ -22,7 +22,6 @@
   import getCloudinaryPhoto from '../utils/getCloudinaryPhoto.js'
 
   export let params
-  console.log('params: ', params)
   let { back, firstName, name, cloudinaryId, department, position, deceased, confirmed } = params
   let backPage = back === "faculty" ? "faculty" : back
 
