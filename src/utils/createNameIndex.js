@@ -12,13 +12,13 @@ export default function createNameIndex(persons) {
     if (firstMatch !== undefined) {
       letterIndex.push({ 
         letter: letter, 
-        name: `#${ firstMatch.name.toLowerCase().replace(/\s+/g, '') }`
+        name: `#${ firstMatch.lastName.toLowerCase().replace(/\s+/g, '') }`
       })
     } else {
       if (letter !== 'A') {
         letterIndex.push({ 
           letter: letter, 
-          name: letterIndex[i-1].name 
+          name: letterIndex[i-1].lastName 
         })
       }
     }
