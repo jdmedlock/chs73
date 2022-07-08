@@ -5,7 +5,7 @@
         params: {
           back: params.url.searchParams.get('back') || '',
           firstName: params.url.searchParams.get('firstName'),
-          classmateName: params.url.searchParams.get('name') || '',
+          lastName: params.url.searchParams.get('lastName') || '',
           cloudinaryId: params.url.searchParams.get('photoId') || '',
           deceased: params.url.searchParams.get('deceased') || '',
           confirmed: params.url.searchParams.get('confirmed') || '',
@@ -21,11 +21,11 @@
 
   export let params
 
-  let { back, firstName, classmateName, cloudinaryId, deceased, confirmed } = params
+  let { back, firstName, lastName, cloudinaryId, deceased, confirmed } = params
   let backPage = back === "classmate" ? "classmates" : back
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=classmate&firstName=${ firstName }&name=${ classmateName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
+    await goto(`updatecontact?back=classmate&firstName=${ firstName }&lastName=${ lastName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
   const classmateImage = getCloudinaryPhoto(cloudinaryId)
@@ -44,7 +44,7 @@
       text-3xl md:text-6xl font-semibold">
       <p class="text-center font-semibold w-full
         mt-2 text-2xl md:text-4xl">
-        { classmateName }
+        { lastName }
       </p>
       {#if deceased === 'TRUE'}
         <p class="text-center w-full text-xl mt-0 md:text-2xl font-normal">(Deceased)</p>
@@ -54,7 +54,7 @@
   <div class="flex flex-wrap place-content-center w-full 
     ml-0 md:ml-8 mt-1 md:mt-2">
     <div class="flex place-content-center text-center w-full">
-      <a href="/{ backPage }/#{ classmateName.toLowerCase().replace(/\s+/g, '') }"
+      <a href="/{ backPage }/#{ lastName.toLowerCase().replace(/\s+/g, '') }"
         class="flex bg-orange-500 text-white active:bg-gray-700 
         font-bold uppercase rounded shadow hover:shadow-lg
         outline-none focus:outline-none
@@ -86,7 +86,7 @@
     </div>
     {#if confirmed === 'FALSE'}
       <div class="text-sm md:text-lg mt-4 ml-3 justify-self-end">
-        Do you know how to contact { firstName }? Click on Tiger Hunt!
+        Do you know how to contact { firstName } { lastName }? Click on Tiger Hunt!
       </div>
     {/if}
   </div>

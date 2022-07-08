@@ -5,7 +5,7 @@
         params: {
           back: params.url.searchParams.get('back') || '',
           firstName: params.url.searchParams.get('firstName'),
-          classmateName: params.url.searchParams.get('name') || '',
+          lastName: params.url.searchParams.get('lastName') || '',
           cloudinaryId: params.url.searchParams.get('photoId') || '',
           deceased: params.url.searchParams.get('deceased') || '',
           confirmed: params.url.searchParams.get('confirmed') || '',
@@ -24,7 +24,8 @@
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
-  let { back, firstName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
+  console.log('updatecontact.svelte - params: ', params)
+  let { back, firstName, lastName, cloudinaryId, deceased, confirmed, type, department, position } = params
 
   let posterName = ''
   let posterEmail = ''
@@ -126,7 +127,7 @@
         variables: {
           posterName,
           posterEmail,
-          name,
+          lastName,
           contactEmail,
           contactStreet,
           contactCity,
@@ -166,7 +167,7 @@
   }
 
   const handleBack = async () => {
-    await goto(`${ back }?back=${ back }&firstName=${ firstName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&department=${ department }&position=${ position }`)
+    await goto(`${ back }?back=${ back }&firstName=${ firstName }&lastName=${ lastName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&department=${ department }&position=${ position }`)
   }
 </script>
 
@@ -182,7 +183,7 @@
           <div class="relative flex flex-col min-w-0 break-words mb-6 
             shadow-lg rounded-lg bg-gray-300">
             <div class="flex-auto m-auto p-5 lg:p-10">
-              <h4 class="text-2xl font-semibold">Do you know how to contact { name }?</h4>
+              <h4 class="text-2xl font-semibold">Do you know how to contact { firstName } { lastName }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                 Complete this form if you know more about this individual to
                 help us keep everyone updated about our upcoming reunion!
@@ -247,7 +248,7 @@
 
                 <div class="relative w-full mb-3 mt-8">
                   <h2 class="text-white bg-gray-900 text-center">
-                    About { name }
+                    About { firstName } { lastName }
                   </h2>
 
                   <div class="relative w-full mt-1 mb-3">
