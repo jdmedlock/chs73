@@ -44,7 +44,7 @@
       text-3xl md:text-6xl font-semibold">
       <p class="text-center font-semibold w-full
         mt-2 text-2xl md:text-4xl">
-        { lastName }
+        { firstName } { lastName }
       </p>
       {#if deceased === 'TRUE'}
         <p class="text-center w-full text-xl mt-0 md:text-2xl font-normal">(Deceased)</p>
