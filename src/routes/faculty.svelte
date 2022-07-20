@@ -19,6 +19,8 @@
     console.log(`Error retrieving faculty`)
     throw new Error(`No faculty`)
   }
+
+  console.log('faculty.svelte - facultyColumn1: ', facultyColumn1)
 </script>
 
 <style>
@@ -77,7 +79,7 @@
           {#each facultyColumn1 as facultyMember}
             <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
               <a id="{ facultyMember.lastName.toLowerCase().replace(/\s+/g, '') }"
-                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&lastName={ facultyMember.lastName }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&lastName={ facultyMember.lastName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
                 { facultyMember.firstName } { facultyMember.lastName }
               </a>
             </li>
@@ -87,7 +89,7 @@
           {#each facultyColumn2 as facultyMember}
             <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
               <a id="{ facultyMember.lastName.toLowerCase().replace(/\s+/g, '') }"
-                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&lastName={ facultyMember.lastName }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&lastName={ facultyMember.lastName }&name={facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
                 { facultyMember.firstName } { facultyMember.lastName }
               </a>
             </li>

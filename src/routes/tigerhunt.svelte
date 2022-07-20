@@ -11,10 +11,8 @@
   const [classmateColumn1, classmateColumn2] = createPersonGroups(unconfirmedClassmates)
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
 
-  console.log('tigerhunt.svelte - classmateColumn1: ', classmateColumn1)
-
   const handleTigerHunt = async (classmate) => {
-    await goto(`updatecontact?back=tigerhunt&lastName=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
+    await goto(`updatecontact?back=tigerhunt&firstName=${ classmate.firstName }&lastName=${ classmate.lastName }&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
   }
 </script>
 

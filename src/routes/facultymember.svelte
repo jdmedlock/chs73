@@ -6,6 +6,7 @@
           back: params.url.searchParams.get('back') || '',
           firstName: params.url.searchParams.get('firstName') || '',
           lastName: params.url.searchParams.get('lastName') || '',
+          name: params.url.searchParams.get('name') || '',
           cloudinaryId: params.url.searchParams.get('photoId') || '',
           department: params.url.searchParams.get('department') || '',
           position: params.url.searchParams.get('position') || '',
@@ -22,11 +23,11 @@
   import getCloudinaryPhoto from '../utils/getCloudinaryPhoto.js'
 
   export let params
-  let { back, firstName, lastName, cloudinaryId, department, position, deceased, confirmed } = params
+  let { back, firstName, lastName, name, cloudinaryId, department, position, deceased, confirmed } = params
   let backPage = back === "faculty" ? "faculty" : back
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=facultymember&firstName=${ firstName }&lastName=${ lastName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty&department=${ department }&position=${ position }`)
+    await goto(`updatecontact?back=facultymember&firstName=${ firstName }&lastName=${ lastName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=faculty&department=${ department }&position=${ position }`)
   }
 
   const facultyImage = getCloudinaryPhoto(cloudinaryId)
@@ -45,7 +46,7 @@
       text-3xl md:text-6xl font-semibold">
       <p class="text-center font-semibold w-full
         mt-2 text-2xl md:text-4xl">
-        { firstName } { lastName }
+        { name }
       </p>
       <p class="text-center font-semibold w-full
       mt-2 text-xl md:text-2xl">
