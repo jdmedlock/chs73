@@ -1,8 +1,8 @@
 <script>
-  import classmates from '../assets/classmates.json'
+  import classmatesStore from '../stores/classmates.js'
   import createPersonGroups from '../utils/createPersonGroups'
 
-  const deceased = classmates.filter((classmate) => classmate.deceased === 'TRUE')
+  const deceased = $classmatesStore.filter((classmate) => classmate.deceased === 'TRUE')
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(deceased)
 </script>
@@ -87,7 +87,8 @@
                 <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
                   { classmate.name }
                 </a>
-              </li>          {/each}
+              </li>          
+            {/each}
           </ul>
           <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
             {#each classmateColumn2 as classmate}

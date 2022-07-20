@@ -1,14 +1,26 @@
 <script>
-  import classmates from '../assets/classmates.json'
+  import classmatesStore from '../stores/classmates.js'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
 
-  const [classmateColumn1, classmateColumn2] = createPersonGroups(classmates)
-  const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-
+  let letterIndex
   let showGreeting = false
+  let classmateColumn1
+  let classmateColumn2
+
+  // Retrieve the list of classmates and build the last name index
+  if ($classmatesStore.length > 0) {
+    const classmateColumns = createPersonGroups($classmatesStore)
+    classmateColumn1 = classmateColumns[0]
+    classmateColumn2 = classmateColumns[1]
+    letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+  } else {
+    console.log(`Error retrieving classmates`)
+    throw new Error(`No classmates`)
+  }
+
 </script>
 
 <style>
@@ -62,7 +74,7 @@
             italic text-center">
             3 Valuable Life Lessons Learned from a 50 Year Class Reunion
           </div>
-          <div class="text-xl md:text-2xl text-center text-base mb-4">
+          <div class="text-xl md:text-2xl text-center mb-4">
             <div>by Ken Hill - Motivational Speaker</div>
             <!--
             <a href="https://www.kendavis.com/relationships-2/3-valuable-life-lessons-learned-from-a-50-year-class-reunion/">
@@ -171,12 +183,12 @@
 
       <div class="flex w-full justify-center">
         <ul class="ml-2 text-lg text-gray-600 leading-tight">
-          {#each classmateColumn1 as classmate}
+          {#each classmateColumn1 || [] as classmate}
             <li class="mt-2 transition duration-300 ease-in-out 
               hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
               transform hover:-translate-y-0 hover:scale-110">
-              <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
-                href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
+              <a id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
+                href="classmate?back=classmates&firstName={ classmate.firstName }&lastName={ classmate.lastName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
                 { classmate.name }
               </a>
             </li>
@@ -184,13 +196,13 @@
         </ul>
 
         <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
-          {#each classmateColumn2 as classmate}
+          {#each classmateColumn2 || [] as classmate}
             <li class="mt-2 transition duration-300 ease-in-out 
             hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
               transform hover:-translate-y-0 hover:scale-110">
-              <a id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+              <a id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
                 class="" 
-                href="classmate?back=classmates&firstName={ classmate.firstName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                href="classmate?back=classmates&firstName={ classmate.firstName }&lastName={ classmate.lastName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
                 { classmate.name }
               </a>
             </li>

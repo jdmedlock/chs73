@@ -5,40 +5,144 @@
 </style>
 
 <section class="relative py-12 lg:py-20">
-  <div
-    class="bottom-auto top-0 left-0 right-0 w-full absolute
-    pointer-events-none overflow-hidden -mt-20"
-    style="height: 80px;">
-    <svg
-      class="absolute bottom-0 overflow-hidden"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      version="1.1"
-      viewBox="0 0 2560 100"
-      x="0"
-      y="0">
-      <polygon
-        class="text-white fill-current"
-        points="2560 0 2560 100 0 100" />
-    </svg>
-  </div>
-  <div class="container mx-auto py-8 lg:py-none px-4">
-    <div class="flex flex-wrap">
-      <div class="flex justify-center w-full md:w-4/12 m-auto px-4">
-        <img
-          alt="Stay tuned"
-          class="max-w-full rounded-lg shadow-lg mb-8 lg:mb-none"
-          src="chs_homecoming.jpeg" />
-      </div>
-      <div class="w-full md:w-5/12 m-auto px-4">
-        <div class="md:pr-12">
-          <h3 class="text-3xl font-semibold">Upcoming Events</h3>
-          <p class="mt-4 text-lg leading-relaxed text-gray-600">
-            We'll be updating the schedule of events as we get closer to our
-            reunion. Stay tuned...
-          </p>
+  
+<div class="bg-gray-900">
+    <div class="pt-12 sm:pt-16 lg:pt-24">
+      <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
+          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">Upcoming Events</h2>
+          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Reconnect with classmates at one or both of these two events!</p>
+          <p class="text-xl text-gray-300"></p>
         </div>
       </div>
     </div>
+    <div class="mt-8 pb-12 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
+      <div class="relative">
+        <div class="absolute inset-0 h-3/4 bg-gray-900"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+            <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+                <div>
+                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 15, 2023</h3>
+                </div>
+                <div class="mt-4 flex items-baseline text-6xl font-extrabold">
+                  Dogwood Social House
+                  <span class="ml-1 text-2xl font-medium text-gray-500"></span>
+                </div>
+                <p class="mt-5 text-lg text-gray-500">An informal gathering to relax & reconnect!</p>
+              </div>
+              <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
+                <ul role="list" class="space-y-4">
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">5:00PM - Closing</p>
+                  </li>
+  
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">Cash bar & food</p>
+                  </li>
+  
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">80 S Plaza Way, Cape Girardeau, MO 63703</p>
+                  </li>
+  
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700"><a href="https://dogwood-social-house.business.site/">Website</a></p>
+                  </li>
+                </ul>
+                <div class="rounded-md shadow">
+                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign me up! </a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+                <div>
+                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 16, 2023</h3>
+                </div>
+                <div class="mt-4 flex items-baseline text-6xl font-extrabold">
+                  Drury Plaza
+                  <span class="ml-1 text-2xl font-medium text-gray-500"></span>
+                </div>
+                <p class="mt-5 text-lg text-gray-500">Dinner, music, & sharing of fond memories!</p>
+              </div>
+              <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
+                <ul role="list" class="space-y-4">
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">4:00 PM - 11:30 PM</p>
+                  </li>
+  
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">Dinner + cash bar</p>
+                  </li>
+  
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">Discounted room rate at $148/night (includes free breakfast + evening drinks & snacks)</p>
+                  </li>
+  
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">Call 1-800-325-0720 and refer to the Group number of 10018741 to make reservations</p>
+                  </li>
+                </ul>
+                <div class="rounded-md shadow">
+                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign me up! </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
 </section>

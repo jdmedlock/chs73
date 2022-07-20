@@ -1,18 +1,18 @@
 <script>
-  import { goto } from '@sapper/app'
-  import classmates from '../assets/classmates.json'
+  import { goto } from '$app/navigation'
+  import classmatesStore from '../stores/classmates.js'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
 
-  const unconfirmedClassmates = classmates.filter(classmate => classmate.confirmed === "FALSE")
+  const unconfirmedClassmates = $classmatesStore.filter(classmate => classmate.confirmed === "FALSE")
 
   const [classmateColumn1, classmateColumn2] = createPersonGroups(unconfirmedClassmates)
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
 
   const handleTigerHunt = async (classmate) => {
-    await goto(`updatecontact?back=tigerhunt&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
+    await goto(`updatecontact?back=tigerhunt&firstName=${ classmate.firstName }&lastName=${ classmate.lastName }&name=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
   }
 </script>
 
@@ -78,7 +78,7 @@
       <div class="flex w-full justify-center">
         <ul class="mt-2 text-md md:text-xl text-gray-600 leading-tight">
           {#each classmateColumn1 as classmate}
-            <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+            <li id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
               class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
               on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
           {/each}
@@ -86,7 +86,7 @@
         <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg md:text-xl text-gray-600 
           leading-tight">
           {#each classmateColumn2 as classmate}
-            <li id="{ classmate.name.toLowerCase().replace(/\s+/g, '') }"
+            <li id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
               class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
               on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
           {/each}
