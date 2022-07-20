@@ -128,7 +128,7 @@
         variables: {
           posterName,
           posterEmail,
-          contactName,
+          name,
           contactEmail,
           contactStreet,
           contactCity,
