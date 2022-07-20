@@ -6,6 +6,7 @@
           back: params.url.searchParams.get('back') || '',
           firstName: params.url.searchParams.get('firstName'),
           lastName: params.url.searchParams.get('lastName') || '',
+          name: params.url.searchParams.get('name') || '',
           cloudinaryId: params.url.searchParams.get('photoId') || '',
           deceased: params.url.searchParams.get('deceased') || '',
           confirmed: params.url.searchParams.get('confirmed') || '',
@@ -21,11 +22,11 @@
 
   export let params
 
-  let { back, firstName, lastName, cloudinaryId, deceased, confirmed } = params
+  let { back, firstName, lastName, name, cloudinaryId, deceased, confirmed } = params
   let backPage = back === "classmate" ? "classmates" : back
 
   const handleTigerHunt = async () => {
-    await goto(`updatecontact?back=classmate&firstName=${ firstName }&lastName=${ lastName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
+    await goto(`updatecontact?back=classmate&firstName=${ firstName }&lastName=${ lastName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
   const classmateImage = getCloudinaryPhoto(cloudinaryId)
@@ -44,7 +45,7 @@
       text-3xl md:text-6xl font-semibold">
       <p class="text-center font-semibold w-full
         mt-2 text-2xl md:text-4xl">
-        { firstName } { lastName }
+        { name }
       </p>
       {#if deceased === 'TRUE'}
         <p class="text-center w-full text-xl mt-0 md:text-2xl font-normal">(Deceased)</p>
@@ -86,7 +87,7 @@
     </div>
     {#if confirmed === 'FALSE'}
       <div class="text-sm md:text-lg mt-4 ml-3 justify-self-end">
-        Do you know how to contact { firstName } { lastName }? Click on Tiger Hunt!
+        Do you know how to contact { name }? Click on Tiger Hunt!
       </div>
     {/if}
   </div>

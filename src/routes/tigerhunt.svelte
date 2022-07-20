@@ -11,8 +11,10 @@
   const [classmateColumn1, classmateColumn2] = createPersonGroups(unconfirmedClassmates)
   const letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
 
+  console.log('tigerhunt.svelte - classmateColumn1: ', classmateColumn1)
+
   const handleTigerHunt = async (classmate) => {
-    await goto(`updatecontact?back=tigerhunt&lastName=${ classmate.lastName }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
+    await goto(`updatecontact?back=tigerhunt&lastName=${ classmate.name }&photoId=${ classmate.cloudinaryId }&deceased=${ classmate.deceased }&confirmed=${ classmate.confirmed }&type=classmate`)
   }
 </script>
 
@@ -80,7 +82,7 @@
           {#each classmateColumn1 as classmate}
             <li id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
               class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
-              on:click={() => handleTigerHunt(classmate) }>{ classmate.lastName }</li>
+              on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
           {/each}
         </ul>
         <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg md:text-xl text-gray-600 
@@ -88,7 +90,7 @@
           {#each classmateColumn2 as classmate}
             <li id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
               class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110"
-              on:click={() => handleTigerHunt(classmate) }>{ classmate.lastName }</li>
+              on:click={() => handleTigerHunt(classmate) }>{ classmate.name }</li>
           {/each}
         </ul>
 

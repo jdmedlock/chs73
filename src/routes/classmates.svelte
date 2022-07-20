@@ -20,6 +20,7 @@
     console.log(`Error retrieving classmates`)
     throw new Error(`No classmates`)
   }
+
 </script>
 
 <style>
@@ -187,8 +188,8 @@
               hover:text-orange-500 hover:font-semibold hover:bg-gray-300 
               transform hover:-translate-y-0 hover:scale-110">
               <a id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
-                href="classmate?back=classmates&firstName={ classmate.firstName }&lastName={ classmate.lastName }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
-                { classmate.firstName } { classmate.lastName }
+                href="classmate?back=classmates&firstName={ classmate.firstName }&lastName={ classmate.lastName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }&">
+                { classmate.name }
               </a>
             </li>
           {/each}
@@ -201,8 +202,8 @@
               transform hover:-translate-y-0 hover:scale-110">
               <a id="{ classmate.lastName.toLowerCase().replace(/\s+/g, '') }"
                 class="" 
-                href="classmate?back=classmates&firstName={ classmate.firstName }&lastName={ classmate.lastName }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
-                { classmate.firstName } { classmate.lastName }
+                href="classmate?back=classmates&firstName={ classmate.firstName }&lastName={ classmate.lastName }&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                { classmate.name }
               </a>
             </li>
           {/each}

@@ -6,6 +6,7 @@
           back: params.url.searchParams.get('back') || '',
           firstName: params.url.searchParams.get('firstName'),
           lastName: params.url.searchParams.get('lastName') || '',
+          name: params.url.searchParams.get('name') || '',
           cloudinaryId: params.url.searchParams.get('photoId') || '',
           deceased: params.url.searchParams.get('deceased') || '',
           confirmed: params.url.searchParams.get('confirmed') || '',
@@ -25,7 +26,7 @@
 
   export let params
   console.log('updatecontact.svelte - params: ', params)
-  let { back, firstName, lastName, cloudinaryId, deceased, confirmed, type, department, position } = params
+  let { back, firstName, lastName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
 
   let posterName = ''
   let posterEmail = ''
@@ -127,7 +128,7 @@
         variables: {
           posterName,
           posterEmail,
-          lastName,
+          contactName,
           contactEmail,
           contactStreet,
           contactCity,
@@ -183,7 +184,7 @@
           <div class="relative flex flex-col min-w-0 break-words mb-6 
             shadow-lg rounded-lg bg-gray-300">
             <div class="flex-auto m-auto p-5 lg:p-10">
-              <h4 class="text-2xl font-semibold">Do you know how to contact { firstName } { lastName }?</h4>
+              <h4 class="text-2xl font-semibold">Do you know how to contact { name }?</h4>
               <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                 Complete this form if you know more about this individual to
                 help us keep everyone updated about our upcoming reunion!
@@ -248,7 +249,7 @@
 
                 <div class="relative w-full mb-3 mt-8">
                   <h2 class="text-white bg-gray-900 text-center">
-                    About { firstName } { lastName }
+                    About { name }
                   </h2>
 
                   <div class="relative w-full mt-1 mb-3">
