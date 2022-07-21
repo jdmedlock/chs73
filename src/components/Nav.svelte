@@ -46,7 +46,7 @@
 		<a aria-current="{$page.url.pathname.slice(1) === 'tigerhunt' ? 'page' : undefined}" href="tigerhunt" on:click={ toggleNavbar }>tiger hunt</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'memoriam' ? 'page' : undefined}" href="memoriam" on:click={ toggleNavbar }>memoriam</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'faculty' ? 'page' : undefined}" href="faculty" on:click={ toggleNavbar }>faculty</a>
-		<a aria-current="{$page.url.pathname.slice(-7) === 'contact' ? 'page' : undefined}" href="#contact" on:click={ toggleNavbar }>contact</a>
+		<a href="/#contact" on:click={ toggleNavbar }>contact</a>
 	</div>
 
 	<div class="w-full h-2 m-0">
