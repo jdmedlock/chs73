@@ -19,8 +19,6 @@
     console.log(`Error retrieving faculty`)
     throw new Error(`No faculty`)
   }
-
-  console.log('faculty.svelte - facultyColumn1: ', facultyColumn1)
 </script>
 
 <style>
