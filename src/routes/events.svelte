@@ -31,11 +31,11 @@
               </div>
               <div class="flex flex-wrap w-full m-0 p-0 justify-center">
                 <p class="mt-5 text-xl text-gray-500">An informal gathering to relax & reconnect!</p>
-                <img class="w-96 h-96" src="/dogwood_social_club.png" alt="Dogwood Photo"/>
+                <img class="w-96 h-96" src="dogwood_social_club.png" alt="Dogwood"/>
               </div>
             </div>
             <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
-              <ul role="list" class="space-y-4">
+              <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
                     <!-- Heroicon name: outline/check -->
@@ -95,11 +95,11 @@
               </div>
               <div class="flex flex-wrap w-full m-0 p-0 justify-center">
                 <p class="mt-5 text-xl text-gray-500">Dinner, music, & sharing of fond memories!</p>
-                <img class="w-96 h-96" src="/drury_plaza.jpeg" alt="Drury Plaza photo"/>
+                <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
             <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
-              <ul role="list" class="space-y-4">
+              <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
                     <!-- Heroicon name: outline/check -->

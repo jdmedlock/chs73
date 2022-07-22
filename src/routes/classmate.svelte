@@ -39,7 +39,7 @@
 <section class="flex flex-wrap place-content-center w-full">
   <div class="flex flex-wrap place-content-center ml-0 md:ml-8 mt-20">
     {#if cloudinaryId !== ""}
-      <img class="scale-75 md:transform-none" src={ classmateImage } alt="Classmate photo"/>
+      <img class="scale-75 md:transform-none" src={ classmateImage } alt="Classmate"/>
     {/if}
     <div class="flex flex-col w-full
       text-3xl md:text-6xl font-semibold">
