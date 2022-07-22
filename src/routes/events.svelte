@@ -28,9 +28,11 @@
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
                   Dogwood Social House
-                  <span class="ml-1 text-2xl font-medium text-gray-500"></span>
                 </div>
-                <p class="mt-5 text-lg text-gray-500">An informal gathering to relax & reconnect!</p>
+                <p class="mt-5 text-xl text-gray-500">An informal gathering to relax & reconnect!</p>
+                <div>
+                  <img class="w-96 h-96" src="/src/assets/dogwood_social_club.png" alt="Dogwood photo"/>
+                </div>
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
                 <ul role="list" class="space-y-4">
@@ -61,7 +63,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">80 S Plaza Way, Cape Girardeau, MO 63703</p>
+                    <p class="ml-3 text-base text-gray-700">80 S Plaza Way, Cape Girardeau, MO 63703. Phone: (573) 837-1260</p>
                   </li>
   
                   <li class="flex items-start">
@@ -71,11 +73,11 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700"><a href="https://dogwood-social-house.business.site/">Website</a></p>
+                    <p class="ml-3 text-base text-gray-700"><a href="https://dogwood-social-house.business.site/" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                   </li>
                 </ul>
                 <div class="rounded-md shadow">
-                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign me up! </a>
+                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
                 </div>
               </div>
             </div>
@@ -86,10 +88,15 @@
                   <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 16, 2023</h3>
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
-                  Drury Plaza
-                  <span class="ml-1 text-2xl font-medium text-gray-500"></span>
+                  Drury 
                 </div>
-                <p class="mt-5 text-lg text-gray-500">Dinner, music, & sharing of fond memories!</p>
+                <div class="flex items-baseline text-6xl font-extrabold">
+                  Plaza 
+                </div>
+                <p class="mt-5 text-xl text-gray-500">Dinner, music, & sharing of fond memories!</p>
+                <div>
+                  <img class="w-96 h-96" src="/src/assets/drury_plaza.jpeg" alt="Dogwood photo"/>
+                </div>
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
                 <ul role="list" class="space-y-4">
@@ -120,7 +127,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">Discounted room rate at $148/night (includes free breakfast + evening drinks & snacks)</p>
+                    <p class="ml-3 text-base text-gray-700">Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)</p>
                   </li>
   
                   <li class="flex items-start">
@@ -130,11 +137,21 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">Call 1-800-325-0720 and refer to the Group number of 10018741 to make reservations</p>
+                    <p class="ml-3 text-base text-gray-700">Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation</p>
+                  </li>
+
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                   </li>
                 </ul>
                 <div class="rounded-md shadow">
-                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign me up! </a>
+                  <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
                 </div>
               </div>
             </div>
