@@ -34,9 +34,5 @@
 		"typescript": "~4.6.2"
 	},
 	"type": "module",
-	"svelte": "src/routes/index.js",
-	"files": [
-		"dist",
-		"src"
-	]
+	"svelte": "src/routes/index.js"
 }
