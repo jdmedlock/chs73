@@ -28,7 +28,7 @@ const manifest = {
   assets: /* @__PURE__ */ new Set([".DS_Store", "chs_be_a_hero.jpeg", "chs_faculty_finley.jpeg", "chs_friends.avif", "chs_friends.jpeg", "chs_graduation.jpeg", "chs_graduation.webp", "chs_homecoming.jpeg", "chs_homecoming_float.jpeg", "chs_lorimer_cemetary.jpeg", "chs_memories.jpeg", "chs_stay_tuned.png", "chs_stay_tuned.png.back", "chs_students_office.jpeg", "chs_tiger.jpeg", "chs_tiger.png", "chs_tiger_192.png", "chs_tiger_32.png", "chs_tiger_36.png", "chs_tiger_512.png", "chs_tigerhunt.jpeg", "dogwood_social_club.png", "drury_plaza.jpeg", "favicon.png", "global.css", "manifest.json"]),
   mimeTypes: { ".jpeg": "image/jpeg", ".avif": "image/avif", ".webp": "image/webp", ".png": "image/png", ".css": "text/css", ".json": "application/json" },
   _: {
-    entry: { "file": "start-946cc750.js", "js": ["start-946cc750.js", "chunks/index-ff1b2efb.js", "chunks/index-332aa153.js", "chunks/singletons-d1fb5791.js"], "css": [] },
+    entry: { "file": "start-e97755f0.js", "js": ["start-e97755f0.js", "chunks/index-ff1b2efb.js", "chunks/index-332aa153.js", "chunks/singletons-d1fb5791.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => __toESM(require("./nodes/0.js"))),
       () => Promise.resolve().then(() => __toESM(require("./nodes/1.js"))),
