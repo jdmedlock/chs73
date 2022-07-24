@@ -5,7 +5,7 @@ const config = {
   preprocess: preprocess({ postcss: true }),
   kit: {
     adapter: adapter({
-      edge: true,
+      edge: false,
       split: false
     })
   }
