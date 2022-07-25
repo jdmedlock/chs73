@@ -35,7 +35,7 @@
 </style>
 
 <svelte:window on:scroll={ handleOnScroll } />
-
+<!-- svelte-ignore css-unused-selector -->
 <a href="{ back }/#top"
   class="fixed visible z-50 bottom-8 place-self-center
   bg-orange-500 text-white active:bg-gray-700 text-sm
