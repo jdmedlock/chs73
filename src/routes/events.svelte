@@ -1,4 +1,5 @@
 <script>
+  let href = "#"
 </script>
 
 <style>
@@ -77,7 +78,7 @@
                 </li>
               </ul>
               <div class="rounded-md shadow">
-                <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
+                <a href={ href } class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
               </div>
             </div>
           </div>
@@ -151,7 +152,7 @@
                 </li>
               </ul>
               <div class="rounded-md shadow">
-                <a href="#" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
+                <a href={ href } class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
               </div>
             </div>
           </div>
