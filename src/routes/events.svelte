@@ -5,7 +5,7 @@
 <style>
 </style>
 
-<section class="relative py-12 lg:py-20">
+<section class="relative">
   
 <div class="bg-gray-900">
   <div class="pt-12 sm:pt-16 lg:pt-24">

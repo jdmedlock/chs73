@@ -25,7 +25,6 @@
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
-  console.log('updatecontact.svelte - params: ', params)
   let { back, firstName, lastName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
 
   let posterName = ''
