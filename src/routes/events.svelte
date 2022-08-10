@@ -77,9 +77,14 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://dogwood-social-house.business.site/" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
+              <div class="flex items-center m-auto">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save the Date!!! </span>
+              </div>
+              <!--
               <div class="rounded-md shadow">
                 <a href={ href } class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
               </div>
+              -->
             </div>
           </div>
 
@@ -151,9 +156,14 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
+              <div class="flex items-center m-auto">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save the Date!!! </span>
+              </div>
+              <!--
               <div class="rounded-md shadow">
                 <a href={ href } class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
               </div>
+              -->
             </div>
           </div>
         </div>
