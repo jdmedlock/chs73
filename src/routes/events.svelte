@@ -1,5 +1,38 @@
 <script>
+  import { atcb_action, atcb_init } from 'add-to-calendar-button'
+ 
   let href = "#"
+
+  const handleAddDogwoodToCalendar = (event) => {
+    event.preventDefault()
+    atcb_action({
+      name: "CHS73 50th Reunion - Social Night",
+      location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
+      description: "An informal gathering to relax & reconnect!\n\nCash bar & food",
+      startDate: "2023-09-15",
+      endDate: "2023-09-15",
+      startTime:"17:00",
+      endTime:"23:30",
+      options: ['Apple', 'Google', 'iCal'],
+      timeZone: "Europe/Berlin",
+      iCalFileName: "CHS73_Reunion_20230915",
+    })
+  }
+
+  const handleAddDruryToCalendar = (event) => {
+    event.preventDefault()
+    atcb_action({
+      name: "CHS73 50th Reunion - Dinner",
+      location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
+      description: "Dinner, music, & sharing of fond memories!\n\n- Dinner + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
+      startDate: "2023-09-16",
+      endDate: "2023-09-16",
+      startTime:"16:00",
+      endTime:"23:30",
+      options: ['Apple', 'Google', 'iCal'],
+      iCalFileName: "CHS73_Reunion_20230916",
+    })
+  }
 </script>
 
 <style>
@@ -77,14 +110,11 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://dogwood-social-house.business.site/" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
-              <div class="flex items-center m-auto">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save the Date!!! </span>
-              </div>
-              <!--
-              <div class="rounded-md shadow">
-                <a href={ href } class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
-              </div>
-              -->
+
+              <button class="atcb flex items-center m-auto" on:click={ handleAddDogwoodToCalendar }>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
+              </button>
+
             </div>
           </div>
 
@@ -156,14 +186,9 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
-              <div class="flex items-center m-auto">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save the Date!!! </span>
-              </div>
-              <!--
-              <div class="rounded-md shadow">
-                <a href={ href } class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" aria-describedby="tier-standard"> Sign up coming soon! </a>
-              </div>
-              -->
+              <button class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
+              </button>
             </div>
           </div>
         </div>
