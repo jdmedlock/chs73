@@ -7,7 +7,7 @@
     event.preventDefault()
     atcb_action({
       name: "CHS73 50th Reunion - Social Night",
-      location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
+      location: "80 S Plaza Way, Cape Girardeau, MO 63703",
       description: "An informal gathering to relax & reconnect!\n\nCash bar & food",
       startDate: "2023-09-15",
       endDate: "2023-09-15",
@@ -24,7 +24,7 @@
     atcb_action({
       name: "CHS73 50th Reunion - Dinner",
       location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
-      description: "Dinner, music, & sharing of fond memories!\n\n- Dinner + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
+      description: "Hors d’oeurves, a cash bar and a time to remember!\n\n- Dinner + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
       startDate: "2023-09-16",
       endDate: "2023-09-16",
       startTime:"16:00",
@@ -130,7 +130,7 @@
                 Plaza 
               </div>
               <div class="flex flex-wrap w-full m-0 p-0 justify-center">
-                <p class="mt-5 text-xl text-gray-500">Dinner, music, & sharing of fond memories!</p>
+                <p class="mt-5 text-xl text-gray-500">Hors d’oeurves, cash bar, & a time to remember!</p>
                 <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
