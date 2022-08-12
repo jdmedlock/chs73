@@ -1,5 +1,5 @@
 <script>
-  import { atcb_action } from 'add-to-calendar-button'
+  import { atcb_action } from '../utils/atcb.js'
  
   let href = "#"
 
