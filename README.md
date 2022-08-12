@@ -23,6 +23,7 @@
 * [Release History](#release-history)
 * [License](#license)
 
+
 ## Overview
 
 CHS73 is the frontend application for the Central High School Class of 1973
