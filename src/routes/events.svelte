@@ -24,7 +24,7 @@
     atcb_action({
       name: "CHS73 50th Reunion - Dinner",
       location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
-      description: "Hors d’oeurves, a cash bar and a time to remember!\n\n- Dinner + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
+      description: "Hors d’oeurves, a cash bar and a time to remember!\n\n- Hors d’oeurves + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
       startDate: "2023-09-16",
       endDate: "2023-09-16",
       startTime:"16:00",
