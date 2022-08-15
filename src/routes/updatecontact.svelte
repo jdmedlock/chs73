@@ -1,28 +1,31 @@
 <script context="module">
-	export async function preload(page, session) {
+	export async function load(params) {
 		return { 
-      params: {
-        back: page.query.back,
-        firstName: page.query.firstName,
-        name: page.query.name,
-        cloudinaryId: page.query.photoId,
-        deceased: page.query.deceased,
-        confirmed: page.query.confirmed,
-        type: page.query.type,
-        department: page.query.department, 
-        position: page.query.position,
+      props: {
+        params: {
+          back: params.url.searchParams.get('back') || '',
+          firstName: params.url.searchParams.get('firstName'),
+          lastName: params.url.searchParams.get('lastName') || '',
+          name: params.url.searchParams.get('name') || '',
+          cloudinaryId: params.url.searchParams.get('photoId') || '',
+          deceased: params.url.searchParams.get('deceased') || '',
+          confirmed: params.url.searchParams.get('confirmed') || '',
+          type: params.url.searchParams.get('type') || '',
+          department: params.url.searchParams.get('department') || '', 
+          position: params.url.searchParams.get('position') || '',
+        }
       }
     }
   }
 </script>
 
 <script>
-  import { goto } from '@sapper/app'
+  import { goto } from '$app/navigation'
   import { client } from '../utils/graphql.js'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../utils/validators.js'
 
   export let params
-  let { back, firstName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
+  let { back, firstName, lastName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
 
   let posterName = ''
   let posterEmail = ''
@@ -164,7 +167,7 @@
   }
 
   const handleBack = async () => {
-    await goto(`${ back }?back=${ back }&firstName=${ firstName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&department=${ department }&position=${ position }`)
+    await goto(`${ back }?back=${ back }&firstName=${ firstName }&lastName=${ lastName }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&department=${ department }&position=${ position }`)
   }
 </script>
 

@@ -1,4 +1,4 @@
-const BE_URL = process.env.BE_URL || ''
+const BE_URL = import.meta.env.VITE_BE_URL || ''
 
 export const client = (fetcher) => {
   return {

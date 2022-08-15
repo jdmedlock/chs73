@@ -1,12 +1,24 @@
 <script>
-  import faculty from '../assets/faculty.json'
+  import facultyStore from '../stores/faculty.js'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
   import LetterIndex from '../components/LetterIndex.svelte'
 
-  const [facultyColumn1, facultyColumn2] = createPersonGroups(faculty)
-  const letterIndex = createNameIndex(facultyColumn1.concat(facultyColumn2))
+  let letterIndex
+  let facultyColumn1
+  let facultyColumn2
+  
+    // Retrieve the list of faculty and build the last name index
+  if ($facultyStore.length > 0) {
+    const facultyColumns = createPersonGroups($facultyStore)
+    facultyColumn1 = facultyColumns[0]
+    facultyColumn2 = facultyColumns[1]
+    letterIndex = createNameIndex(facultyColumn1.concat(facultyColumn2))
+  } else {
+    console.log(`Error retrieving faculty`)
+    throw new Error(`No faculty`)
+  }
 </script>
 
 <style>
@@ -64,9 +76,9 @@
         <ul class="text-lg text-gray-600 leading-tight">
           {#each facultyColumn1 as facultyMember}
             <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-              <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
-                { facultyMember.name }
+              <a id="{ facultyMember.lastName.toLowerCase().replace(/\s+/g, '') }"
+                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&lastName={ facultyMember.lastName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+                { facultyMember.firstName } { facultyMember.lastName }
               </a>
             </li>
           {/each}
@@ -74,9 +86,9 @@
         <ul class="ml-0 md:ml-6 text-lg text-gray-600 leading-tight">
           {#each facultyColumn2 as facultyMember}
             <li class="mt-2 transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-              <a id="{ facultyMember.name.toLowerCase().replace(/\s+/g, '') }"
-                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&name={ facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
-                { facultyMember.name }
+              <a id="{ facultyMember.lastName.toLowerCase().replace(/\s+/g, '') }"
+                href="facultymember?back=faculty&firstName={ facultyMember.firstName }&lastName={ facultyMember.lastName }&name={facultyMember.name }&photoId={ facultyMember.cloudinaryId }&department={ facultyMember.department }&position={ facultyMember.position }&deceased={ facultyMember.deceased }&confirmed={facultyMember.confirmed}">
+                { facultyMember.firstName } { facultyMember.lastName }
               </a>
             </li>
           {/each}
