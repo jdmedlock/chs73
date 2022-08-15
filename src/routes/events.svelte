@@ -153,7 +153,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">Dinner + cash bar</p>
+                  <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar</p>
                 </li>
 
                 <li class="flex items-start">
