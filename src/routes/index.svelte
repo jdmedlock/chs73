@@ -6,18 +6,23 @@
 		const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
   	const facultyURL = `${ import.meta.env.VITE_BE_URL }/faculty`
 
-    const classmatesResponse = await fetch(classmatesURL)
-    classmatesStore.addClassmates(classmatesResponse.ok && (await classmatesResponse.json())) 
+    const classmatesResponse = fetch(classmatesURL)
+    .then(async (response) => {
+      const classmatesJSON = response.json()
+      .then((json) => {
+        return classmatesStore.addClassmates(json)
+      })
+    })
 
-    const facultyResponse = await fetch(facultyURL)
-    facultyStore.addFaculty(facultyResponse.ok && (await facultyResponse.json())) 
+    const facultyResponse = fetch(facultyURL)
+    .then(async (response) => {
+      const facultyJSON = response.json()
+      .then((json) => {
+        return facultyStore.addFaculty(json)
+      })
+    })
 
-    return {
-      props: {
-				status: classmatesResponse.status,
-        url: classmatesURL,
-      }
-    }
+    return
   }
 </script>
 
