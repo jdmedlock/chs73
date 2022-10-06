@@ -152,7 +152,7 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_graduation.jpeg');"
+      style="background-image: url('chs_graduation2.webp');"
     />
     <div class="container relative mx-auto">
       <div class="justify-items-center flex flex-wrap">
@@ -262,7 +262,7 @@
                 <picture>
                   <img
                     alt="Friends"
-                    src="chs_friends.avif"
+                    src="chs_friends.webp"
                     class="w-full align-middle rounded-t-lg" />
                   <source srcset="chs_friends.jpeg" type={`image/jpeg`} />
                 </picture>
