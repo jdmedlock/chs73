@@ -1,6 +1,8 @@
 <script context="module">
   import classmatesStore from '../stores/classmates.js'
+  import classmatesPromiseStore from '../stores/classmatesPromise.js'
   import facultyStore from '../stores/faculty.js'
+  import facultyPromiseStore from '../stores/facultyPromise.js'
 
   export async function load({ params, fetch, session, stuff }) {
 		const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
@@ -9,7 +11,8 @@
     const classmatesResponse = fetch(classmatesURL)
     .then(async (response) => {
       const classmatesJSON = response.json()
-      .then((json) => {
+      classmatesPromiseStore.addClassmatesPromise(classmatesJSON)
+      classmatesJSON.then((json) => {
         return classmatesStore.addClassmates(json)
       })
     })
@@ -17,12 +20,18 @@
     const facultyResponse = fetch(facultyURL)
     .then(async (response) => {
       const facultyJSON = response.json()
-      .then((json) => {
+      facultyPromiseStore.addFacultyPromise(facultyJSON)
+      facultyJSON.then((json) => {
         return facultyStore.addFaculty(json)
       })
     })
 
-    return
+    return {
+      props: {
+        classmatesResponse: classmatesResponse,
+        facultyResponse: facultyResponse,
+      }
+    }
   }
 </script>
 
