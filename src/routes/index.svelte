@@ -1,8 +1,8 @@
 <script context="module">
   import classmatesStore from '../stores/classmates.js'
-  import classmatesPromiseStore from '../stores/classmatesPromise.js'
+  import classmatesPromise from '../stores/classmatesPromise.js'
   import facultyStore from '../stores/faculty.js'
-  import facultyPromiseStore from '../stores/facultyPromise.js'
+  import facultyPromise from '../stores/facultyPromise.js'
 
   export async function load({ params, fetch, session, stuff }) {
 		const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
@@ -11,7 +11,7 @@
     const classmatesResponse = fetch(classmatesURL)
     .then(async (response) => {
       const classmatesJSON = response.json()
-      classmatesPromiseStore.addClassmatesPromise(classmatesJSON)
+      classmatesPromise.addClassmatesPromise(classmatesJSON)
       classmatesJSON.then((json) => {
         return classmatesStore.addClassmates(json)
       })
@@ -20,7 +20,7 @@
     const facultyResponse = fetch(facultyURL)
     .then(async (response) => {
       const facultyJSON = response.json()
-      facultyPromiseStore.addFacultyPromise(facultyJSON)
+      facultyPromise.addFacultyPromise(facultyJSON)
       facultyJSON.then((json) => {
         return facultyStore.addFaculty(json)
       })
@@ -235,7 +235,7 @@
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white
+                class="relative flex flex-col min-w-0 break-words
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img
@@ -271,7 +271,7 @@
 				<div class="pt-8 md:pt-40 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
-              <div class="relative flex flex-col min-w-0 break-words bg-white
+              <div class="relative flex flex-col min-w-0 break-words
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img
@@ -308,7 +308,7 @@
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white
+                class="relative flex flex-col min-w-0 break-words
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img

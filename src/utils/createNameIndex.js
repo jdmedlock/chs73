@@ -1,6 +1,8 @@
 // Create an index that associates letters of the alphabet with 
 // the first person in the list whose last name starts with that letter
 export default function createNameIndex(persons) {
+  if (persons === undefined || persons.length === 0) return ([])
+
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   const letterIndex = []
 
