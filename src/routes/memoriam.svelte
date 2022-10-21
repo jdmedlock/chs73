@@ -1,10 +1,24 @@
 <script>
   import classmatesStore from '../stores/classmates.js'
+  import classmatesPromise from '../stores/classmatesPromise.js'
+  import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
+  import LetterIndex from '../components/LetterIndex.svelte'
 
-  const deceased = $classmatesStore.filter((classmate) => classmate.deceased === 'TRUE')
+  let deceased = []
+  let classmateColumn1 = []
+  let classmateColumn2 = []
+  let letterIndex = []
 
-  const [classmateColumn1, classmateColumn2] = createPersonGroups(deceased)
+  const getDeceasedClassmates = () => {
+    deceased = $classmatesStore.filter((classmate) => classmate.deceased === 'TRUE')
+    const [firstClassmateColumn, secondClassmateColumn] = createPersonGroups(deceased)
+    classmateColumn1 = firstClassmateColumn
+    classmateColumn2 = secondClassmateColumn
+    letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+    return ''
+  }
+  
 </script>
 
 <style>
@@ -35,7 +49,7 @@
         <div class="flex w-full m-0 p-0 justify-center">
           <img
             alt="Light behind cemetary tree"
-            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 shadow-2xl 
+            class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-48 
               ml-0 md:ml-6 lg:ml-0 mb-8 lg:mb-none
               transform scale-x-250 md:scale-x-150 lg:scale-x-250
               shadow-xl-orange lg:shadow-2xl-orange"
@@ -79,27 +93,30 @@
         <div class="flex flex-wrap place-content-center w-full">
           <p><em>Click</em> on a name to see more.</p>
         </div>
-
-        <div class="flex w-full justify-center">
-          <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
-            {#each classmateColumn1 as classmate}
-              <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-                <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
-                  { classmate.name }
-                </a>
-              </li>          
-            {/each}
-          </ul>
-          <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
-            {#each classmateColumn2 as classmate}
-              <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
-                <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
-                  { classmate.name }
-                </a>
-              </li>
-            {/each}
-          </ul>
-        </div>
+        {#await $classmatesPromise then value}
+          {getDeceasedClassmates()}
+          <LetterIndex pageName="memoriam" letterIndex={ letterIndex } />
+          <div class="flex w-full justify-center">
+            <ul class="mt-2 text-lg text-gray-600 leading-relaxed">
+              {#each classmateColumn1 as classmate}
+                <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+                  <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                    { classmate.name }
+                  </a>
+                </li>          
+              {/each}
+            </ul>
+            <ul class="ml-0 md:ml-6 mt-0 md:mt-2 text-lg text-gray-600 leading-relaxed">
+              {#each classmateColumn2 as classmate}
+                <li class="transition duration-300 ease-in-out hover:text-orange-500 hover:font-semibold hover:bg-gray-300 transform hover:-translate-y-0 hover:scale-110">
+                  <a href="classmate?back=memoriam&name={ classmate.name }&photoId={ classmate.cloudinaryId }&deceased={ classmate.deceased }&confirmed={ classmate.confirmed }">
+                    { classmate.name }
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {/await}
       </div>
     </div>
   </div>

@@ -1,21 +1,35 @@
 <script context="module">
   import classmatesStore from '../stores/classmates.js'
+  import classmatesPromise from '../stores/classmatesPromise.js'
   import facultyStore from '../stores/faculty.js'
+  import facultyPromise from '../stores/facultyPromise.js'
 
   export async function load({ params, fetch, session, stuff }) {
 		const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
   	const facultyURL = `${ import.meta.env.VITE_BE_URL }/faculty`
 
-    const classmatesResponse = await fetch(classmatesURL)
-    classmatesStore.addClassmates(classmatesResponse.ok && (await classmatesResponse.json())) 
+    const classmatesResponse = fetch(classmatesURL)
+    .then(async (response) => {
+      const classmatesJSON = response.json()
+      classmatesPromise.addClassmatesPromise(classmatesJSON)
+      classmatesJSON.then((json) => {
+        return classmatesStore.addClassmates(json)
+      })
+    })
 
-    const facultyResponse = await fetch(facultyURL)
-    facultyStore.addFaculty(facultyResponse.ok && (await facultyResponse.json())) 
+    const facultyResponse = fetch(facultyURL)
+    .then(async (response) => {
+      const facultyJSON = response.json()
+      facultyPromise.addFacultyPromise(facultyJSON)
+      facultyJSON.then((json) => {
+        return facultyStore.addFaculty(json)
+      })
+    })
 
     return {
       props: {
-				status: classmatesResponse.status,
-        url: classmatesURL,
+        classmatesResponse: classmatesResponse,
+        facultyResponse: facultyResponse,
       }
     }
   }
@@ -152,7 +166,7 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_graduation.jpeg');"
+      style="background-image: url('chs_graduation2.webp');"
     />
     <div class="container relative mx-auto">
       <div class="justify-items-center flex flex-wrap">
@@ -221,7 +235,7 @@
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white
+                class="relative flex flex-col min-w-0 break-words
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img
@@ -257,12 +271,12 @@
 				<div class="pt-8 md:pt-40 w-full md:w-4/12 px-4 text-center">
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
-              <div class="relative flex flex-col min-w-0 break-words bg-white
+              <div class="relative flex flex-col min-w-0 break-words
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img
                     alt="Friends"
-                    src="chs_friends.avif"
+                    src="chs_friends.webp"
                     class="w-full align-middle rounded-t-lg" />
                   <source srcset="chs_friends.jpeg" type={`image/jpeg`} />
                 </picture>
@@ -294,7 +308,7 @@
           <div class="flex flex-wrap items-center">
             <div class="w-full px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white
+                class="relative flex flex-col min-w-0 break-words
                 w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
                 <picture>
                   <img
