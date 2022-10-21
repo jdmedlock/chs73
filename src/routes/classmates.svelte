@@ -1,6 +1,6 @@
 <script>
   import classmatesStore from '../stores/classmates.js'
-  import classmatesPromiseStore from '../stores/classmatesPromise.js'
+  import classmatesPromise from '../stores/classmatesPromise.js'
   import createNameIndex from '../utils/createNameIndex'
   import createPersonGroups from '../utils/createPersonGroups'
   import BackToTop from '../components/BackToTop.svelte'
@@ -12,14 +12,17 @@
   let classmateColumn2
 
   // Retrieve the list of classmates and build the last name index
-  if ($classmatesStore.length > 0) {
-    const classmateColumns = createPersonGroups($classmatesStore)
-    classmateColumn1 = classmateColumns[0]
-    classmateColumn2 = classmateColumns[1]
-    letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
-  } else {
-    console.log(`Error retrieving classmates`)
-    throw new Error(`No classmates`)
+  let classmateColumns
+  const getClassmates = () => {
+    if ($classmatesStore.length > 0) {
+      classmateColumns = createPersonGroups($classmatesStore)
+      classmateColumn1 = classmateColumns[0]
+      classmateColumn2 = classmateColumns[1]
+      letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
+    } else {
+      console.log(`No classmates available`)
+    }
+    return ''
   }
 
 </script>
@@ -27,7 +30,8 @@
 <style>
 </style>
 
-{#await $classmatesPromiseStore then value}
+{#await $classmatesPromise then value}
+{getClassmates()}
 
   <section class="relative py-12 lg:py-20">
     <div class="bottom-auto top-0 left-0 right-0 w-full absolute
@@ -60,7 +64,7 @@
           <div class="flex flex-wrap w-full m-0 p-0 justify-center">
             <img
               alt="Homecoming"
-              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96 shadow-2xl 
+              class="max-w-screen-sm lg:max-w-full h-20 md:h-28 lg:h-96
                 ml-0 md:ml-0 lg:ml-0 mb-8 lg:mb-none
                 transform scale-200 md:scale-150 lg:scale-100
                 border-0 shadow-xl-orange lg:shadow-2xl-orange"

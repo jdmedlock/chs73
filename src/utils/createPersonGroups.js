@@ -1,6 +1,7 @@
 import formatName from './formatName'
 
 export default function createPersonGroups(persons) {
+  if (persons === undefined) return ([[],[]])
 
   const photoPlaceholder = 'chs_photo_placeholder_otiogp.png'
 

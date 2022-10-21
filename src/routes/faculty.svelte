@@ -10,15 +10,17 @@
   let facultyColumn1
   let facultyColumn2
   
-    // Retrieve the list of faculty and build the last name index
-  if ($facultyStore.length > 0) {
-    const facultyColumns = createPersonGroups($facultyStore)
-    facultyColumn1 = facultyColumns[0]
-    facultyColumn2 = facultyColumns[1]
-    letterIndex = createNameIndex(facultyColumn1.concat(facultyColumn2))
-  } else {
-    console.log(`Error retrieving faculty`)
-    throw new Error(`No faculty`)
+  // Retrieve the list of faculty and build the last name index
+  const getFaculty = () => {
+    if ($facultyStore.length > 0) {
+      const facultyColumns = createPersonGroups($facultyStore)
+      facultyColumn1 = facultyColumns[0]
+      facultyColumn2 = facultyColumns[1]
+      letterIndex = createNameIndex(facultyColumn1.concat(facultyColumn2))
+    } else {
+      console.log(`No faculty available`)
+    }
+    return ''
   }
 </script>
 
@@ -26,6 +28,7 @@
 </style>
 
 {#await $facultyPromiseStore then}
+{getFaculty()}
   <section class="relative py-12 lg:py-20">
     <div
       class="bottom-auto top-0 left-0 right-0 w-full absolute
