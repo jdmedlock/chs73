@@ -1,10 +1,10 @@
 <script>
-  import classmatesStore from '../stores/classmates.js'
-  import classmatesPromise from '../stores/classmatesPromise.js'
-  import createNameIndex from '../utils/createNameIndex'
-  import createPersonGroups from '../utils/createPersonGroups'
-  import BackToTop from '../components/BackToTop.svelte'
-  import LetterIndex from '../components/LetterIndex.svelte'
+  import classmatesStore from '../../stores/classmates.js'
+  import classmatesPromise from '../../stores/classmatesPromise.js'
+  import createNameIndex from '../../utils/createNameIndex'
+  import createPersonGroups from '../../utils/createPersonGroups'
+  import BackToTop from '../../components/BackToTop.svelte'
+  import LetterIndex from '../../components/LetterIndex.svelte'
 
   let letterIndex
   let showGreeting = false

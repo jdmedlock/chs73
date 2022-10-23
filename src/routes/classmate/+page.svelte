@@ -1,24 +1,6 @@
-<script context="module">
-	export async function load(params) {
-    return { 
-      props: {
-        params: {
-          back: params.url.searchParams.get('back') || '',
-          firstName: params.url.searchParams.get('firstName'),
-          lastName: params.url.searchParams.get('lastName') || '',
-          name: params.url.searchParams.get('name') || '',
-          cloudinaryId: params.url.searchParams.get('photoId') || '',
-          deceased: params.url.searchParams.get('deceased') || '',
-          confirmed: params.url.searchParams.get('confirmed') || '',
-        }
-      }
-    }
-  }
-</script>
-
 <script>
   import { goto } from '$app/navigation'
-  import getCloudinaryPhoto from '../utils/getCloudinaryPhoto.js'
+  import getCloudinaryPhoto from '../../utils/getCloudinaryPhoto.js'
 
   export let params
 
