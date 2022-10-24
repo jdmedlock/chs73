@@ -1,13 +1,5 @@
-	export async function load(params) {
+export async function load(page) {
   return {
-    params: {
-      back: params.url.searchParams.get('back') || '',
-      firstName: params.url.searchParams.get('firstName'),
-      lastName: params.url.searchParams.get('lastName') || '',
-      name: params.url.searchParams.get('name') || '',
-      cloudinaryId: params.url.searchParams.get('photoId') || '',
-      deceased: params.url.searchParams.get('deceased') || '',
-      confirmed: params.url.searchParams.get('confirmed') || '',
-    }
+    params: page.url.searchParams
   }
 }
