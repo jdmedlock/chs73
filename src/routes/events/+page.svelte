@@ -18,21 +18,6 @@
       iCalFileName: "CHS73_Reunion_20230915",
     })
   }
-
-  const handleAddDruryToCalendar = (event) => {
-    event.preventDefault()
-    atcb_action({
-      name: "CHS73 50th Reunion - Dinner",
-      location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
-      description: "Hors d’oeurves, a cash bar and a time to remember!\n\n- Hors d’oeurves + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
-      startDate: "2023-09-16",
-      endDate: "2023-09-16",
-      startTime:"16:00",
-      endTime:"23:30",
-      options: ['Apple', 'Google', 'iCal'],
-      iCalFileName: "CHS73_Reunion_20230916",
-    })
-  }
 </script>
 
 <style>
@@ -186,9 +171,9 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
-              <button class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
-              </button>
+              <a class="flex items-center m-auto" href="checkout?back=events">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Signup for Saturdays gathering!!! </span>
+              </a>
             </div>
           </div>
         </div>
