@@ -1,9 +1,18 @@
 <script>
-  import { goto } from '$app/navigation'
+  import { goto } from '$app/navigation'  
+  import { page } from '$app/stores'
   import getCloudinaryPhoto from '../../utils/getCloudinaryPhoto.js'
 
-  export let params
-  let { back, firstName, lastName, name, cloudinaryId, department, position, deceased, confirmed } = params
+  let back = $page.data.params.get('back')
+  let firstName = $page.data.params.get('firstName')
+  let lastName = $page.data.params.get('lastName')
+  let name = $page.data.params.get('name')
+  let cloudinaryId = $page.data.params.get('photoId')
+  let deceased = $page.data.params.get('deceased')
+  let department = $page.data.params.get('department')
+  let position = $page.data.params.get('position')
+  let confirmed = $page.data.params.get('confirmed')
+  
   let backPage = back === "faculty" ? "faculty" : back
 
   const handleTigerHunt = async () => {

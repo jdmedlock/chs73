@@ -1,10 +1,19 @@
 <script>
   import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
   import { client } from '../../utils/graphql.js'
   import { emailValidator, nameValidator, stateValidator, zipcodeValidator } from '../../utils/validators.js'
 
-  export let params
-  let { back, firstName, lastName, name, cloudinaryId, deceased, confirmed, type, department, position } = params
+  let back = $page.data.params.get('back')
+  let firstName = $page.data.params.get('firstName')
+  let lastName = $page.data.params.get('lastName')
+  let name = $page.data.params.get('name')
+  let cloudinaryId = $page.data.params.get('photoId')
+  let deceased = $page.data.params.get('deceased')
+  let confirmed = $page.data.params.get('confirmed')
+  let type = $page.data.params.get('type')
+  let department = $page.data.params.get('department')
+  let position = $page.data.params.get('position')
 
   let posterName = ''
   let posterEmail = ''

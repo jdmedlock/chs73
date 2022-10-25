@@ -5,7 +5,7 @@
 
   let back = $page.data.params.get('back')
   let firstName = $page.data.params.get('firstName')
-  let lastName = $page.data.params.get('lastName')
+  let lastName = $page.data.params.get('lastName') || ''
   let name = $page.data.params.get('name')
   let cloudinaryId = $page.data.params.get('photoId')
   let deceased = $page.data.params.get('deceased')
@@ -17,7 +17,6 @@
     await goto(`updatecontact?back=classmate&firstName=${ firstName }&lastName=${ lastName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
-  console.log('cloudinaryId: ', cloudinaryId)
   const classmateImage = getCloudinaryPhoto(cloudinaryId)
 
 </script>
