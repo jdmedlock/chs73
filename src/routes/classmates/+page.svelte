@@ -20,7 +20,7 @@
       classmateColumn2 = classmateColumns[1]
       letterIndex = createNameIndex(classmateColumn1.concat(classmateColumn2))
     } else {
-      console.log(`No classmates available`)
+      console.log(`No classmates available yet`)
     }
     return ''
   }
