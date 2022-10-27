@@ -2,7 +2,6 @@
   import { goto } from '$app/navigation'
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
-  import { loadScript } from "@paypal/paypal-js"
 
   export let cartTotal = 25.00
 
@@ -24,53 +23,9 @@
       iCalFileName: "CHS73_Reunion_20230916",
     })
   }
-
-  const handleSaturdaySignup = (event) => {
-    isPaymentVisible = !isPaymentVisible
-    if (isPaymentVisible) {
-      loadScript({ "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }` }).then((paypal) => {
-      paypal
-        .Buttons({
-          style: {
-            color: "blue",
-            shape: "rect",
-            label: "paypal",
-            layout: "vertical"
-          },
-          createOrder: function (data, actions) {
-            // Set up the transaction
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: cartTotal,
-                  },
-                },
-              ],
-            })
-          },
-          onApprove: function (data, actions) {
-            // Capture order after payment approved
-            return actions.order.capture().then(function (details) {
-              alert("Payment successful!")
-            });
-          },
-          onError: function (err) {
-            // Log error if something goes wrong during approval
-            alert("Something went wrong");
-            console.log("Something went wrong", err)
-          },
-        })
-        .render("#paypal-button-container")
-      })
-    }
-  }
 </script>
 
 <style>
-#paypal-button-container {
-  margin: 30px 0;
-}
 </style>
 
 <section class="relative">
@@ -78,13 +33,13 @@
     <div class="pt-12 sm:pt-16 lg:pt-24">
       <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
-          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">Checkout</h2>
-          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Checkout for Saturday's Gathering</p>
+          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">Signup for Saturday</h2>
+          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Signup for Saturday's Gathering</p>
           <p class="text-xl text-gray-300"></p>
         </div>
       </div>
     </div>
-    <div class="mt-8 bg-white sm:mt-12 lg:mt-16">
+    <div class="mt-8 pb-12 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
       <div class="relative">
         <div class="absolute inset-0 h-3/4 bg-gray-900"></div>
         <div class="relative mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,12 +72,35 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
+                    <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar</p>
+                  </li>
+
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">Music + a few surprises</p>
+                  </li>
+
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
                     <p class="ml-3 text-base text-gray-700">$25 for the evening</p>
                   </li>
                 </ul>
-                <button class="flex items-center m-auto" on:click={ handleSaturdaySignup }>
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Review & pay </span>
+                <button class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
                 </button>
+                <a class="flex items-center m-auto" href="checkout?back=signup">
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Proceed to checkout </span>
+                </a>
               </div>
             </div>
           </div>
@@ -132,7 +110,7 @@
     </div>
 
     {#if isPaymentVisible}
-      <div class="flex flex-col items-center bg-white">
+      <div class="flex flex-col items-center rounded-lg shadow-lg bg-gray-200">
         <div id="paypal-button-container" />
       </div>
     {/if}

@@ -128,7 +128,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">4:00 PM - 11:30 PM</p>
+                  <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 4:00 PM - 11:30 PM</p>
                 </li>
 
                 <li class="flex items-start">
@@ -171,8 +171,8 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
-              <a class="flex items-center m-auto" href="checkout?back=events">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Signup for Saturdays gathering!!! </span>
+              <a class="flex items-center m-auto" href="signup?back=events">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Sign me up!!! </span>
               </a>
             </div>
           </div>
