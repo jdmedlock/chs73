@@ -7,8 +7,11 @@
   export let cartTotal = 25.00
 
   let isPaymentVisible = false
+  let isPaymentSuccessful = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
+
+  let transactionID 
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -39,6 +42,7 @@
           },
           createOrder: function (data, actions) {
             // Set up the transaction
+            console.log('Create order: ', data)
             return actions.order.create({
               purchase_units: [
                 {
@@ -51,9 +55,16 @@
           },
           onApprove: function (data, actions) {
             // Capture order after payment approved
+            console.log('Payment approved: ', data)
             return actions.order.capture().then(function (details) {
-              alert("Payment successful!")
-            });
+              console.log("Captured order: ", details)
+              isPaymentVisible = !isPaymentVisible
+
+              // alert("Payment successful!")
+              // Display transaction dataset
+              transactionID = details.id
+              isPaymentSuccessful = !isPaymentSuccessful
+            })
           },
           onError: function (err) {
             // Log error if something goes wrong during approval
@@ -134,6 +145,16 @@
     {#if isPaymentVisible}
       <div class="flex flex-col items-center bg-white">
         <div id="paypal-button-container" />
+      </div>
+    {/if}
+
+    {#if isPaymentSuccessful}
+      <div class="flex flex-col items-center bg-white">
+        <h3 class="inline-flex mt-4 px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed</h3>
+        <div>
+          <span>Transaction ID:</span>
+          <span>{ transactionID }</span>
+        </div>
       </div>
     {/if}
 
