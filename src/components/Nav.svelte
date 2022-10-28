@@ -50,7 +50,7 @@
 	</div>
 
 	<div class="w-full h-2 m-0">
-		<PageScrollBar class="w-full h-4"/>
+		<PageScrollBar/>
 	</div>
 		
 </nav>

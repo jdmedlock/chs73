@@ -11,7 +11,23 @@
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
 
-  let transactionID 
+  // PayPal order information
+  let orderID 
+  let orderAmount
+  let transactionStatus
+  let transactionCreationTime
+  let transactionUpdateTime
+  let payerEmailAddress
+  let payerFirstname
+  let payerLastname
+  let payerID
+  let shippingAddressLine1
+  let shippingAddressLine2
+  let shippingCity
+  let shippingState
+  let shippingPostalCode
+  let shippingCountryCode
+
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -30,6 +46,7 @@
 
   const handleSaturdaySignup = (event) => {
     isPaymentVisible = !isPaymentVisible
+    isPaymentSuccessful = false
     if (isPaymentVisible) {
       loadScript({ "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }` }).then((paypal) => {
       paypal
@@ -58,12 +75,25 @@
             console.log('Payment approved: ', data)
             return actions.order.capture().then(function (details) {
               console.log("Captured order: ", details)
-              isPaymentVisible = !isPaymentVisible
+              isPaymentVisible = false
+              isPaymentSuccessful = true
 
-              // alert("Payment successful!")
-              // Display transaction dataset
-              transactionID = details.id
-              isPaymentSuccessful = !isPaymentSuccessful
+              // Display order completion info
+              orderID = details.id
+              orderAmount = details.purchase_units[0].amount.value
+              transactionStatus = details.status
+              transactionCreationTime = details.create_time
+              transactionUpdateTime = details.update_time
+              payerEmailAddress = details.payer.email_address
+              payerFirstname = details.payer.name.given_name
+              payerLastname = details.payer.name.surname
+              payerID = details.payer.name.payer_id
+              shippingAddressLine1 = details.purchase_units[0].shipping.address.address_line_1
+              shippingAddressLine2 = details.purchase_units[0].shipping.address.address_line_2
+              shippingCity = details.purchase_units[0].shipping.address.admin_area_2
+              shippingState = details.purchase_units[0].shipping.address.admin_area_1
+              shippingPostalCode = details.purchase_units[0].shipping.address.postal_code
+              shippingCountryCode = details.purchase_units[0].shipping.address.country_code
             })
           },
           onError: function (err) {
@@ -128,12 +158,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col gap-y-0">
                       <div class="ml-3 text-base text-gray-700 mb-2">Order Summary:</div>
-                      <div class="grid grid-cols-2 gap-4 ml-8">
+                      <div class="grid grid-cols-2 gap-x-4 ml-8 bg-gray-200">
                         <div>Subtotal </div><div class="justify-self-end">${ cartTotal.toFixed(2) }</div>
-                        <div>Taxes </div><div class="justify-self-end">0.00</div>
-                        <div>Order Total </div><div class="justify-self-end">${ cartTotal.toFixed(2) }</div>
+                        <div>Taxes </div><div class="underline justify-self-end">0.00</div>
+                        <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ cartTotal.toFixed(2) }</div>
                       </div>
                     </div>
                   </li>
@@ -157,10 +187,21 @@
 
     {#if isPaymentSuccessful}
       <div class="flex flex-col items-center bg-white">
-        <h3 class="inline-flex mt-4 px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed</h3>
-        <div>
-          <span>Transaction ID:</span>
-          <span>{ transactionID }</span>
+        <h3 class="mt-4 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (save this for your records)</h3>
+        <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 h-[32rem] w-1/2">
+          <div>Order ID:</div><div>{ orderID }</div>
+          <div>Amount:</div><div>{ orderAmount }</div>
+          <div>Transaction status:</div><div>{ transactionStatus }</div>
+          <div>Transaction created:</div><div>{ transactionCreationTime }</div>
+          <div>Name:</div><div> { payerFirstname } { payerLastname }</div>
+          <div>Address:</div><div>{ shippingAddressLine1 }</div>
+          {#if shippingAddressLine2}
+            <div>&nbsp;</div><div>{ shippingAddressLine2 }</div>
+          {/if}
+          <div>City:</div><div>{ shippingCity }</div>
+          <div>State:</div><div>{ shippingState }</div>
+          <div>Zipcode:</div><div>{ shippingPostalCode }</div>
+          <div>Email:</div><div>{ payerEmailAddress }</div>
         </div>
       </div>
     {/if}
