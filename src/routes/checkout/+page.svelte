@@ -3,6 +3,8 @@
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
   import { loadScript } from "@paypal/paypal-js"
+  import { PRIVATE_PAYPAL_CLIENT_ID } from '$env/static/private'
+
 
   export let cartTotal = 25.00
 
@@ -48,7 +50,7 @@
     isPaymentVisible = !isPaymentVisible
     isPaymentSuccessful = false
     if (isPaymentVisible) {
-      loadScript({ "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }` }).then((paypal) => {
+      loadScript({ "client-id": `${ PRIVATE_PAYPAL_CLIENT_ID }` }).then((paypal) => {
       paypal
         .Buttons({
           style: {

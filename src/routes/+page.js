@@ -2,10 +2,11 @@ import classmatesStore from '../stores/classmates.js'
 import classmatesPromise from '../stores/classmatesPromise.js'
 import facultyStore from '../stores/faculty.js'
 import facultyPromise from '../stores/facultyPromise.js'
+import { PUBLIC_BE_URL } from '$env/static/public'
 
 export async function load({ params, fetch }) {
-		const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
-	const facultyURL = `${ import.meta.env.VITE_BE_URL }/faculty`
+		const classmatesURL = `${ PUBLIC_BE_URL }/classmates`
+	const facultyURL = `${ PUBLIC_BE_URL }/faculty`
 
   const classmatesResponse = fetch(classmatesURL)
   .then(async (response) => {
