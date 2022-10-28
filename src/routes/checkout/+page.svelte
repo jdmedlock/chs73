@@ -128,7 +128,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">$25 for the evening</p>
+                    <div class="flex flex-col">
+                      <div class="ml-3 text-base text-gray-700 mb-2">Order Summary:</div>
+                      <div class="grid grid-cols-2 gap-4 ml-8">
+                        <div>Subtotal </div><div class="justify-self-end">${ cartTotal.toFixed(2) }</div>
+                        <div>Taxes </div><div class="justify-self-end">0.00</div>
+                        <div>Order Total </div><div class="justify-self-end">${ cartTotal.toFixed(2) }</div>
+                      </div>
+                    </div>
                   </li>
                 </ul>
                 <button class="flex items-center m-auto" on:click={ handleSaturdaySignup }>
