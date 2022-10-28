@@ -122,7 +122,7 @@
       <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
           <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">Checkout</h2>
-          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Checkout for Saturday's Gathering</p>
+          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Review & pay for Saturday's Gathering</p>
           <p class="text-xl text-gray-300"></p>
         </div>
       </div>
@@ -138,7 +138,7 @@
                   <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 16, 2023</h3>
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
-                  Drury Plaza Conference Center
+                  Saturday's Reunion Gathering
                 </div>
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
@@ -171,7 +171,7 @@
                   </li>
                 </ul>
                 <button class="flex items-center m-auto" on:click={ handleSaturdaySignup }>
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Review & pay </span>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
                 </button>
               </div>
             </div>
@@ -188,9 +188,9 @@
     {/if}
 
     {#if isPaymentSuccessful}
-      <div class="flex flex-col items-center bg-white">
-        <h3 class="mt-4 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (save this for your records)</h3>
-        <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 h-[32rem] w-1/2">
+      <div class="flex flex-col items-center bg-white h-96 text-base">
+        <h3 class="mt-4 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (save this for your records)</h3>
+        <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2">
           <div>Order ID:</div><div>{ orderID }</div>
           <div>Amount:</div><div>{ orderAmount }</div>
           <div>Transaction status:</div><div>{ transactionStatus }</div>

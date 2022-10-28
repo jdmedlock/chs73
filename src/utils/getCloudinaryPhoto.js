@@ -5,7 +5,6 @@ import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity"
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn"
 import { PUBLIC_CLOUDINARY_NAME } from '$env/static/public'
 
-
 export default function getCloudinaryPhoto(cloudinaryId) {
 
   // Create a Cloudinary instance and set your cloud name.
