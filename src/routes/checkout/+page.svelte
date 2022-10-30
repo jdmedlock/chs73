@@ -1,10 +1,10 @@
 <script>
+  import axios from 'axios'
   import { goto } from '$app/navigation'
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
   import { loadScript } from "@paypal/paypal-js"
-  import { PRIVATE_PAYPAL_CLIENT_ID } from '$env/static/private'
-
+  import { PUBLIC_BE_URL, PUBLIC_PAYPAL_CLIENT_ID } from '$env/static/public'
 
   export let cartTotal = 25.00
 
@@ -30,7 +30,6 @@
   let shippingPostalCode
   let shippingCountryCode
 
-
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
     atcb_action({
@@ -47,10 +46,11 @@
   }
 
   const handleSaturdaySignup = (event) => {
+    const itemDescription = 'Saturday Gathering'
     isPaymentVisible = !isPaymentVisible
     isPaymentSuccessful = false
     if (isPaymentVisible) {
-      loadScript({ "client-id": `${ PRIVATE_PAYPAL_CLIENT_ID }` }).then((paypal) => {
+      loadScript({ "client-id": `${ PUBLIC_PAYPAL_CLIENT_ID }` }).then((paypal) => {
       paypal
         .Buttons({
           style: {
@@ -96,8 +96,22 @@
               shippingState = details.purchase_units[0].shipping.address.admin_area_1
               shippingPostalCode = details.purchase_units[0].shipping.address.postal_code
               shippingCountryCode = details.purchase_units[0].shipping.address.country_code
+
+              axios.post(`${ PUBLIC_BE_URL }/logPayment`, {
+                order_id: orderID,
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+              
+              //TODO: Invoke server API to store transaction & email transaction receipt to user
+
             })
           },
+          
           onError: function (err) {
             // Log error if something goes wrong during approval
             alert("Something went wrong");

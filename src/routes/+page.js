@@ -5,7 +5,7 @@ import facultyPromise from '../stores/facultyPromise.js'
 import { PUBLIC_BE_URL } from '$env/static/public'
 
 export async function load({ params, fetch }) {
-		const classmatesURL = `${ PUBLIC_BE_URL }/classmates`
+	const classmatesURL = `${ PUBLIC_BE_URL }/classmates`
 	const facultyURL = `${ PUBLIC_BE_URL }/faculty`
 
   const classmatesResponse = fetch(classmatesURL)
