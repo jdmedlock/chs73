@@ -12,23 +12,8 @@
   let isPaymentSuccessful = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
-
-  // PayPal order information
-  let orderID 
-  let orderAmount
-  let transactionStatus
-  let transactionCreationTime
-  let transactionUpdateTime
-  let payerEmailAddress
-  let payerFirstname
-  let payerLastname
-  let payerID
-  let shippingAddressLine1
-  let shippingAddressLine2
-  let shippingCity
-  let shippingState
-  let shippingPostalCode
-  let shippingCountryCode
+  let resultData 
+  let resultDetails
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -75,30 +60,35 @@
           onApprove: function (data, actions) {
             // Capture order after payment approved
             console.log('Payment approved: ', data)
+            resultData = data
             return actions.order.capture().then(function (details) {
+              resultDetails = details
               console.log("Captured order: ", details)
               isPaymentVisible = false
               isPaymentSuccessful = true
 
-              // Display order completion info
-              orderID = details.id
-              orderAmount = details.purchase_units[0].amount.value
-              transactionStatus = details.status
-              transactionCreationTime = details.create_time
-              transactionUpdateTime = details.update_time
-              payerEmailAddress = details.payer.email_address
-              payerFirstname = details.payer.name.given_name
-              payerLastname = details.payer.name.surname
-              payerID = details.payer.name.payer_id
-              shippingAddressLine1 = details.purchase_units[0].shipping.address.address_line_1
-              shippingAddressLine2 = details.purchase_units[0].shipping.address.address_line_2
-              shippingCity = details.purchase_units[0].shipping.address.admin_area_2
-              shippingState = details.purchase_units[0].shipping.address.admin_area_1
-              shippingPostalCode = details.purchase_units[0].shipping.address.postal_code
-              shippingCountryCode = details.purchase_units[0].shipping.address.country_code
-
               axios.post(`${ PUBLIC_BE_URL }/logPayment`, {
-                order_id: orderID,
+                order_id: details.id,
+                item_description: 'Saturday Gathering', 
+                order_amount: parseFloat(details.purchase_units[0].amount.value), 
+                transaction_status: details.status, 
+                transaction_creation_time: details.create_time, 
+                transaction_update_time: details.update_time,
+                payer_source: data.paymentSource, 
+                payer_email_address: details.payer.email_address, 
+                payer_firstname: details.payer.name.given_name, 
+                payer_lastname: details.payer.name.surname,
+                payer_id: details.payer.name.payer_id, 
+                shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+                shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+                shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+                shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+                shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+                shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
+                billing_token: data.billingToken, 
+                facilitator_access_token: data.facilitatorAccessToken, 
+                accelerated_payment: data.accelerated, 
+                soft_descriptor: details.softDescriptor, 
               })
               .then(function (response) {
                 console.log(response);
@@ -205,19 +195,19 @@
       <div class="flex flex-col items-center bg-white h-96 text-base">
         <h3 class="mt-4 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (save this for your records)</h3>
         <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2">
-          <div>Order ID:</div><div>{ orderID }</div>
-          <div>Amount:</div><div>{ orderAmount }</div>
-          <div>Transaction status:</div><div>{ transactionStatus }</div>
-          <div>Transaction created:</div><div>{ transactionCreationTime }</div>
-          <div>Name:</div><div> { payerFirstname } { payerLastname }</div>
-          <div>Address:</div><div>{ shippingAddressLine1 }</div>
-          {#if shippingAddressLine2}
-            <div>&nbsp;</div><div>{ shippingAddressLine2 }</div>
+          <div>Order ID:</div><div>{ resultDetails.id }</div>
+          <div>Amount:</div><div>{ resultDetails.purchase_units[0].amount.value }</div>
+          <div>Transaction status:</div><div>{ resultDetails.status }</div>
+          <div>Transaction created:</div><div>{ resultDetails.create_time }</div>
+          <div>Name:</div><div> { resultDetails.payer.name.given_name } { resultDetails.payer.name.surname }</div>
+          <div>Address:</div><div>{ resultDetails.purchase_units[0].shipping.address.address_line_1 }</div>
+          {#if resultDetails.purchase_units[0].shipping.address.address_line_2}
+            <div>&nbsp;</div><div>{ resultDetails.purchase_units[0].shipping.address.address_line_2 }</div>
           {/if}
-          <div>City:</div><div>{ shippingCity }</div>
-          <div>State:</div><div>{ shippingState }</div>
-          <div>Zipcode:</div><div>{ shippingPostalCode }</div>
-          <div>Email:</div><div>{ payerEmailAddress }</div>
+          <div>City:</div><div>{ resultDetails.purchase_units[0].shipping.address.admin_area_2 }</div>
+          <div>State:</div><div>{ resultDetails.purchase_units[0].shipping.address.admin_area_1 }</div>
+          <div>Zipcode:</div><div>{ resultDetails.purchase_units[0].shipping.address.postal_code }</div>
+          <div>Email:</div><div>{ resultDetails.payer.email_address }</div>
         </div>
       </div>
     {/if}
