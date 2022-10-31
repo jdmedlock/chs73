@@ -31,7 +31,6 @@
   }
 
   const handleSaturdaySignup = (event) => {
-    const itemDescription = 'Saturday Gathering'
     isPaymentVisible = !isPaymentVisible
     isPaymentSuccessful = false
     if (isPaymentVisible) {
@@ -69,7 +68,7 @@
 
               axios.post(`${ PUBLIC_BE_URL }/logPayment`, {
                 order_id: details.id,
-                item_description: 'Saturday Gathering', 
+                item_description: 'Saturday Gathering',
                 order_amount: parseFloat(details.purchase_units[0].amount.value), 
                 transaction_status: details.status, 
                 transaction_creation_time: details.create_time, 
@@ -97,8 +96,29 @@
                 console.log(error);
               })
               
-              //TODO: Invoke server API to store transaction & email transaction receipt to user
-
+              // Email transaction receipt to user
+              axios.post(`${ PUBLIC_BE_URL }/sendEventAck`, {
+                order_id: details.id,
+                item_description: 'Saturday Gathering', 
+                event_date: '2023-09-16',
+                order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
+                transaction_status: details.status, 
+                transaction_creation_time: details.create_time, 
+                payer_email_address: details.payer.email_address, 
+                payer_firstname: details.payer.name.given_name, 
+                payer_lastname: details.payer.name.surname,
+                shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+                shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+                shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+                shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+                shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
             })
           },
           
