@@ -6,7 +6,10 @@
   import { loadScript } from "@paypal/paypal-js"
   import { PUBLIC_BE_URL, PUBLIC_PAYPAL_CLIENT_ID } from '$env/static/public'
 
-  export let cartTotal = 25.00
+  const CREDITCARD_TXN_FEE = 1.24
+  const PAYPAY_TXN_FEE = 1.36
+
+  export let EVENT_FEE = 25.00
 
   let isPaymentVisible = false
   let isPaymentSuccessful = false
@@ -14,6 +17,8 @@
   let backPage = back === "signup" ? "events" : back
   let resultData 
   let resultDetails
+  let estTxnFee = 0
+  let orderTotal = 0
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -46,11 +51,17 @@
           createOrder: function (data, actions) {
             // Set up the transaction
             console.log('Create order: ', data)
+            if (data.paymentSource === 'card') {
+              estTxnFee = CREDITCARD_TXN_FEE
+            } else {
+              estTxnFee = PAYPAY_TXN_FEE 
+            }
+            orderTotal = estTxnFee + EVENT_FEE
             return actions.order.create({
               purchase_units: [
                 {
                   amount: {
-                    value: cartTotal,
+                    value: EVENT_FEE,
                   },
                 },
               ],
@@ -187,9 +198,10 @@
                     <div class="flex flex-col gap-y-0">
                       <div class="ml-3 text-base text-gray-700 mb-2">Order Summary:</div>
                       <div class="grid grid-cols-2 gap-x-4 ml-8 bg-gray-200">
-                        <div>Subtotal </div><div class="justify-self-end">${ cartTotal.toFixed(2) }</div>
+                        <div>Subtotal </div><div class="justify-self-end">${ EVENT_FEE.toFixed(2) }</div>
+                        <div>Est. transaction fee </div><div class="justify-self-end">{ estTxnFee.toFixed(2) }</div>
                         <div>Taxes </div><div class="underline justify-self-end">0.00</div>
-                        <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ cartTotal.toFixed(2) }</div>
+                        <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ orderTotal.toFixed(2) }</div>
                       </div>
                     </div>
                   </li>
