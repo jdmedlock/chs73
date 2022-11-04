@@ -3,8 +3,7 @@
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
 
-  export let cartTotal = 25.00
-
+  let cartTotal = 25.00
   let isPaymentVisible = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back

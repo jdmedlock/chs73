@@ -27,13 +27,6 @@
   }
 </script>
 
-<style>
-  hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-</style>
-
 <svelte:window on:scroll={ handleOnScroll } />
 <a href="{ back }/#top"
   class="hidden fixed visible z-50 bottom-8 place-self-center
