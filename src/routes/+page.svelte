@@ -140,7 +140,7 @@
                 <img class="w-16 h-12 lg:w-36 lg:h-28 invisible md:visible" 
                   src="chs_tiger.png" alt="CHS Tiger"/>
               </div>
-              <h1 class="text-orange-500 pt-6 font-semibold text-3xl lg:text-6xl">
+              <h1 id="title" class="text-orange-500 pt-6 font-semibold text-3xl lg:text-6xl">
                 Cape Central High - Class of 1973
               </h1>
               <div class="place-self-center pt-4 lg:pt-0">
