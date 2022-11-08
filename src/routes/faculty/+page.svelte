@@ -51,7 +51,7 @@
     <div class="container flex flex-wrap justify-center w-full lg:7/12 mx-auto lg:py-none px-4">
 
       <div class="flex w-full justify-center">
-        <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">Faculty & Staff of 1973</h1>
+        <h1 class="my-12 text-3xl md:text-5xl font-semibold text-center">Faculty and Staff</h1>
       </div>
 
       <div class="flex justify-center w-full">
