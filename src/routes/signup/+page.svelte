@@ -3,7 +3,7 @@
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
 
-  let cartTotal = 25.00
+  let cartTotal = 30.00
   let isPaymentVisible = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
@@ -61,7 +61,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 4:00 PM - 11:30 PM</p>
+                    <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM</p>
                   </li>
 
                   <li class="flex items-start">
@@ -81,7 +81,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">Music + a few surprises</p>
+                    <p class="ml-3 text-base text-gray-700">Music, a drawing, and a few fun surprises!</p>
                   </li>
 
                   <li class="flex items-start">
@@ -91,7 +91,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">$25 for the evening</p>
+                    <p class="ml-3 text-base text-gray-700">$30 per person for the evening in advance, $35 at the door</p>
                   </li>
                 </ul>
                 <button class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>

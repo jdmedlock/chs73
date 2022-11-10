@@ -70,11 +70,20 @@ describe('Test basic page navigation', async () => {
 
   test('should display the faculty page', async () => {
     await page.goto('http://localhost:3000')
-    const memoriamMenuItem = page.locator('a').filter({ hasText: 'faculty' })
-    await expect(memoriamMenuItem).toBeDefined()
-    await memoriamMenuItem.click()
-    const memoriamPageHeading = page.locator('h1')
-    await expect(memoriamPageHeading).toBeDefined()
-    await expect(memoriamPageHeading).toHaveText('Faculty and Staff')
+    const facultyMenuItem = page.locator('a').filter({ hasText: 'faculty' })
+    await expect(facultyMenuItem).toBeDefined()
+    await facultyMenuItem.click()
+    const facultyPageHeading = page.locator('h1')
+    await expect(facultyPageHeading).toBeDefined()
+    await expect(facultyPageHeading).toHaveText('Faculty & Staff of 1973')
+  }, 60000)
+
+  test('should display the contact page', async () => {
+    await page.goto('http://localhost:3000')
+    const contactMenuItem = page.locator('a').filter({ hasText: 'contact' })
+    await expect(contactMenuItem).toBeDefined()
+    await contactMenuItem.click()
+    const contactPageHeading = page.locator('h2').filter({ hasText: 'Get involved!' })
+    await expect(contactPageHeading).toBeDefined()
   }, 60000)
 })

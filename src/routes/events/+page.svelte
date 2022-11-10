@@ -62,7 +62,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">5:00PM - Closing</p>
+                  <p class="ml-3 text-base text-gray-700">7:00PM - Closing</p>
                 </li>
 
                 <li class="flex items-start">
@@ -128,7 +128,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 4:00 PM - 11:30 PM</p>
+                  <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM</p>
                 </li>
 
                 <li class="flex items-start">
@@ -138,7 +138,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar</p>
+                  <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar ($30 per person in advance, $35 at the door)</p>
                 </li>
 
                 <li class="flex items-start">

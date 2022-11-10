@@ -9,7 +9,7 @@
   const CREDITCARD_TXN_FEE = 1.24
   const PAYPAY_TXN_FEE = 1.36
 
-  export let EVENT_FEE = 25.00
+  export let EVENT_FEE = 30.00
 
   let isPaymentVisible = false
   let isPaymentSuccessful = false
@@ -19,6 +19,7 @@
   let resultDetails
   let estTxnFee = 0
   let orderTotal = 0
+  let sponsor
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -39,109 +40,112 @@
     isPaymentVisible = !isPaymentVisible
     isPaymentSuccessful = false
     if (isPaymentVisible) {
-      loadScript({ "client-id": `${ PUBLIC_PAYPAL_CLIENT_ID }` }).then((paypal) => {
-      paypal
-        .Buttons({
-          style: {
-            color: "blue",
-            shape: "rect",
-            label: "paypal",
-            layout: "vertical"
-          },
-          createOrder: function (data, actions) {
-            // Set up the transaction
-            console.log('Create order: ', data)
-            if (data.paymentSource === 'card') {
-              estTxnFee = CREDITCARD_TXN_FEE
-            } else {
-              estTxnFee = PAYPAY_TXN_FEE 
-            }
-            orderTotal = estTxnFee + EVENT_FEE
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: EVENT_FEE,
+      loadScript({ 
+        "client-id": `${ PUBLIC_PAYPAL_CLIENT_ID }`, 
+        "disable-funding": "paylater"
+      }).then((paypal) => {
+        paypal
+          .Buttons({
+            style: {
+              color: "blue",
+              shape: "rect",
+              label: "paypal",
+              layout: "vertical"
+            },
+            createOrder: function (data, actions) {
+              // Set up the transaction
+              console.log('Create order: ', data)
+              if (data.paymentSource === 'card') {
+                estTxnFee = CREDITCARD_TXN_FEE
+              } else {
+                estTxnFee = PAYPAY_TXN_FEE 
+              }
+              orderTotal = estTxnFee + EVENT_FEE
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: EVENT_FEE,
+                    },
                   },
-                },
-              ],
-            })
-          },
-          onApprove: function (data, actions) {
-            // Capture order after payment approved
-            console.log('Payment approved: ', data)
-            resultData = data
-            return actions.order.capture().then(function (details) {
-              resultDetails = details
-              console.log("Captured order: ", details)
-              isPaymentVisible = false
-              isPaymentSuccessful = true
+                ],
+              })
+            },
+            onApprove: function (data, actions) {
+              // Capture order after payment approved
+              console.log('Payment approved: ', data)
+              resultData = data
+              return actions.order.capture().then(function (details) {
+                resultDetails = details
+                console.log("Captured order: ", details)
+                isPaymentVisible = false
+                isPaymentSuccessful = true
 
-              axios.post(`${ PUBLIC_BE_URL }/logPayment`, {
-                order_id: details.id,
-                item_description: 'Saturday Gathering',
-                order_amount: parseFloat(details.purchase_units[0].amount.value), 
-                transaction_status: details.status, 
-                transaction_creation_time: details.create_time, 
-                transaction_update_time: details.update_time,
-                payer_source: data.paymentSource, 
-                payer_email_address: details.payer.email_address, 
-                payer_firstname: details.payer.name.given_name, 
-                payer_lastname: details.payer.name.surname,
-                payer_id: details.payer.name.payer_id, 
-                shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-                shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-                shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-                shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-                shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-                shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
-                billing_token: data.billingToken, 
-                facilitator_access_token: data.facilitatorAccessToken, 
-                accelerated_payment: data.accelerated, 
-                soft_descriptor: details.softDescriptor, 
+                axios.post(`${ PUBLIC_BE_URL }/logPayment`, {
+                  order_id: details.id,
+                  item_description: 'Saturday Gathering',
+                  order_amount: parseFloat(details.purchase_units[0].amount.value), 
+                  transaction_status: details.status, 
+                  transaction_creation_time: details.create_time, 
+                  transaction_update_time: details.update_time,
+                  payer_source: data.paymentSource, 
+                  payer_email_address: details.payer.email_address, 
+                  payer_firstname: details.payer.name.given_name, 
+                  payer_lastname: details.payer.name.surname,
+                  payer_id: details.payer.name.payer_id, 
+                  shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+                  shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+                  shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+                  shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+                  shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+                  shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
+                  billing_token: data.billingToken, 
+                  facilitator_access_token: data.facilitatorAccessToken, 
+                  accelerated_payment: data.accelerated, 
+                  soft_descriptor: details.softDescriptor, 
+                })
+                .then(function (response) {
+                  console.log(response);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                })
+                
+                // Email transaction receipt to user
+                axios.post(`${ PUBLIC_BE_URL }/sendEventAck`, {
+                  order_id: details.id,
+                  item_description: 'Saturday Gathering', 
+                  event_date: '2023-09-16',
+                  order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
+                  transaction_status: details.status, 
+                  transaction_creation_time: details.create_time, 
+                  payer_email_address: details.payer.email_address, 
+                  payer_firstname: details.payer.name.given_name, 
+                  payer_lastname: details.payer.name.surname,
+                  shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+                  shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+                  shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+                  shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+                  shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+                })
+                .then(function (response) {
+                  console.log(response);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                })
               })
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              })
-              
-              // Email transaction receipt to user
-              axios.post(`${ PUBLIC_BE_URL }/sendEventAck`, {
-                order_id: details.id,
-                item_description: 'Saturday Gathering', 
-                event_date: '2023-09-16',
-                order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
-                transaction_status: details.status, 
-                transaction_creation_time: details.create_time, 
-                payer_email_address: details.payer.email_address, 
-                payer_firstname: details.payer.name.given_name, 
-                payer_lastname: details.payer.name.surname,
-                shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-                shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-                shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-                shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-                shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-              })
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              })
-            })
-          },
-          
-          onError: function (err) {
-            // Log error if something goes wrong during approval
-            alert("Something went wrong");
-            console.log("Something went wrong", err)
-          },
+            },
+            
+            onError: function (err) {
+              // Log error if something goes wrong during approval
+              alert("Something went wrong");
+              console.log("Something went wrong", err)
+            },
+          })
+          .render("#paypal-button-container")
         })
-        .render("#paypal-button-container")
-      })
-    }
+      }
   }
 </script>
 
@@ -185,7 +189,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 4:00 PM - 11:30 PM</p>
+                    <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM</p>
                   </li>
 
                   <li class="flex items-start">
@@ -205,6 +209,14 @@
                       </div>
                     </div>
                   </li>
+
+                  <li class="flex items-start">
+                    <label>
+                      <input type="checkbox" bind:checked={ sponsor }>
+                      I'd like to sponsor a classmate who needs help
+                    </label>
+                  </li>
+
                 </ul>
                 <button class="flex items-center m-auto" on:click={ handleSaturdaySignup }>
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
@@ -225,7 +237,7 @@
 
     {#if isPaymentSuccessful}
       <div class="flex flex-col items-center bg-white h-96 text-base">
-        <h3 class="mt-4 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (save this for your records)</h3>
+        <h3 class="mt-4 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (check your email for a reciept)</h3>
         <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2">
           <div>Order ID:</div><div>{ resultDetails.id }</div>
           <div>Amount:</div><div>{ resultDetails.purchase_units[0].amount.value }</div>
