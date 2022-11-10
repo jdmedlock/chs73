@@ -3,14 +3,13 @@ import { thumbnail } from "@cloudinary/url-gen/actions/resize"
 import { byRadius } from "@cloudinary/url-gen/actions/roundCorners"
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity"
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn"
-import { PUBLIC_CLOUDINARY_NAME } from '$env/static/public'
 
 export default function getCloudinaryPhoto(cloudinaryId) {
 
   // Create a Cloudinary instance and set your cloud name.
   const cld = new Cloudinary({
     cloud: {
-      cloudName: `${ PUBLIC_CLOUDINARY_NAME }`
+      cloudName: `${ import.meta.env.VITE_CLOUDINARY_NAME }`
     }
   })
 

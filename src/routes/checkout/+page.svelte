@@ -4,7 +4,6 @@
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
   import { loadScript } from "@paypal/paypal-js"
-  import { PUBLIC_BE_URL, PUBLIC_PAYPAL_CLIENT_ID } from '$env/static/public'
 
   const CREDITCARD_TXN_FEE = 1.24
   const PAYPAY_TXN_FEE = 1.36
@@ -41,7 +40,7 @@
     isPaymentSuccessful = false
     if (isPaymentVisible) {
       loadScript({ 
-        "client-id": `${ PUBLIC_PAYPAL_CLIENT_ID }`, 
+        "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
         "disable-funding": "paylater"
       }).then((paypal) => {
         paypal
@@ -81,7 +80,7 @@
                 isPaymentVisible = false
                 isPaymentSuccessful = true
 
-                axios.post(`${ PUBLIC_BE_URL }/logPayment`, {
+                axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
                   order_id: details.id,
                   item_description: 'Saturday Gathering',
                   order_amount: parseFloat(details.purchase_units[0].amount.value), 
@@ -112,7 +111,7 @@
                 })
                 
                 // Email transaction receipt to user
-                axios.post(`${ PUBLIC_BE_URL }/sendEventAck`, {
+                axios.post(`${ import.meta.env.VITE_BE_URL }/sendEventAck`, {
                   order_id: details.id,
                   item_description: 'Saturday Gathering', 
                   event_date: '2023-09-16',
