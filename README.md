@@ -1,7 +1,6 @@
 <<<<<<< HEAD
 # chs73
 
-
 [contributors-shield]: https://img.shields.io/github/contributors/jdmedlock/chs73.svg?style=for-the-badge
 [contributors-url]: https://github.com/jdmedlock/chs73/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/jdmedlock/chs73.svg?style=for-the-badge
@@ -58,8 +57,9 @@ The following backend services are invoked using a REST API:
 
 | Route   | Description                                       |
 |---------|---------------------------------------------------|
-| wakeup  | Wakes up the backend when the first FE page loads |
+| wakeUp  | Wakes up the backend when the first FE page loads |
 | message | Send an message entered by the user via an email to the reunion organizer |
+|         |   |
 ## Installation & Configuration
 
 1. Clone or fork this repo using git. Don't forget that to create a runnable application you'll also need the backend.
