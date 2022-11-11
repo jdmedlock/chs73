@@ -18,7 +18,7 @@
   let resultDetails
   let estTxnFee = 0
   let orderTotal = 0
-  let sponsor
+  let sponsor = false
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -102,6 +102,7 @@
                   facilitator_access_token: data.facilitatorAccessToken, 
                   accelerated_payment: data.accelerated, 
                   soft_descriptor: details.softDescriptor, 
+                  sponsor: sponsor ? 'Yes' : 'No'
                 })
                 .then(function (response) {
                   console.log(response);
@@ -126,6 +127,7 @@
                   shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
                   shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
                   shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+                  sponsor: sponsor ? 'Yes' : 'No',
                 })
                 .then(function (response) {
                   console.log(response);
@@ -212,7 +214,7 @@
                   <li class="flex items-start">
                     <label>
                       <input type="checkbox" bind:checked={ sponsor }>
-                      I'd like to sponsor a classmate who needs help
+                      I'd like to help a classmate who might otherwise not be able to attend. Please bill me one additional admittance for this event.
                     </label>
                   </li>
 
