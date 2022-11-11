@@ -253,6 +253,7 @@
           <div>State:</div><div>{ resultDetails.purchase_units[0].shipping.address.admin_area_1 }</div>
           <div>Zipcode:</div><div>{ resultDetails.purchase_units[0].shipping.address.postal_code }</div>
           <div>Email:</div><div>{ resultDetails.payer.email_address }</div>
+          <div>Agreed to sponsor another classmate:</div><div>{ sponsor ? 'Yes' : 'No' }</div>
         </div>
       </div>
     {/if}
