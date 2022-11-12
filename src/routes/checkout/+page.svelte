@@ -19,6 +19,15 @@
   let estTxnFee = 0
   let orderTotal = 0
   let sponsor = false
+  let showAttendees = false
+  let noAttendees = 0
+  let showBadgeNames = false
+  let classmateFirstName
+  let classmateLastName
+  let companionFirstName
+  let companionLastName
+  let calculatedEventFee = 0
+  let calculatedTxnFee = 0
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -33,6 +42,14 @@
       options: ['Apple', 'Google', 'iCal'],
       iCalFileName: "CHS73_Reunion_20230916",
     })
+  }
+
+  const handleNoAttendees = (event) => {
+    console.log('handleNoAttendees - event: ', event.target.text)
+    noAttendees = event.target.text
+    showAttendees = false
+    showBadgeNames = true
+    calculatedEventFee = EVENT_FEE * noAttendees
   }
 
   const handleSaturdaySignup = (event) => {
@@ -59,7 +76,8 @@
               } else {
                 estTxnFee = PAYPAY_TXN_FEE 
               }
-              orderTotal = estTxnFee + EVENT_FEE
+              calculatedTxnFee = estTxnFee * noAttendees
+              orderTotal = calculatedEventFee + calculatedTxnFee
               return actions.order.create({
                 purchase_units: [
                   {
@@ -200,22 +218,134 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <div class="flex flex-col gap-y-0">
-                      <div class="ml-3 text-base text-gray-700 mb-2">Order Summary:</div>
-                      <div class="grid grid-cols-2 gap-x-4 ml-8 bg-gray-200">
-                        <div>Subtotal </div><div class="justify-self-end">${ EVENT_FEE.toFixed(2) }</div>
-                        <div>Est. transaction fee </div><div class="justify-self-end">{ estTxnFee.toFixed(2) }</div>
-                        <div>Taxes </div><div class="underline justify-self-end">0.00</div>
-                        <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ orderTotal.toFixed(2) }</div>
+                    <p class="ml-3 text-base text-gray-700">Admission, hors d’oeurves & cash bar ($30 per person in advance, $35 at the door)</p>
+                  </li>
+
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">Who will be attending?</p>
+                  </li>
+                  <li class="flex items-start">
+                    <div class="flex flex-col relative text-left">
+                      <div>
+                        <button type="button" class="flex no-wrap w-5/12 justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
+                          id="menu-button" aria-expanded="true" aria-haspopup="true" on:click={() => (showAttendees = !showAttendees)}>
+                          No. Attendees
+                          <!-- Heroicon name: mini/chevron-down -->
+                          <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                          </svg>
+                        </button>
                       </div>
+
+                      {#if showAttendees}
+                        <div class="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" 
+                              role="menuitem" tabindex="-1" id="menu-item-0" on:click={ handleNoAttendees }>1</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" 
+                              role="menuitem" tabindex="-1" id="menu-item-1" on:click={ handleNoAttendees }>2</a>
+                          </div>
+                        </div>
+                      {/if}
+
+                      {#if showBadgeNames}
+                        <div class="flex flex-wrap relative w-full ml-5 mb-3 mt-1">
+                          <span class="relative w-5/12 mb-3">
+                            <label
+                              class="flex-nowrap block uppercase text-gray-700 text-xs font-bold mb-2"
+                              for="full-name">
+                              Your name badge:
+                            </label>
+                            <input name="name" bind:value={ classmateFirstName } 
+                              type="text" required aria-required="true"
+                              class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                              bg-white rounded text-sm shadow focus:outline-none focus:ring
+                              w-full"
+                              placeholder="First name"
+                              style="transition: all 0.15s ease 0s;"
+                              on:input={ classmateFirstName } />
+                          </span>
+                          <span class="relative w-5/12 mb-3">
+                            <label
+                              class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                              for="full-name">
+                              &nbsp;
+                            </label>
+                            <input name="name" bind:value={ classmateLastName } 
+                              type="text" required aria-required="true"
+                              class="border-0 ml-2 px-3 py-3 placeholder-gray-400 text-gray-700
+                              bg-white rounded text-sm shadow focus:outline-none focus:ring
+                              w-full"
+                              placeholder="Last name"
+                              style="transition: all 0.15s ease 0s;"
+                              on:input={ classmateLastName } />
+                          </span>
+                          {#if noAttendees > 1}
+                            <span class="relative w-5/12 mb-3">
+                              <label
+                                class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                for="full-name">
+                                Companion name badge:
+                              </label>
+                              <input name="name" bind:value={ companionFirstName } 
+                                type="text" required aria-required="true"
+                                class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                                bg-white rounded text-sm shadow focus:outline-none focus:ring
+                                w-full"
+                                placeholder="First name"
+                                style="transition: all 0.15s ease 0s;"
+                                on:input={ companionFirstName } />
+                            </span>
+                            <span class="relative w-5/12 mb-3">
+                              <label
+                                class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                for="full-name">
+                                &nbsp;
+                              </label>
+                              <input name="name" bind:value={ companionLastName } 
+                                type="text" required aria-required="true"
+                                class="border-0 ml-1 px-3 py-3 placeholder-gray-400 text-gray-700
+                                bg-white rounded text-sm shadow focus:outline-none focus:ring
+                                w-full"
+                                placeholder="Last name"
+                                style="transition: all 0.15s ease 0s;"
+                                on:input={ companionLastName } />
+                            </span>
+                          {/if}
+                        </div>
+                      {/if}
+                      <label class="mt-2">
+                        <input type="checkbox" bind:checked={ sponsor }>
+                        I'd like to help a classmate who might otherwise not be able to attend. Please bill me one additional admittance for this event.
+                      </label>
+
                     </div>
                   </li>
 
                   <li class="flex items-start">
-                    <label>
-                      <input type="checkbox" bind:checked={ sponsor }>
-                      I'd like to help a classmate who might otherwise not be able to attend. Please bill me one additional admittance for this event.
-                    </label>
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div class="flex flex-col gap-y-0">
+                      <div class="ml-3 text-base text-gray-700 mb-2 font-bold">Order Summary:</div>
+                      <div class="grid grid-cols-2 gap-x-4 ml-8 bg-gray-200">
+                        <div>No. Attendees </div><div class="justify-self-end">{ noAttendees }</div>
+                        <div>Subtotal </div><div class="justify-self-end">${ calculatedEventFee.toFixed(2) }</div>
+                        <div>Est. transaction fee </div><div class="justify-self-end">{ calculatedTxnFee.toFixed(2) }</div>
+                        <div>Taxes </div><div class="underline justify-self-end">0.00</div>
+                        <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ orderTotal.toFixed(2) }</div>
+                      </div>
+                    </div>
                   </li>
 
                 </ul>

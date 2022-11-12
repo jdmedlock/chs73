@@ -277,7 +277,7 @@
                   </div>
 
                   <div class="flex flex-wrap relative w-full mb-1">
-                    <span class="relaive w-8/12 mb-3">
+                    <span class="relative w-8/12 mb-3">
                       <label
                         class="block uppercase text-gray-700 text-xs font-bold mb-2"
                         for="city">
