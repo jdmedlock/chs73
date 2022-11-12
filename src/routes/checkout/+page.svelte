@@ -22,12 +22,15 @@
   let showAttendees = false
   let noAttendees = 0
   let showBadgeNames = false
-  let classmateFirstName
-  let classmateLastName
-  let companionFirstName
-  let companionLastName
+  let classmateFirstName = ''
+  let classmateLastName = ''
+  let companionFirstName = ''
+  let companionLastName = ''
   let calculatedEventFee = 0
   let calculatedTxnFee = 0
+  let isAttendeeError = false
+  let isClassmateNameError = false
+  let isCompanionNameError = false
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -50,11 +53,30 @@
     showAttendees = false
     showBadgeNames = true
     calculatedEventFee = EVENT_FEE * noAttendees
+    isAttendeeError = false
   }
 
   const handleSaturdaySignup = (event) => {
     isPaymentVisible = !isPaymentVisible
     isPaymentSuccessful = false
+    isAttendeeError = false
+    isClassmateNameError = false
+    isCompanionNameError = false
+
+    // Validate the input data
+    if (noAttendees === 0) {
+      isAttendeeError = true
+      return
+    }
+    if (classmateFirstName === '' || classmateLastName === '') {
+      isClassmateNameError = true
+      return
+    }
+    if (companionLastName === '' || companionLastName === '') {
+      isCompanionNameError = true
+      return
+    }
+
     if (isPaymentVisible) {
       loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
@@ -71,6 +93,8 @@
             createOrder: function (data, actions) {
               // Set up the transaction
               console.log('Create order: ', data)
+
+              // Process the payment if no errors were detected
               if (data.paymentSource === 'card') {
                 estTxnFee = CREDITCARD_TXN_FEE
               } else {
@@ -82,7 +106,7 @@
                 purchase_units: [
                   {
                     amount: {
-                      value: EVENT_FEE,
+                      value: calculatedEventFee,
                     },
                   },
                 ],
@@ -158,7 +182,6 @@
             
             onError: function (err) {
               // Log error if something goes wrong during approval
-              alert("Something went wrong");
               console.log("Something went wrong", err)
             },
           })
@@ -230,10 +253,10 @@
                     </div>
                     <p class="ml-3 text-base text-gray-700">Who will be attending?</p>
                   </li>
-                  <li class="flex items-start">
+                  <li class="flex items-start ml-8">
                     <div class="flex flex-col relative text-left">
                       <div>
-                        <button type="button" class="flex no-wrap w-5/12 justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
+                        <button type="button" class="flex no-wrap w-2/12 justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
                           id="menu-button" aria-expanded="true" aria-haspopup="true" on:click={() => (showAttendees = !showAttendees)}>
                           No. Attendees
                           <!-- Heroicon name: mini/chevron-down -->
@@ -241,15 +264,20 @@
                             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                           </svg>
                         </button>
+                        {#if isAttendeeError}
+                          <div name="attendeeError" class="font-bold text-red-700">
+                            You must choose the number of attendees before selecting a payment option
+                          </div>
+                        {/if}
                       </div>
 
                       {#if showAttendees}
-                        <div class="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="relative w-8 ml-28 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                           <div class="py-1" role="none">
                             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" 
+                            <a href="#top" class="text-gray-700 block px-4 py-2 text-sm" 
                               role="menuitem" tabindex="-1" id="menu-item-0" on:click={ handleNoAttendees }>1</a>
-                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" 
+                            <a href="#top" class="text-gray-700 block px-4 py-2 text-sm" 
                               role="menuitem" tabindex="-1" id="menu-item-1" on:click={ handleNoAttendees }>2</a>
                           </div>
                         </div>
@@ -287,6 +315,11 @@
                               style="transition: all 0.15s ease 0s;"
                               on:input={ classmateLastName } />
                           </span>
+                          {#if isClassmateNameError}
+                            <div name="classmateError" class="font-bold text-red-700">
+                              You must enter your first and last name for your name badge
+                            </div>
+                          {/if}
                           {#if noAttendees > 1}
                             <span class="relative w-5/12 mb-3">
                               <label
@@ -318,12 +351,17 @@
                                 style="transition: all 0.15s ease 0s;"
                                 on:input={ companionLastName } />
                             </span>
+                            {#if isCompanionNameError}
+                              <div name="companionError" class="font-bold text-red-700">
+                                You must enter youe companions first and last name for their name badge
+                              </div>
+                            {/if}
                           {/if}
                         </div>
                       {/if}
                       <label class="mt-2">
                         <input type="checkbox" bind:checked={ sponsor }>
-                        I'd like to help a classmate who might otherwise not be able to attend. Please bill me one additional admittance for this event.
+                        Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
                       </label>
 
                     </div>
