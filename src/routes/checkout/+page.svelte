@@ -26,11 +26,21 @@
   let classmateLastName = ''
   let companionFirstName = ''
   let companionLastName = ''
+  let calculatedAttendees = 0
   let calculatedEventFee = 0
-  let calculatedTxnFee = 0
   let isAttendeeError = false
   let isClassmateNameError = false
   let isCompanionNameError = false
+
+  const calculateOrder = (paymentSource) => {
+    if (paymentSource !== undefined) {
+      estTxnFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAY_TXN_FEE
+    } else {
+      estTxnFee = 0
+    }
+    calculatedEventFee = EVENT_FEE * calculatedAttendees
+    orderTotal = calculatedEventFee + estTxnFee
+  }
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
@@ -47,16 +57,23 @@
     })
   }
 
+  const handleClickSponsor = (event) => {
+    sponsor = !sponsor
+    calculatedAttendees = sponsor ? noAttendees + 1 : noAttendees - 1
+    calculateOrder()
+    setTimeout(() => event.target.checked = sponsor, 0);
+  }
+
   const handleNoAttendees = (event) => {
-    console.log('handleNoAttendees - event: ', event.target.text)
-    noAttendees = event.target.text
+    noAttendees = parseInt(event.target.text)
+    calculatedAttendees = sponsor ? noAttendees + 1 : noAttendees - 1
+    calculateOrder()
     showAttendees = false
     showBadgeNames = true
-    calculatedEventFee = EVENT_FEE * noAttendees
     isAttendeeError = false
   }
 
-  const handleSaturdaySignup = (event) => {
+  const handleSaturdaySignup = () => {
     isPaymentVisible = !isPaymentVisible
     isPaymentSuccessful = false
     isAttendeeError = false
@@ -95,13 +112,7 @@
               console.log('Create order: ', data)
 
               // Process the payment if no errors were detected
-              if (data.paymentSource === 'card') {
-                estTxnFee = CREDITCARD_TXN_FEE
-              } else {
-                estTxnFee = PAYPAY_TXN_FEE 
-              }
-              calculatedTxnFee = estTxnFee * noAttendees
-              orderTotal = calculatedEventFee + calculatedTxnFee
+              calculateOrder(data.paymentSource)
               return actions.order.create({
                 purchase_units: [
                   {
@@ -119,7 +130,7 @@
               return actions.order.capture().then(function (details) {
                 resultDetails = details
                 console.log("Captured order: ", details)
-                isPaymentVisible = false
+                //isPaymentVisible = false
                 isPaymentSuccessful = true
 
                 axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
@@ -360,7 +371,7 @@
                         </div>
                       {/if}
                       <label class="mt-2">
-                        <input type="checkbox" bind:checked={ sponsor }>
+                        <input type="checkbox" bind:checked={ sponsor } on:click|preventDefault= { handleClickSponsor }>
                         Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
                       </label>
 
@@ -377,9 +388,9 @@
                     <div class="flex flex-col gap-y-0">
                       <div class="ml-3 text-base text-gray-700 mb-2 font-bold">Order Summary:</div>
                       <div class="grid grid-cols-2 gap-x-4 ml-8 bg-gray-200">
-                        <div>No. Attendees </div><div class="justify-self-end">{ noAttendees }</div>
+                        <div>No. Attendees </div><div class="justify-self-end">{ calculatedAttendees }</div>
                         <div>Subtotal </div><div class="justify-self-end">${ calculatedEventFee.toFixed(2) }</div>
-                        <div>Est. transaction fee </div><div class="justify-self-end">{ calculatedTxnFee.toFixed(2) }</div>
+                        <div>Est. transaction fee </div><div class="justify-self-end">{ estTxnFee.toFixed(2) }</div>
                         <div>Taxes </div><div class="underline justify-self-end">0.00</div>
                         <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ orderTotal.toFixed(2) }</div>
                       </div>
@@ -388,7 +399,7 @@
 
                 </ul>
                 <button class="flex items-center m-auto" on:click={ handleSaturdaySignup }>
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & pay </span>
                 </button>
               </div>
             </div>
