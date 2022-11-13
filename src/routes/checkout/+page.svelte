@@ -75,8 +75,6 @@
   }
 
   const handleSaturdaySignup = () => {
-    console.log('Starting to handle signup...')
-    console.log('...noAttendees: ', noAttendees)
     isPaymentVisible = true
     isAttendeeError = false
     isClassmateNameError = false
@@ -98,9 +96,7 @@
       }
     }
 
-    console.log('...isPaymentVisible: ', isPaymentVisible)
     if (isPaymentVisible) {
-      console.log('...processing payment...')
       loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
         "disable-funding": "paylater"
@@ -161,7 +157,11 @@
                   facilitator_access_token: data.facilitatorAccessToken, 
                   accelerated_payment: data.accelerated, 
                   soft_descriptor: details.softDescriptor, 
-                  isSponsor: isSponsor ? 'Yes' : 'No'
+                  isSponsor: isSponsor ? 'Yes' : 'No',
+                  classmateFirstName: classmateFirstName,
+                  classmateLastName: classmateLastName,
+                  companionFirstName: companionFirstName,
+                  companionLastName: companionLastName,
                 })
                 .then(function (response) {
                   console.log(response);
@@ -187,6 +187,10 @@
                   shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
                   shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
                   isSponsor: isSponsor ? 'Yes' : 'No',
+                  classmateFirstName: classmateFirstName,
+                  classmateLastName: classmateLastName,
+                  companionFirstName: companionFirstName,
+                  companionLastName: companionLastName,
                 })
                 .then(function (response) {
                   console.log(response);
@@ -273,7 +277,7 @@
                   <li class="flex items-start ml-8">
                     <div class="flex flex-col relative text-left">
                       <div>
-                        <button type="button" class="flex no-wrap w-2/12 justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
+                        <button type="button" class="flex no-wrap w-2/12 justify-center rounded-md border border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
                           id="menu-button" aria-expanded="true" aria-haspopup="true" on:click={() => (showAttendees = !showAttendees)}>
                           No. Attendees
                           <!-- Heroicon name: mini/chevron-down -->
@@ -415,11 +419,6 @@
 
     </div>
 
-    <p class="bg-white">isPaymentVisible: { isPaymentVisible }</p>
-    <p class="bg-white">isSponsor: { isSponsor }</p>
-    <p class="bg-white">noAttendees: { noAttendees }</p>
-    <p class="bg-white">calculatedAttendees: { calculatedAttendees }</p>
-
     {#if isPaymentVisible}
       <div class="flex flex-col items-center bg-white">
         <div id="paypal-button-container" />
@@ -427,9 +426,9 @@
     {/if}
 
     {#if isPaymentSuccessful}
-      <div class="flex flex-col items-center bg-white h-96 text-base">
-        <h3 class="mt-4 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (check your email for a reciept)</h3>
-        <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2">
+      <div class="flex flex-col items-center bg-white text-base">
+        <h3 class="mt-2 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (check your email for a reciept)</h3>
+        <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2 mb-20">
           <div>Order ID:</div><div>{ resultDetails.id }</div>
           <div>Amount:</div><div>{ resultDetails.purchase_units[0].amount.value }</div>
           <div>Transaction status:</div><div>{ resultDetails.status }</div>
@@ -444,6 +443,10 @@
           <div>Zipcode:</div><div>{ resultDetails.purchase_units[0].shipping.address.postal_code }</div>
           <div>Email:</div><div>{ resultDetails.payer.email_address }</div>
           <div>Agreed to isSponsor another classmate:</div><div>{ isSponsor ? 'Yes' : 'No' }</div>
+          <div>Your badge name:</div><div>{ classmateFirstName } { classmateLastName }</div>
+          {#if noAttendees > 1}
+            <div>Companion badge name:</div><div>{ companionFirstName } { companionLastName }</div>
+          {/if}
         </div>
       </div>
     {/if}
