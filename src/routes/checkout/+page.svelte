@@ -7,37 +7,41 @@
 
   const CREDITCARD_TXN_FEE = 1.24
   const PAYPAY_TXN_FEE = 1.36
+  const EVENT_FEE = 30.00
 
-  export let EVENT_FEE = 30.00
-
-  let isPaymentVisible = false
-  let isPaymentSuccessful = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
   let resultData 
   let resultDetails
-  let estTxnFee = 0
-  let orderTotal = 0
-  let sponsor = false
-  let showAttendees = false
-  let noAttendees = 0
-  let showBadgeNames = false
+
   let classmateFirstName = ''
   let classmateLastName = ''
   let companionFirstName = ''
   let companionLastName = ''
+
   let calculatedAttendees = 0
   let calculatedEventFee = 0
+  let estTxnFee = 0
+  let noAttendees = 0
+  let orderTotal = 0
+  
+  let showAttendees = false
+  let showBadgeNames = false
   let isAttendeeError = false
   let isClassmateNameError = false
   let isCompanionNameError = false
+  let isPaymentVisible = false
+  let isPaymentSuccessful = false
+  let isSponsor = false
+
 
   const calculateOrder = (paymentSource) => {
-    if (paymentSource !== undefined) {
+    if (paymentSource !== undefined && typeof paymentSource === 'string') {
       estTxnFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAY_TXN_FEE
     } else {
       estTxnFee = 0
     }
+    calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
     calculatedEventFee = EVENT_FEE * calculatedAttendees
     orderTotal = calculatedEventFee + estTxnFee
   }
@@ -57,25 +61,23 @@
     })
   }
 
-  const handleClickSponsor = (event) => {
-    sponsor = !sponsor
-    calculatedAttendees = sponsor ? noAttendees + 1 : noAttendees - 1
-    calculateOrder()
-    setTimeout(() => event.target.checked = sponsor, 0);
-  }
-
   const handleNoAttendees = (event) => {
     noAttendees = parseInt(event.target.text)
-    calculatedAttendees = sponsor ? noAttendees + 1 : noAttendees - 1
     calculateOrder()
     showAttendees = false
     showBadgeNames = true
-    isAttendeeError = false
+  }
+
+  const handleSponsor = (event) => {
+    isSponsor = !isSponsor
+    calculateOrder()
+    setTimeout(() => event.target.checked = isSponsor, 0)
   }
 
   const handleSaturdaySignup = () => {
-    isPaymentVisible = !isPaymentVisible
-    isPaymentSuccessful = false
+    console.log('Starting to handle signup...')
+    console.log('...noAttendees: ', noAttendees)
+    isPaymentVisible = true
     isAttendeeError = false
     isClassmateNameError = false
     isCompanionNameError = false
@@ -89,12 +91,16 @@
       isClassmateNameError = true
       return
     }
-    if (companionLastName === '' || companionLastName === '') {
-      isCompanionNameError = true
-      return
+    if (noAttendees > 1) {
+      if (companionLastName === '' || companionLastName === '') {
+        isCompanionNameError = true
+        return
+      }
     }
 
+    console.log('...isPaymentVisible: ', isPaymentVisible)
     if (isPaymentVisible) {
+      console.log('...processing payment...')
       loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
         "disable-funding": "paylater"
@@ -155,7 +161,7 @@
                   facilitator_access_token: data.facilitatorAccessToken, 
                   accelerated_payment: data.accelerated, 
                   soft_descriptor: details.softDescriptor, 
-                  sponsor: sponsor ? 'Yes' : 'No'
+                  isSponsor: isSponsor ? 'Yes' : 'No'
                 })
                 .then(function (response) {
                   console.log(response);
@@ -180,7 +186,7 @@
                   shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
                   shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
                   shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-                  sponsor: sponsor ? 'Yes' : 'No',
+                  isSponsor: isSponsor ? 'Yes' : 'No',
                 })
                 .then(function (response) {
                   console.log(response);
@@ -287,9 +293,9 @@
                           <div class="py-1" role="none">
                             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                             <a href="#top" class="text-gray-700 block px-4 py-2 text-sm" 
-                              role="menuitem" tabindex="-1" id="menu-item-0" on:click={ handleNoAttendees }>1</a>
+                              role="menuitem" tabindex="0" id="menu-item-0" on:click={ handleNoAttendees }>1</a>
                             <a href="#top" class="text-gray-700 block px-4 py-2 text-sm" 
-                              role="menuitem" tabindex="-1" id="menu-item-1" on:click={ handleNoAttendees }>2</a>
+                              role="menuitem" tabindex="0" id="menu-item-1" on:click={ handleNoAttendees }>2</a>
                           </div>
                         </div>
                       {/if}
@@ -371,7 +377,7 @@
                         </div>
                       {/if}
                       <label class="mt-2">
-                        <input type="checkbox" bind:checked={ sponsor } on:click|preventDefault= { handleClickSponsor }>
+                        <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }>
                         Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
                       </label>
 
@@ -409,6 +415,11 @@
 
     </div>
 
+    <p class="bg-white">isPaymentVisible: { isPaymentVisible }</p>
+    <p class="bg-white">isSponsor: { isSponsor }</p>
+    <p class="bg-white">noAttendees: { noAttendees }</p>
+    <p class="bg-white">calculatedAttendees: { calculatedAttendees }</p>
+
     {#if isPaymentVisible}
       <div class="flex flex-col items-center bg-white">
         <div id="paypal-button-container" />
@@ -432,7 +443,7 @@
           <div>State:</div><div>{ resultDetails.purchase_units[0].shipping.address.admin_area_1 }</div>
           <div>Zipcode:</div><div>{ resultDetails.purchase_units[0].shipping.address.postal_code }</div>
           <div>Email:</div><div>{ resultDetails.payer.email_address }</div>
-          <div>Agreed to sponsor another classmate:</div><div>{ sponsor ? 'Yes' : 'No' }</div>
+          <div>Agreed to isSponsor another classmate:</div><div>{ isSponsor ? 'Yes' : 'No' }</div>
         </div>
       </div>
     {/if}
