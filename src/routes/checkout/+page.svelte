@@ -128,6 +128,11 @@
             onApprove: function (data, actions) {
               // Capture order after payment approved
               console.log('Payment approved: ', data)
+              console.log('...isSponsor: ', isSponsor)
+              console.log('...classmateFirstName: ', classmateFirstName)
+              console.log('...classmateLastName: ', classmateLastName)
+              console.log('...companionFirstName: ', companionFirstName)
+              console.log('...companionLastName: ', companionLastName)
               resultData = data
               return actions.order.capture().then(function (details) {
                 resultDetails = details
@@ -157,11 +162,11 @@
                   facilitator_access_token: data.facilitatorAccessToken, 
                   accelerated_payment: data.accelerated, 
                   soft_descriptor: details.softDescriptor, 
-                  isSponsor: isSponsor ? 'Yes' : 'No',
+                  is_sponsor: isSponsor ? 'Yes' : 'No',
                   classmateFirstName: classmateFirstName,
                   classmateLastName: classmateLastName,
-                  companionFirstName: companionFirstName,
-                  companionLastName: companionLastName,
+                  companionFirstName: companionFirstName || '',
+                  companionLastName: companionLastName || '',
                 })
                 .then(function (response) {
                   console.log(response);
@@ -186,11 +191,11 @@
                   shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
                   shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
                   shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-                  isSponsor: isSponsor ? 'Yes' : 'No',
+                  is_sponsor: isSponsor ? 'Yes' : 'No',
                   classmateFirstName: classmateFirstName,
                   classmateLastName: classmateLastName,
-                  companionFirstName: companionFirstName,
-                  companionLastName: companionLastName,
+                  companionFirstName: companionFirstName || '',
+                  companionLastName: companionLastName || '',
                 })
                 .then(function (response) {
                   console.log(response);
