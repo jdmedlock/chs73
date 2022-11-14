@@ -31,6 +31,7 @@
   let isClassmateNameError = false
   let isCompanionNameError = false
   let isPaymentVisible = false
+  let isPaymentStarted = false
   let isPaymentSuccessful = false
   let isSponsor = false
 
@@ -83,20 +84,24 @@
     // Validate the input data
     if (noAttendees === 0) {
       isAttendeeError = true
+      isPaymentVisible = false
       return
     }
     if (classmateFirstName === '' || classmateLastName === '') {
       isClassmateNameError = true
+      isPaymentVisible = false
       return
     }
     if (noAttendees > 1) {
       if (companionLastName === '' || companionLastName === '') {
         isCompanionNameError = true
+        isPaymentVisible = false
         return
       }
     }
 
-    if (isPaymentVisible) {
+    if (isPaymentVisible && !isPaymentStarted) {
+      isPaymentStarted = true
       loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
         "disable-funding": "paylater"
@@ -191,7 +196,7 @@
                   shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
                   shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
                   shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-                  is_sponsor: is_sponsor ? 'Yes' : 'No',
+                  is_sponsor: isSponsor ? 'Yes' : 'No',
                   classmateFirstName: classmateFirstName,
                   classmateLastName: classmateLastName,
                   companionFirstName: companionFirstName || '',
