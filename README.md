@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # chs73
 
 [contributors-shield]: https://img.shields.io/github/contributors/jdmedlock/chs73.svg?style=for-the-badge
@@ -35,31 +34,21 @@ poll members for their opinions.
 The application consists of a web frontend (this repo) and a backend 
 application server located in this [repo](https://github.com/jdmedlock/chs73be).
 
-### FE
-
 The frontend is built using these libraries, services, and tools:
 
 | Dependency  | Description                 |
 |-------------|-----------------------------|
 | Svelte      | Frontend framework          |
-| Sapper      | Web application framework   |
 | Cloudinary  | Photo management service    |
 | TailwindCSS | Utility-first CSS framework |
 | Netlify     | Website host                |
+| Paypal      | Event payment processing    |
 
-Note that since Sveltekit 1.0 is still in beta at the time of this writing,
-we are intentionally relying on Sapper. Once Sveltekit reaches a stable
-release consideration will be given to migrating to it.
+The FE relies on a backend server for emailing and managing classmate & faculty
+data. GraphQL is used to request email services, while a traditional REST API
+is used for processing classmate & faculty data.
 
-### BE
-
-The following backend services are invoked using a REST API:
-
-| Route   | Description                                       |
-|---------|---------------------------------------------------|
-| wakeUp  | Wakes up the backend when the first FE page loads |
-| message | Send an message entered by the user via an email to the reunion organizer |
-|         |   |
+Our BE repo is located [here](https://github.com/jdmedlock/chs73be).
 ## Installation & Configuration
 
 1. Clone or fork this repo using git. Don't forget that to create a runnable application you'll also need the backend.
@@ -76,9 +65,9 @@ The following environment variables must be set up for the app to run properly:
 
 | Key             | Value                                |
 |-----------------|--------------------------------------|
-| BE_URL          | http://localhost:3100                |
-| CLOUDINARY_URL  | cloudinary://<api-key>:<api-secret>  |
-| CLOUDINARY_NAME | <your 9-character unique cloud name> |
+| VITE_BE_URL          | http://localhost:3100                |
+| VITE_CLOUDINARY_NAME | <your 9-character unique cloud name> |
+| PAYPAL_CLIENT_ID     | <your paypal API client id> |
 
 ## Release History
 
@@ -86,7 +75,7 @@ You can find what changed, when in the [release history](./docs/RELEASE_HISTORY.
 
 ## License
 
-Copyright 2021 <COPYRIGHT Jim D. Medlock>
+Copyright 2021, 2022 <COPYRIGHT Jim D. Medlock>
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -97,43 +86,3 @@ Redistribution and use in source and binary forms, with or without modification,
 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-=======
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
->>>>>>> 1ef308984b893cda77b56785a52a54cdeec54051
