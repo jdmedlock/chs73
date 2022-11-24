@@ -14,6 +14,8 @@
 		"lint": "prettier --check --plugin-search-dir=. .",
 		"format": "prettier --write --plugin-search-dir=. .",
 		"test": "vitest",
+		"pwdebug": "PWDEBUG=1 playwright test",
+		"pwtest": "playwright test",
 		"coverage": "vitest run --coverage"
 	},
 	"dependencies": {

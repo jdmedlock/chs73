@@ -1,7 +1,6 @@
 import { afterAll, beforeAll, describe, test } from 'vitest'
 import { preview } from 'vite'
-import { chromium } from 'playwright'
-import { expect } from '@playwright/test'
+import { expect, chromium } from '@playwright/test'
 
 describe('Test credit card processing', async () => {
   let server
@@ -22,23 +21,33 @@ describe('Test credit card processing', async () => {
   })
 
   test('should signup for Saturday gathering', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+
     await page.goto('http://localhost:3000')
+    console.log('Home page URL: ', page.url())
     const eventsMenuItem = page.locator('a').filter({ hasText: 'events' })
     await expect(eventsMenuItem).toBeDefined()
     await eventsMenuItem.click()
+    await page.waitForSelector('text=Upcoming Events')
+    console.log('Events page URL: ', page.url())
 
-    const eventsPageHeading = page.locator('h2')
+    //const saturdaySignupLink = await page.getByText('Sign me up!!!')
+    const saturdaySignupLink = await page.locator('text=Sign me up!!!')
+    await saturdaySignupLink.waitFor({ state: "visible"})
+    await saturdaySignupLink.click() 
+
+
+/*
+    const eventsPageHeading = await page.locator('h2')
     await expect(eventsPageHeading).toBeDefined()
     await expect(eventsPageHeading).toHaveText('Upcoming Events')
 
-    const signupButton = page.locator('a').filter({ hasText: 'Sign me up!!!' })
-    await expect(signupButton).toBeDefined()
-    await signupButton.click()
+    const saturdaySignupLink = await page.getByText('Sign me up!!!')
+    console.log('saturdaySignupLink: ', saturdaySignupLink)
 
-    const signupPageHeading = page.locator('h2')
-    await expect(signupPageHeading).toBeDefined()
-    await expect(signupPageHeading).toHaveText('SIGNUP FOR SATURDAY')
-
-  }, 60000)
+    await page.click('a[href="signup?back=events"]')
+*/
+  }, 120000)
 
 })
