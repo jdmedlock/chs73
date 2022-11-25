@@ -1,0 +1,64 @@
+{
+  "bundler": "rollup",
+  "shimport": "2.0.4",
+  "assets": {
+    "main": "client.3a12ba16.js"
+  },
+  "css": {
+    "main": [
+      "client-592fc0c1.css"
+    ]
+  },
+  "dependencies": {
+    "index.svelte": [
+      "index.abbfb5ec.js",
+      "validators.b13bff0b.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "facultymember.svelte": [
+      "facultymember.ff514a74.js",
+      "Image.47d29af3.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "updatecontact.svelte": [
+      "updatecontact.2450b0fb.js",
+      "validators.b13bff0b.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "classmates.svelte": [
+      "classmates.71d6b74f.js",
+      "classmates.883c4989.js",
+      "LetterIndex.c5e6a21e.js",
+      "createPersonGroups.7c5a2af0.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "classmate.svelte": [
+      "classmate.630baed9.js",
+      "Image.47d29af3.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "tigerhunt.svelte": [
+      "tigerhunt.e8c27a93.js",
+      "classmates.883c4989.js",
+      "LetterIndex.c5e6a21e.js",
+      "createPersonGroups.7c5a2af0.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "memoriam.svelte": [
+      "memoriam.d2a8eb98.js",
+      "classmates.883c4989.js",
+      "createPersonGroups.7c5a2af0.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "faculty.svelte": [
+      "faculty.2b26f75b.js",
+      "LetterIndex.c5e6a21e.js",
+      "createPersonGroups.7c5a2af0.js",
+      "inject_styles.5607aec6.js"
+    ],
+    "events.svelte": [
+      "events.f6272949.js",
+      "inject_styles.5607aec6.js"
+    ]
+  }
+}

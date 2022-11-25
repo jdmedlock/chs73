@@ -24,12 +24,11 @@ test.describe('Test credit card processing', async () => {
     await expect(eventsMenuItem).toBeDefined()
     await eventsMenuItem.click()
     await page.waitForSelector('text="Upcoming Events"')
-    console.log('Events page URL: ', page.url())
 
     // Signup for the Saturday event
     const saturdaySignupLink = await page.locator('text="Sign me up!!!"')
     await expect(saturdaySignupLink).toBeDefined()
-    await saturdaySignupLink.click({ timeout: 1 * 60 * 1000 })
+    await saturdaySignupLink.click()
   }, 1 * 60 * 1000)
 
 })
