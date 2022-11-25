@@ -21,10 +21,13 @@ describe('Test basic page navigation', async () => {
     })
   })
 
-  test('should have the correct title', async () => {
+  test('should display the classmates page', async () => {
     await page.goto('http://localhost:3000')
-    const title = await page.locator('h1')
-    await expect(title).toBeDefined()
-    await expect(title).toHaveText('Cape Central High - Class of 1973')
+    const classmatesMenuItem = await page.locator('a').filter({ hasText: 'classmates' })
+    await expect(classmatesMenuItem).toBeDefined()
+    await classmatesMenuItem.click()
+    const classmatesPageHeading = await page.locator('h1')
+    await expect(classmatesPageHeading).toBeDefined()
+    await expect(classmatesPageHeading).toHaveText('Class of 1973')
   }, 60000)
 })

@@ -21,10 +21,12 @@ describe('Test basic page navigation', async () => {
     })
   })
 
-  test('should have the correct title', async () => {
+  test('should display the contact page', async () => {
     await page.goto('http://localhost:3000')
-    const title = await page.locator('h1')
-    await expect(title).toBeDefined()
-    await expect(title).toHaveText('Cape Central High - Class of 1973')
+    const contactMenuItem = await page.locator('a').filter({ hasText: 'contact' })
+    await expect(contactMenuItem).toBeDefined()
+    await contactMenuItem.click()
+    const contactPageHeading = page.locator('h2').filter({ hasText: 'Get involved!' })
+    await expect(contactPageHeading).toBeDefined()
   }, 60000)
 })

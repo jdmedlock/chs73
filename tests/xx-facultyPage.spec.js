@@ -21,10 +21,13 @@ describe('Test basic page navigation', async () => {
     })
   })
 
-  test('should have the correct title', async () => {
+  test('should display the faculty page', async () => {
     await page.goto('http://localhost:3000')
-    const title = await page.locator('h1')
-    await expect(title).toBeDefined()
-    await expect(title).toHaveText('Cape Central High - Class of 1973')
+    const facultyMenuItem = await page.getByRole('link', { name: 'faculty' })
+    await expect(facultyMenuItem).toBeDefined()
+    await facultyMenuItem.click()
+    const facultyPageHeading = await page.locator('h1')
+    await expect(facultyPageHeading).toBeDefined()
+    await expect(facultyPageHeading).toHaveText('Faculty & Staff of 1973')
   }, 60000)
 })

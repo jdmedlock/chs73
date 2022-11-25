@@ -32,22 +32,9 @@ describe('Test credit card processing', async () => {
     await page.waitForSelector('text=Upcoming Events')
     console.log('Events page URL: ', page.url())
 
-    //const saturdaySignupLink = await page.getByText('Sign me up!!!')
     const saturdaySignupLink = await page.locator('text=Sign me up!!!')
     await saturdaySignupLink.waitFor({ state: "visible"})
     await saturdaySignupLink.click() 
-
-
-/*
-    const eventsPageHeading = await page.locator('h2')
-    await expect(eventsPageHeading).toBeDefined()
-    await expect(eventsPageHeading).toHaveText('Upcoming Events')
-
-    const saturdaySignupLink = await page.getByText('Sign me up!!!')
-    console.log('saturdaySignupLink: ', saturdaySignupLink)
-
-    await page.click('a[href="signup?back=events"]')
-*/
-  }, 120000)
+  }, 60000)
 
 })

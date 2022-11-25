@@ -6,7 +6,7 @@ const config = {
 		sveltekit()
 	],
 	server: {
-		port: process.env.PORT || 3001
+		port: process.env.PORT || 3000
 	},
 	test: {
     globals: true,

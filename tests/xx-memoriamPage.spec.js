@@ -21,10 +21,13 @@ describe('Test basic page navigation', async () => {
     })
   })
 
-  test('should have the correct title', async () => {
+  test('should display the memoriam page', async () => {
     await page.goto('http://localhost:3000')
-    const title = await page.locator('h1')
-    await expect(title).toBeDefined()
-    await expect(title).toHaveText('Cape Central High - Class of 1973')
+    const memoriamMenuItem = await page.locator('a').filter({ hasText: 'memoriam' })
+    await expect(memoriamMenuItem).toBeDefined()
+    await memoriamMenuItem.click()
+    const memoriamPageHeading = await page.locator('h1')
+    await expect(memoriamPageHeading).toBeDefined()
+    await expect(memoriamPageHeading).toHaveText('In Memoriam')
   }, 60000)
 })

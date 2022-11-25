@@ -21,10 +21,13 @@ describe('Test basic page navigation', async () => {
     })
   })
 
-  test('should have the correct title', async () => {
+  test('should display the events page', async () => {
     await page.goto('http://localhost:3000')
-    const title = await page.locator('h1')
-    await expect(title).toBeDefined()
-    await expect(title).toHaveText('Cape Central High - Class of 1973')
+    const eventsMenuItem = await page.locator('a').filter({ hasText: 'events' })
+    await expect(eventsMenuItem).toBeDefined()
+    await eventsMenuItem.click()
+    const eventsPageHeading = await page.locator('h2')
+    await expect(eventsPageHeading).toBeDefined()
+    await expect(eventsPageHeading).toHaveText('Upcoming Events')
   }, 60000)
 })

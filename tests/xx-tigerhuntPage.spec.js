@@ -21,10 +21,13 @@ describe('Test basic page navigation', async () => {
     })
   })
 
-  test('should have the correct title', async () => {
+  test('should display the tigerhunt page', async () => {
     await page.goto('http://localhost:3000')
-    const title = await page.locator('h1')
-    await expect(title).toBeDefined()
-    await expect(title).toHaveText('Cape Central High - Class of 1973')
+    const tigerhuntMenuItem = await page.locator('a').filter({ hasText: 'tiger hunt' })
+    await expect(tigerhuntMenuItem).toBeDefined()
+    await tigerhuntMenuItem.click()
+    const tigerhuntPageHeading = await page.locator('h1')
+    await expect(tigerhuntPageHeading).toBeDefined()
+    await expect(tigerhuntPageHeading).toHaveText('Tiger Hunt!')
   }, 60000)
 })
