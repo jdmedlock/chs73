@@ -1,24 +1,17 @@
-import { afterAll, beforeAll, describe, test } from 'vitest'
-import { preview } from 'vite'
 import { chromium } from 'playwright'
-import { expect } from '@playwright/test'
+import { test, expect } from '@playwright/test'
 
-describe('Test basic page navigation', async () => {
-  let server
+test.describe('Test basic page navigation', async () => {
   let browser
   let page
 
-  beforeAll(async () => {
-    server = await preview({ preview: { port: 3000 } })
+  test.beforeAll(async () => {
     browser = await chromium.launch()
     page = await browser.newPage()
   })
 
-  afterAll(async () => {
+  test.afterAll(async () => {
     await browser.close()
-    await new Promise((resolve, reject) => {
-      server.httpServer.close(error => error ? reject(error) : resolve())
-    })
   })
 
   test('should display the contact page', async () => {

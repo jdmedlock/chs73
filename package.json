@@ -13,31 +13,27 @@
 		"preview": "vite preview",
 		"lint": "prettier --check --plugin-search-dir=. .",
 		"format": "prettier --write --plugin-search-dir=. .",
-		"test": "vitest",
-		"pwdebug": "PWDEBUG=1 playwright test",
-		"pwtest": "playwright test",
+		"test": "playwright test",
+		"test-debug": "PWDEBUG=1 playwright test",
 		"coverage": "vitest run --coverage"
 	},
 	"dependencies": {
 		"@cloudinary/url-gen": "^1.8.0",
 		"@paypal/paypal-js": "^5.1.1",
 		"add-to-calendar-button": "^1.14.3",
-		"axios": "^1.1.3"
+		"axios": "^1.1.3",
+		"playwright": "^1.27.1"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.27.1",
 		"@sveltejs/adapter-netlify": "next",
 		"@sveltejs/kit": "next",
 		"@testing-library/svelte": "^3.2.2",
-		"@vitest/ui": "^0.24.5",
-		"@vitest/coverage-c8": "^0.24.5",
 		"autoprefixer": "^10.4.7",
-		"c8": "^7.12.0",
 		"eslint": "^8.12.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"jsdom": "^20.0.2",
-		"playwright": "^1.27.1",
 		"postcss": "^8.4.14",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
@@ -46,7 +42,6 @@
 		"svelte-preprocess": "^4.10.6",
 		"tailwindcss": "^3.0.24",
 		"typescript": "~4.6.2",
-		"vite": "^3.0.0",
-		"vitest": "^0.24.5"
+		"vite": "^3.0.0"
 	}
 }
