@@ -35,7 +35,6 @@
   let isPaymentSuccessful = false
   let isSponsor = false
 
-
   const calculateOrder = (paymentSource) => {
     if (paymentSource !== undefined && typeof paymentSource === 'string') {
       estTxnFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAY_TXN_FEE

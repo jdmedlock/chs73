@@ -94,11 +94,11 @@
                     <p class="ml-3 text-base text-gray-700">$30 per person for the evening in advance, $35 at the door</p>
                   </li>
                 </ul>
-                <button class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
+                <button id="addCalendarBtn" class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Save this to my calendar!!!</span>
                 </button>
-                <a class="flex items-center m-auto" href="checkout?back=signup">
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Proceed to checkout </span>
+                <a id="checkoutLink" class="flex items-center m-auto" href="checkout?back=signup">
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Proceed to checkout</span>
                 </a>
               </div>
             </div>

@@ -26,9 +26,39 @@ test.describe('Test credit card processing', async () => {
     await page.waitForSelector('text="Upcoming Events"')
 
     // Signup for the Saturday event
-    const saturdaySignupLink = await page.locator('text="Sign me up!!!"')
+    const saturdaySignupLink = await page.locator('a:has-text("Sign me up!!!")')
     await expect(saturdaySignupLink).toBeDefined()
     await saturdaySignupLink.click()
-  }, 1 * 60 * 1000)
+    await page.waitForSelector('text="Signup for Saturday"')
+
+    // Proceed to the checkout
+    const checkoutLink = await page.locator('a:has-text("Proceed to checkout")')
+    await expect(checkoutLink).toBeDefined()
+    await checkoutLink.click()
+    await page.waitForSelector('text="Checkout"')
+
+    // Select no. attendees
+    const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
+    await noAttendeesBtn.click()
+    const oneAttendeesLink = await page.locator('text="1"')
+    await expect(oneAttendeesLink).toBeDefined()
+    await oneAttendeesLink.click()
+
+    // Fill in the badge names
+    await page.waitForSelector('text="Your name badge:"')
+    const badgeNameLabel = await page.locator('label:has-text("Your name badge:")')
+    await expect(badgeNameLabel).toBeDefined()
+    await page.getByPlaceholder('First name').fill('Jim')
+    await page.getByPlaceholder('Last name').fill('Tester')
+
+    // Check option to help classmate
+    await page.getByLabel("Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.").check()
+
+    // Pay for the event
+    const calculateBtn = await page.locator('button:has-text("Calculate & pay")')
+    await calculateBtn.click()
+    await page.waitForSelector('text="Checkout"')
+
+  }, 2 * 60 * 1000)
 
 })
