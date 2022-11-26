@@ -40,7 +40,7 @@ test.describe('Test credit card processing', async () => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
     await noAttendeesBtn.click()
-    const oneAttendeesLink = await page.locator('text="1"')
+    const oneAttendeesLink = await page.locator('a:has-text("1")')
     await expect(oneAttendeesLink).toBeDefined()
     await oneAttendeesLink.click()
 
@@ -57,7 +57,7 @@ test.describe('Test credit card processing', async () => {
     // Pay for the event
     const calculateBtn = await page.locator('button:has-text("Calculate & pay")')
     await calculateBtn.click()
-    await page.waitForSelector('text="Checkout"')
+    await page.locator('button:has-text("Debit or Credit Card")')
 
   }, 2 * 60 * 1000)
 
