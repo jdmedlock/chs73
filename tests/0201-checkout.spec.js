@@ -55,9 +55,9 @@ test.describe('Test credit card processing', async () => {
     await page.getByLabel("Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.").check()
 
     // Pay for the event
-    const calculateBtn = await page.locator('button:has-text("Calculate & pay")')
-    await calculateBtn.click()
-    await page.locator('button:has-text("Debit or Credit Card")')
+    await page.getByRole('button', { name: 'Calculate & pay' }).click()
+    await page.getByRole('link', { name: 'Debit or Credit Card' }).click()
+    await page.getByLabel('Card number').fill('4005519200000004')
 
   }, 2 * 60 * 1000)
 
