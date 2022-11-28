@@ -436,7 +436,7 @@
 
     {#if isPaymentSuccessful}
       <div class="flex flex-col items-center bg-white text-base">
-        <h3 class="mt-2 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">Your payment was successfully processed (check your email for a reciept)</h3>
+        <h3 id="paymentReceipt" class="mt-2 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600">Your payment was successfully processed (check your email for a reciept)</h3>
         <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2 mb-20">
           <div>Order ID:</div><div>{ resultDetails.id }</div>
           <div>Amount:</div><div>{ resultDetails.purchase_units[0].amount.value }</div>

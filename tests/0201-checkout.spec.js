@@ -79,11 +79,17 @@ test.describe('Test credit card processing', async () => {
     await cardFormFrame.locator('[autocomplete="billing address-level2"]').fill('Cape Girardeau')
     await cardFormFrame.locator('[name=state]').click()
     await cardFormFrame.locator('[name=state]').selectOption('MO')
+    await cardFormFrame.locator('[name=postcode]').click()
+    await cardFormFrame.locator('[name=postcode]').fill('63701')
     await cardFormFrame.locator('[autocomplete=tel]').click()
-    await cardFormFrame.locator('[autocomplete=tel]').fill('63701')
+    await cardFormFrame.locator('[autocomplete=tel]').fill('6365551212')
     await cardFormFrame.locator('[autocomplete=email]').click()
     await cardFormFrame.locator('[autocomplete=email]').fill('jdmedlock-chs73@gmail.com')
     await cardFormFrame.locator('#submit-button').click()
+
+    // Validate the payment receipt
+    await page.waitForSelector('[id=paymentReceipt]')
+
 
   }, 2 * 60 * 1000)
 
