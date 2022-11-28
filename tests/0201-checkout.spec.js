@@ -54,11 +54,15 @@ test.describe('Test credit card processing', async () => {
     // Check option to help classmate
     await page.getByLabel("Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.").check()
 
-    // Pay for the event
+    // Pay for the event. Note that PayPal adds an iframe containing the
+    // payment buttons and then a second, nested iframe within it containing
+    // the card form.
     await page.getByRole('button', { name: 'Calculate & pay' }).click()
     const paypalFrame = await page.frameLocator('.component-frame')
     await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
-    await paypalFrame.getByLabel('Card number').fill('4005519200000004')
+    const cardFormFrame = await paypalFrame.frameLocator('[title=paypal_card_form]')
+    await cardFormFrame.locator('#credit-card-number').click()
+    await cardFormFrame.locator('#credit-card-number').fill('4005519200000004')
 
   }, 2 * 60 * 1000)
 
