@@ -56,8 +56,9 @@ test.describe('Test credit card processing', async () => {
 
     // Pay for the event
     await page.getByRole('button', { name: 'Calculate & pay' }).click()
-    await page.getByRole('link', { name: 'Debit or Credit Card' }).click()
-    await page.getByLabel('Card number').fill('4005519200000004')
+    const paypalFrame = await page.frameLocator('.component-frame')
+    await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
+    await paypalFrame.getByLabel('Card number').fill('4005519200000004')
 
   }, 2 * 60 * 1000)
 
