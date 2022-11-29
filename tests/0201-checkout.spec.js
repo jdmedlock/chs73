@@ -84,12 +84,23 @@ test.describe('Test credit card processing', async () => {
     await cardFormFrame.locator('[autocomplete=tel]').click()
     await cardFormFrame.locator('[autocomplete=tel]').fill('6365551212')
     await cardFormFrame.locator('[autocomplete=email]').click()
-    await cardFormFrame.locator('[autocomplete=email]').fill('jdmedlock-chs73@gmail.com')
+    await cardFormFrame.locator('[autocomplete=email]').fill('jdmedlock@gmail.com')
     await cardFormFrame.locator('#submit-button').click()
 
     // Validate the payment receipt
     await page.waitForSelector('[id=paymentReceipt]')
-
+    await expect(page.locator('#receiptOrderId')).not.toHaveText('')
+    await expect(page.locator('#receiptAmount')).toHaveText('60.00')
+    await expect(page.locator('#receiptStatus')).toHaveText('COMPLETED')
+    await expect(page.locator('#receiptName')).toHaveText('Jim Tester')
+    await expect(page.locator('#receiptAddress')).toHaveText('1245 Main Street')
+    await expect(page.locator('#receiptAddress2')).toHaveText('Apt. 34')
+    await expect(page.locator('#receiptCity')).toHaveText('Cape Girardeau')
+    await expect(page.locator('#receiptState')).toHaveText('MO')
+    await expect(page.locator('#receiptPostalCode')).toHaveText('63701')
+    await expect(page.locator('#receiptEmail')).toHaveText('jdmedlock@gmail.com')
+    await expect(page.locator('#receiptSponsor')).toHaveText('Yes')
+    await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
 
   }, 2 * 60 * 1000)
 
