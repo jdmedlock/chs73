@@ -3,7 +3,7 @@ const config = {
 	fullyParallel: true,
 	testDir: "./tests",
 	timeout: 2 * 60 * 1000,
-	workers: 8, 
+	workers: 3, 
 	webServer: {
 		command: 'npm run dev',
 		port: 3000,
