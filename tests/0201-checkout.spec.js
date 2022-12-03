@@ -14,10 +14,8 @@ test.describe('Test credit card processing', async () => {
     await browser.close()
   })
 
-  test('should signup for Saturday gathering', async () => {
-    // Listen for all console logs
-    page.on('console', msg => console.log(msg.text()))
-
+  // Signup for the event and start the checkout process
+  const signupAndCheckout = async () => {
     // Go to the events page
     await page.goto('http://localhost:3000')
     const eventsMenuItem = page.locator('a:has-text("events")')
@@ -36,11 +34,13 @@ test.describe('Test credit card processing', async () => {
     await expect(checkoutLink).toBeDefined()
     await checkoutLink.click()
     await page.waitForSelector('text="Checkout"')
+  }
 
+  const selectNoAttendees = async (noAttendees, badgeNames, willHelpClassmate) => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
     await noAttendeesBtn.click()
-    const oneAttendeesLink = await page.locator('a:has-text("1")')
+    const oneAttendeesLink = await page.locator(`a:has-text("${ noAttendees }")`)
     await expect(oneAttendeesLink).toBeDefined()
     await oneAttendeesLink.click()
 
@@ -48,15 +48,23 @@ test.describe('Test credit card processing', async () => {
     await page.waitForSelector('text="Your name badge:"')
     const badgeNameLabel = await page.locator('label:has-text("Your name badge:")')
     await expect(badgeNameLabel).toBeDefined()
-    await page.getByPlaceholder('First name').fill('Jim')
-    await page.getByPlaceholder('Last name').fill('Tester')
+    await page.getByPlaceholder('Your first name').fill(`${ badgeNames.classmate.firstName }`)
+    await page.getByPlaceholder('Your last name').fill(`${ badgeNames.classmate.lastName }`)
+    if (noAttendees === '2') {
+      await page.getByPlaceholder('Companion first name').fill(`${ badgeNames.companion.firstName }`)
+      await page.getByPlaceholder('Companion last name').fill(`${ badgeNames.companion.lastName }`)
+    }
 
     // Check option to help classmate
-    await page.getByLabel("Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.").check()
+    if (willHelpClassmate) {
+      await page.getByLabel("Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.").check()
+    }
+  }
 
-    // Pay for the event. Note that PayPal adds an iframe containing the
-    // payment buttons and then a second, nested iframe within it containing
-    // the card form.
+  // Pay for the event. Note that PayPal adds an iframe containing the
+  // payment buttons and then a second, nested iframe within it containing
+  // the card form.
+  const fillInCardForm = async () => {
     await page.getByRole('button', { name: 'Calculate & pay' }).click()
     const paypalFrame = await page.frameLocator('.component-frame')
     await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
@@ -86,11 +94,13 @@ test.describe('Test credit card processing', async () => {
     await cardFormFrame.locator('[autocomplete=email]').click()
     await cardFormFrame.locator('[autocomplete=email]').fill('jdmedlock@gmail.com')
     await cardFormFrame.locator('#submit-button').click()
+  }
 
-    // Validate the payment receipt
+  // Validate the payment receipt
+  const validateReceipt = async (receiptAmount, willHelpClassmate) => {
     await page.waitForSelector('[id=paymentReceipt]')
     await expect(page.locator('#receiptOrderId')).not.toHaveText('')
-    await expect(page.locator('#receiptAmount')).toHaveText('60.00')
+    await expect(page.locator('#receiptAmount')).toHaveText(`${ receiptAmount }`)
     await expect(page.locator('#receiptStatus')).toHaveText('COMPLETED')
     await expect(page.locator('#receiptName')).toHaveText('Jim Tester')
     await expect(page.locator('#receiptAddress')).toHaveText('1245 Main Street')
@@ -99,9 +109,35 @@ test.describe('Test credit card processing', async () => {
     await expect(page.locator('#receiptState')).toHaveText('MO')
     await expect(page.locator('#receiptPostalCode')).toHaveText('63701')
     await expect(page.locator('#receiptEmail')).toHaveText('jdmedlock@gmail.com')
-    await expect(page.locator('#receiptSponsor')).toHaveText('Yes')
+    if (willHelpClassmate) {
+      await expect(page.locator('#receiptSponsor')).toHaveText('Yes')
+    } else {
+      await expect(page.locator('#receiptSponsor')).toHaveText('No')
+    }
     await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
+  }
 
+  test('should signup with one attendee for Saturday gathering', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('1', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: '', lastName: ''}
+    }, false)
+    await fillInCardForm()
+    await validateReceipt('30.00')
+  }, 2 * 60 * 1000)
+
+  test('should signup with two attendees for Saturday gathering', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('2', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: 'Kay', lastName: 'Tester'}}, false)
+    await fillInCardForm()
+    await validateReceipt('60.00')
   }, 2 * 60 * 1000)
 
 })
