@@ -126,7 +126,19 @@ test.describe('Test credit card processing', async () => {
       companion: {firstName: '', lastName: ''}
     }, false)
     await fillInCardForm()
-    await validateReceipt('30.00')
+    await validateReceipt('30.00', false)
+  }, 2 * 60 * 1000)
+
+  test('should signup with one attendee for Saturday gathering + donate', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('1', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: '', lastName: ''}
+    }, true)
+    await fillInCardForm()
+    await validateReceipt('60.00', true)
   }, 2 * 60 * 1000)
 
   test('should signup with two attendees for Saturday gathering', async () => {
@@ -137,7 +149,7 @@ test.describe('Test credit card processing', async () => {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}}, false)
     await fillInCardForm()
-    await validateReceipt('60.00')
+    await validateReceipt('60.00', false)
   }, 2 * 60 * 1000)
 
 })
