@@ -113,6 +113,12 @@
               label: "paypal",
               layout: "vertical"
             },
+            onInit: function(data, actions) {
+              // Set the z-index of the iframe injected by Paypal so it won't
+              // overlay the top nav bar
+              const iframes = document.getElementsByTagName("iframe")
+              iframes[0].style.zIndex = 5
+            },
             createOrder: function (data, actions) {
               // Set up the transaction
               console.log('Create order: ', data)
