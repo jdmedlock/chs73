@@ -147,7 +147,8 @@ test.describe('Test credit card processing', async () => {
     await signupAndCheckout()
     await selectNoAttendees('2', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: 'Kay', lastName: 'Tester'}}, false)
+      companion: {firstName: 'Kay', lastName: 'Tester'}
+    }, false)
     await fillInCardForm()
     await validateReceipt('60.00', false)
   }, 2 * 60 * 1000)
