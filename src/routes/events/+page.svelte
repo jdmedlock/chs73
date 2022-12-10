@@ -99,6 +99,9 @@
               <button class="atcb flex items-center m-auto" on:click={ handleAddDogwoodToCalendar }>
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
               </button>
+              <a id="FridaySignupLink" class="flex items-center m-auto" href="signup?back=events&event=friday">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+              </a>
 
             </div>
           </div>
@@ -171,7 +174,7 @@
                   <p class="ml-3 text-base text-gray-700"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
-              <a id="SaturdaySignupLink" class="flex items-center m-auto" href="signup?back=events">
+              <a id="SaturdaySignupLink" class="flex items-center m-auto" href="signup?back=events&event=saturday">
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
               </a>
             </div>

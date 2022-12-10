@@ -1,25 +1,28 @@
 <script>
-  import { goto } from '$app/navigation'
   import { page } from '$app/stores';
   import { atcb_action } from '../../utils/atcb.js'
+  import fridayEvent from '../../assets/fridayEvent.json'
+  import saturdayEvent from '../../assets/saturdayEvent.json'
 
   let cartTotal = 30.00
   let isPaymentVisible = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
+  let eventType = $page.data.params.get('event') || ''
+  const eventData = eventType == "friday" ? fridayEvent : saturdayEvent
 
   const handleAddDruryToCalendar = (event) => {
     event.preventDefault()
     atcb_action({
-      name: "CHS73 50th Reunion - Dinner",
-      location: "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
-      description: "Hors d’oeurves, a cash bar and a time to remember!\n\n- Hors d’oeurves + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
-      startDate: "2023-09-16",
-      endDate: "2023-09-16",
-      startTime:"16:00",
-      endTime:"23:30",
-      options: ['Apple', 'Google', 'iCal'],
-      iCalFileName: "CHS73_Reunion_20230916",
+      name: eventData.name,
+      location: eventData.location,
+      description: eventData.description,
+      startDate: eventData.startDate,
+      endDate: eventData.endDate,
+      startTime: eventData.startTime,
+      endTime: eventData.endTime,
+      options: eventData.options,
+      iCalFileName: eventData.iCalFileName
     })
   }
 </script>
@@ -32,8 +35,8 @@
     <div class="pt-12 sm:pt-16 lg:pt-24">
       <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
-          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">Signup for Saturday</h2>
-          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Signup for Saturday's Gathering</p>
+          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">{ eventData.heading }</h2>
+          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">{ eventData.subheading }</p>
           <p class="text-xl text-gray-300"></p>
         </div>
       </div>
@@ -46,53 +49,25 @@
             <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div class="px-6 py-8 bg-gray-50 sm:p-10 sm:pb-6">
                 <div>
-                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 16, 2023</h3>
+                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">{ eventData.date }</h3>
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
-                  Drury Plaza Conference Center
+                  { eventData.title }
                 </div>
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
                 <ul class="space-y-4">
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM</p>
-                  </li>
-
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar</p>
-                  </li>
-
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">Music, a drawing, and a few fun surprises!</p>
-                  </li>
-
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">$30 per person for the evening in advance, $35 at the door</p>
-                  </li>
+                  {#each eventData.summaryInfo as summaryBullet}
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-base text-gray-700">{ summaryBullet }</p>
+                    </li>
+                  {/each}
                 </ul>
                 <button id="addCalendarBtn" class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Save this to my calendar!!!</span>
