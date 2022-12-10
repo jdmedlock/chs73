@@ -9,14 +9,25 @@
   "options": ["Apple", "Google", "iCal"],
   "iCalFileName": "CHS73_Reunion_20230916",
   "date": "September 16, 2023",
-  "heading": "Signup for Saturday",
-  "subheading": "Signup for Saturday's Gathering",
-  "title": "Drury Plaza Conference Center",
-  "summaryInfo": [
-    "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
-    "Hors d’oeurves + cash bar",
-    "Music, a drawing, and a few fun surprises!",
-    "$35 per person for the evening in advance, $40 at the door",
-    "No charge for Veterans & their companions"
-  ]
+  "signup": {
+    "heading": "Signup for Saturday",
+    "subheading": "Signup for Saturday's Gathering",
+    "title": "Drury Plaza Conference Center",
+    "summaryInfo": [
+      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
+      "Hors d’oeurves + cash bar",
+      "Music, a drawing, and a few fun surprises!",
+      "$35 per person for the evening in advance, $40 at the door",
+      "No charge for Veterans & their companions"
+    ]
+  },
+  "checkout": {
+    "heading": "Checkout",
+    "subheading": "Review & pay for Saturday's Gathering",
+    "title": "Drury Plaza Conference Center",
+    "summaryInfo": [
+      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
+      "Admission, hors d’oeurves & cash bar ($30 per person in advance, $35 at the door)"
+    ]
+  }
 }

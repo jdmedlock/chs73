@@ -1,23 +1,5 @@
 <script>
-  import { atcb_action } from '../../utils/atcb.js'
- 
   let href = "#"
-
-  const handleAddDogwoodToCalendar = (event) => {
-    event.preventDefault()
-    atcb_action({
-      name: "CHS73 50th Reunion - Social Night",
-      location: "80 S Plaza Way, Cape Girardeau, MO 63703",
-      description: "An informal gathering to relax & reconnect!\n\nCash bar & food",
-      startDate: "2023-09-15",
-      endDate: "2023-09-15",
-      startTime:"17:00",
-      endTime:"23:30",
-      options: ['Apple', 'Google', 'iCal'],
-      timeZone: "Europe/Berlin",
-      iCalFileName: "CHS73_Reunion_20230915",
-    })
-  }
 </script>
 
 <style>
@@ -92,13 +74,10 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700"><a href="https://dogwood-social-house.business.site/" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
+                  <p class="ml-3 text-base text-gray-700 underline"><a href="https://dogwood-social-house.business.site/" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
                 </li>
               </ul>
 
-              <button class="atcb flex items-center m-auto" on:click={ handleAddDogwoodToCalendar }>
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Save this to my calendar!!! </span>
-              </button>
               <a id="FridaySignupLink" class="flex items-center m-auto" href="signup?back=events&event=friday">
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
               </a>

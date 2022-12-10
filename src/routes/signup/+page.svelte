@@ -8,10 +8,11 @@
   let isPaymentVisible = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
+
   let eventType = $page.data.params.get('event') || ''
   const eventData = eventType == "friday" ? fridayEvent : saturdayEvent
 
-  const handleAddDruryToCalendar = (event) => {
+  const handleAddEventToCalendar = (event) => {
     event.preventDefault()
     atcb_action({
       name: eventData.name,
@@ -35,8 +36,8 @@
     <div class="pt-12 sm:pt-16 lg:pt-24">
       <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
-          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">{ eventData.heading }</h2>
-          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">{ eventData.subheading }</p>
+          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">{ eventData.signup.heading }</h2>
+          <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">{ eventData.signup.subheading }</p>
           <p class="text-xl text-gray-300"></p>
         </div>
       </div>
@@ -52,12 +53,12 @@
                   <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">{ eventData.date }</h3>
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
-                  { eventData.title }
+                  { eventData.signup.title }
                 </div>
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
                 <ul class="space-y-4">
-                  {#each eventData.summaryInfo as summaryBullet}
+                  {#each eventData.signup.summaryInfo as summaryBullet}
                     <li class="flex items-start">
                       <div class="flex-shrink-0">
                         <!-- Heroicon name: outline/check -->
@@ -69,10 +70,10 @@
                     </li>
                   {/each}
                 </ul>
-                <button id="addCalendarBtn" class="atcb flex items-center m-auto" on:click={ handleAddDruryToCalendar }>
+                <button id="addCalendarBtn" class="atcb flex items-center m-auto" on:click={ handleAddEventToCalendar }>
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Save this to my calendar!!!</span>
                 </button>
-                <a id="checkoutLink" class="flex items-center m-auto" href="checkout?back=signup">
+                <a id="checkoutLink" class="flex items-center m-auto" href="checkout?back=signup&event={ eventType }">
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Proceed to checkout</span>
                 </a>
               </div>

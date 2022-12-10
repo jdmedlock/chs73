@@ -10,12 +10,24 @@
   "timeZone": "Europe/Berlin",
   "iCalFileName": "CHS73_Reunion_20230915",
   "date": "September 15, 2023",
-  "heading": "Signup for Friday",
-  "subheading": "Signup for Friday's Gathering",
-  "title": "Dogwood Social Club",
-  "summaryInfo": [
-    "Dogwood Social Club: 7:00PM - Closing",
-    "No registration fee!",
-    "Cash bar & food"
-  ]
+  "signup": {
+    "heading": "Signup for Friday",
+    "subheading": "Signup for Friday's Gathering",
+    "title": "Dogwood Social Club",
+    "summaryInfo": [
+      "Dogwood Social Club: 7:00PM - Closing",
+      "Cash bar & food",
+      "It's FREE!!!"
+    ]
+  },
+  "checkout": {
+    "heading": "Checkout",
+    "subheading": "Signup for Friday's Social Gathering",
+    "title": "Dogwood Social Club",
+    "summaryInfo": [
+      "Dogwood Social Club: 7:00PM - Closing",
+      "Cash bar & food",
+      "It's FREE!!!"
+    ]
+  }
 }
