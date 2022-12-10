@@ -1,4 +1,5 @@
 {
+  "eventType": "Saturday Gathering",
   "name": "CHS73 50th Reunion - Dinner",
   "location": "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
   "description": "Hors d’oeurves, a cash bar and a time to remember!\n\n- Hors d’oeurves + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
@@ -24,7 +25,7 @@
   "checkout": {
     "heading": "Checkout",
     "subheading": "Review & pay for Saturday's Gathering",
-    "title": "Drury Plaza Conference Center",
+    "title": "Saturday's Reunion Gathering",
     "summaryInfo": [
       "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
       "Admission, hors d’oeurves & cash bar ($30 per person in advance, $35 at the door)"

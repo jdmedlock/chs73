@@ -5,6 +5,8 @@
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
 
+  const FRIDAY_EVENT = 'friday'
+  const SATURDAY_EVENT = 'saturday'
   const CREDITCARD_TXN_FEE = 1.24
   const PAYPAY_TXN_FEE = 1.36
   const EVENT_FEE = 30.00
@@ -13,8 +15,9 @@
   let backPage = back === "signup" ? "events" : back
 
   let eventType = $page.data.params.get('event') || ''
-  const eventData = eventType == "friday" ? fridayEvent : saturdayEvent
+  const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
+  let resultData
   let resultDetails
 
   let classmateFirstName = ''
@@ -39,14 +42,20 @@
   let isSponsor = false
 
   const calculateOrder = (paymentSource) => {
-    if (paymentSource !== undefined && typeof paymentSource === 'string') {
+    if (paymentSource !== undefined && typeof paymentSource === 'string' && eventType === SATURDAY_EVENT) {
       estTxnFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAY_TXN_FEE
     } else {
       estTxnFee = 0
     }
     calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
-    calculatedEventFee = EVENT_FEE * calculatedAttendees
-    orderTotal = calculatedEventFee + estTxnFee
+
+    if (eventType === SATURDAY_EVENT) {
+      calculatedEventFee = EVENT_FEE * calculatedAttendees
+      orderTotal = calculatedEventFee + estTxnFee
+    } else {
+      calculatedEventFee = 0
+      orderTotal = 0
+    }
   }
 
   const handleNoAttendees = (event) => {
@@ -62,7 +71,74 @@
     setTimeout(() => event.target.checked = isSponsor, 0)
   }
 
-  const handleSaturdaySignup = () => {
+  const logPayment = () => {
+    axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
+      order_id: details.id,
+      item_description: eventData.eventType,
+      order_amount: parseFloat(details.purchase_units[0].amount.value), 
+      transaction_status: details.status, 
+      transaction_creation_time: details.create_time, 
+      transaction_update_time: details.update_time,
+      payer_source: data.paymentSource, 
+      payer_email_address: details.payer.email_address, 
+      payer_firstname: details.payer.name.given_name, 
+      payer_lastname: details.payer.name.surname,
+      payer_id: details.payer.name.payer_id, 
+      shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+      shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+      shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+      shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+      shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+      shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
+      billing_token: data.billingToken, 
+      facilitator_access_token: data.facilitatorAccessToken, 
+      accelerated_payment: data.accelerated, 
+      soft_descriptor: details.softDescriptor, 
+      is_sponsor: isSponsor ? 'Yes' : 'No',
+      classmateFirstName: classmateFirstName,
+      classmateLastName: classmateLastName,
+      companionFirstName: companionFirstName || '',
+      companionLastName: companionLastName || '',
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
+  const emailEventAcknowledgement = () => {
+    axios.post(`${ import.meta.env.VITE_BE_URL }/sendEventAck`, {
+      order_id: details.id,
+      item_description: eventData.eventType, 
+      event_date: eventData.startDate,
+      order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
+      transaction_status: details.status, 
+      transaction_creation_time: details.create_time, 
+      payer_email_address: details.payer.email_address, 
+      payer_firstname: details.payer.name.given_name, 
+      payer_lastname: details.payer.name.surname,
+      shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+      shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+      shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+      shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+      shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+      is_sponsor: isSponsor ? 'Yes' : 'No',
+      classmateFirstName: classmateFirstName,
+      classmateLastName: classmateLastName,
+      companionFirstName: companionFirstName || '',
+      companionLastName: companionLastName || '',
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
+  const handleCalculateCheckout = () => {
     isPaymentVisible = true
     isAttendeeError = false
     isClassmateNameError = false
@@ -87,7 +163,7 @@
       }
     }
 
-    if (isPaymentVisible && !isPaymentStarted) {
+    if (isPaymentVisible && !isPaymentStarted && eventType === SATURDAY_EVENT) {
       isPaymentStarted = true
       loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
@@ -138,72 +214,11 @@
               return actions.order.capture().then(function (details) {
                 resultDetails = details
                 console.log("Captured order: ", details)
-                //isPaymentVisible = false
                 isPaymentSuccessful = true
+                logPayment(details)
 
-                axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
-                  order_id: details.id,
-                  item_description: 'Saturday Gathering',
-                  order_amount: parseFloat(details.purchase_units[0].amount.value), 
-                  transaction_status: details.status, 
-                  transaction_creation_time: details.create_time, 
-                  transaction_update_time: details.update_time,
-                  payer_source: data.paymentSource, 
-                  payer_email_address: details.payer.email_address, 
-                  payer_firstname: details.payer.name.given_name, 
-                  payer_lastname: details.payer.name.surname,
-                  payer_id: details.payer.name.payer_id, 
-                  shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-                  shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-                  shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-                  shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-                  shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-                  shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
-                  billing_token: data.billingToken, 
-                  facilitator_access_token: data.facilitatorAccessToken, 
-                  accelerated_payment: data.accelerated, 
-                  soft_descriptor: details.softDescriptor, 
-                  is_sponsor: isSponsor ? 'Yes' : 'No',
-                  classmateFirstName: classmateFirstName,
-                  classmateLastName: classmateLastName,
-                  companionFirstName: companionFirstName || '',
-                  companionLastName: companionLastName || '',
-                })
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                })
-                
                 // Email transaction receipt to user
-                axios.post(`${ import.meta.env.VITE_BE_URL }/sendEventAck`, {
-                  order_id: details.id,
-                  item_description: 'Saturday Gathering', 
-                  event_date: '2023-09-16',
-                  order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
-                  transaction_status: details.status, 
-                  transaction_creation_time: details.create_time, 
-                  payer_email_address: details.payer.email_address, 
-                  payer_firstname: details.payer.name.given_name, 
-                  payer_lastname: details.payer.name.surname,
-                  shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-                  shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-                  shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-                  shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-                  shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-                  is_sponsor: isSponsor ? 'Yes' : 'No',
-                  classmateFirstName: classmateFirstName,
-                  classmateLastName: classmateLastName,
-                  companionFirstName: companionFirstName || '',
-                  companionLastName: companionLastName || '',
-                })
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                })
+                emailEventAcknowledgement(details)
               })
             },
             
@@ -246,30 +261,22 @@
                   <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 16, 2023</h3>
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
-                  Saturday's Reunion Gathering
+                  { eventData.checkout.title }
                 </div>
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
                 <ul class="space-y-4">
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM</p>
-                  </li>
-
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">Admission, hors d’oeurves & cash bar ($30 per person in advance, $35 at the door)</p>
-                  </li>
+                  {#each eventData.checkout.summaryInfo as summaryBullet}
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-base text-gray-700">{ summaryBullet }</p>
+                    </li>
+                  {/each}
 
                   <li class="flex items-start">
                     <div class="flex-shrink-0">
@@ -280,6 +287,7 @@
                     </div>
                     <p class="ml-3 text-base text-gray-700">Who will be attending?</p>
                   </li>
+
                   <li class="flex items-start ml-8">
                     <div class="flex flex-col relative text-left">
                       <div>
@@ -386,11 +394,12 @@
                           {/if}
                         </div>
                       {/if}
-                      <label class="mt-2">
-                        <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }>
-                        Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
-                      </label>
-
+                      {#if eventType === SATURDAY_EVENT}
+                        <label class="mt-2">
+                          <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
+                          Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
+                        </label>
+                      {/if}
                     </div>
                   </li>
 
@@ -414,8 +423,8 @@
                   </li>
 
                 </ul>
-                <button class="flex items-center m-auto" on:click={ handleSaturdaySignup }>
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & pay </span>
+                <button class="flex items-center m-auto" on:click={ handleCalculateCheckout }>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
                 </button>
               </div>
             </div>
