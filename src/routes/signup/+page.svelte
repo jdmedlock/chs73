@@ -3,14 +3,15 @@
   import { atcb_action } from '../../utils/atcb.js'
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
+  import { FRIDAY_EVENT, SATURDAY_EVENT } from '../../utils/constants.js'
 
-  let cartTotal = 30.00
+
   let isPaymentVisible = false
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
 
   let eventType = $page.data.params.get('event') || ''
-  const eventData = eventType == "friday" ? fridayEvent : saturdayEvent
+  const eventData = eventType == FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
   const handleAddEventToCalendar = (event) => {
     event.preventDefault()

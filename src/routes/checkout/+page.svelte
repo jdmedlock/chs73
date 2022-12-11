@@ -2,14 +2,14 @@
   import axios from 'axios'
   import { page } from '$app/stores';
   import { loadScript } from "@paypal/paypal-js"
+  import generateOrderID from '../../utils/generateOrderID.js'
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
-
-  const FRIDAY_EVENT = 'friday'
-  const SATURDAY_EVENT = 'saturday'
-  const CREDITCARD_TXN_FEE = 1.24
-  const PAYPAY_TXN_FEE = 1.36
-  const EVENT_FEE = 30.00
+  import { 
+    FRIDAY_EVENT, SATURDAY_EVENT, 
+    CREDITCARD_TXN_FEE, PAYPAY_TXN_FEE, EVENT_FEE, 
+    TXN_COMPLETED
+  } from '../../utils/constants.js'
 
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
@@ -108,7 +108,7 @@
     })
   }
 
-  const emailEventAcknowledgement = () => {
+  const emailEventAcknowledgement = (details) => {
     axios.post(`${ import.meta.env.VITE_BE_URL }/sendEventAck`, {
       order_id: details.id,
       item_description: eventData.eventType, 
@@ -138,34 +138,50 @@
     })
   }
 
-  const handleCalculateCheckout = () => {
-    isPaymentVisible = true
-    isAttendeeError = false
-    isClassmateNameError = false
-    isCompanionNameError = false
+  const processFridaySignup = () => {
+    const details = {
+      order_id: generateOrderID(/* user first & last name*/), // TODO: use users first & last name as the parm
+      item_description: eventData.eventType,
+      order_amount: parseFloat(0.00), 
+      transaction_status: TXN_COMPLETED, 
+      transaction_creation_time: details.create_time, // TODO: generate current time in same format as PayPal
+      transaction_update_time: details.update_time, // TODO: generate current time in same format as PayPal
+      payer_source: 'none', 
+      // TODO: Add a form to the page to capture the following user info
+      payer_email_address: details.payer.email_address, 
+      payer_firstname: details.payer.name.given_name, 
+      payer_lastname: details.payer.name.surname,
+      payer_id: details.payer.name.payer_id, 
+      shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
+      shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
+      shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
+      shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
+      shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+      shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
+      billing_token: '', 
+      facilitator_access_token: '', 
+      accelerated_payment: FALSE, 
+      soft_descriptor: '', 
+      is_sponsor: 'No',
+      classmateFirstName: classmateFirstName,
+      classmateLastName: classmateLastName,
+      companionFirstName: companionFirstName || '',
+      companionLastName: companionLastName || '',
+    }
 
-    // Validate the input data
-    if (noAttendees === 0) {
-      isAttendeeError = true
-      isPaymentVisible = false
-      return
-    }
-    if (classmateFirstName === '' || classmateLastName === '') {
-      isClassmateNameError = true
-      isPaymentVisible = false
-      return
-    }
-    if (noAttendees > 1) {
-      if (companionLastName === '' || companionLastName === '') {
-        isCompanionNameError = true
-        isPaymentVisible = false
-        return
-      }
-    }
+    axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, details)
+    .then(function (response) {
+      emailEventAcknowledgement(details)
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
 
-    if (isPaymentVisible && !isPaymentStarted && eventType === SATURDAY_EVENT) {
-      isPaymentStarted = true
-      loadScript({ 
+  }
+
+  const processSaturdayPayment = () => {
+    loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
         "disable-funding": "paylater"
       }).then((paypal) => {
@@ -204,12 +220,6 @@
             },
             onApprove: function (data, actions) {
               // Capture order after payment approved
-              console.log('Payment approved: ', data)
-              console.log('...isSponsor: ', isSponsor)
-              console.log('...classmateFirstName: ', classmateFirstName)
-              console.log('...classmateLastName: ', classmateLastName)
-              console.log('...companionFirstName: ', companionFirstName)
-              console.log('...companionLastName: ', companionLastName)
               resultData = data
               return actions.order.capture().then(function (details) {
                 resultDetails = details
@@ -229,7 +239,42 @@
           })
           .render("#paypal-button-container")
         })
+  }
+
+  const handleCalculateCheckout = () => {
+    isPaymentVisible = true
+    isAttendeeError = false
+    isClassmateNameError = false
+    isCompanionNameError = false
+
+    // Validate the input data
+    if (noAttendees === 0) {
+      isAttendeeError = true
+      isPaymentVisible = false
+      return
+    }
+    if (classmateFirstName === '' || classmateLastName === '') {
+      isClassmateNameError = true
+      isPaymentVisible = false
+      return
+    }
+    if (noAttendees > 1) {
+      if (companionLastName === '' || companionLastName === '') {
+        isCompanionNameError = true
+        isPaymentVisible = false
+        return
       }
+    }
+
+    if(eventType === FRIDAY_EVENT) {
+      processFridaySignup()
+    }
+
+    if (isPaymentVisible && !isPaymentStarted && eventType === SATURDAY_EVENT) {
+      isPaymentStarted = true
+      processSaturdayPayment()
+    }
+
   }
 </script>
 
