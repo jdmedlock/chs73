@@ -10,7 +10,7 @@
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
 
-  let eventType = $page.data.params.get('event') || ''
+  let eventType = $page.data.params.get('event') === 'friday' ? FRIDAY_EVENT : SATURDAY_EVENT
   const eventData = eventType == FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
   const handleAddEventToCalendar = (event) => {

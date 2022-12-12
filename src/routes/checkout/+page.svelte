@@ -14,12 +14,13 @@
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
 
-  let eventType = $page.data.params.get('event') || ''
+  let eventType = $page.data.params.get('event') === 'friday' ? FRIDAY_EVENT : SATURDAY_EVENT
   const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
   let resultData
   let resultDetails
 
+  let classmateEmail = ''
   let classmateFirstName = ''
   let classmateLastName = ''
   let companionFirstName = ''
@@ -71,7 +72,7 @@
     setTimeout(() => event.target.checked = isSponsor, 0)
   }
 
-  const logPayment = () => {
+  const logPayment = (details) => {
     axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
       order_id: details.id,
       item_description: eventData.eventType,
@@ -139,45 +140,41 @@
   }
 
   const processFridaySignup = () => {
+    const currentDate = new Date()
+    const currentTime = currentDate.toISOString()
+    console.log(`currentTime: ${ currentTime }`)
     const details = {
-      order_id: generateOrderID(/* user first & last name*/), // TODO: use users first & last name as the parm
-      item_description: eventData.eventType,
-      order_amount: parseFloat(0.00), 
-      transaction_status: TXN_COMPLETED, 
-      transaction_creation_time: details.create_time, // TODO: generate current time in same format as PayPal
-      transaction_update_time: details.update_time, // TODO: generate current time in same format as PayPal
-      payer_source: 'none', 
-      // TODO: Add a form to the page to capture the following user info
-      payer_email_address: details.payer.email_address, 
-      payer_firstname: details.payer.name.given_name, 
-      payer_lastname: details.payer.name.surname,
-      payer_id: details.payer.name.payer_id, 
-      shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-      shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-      shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-      shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-      shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-      shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
-      billing_token: '', 
-      facilitator_access_token: '', 
-      accelerated_payment: FALSE, 
-      soft_descriptor: '', 
-      is_sponsor: 'No',
-      classmateFirstName: classmateFirstName,
-      classmateLastName: classmateLastName,
-      companionFirstName: companionFirstName || '',
-      companionLastName: companionLastName || '',
+      id: generateOrderID(classmateFirstName.concat(classmateLastName)),
+      status: TXN_COMPLETED, 
+      create_time: currentTime, 
+      update_time: currentTime,
+      payer: {
+        email_address: classmateEmail,
+        name: {
+          given_name: classmateFirstName, 
+          surname: classmateLastName
+        },
+      },
+      purchase_units: [
+        { amount: { 
+            value: parseFloat(0.00),
+          },
+          shipping: { 
+            address: { 
+              address_line_1: '', 
+              address_line_2: '',
+              admin_area_1: '',  
+              admin_area_2: '', 
+              postal_code: '',
+            },
+          },
+        },
+      ],  
     }
+    console.log('details: ', details)
 
-    axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, details)
-    .then(function (response) {
-      emailEventAcknowledgement(details)
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
-
+    logPayment(details)
+    emailEventAcknowledgement(details)
   }
 
   const processSaturdayPayment = () => {
@@ -226,8 +223,6 @@
                 console.log("Captured order: ", details)
                 isPaymentSuccessful = true
                 logPayment(details)
-
-                // Email transaction receipt to user
                 emailEventAcknowledgement(details)
               })
             },
@@ -365,6 +360,23 @@
 
                       {#if showBadgeNames}
                         <div class="flex flex-wrap relative w-full ml-5 mb-3 mt-1">
+                          {#if eventType === FRIDAY_EVENT}
+                            <span class="relative w-5/12 mb-3">
+                              <label
+                                class="flex-nowrap block uppercase text-gray-700 text-xs font-bold mb-2"
+                                for="full-name">
+                                Your email address:
+                              </label>
+                              <input name="name" bind:value={ classmateEmail } 
+                                type="text" required aria-required="true"
+                                class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
+                                bg-white rounded text-sm shadow focus:outline-none focus:ring
+                                w-full"
+                                placeholder="Your email address"
+                                style="transition: all 0.15s ease 0s;"
+                                on:input={ classmateEmail } />
+                            </span>
+                          {/if}
                           <span class="relative w-5/12 mb-3">
                             <label
                               class="flex-nowrap block uppercase text-gray-700 text-xs font-bold mb-2"

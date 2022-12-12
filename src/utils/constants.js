@@ -1,5 +1,5 @@
-const FRIDAY_EVENT = 'friday'
-const SATURDAY_EVENT = 'saturday'
+const FRIDAY_EVENT = 'Friday Gathering'
+const SATURDAY_EVENT = 'Saturday Gathering'
 
 const CREDITCARD_TXN_FEE = 1.24
 const PAYPAY_TXN_FEE = 1.36
