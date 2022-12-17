@@ -10,8 +10,9 @@
     CREDITCARD_TXN_FEE, PAYPAY_TXN_FEE, EVENT_FEE, 
     TXN_COMPLETED
   } from '../../utils/constants.js'
-  import Receipt from './checkoutReceipt.svelte'
+  import EventSummary from './eventSummary.svelte'
   import OrderSummary from './orderSummary.svelte'
+  import Receipt from './checkoutReceipt.svelte'
 
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
@@ -308,17 +309,7 @@
               </div>
               <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
                 <ul class="space-y-4">
-                  {#each eventData.checkout.summaryInfo as summaryBullet}
-                    <li class="flex items-start">
-                      <div class="flex-shrink-0">
-                        <!-- Heroicon name: outline/check -->
-                        <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <p class="ml-3 text-base text-gray-700">{ summaryBullet }</p>
-                    </li>
-                  {/each}
+                  <EventSummary event={ eventData }/>
 
                   <li class="flex items-start">
                     <div class="flex-shrink-0">
@@ -327,7 +318,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p class="ml-3 text-base text-gray-700">Who will be attending?</p>
+                    <div class="ml-3 text-base text-gray-700">Who will be attending?</div>
                   </li>
 
                   <li class="flex items-start ml-8">
