@@ -11,6 +11,7 @@
     TXN_COMPLETED
   } from '../../utils/constants.js'
   import Receipt from './checkoutReceipt.svelte'
+  import OrderSummary from './orderSummary.svelte'
 
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
@@ -468,16 +469,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <div class="flex flex-col gap-y-0">
-                      <div class="ml-3 text-base text-gray-700 mb-2 font-bold">Order Summary:</div>
-                      <div class="grid grid-cols-2 gap-x-4 ml-8 bg-gray-200">
-                        <div>No. Attendees </div><div class="justify-self-end">{ calculatedAttendees }</div>
-                        <div>Subtotal </div><div class="justify-self-end">${ calculatedEventFee.toFixed(2) }</div>
-                        <div>Est. transaction fee </div><div class="justify-self-end">{ estTxnFee.toFixed(2) }</div>
-                        <div>Taxes </div><div class="underline justify-self-end">0.00</div>
-                        <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ orderTotal.toFixed(2) }</div>
-                      </div>
-                    </div>
+                    <OrderSummary noattendees={ calculatedAttendees } subtotal={calculatedEventFee }
+                      esttxnfee={ estTxnFee } ordertotal={ orderTotal } />
                   </li>
 
                 </ul>
