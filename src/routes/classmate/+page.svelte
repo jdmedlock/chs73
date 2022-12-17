@@ -17,6 +17,16 @@
     await goto(`updatecontact?back=classmate&firstName=${ firstName }&lastName=${ lastName }&name=${ name }&photoId=${ cloudinaryId }&deceased=${ deceased }&confirmed=${ confirmed }&type=classmate`)
   }
 
+  const handleTigerHuntClick = () => {
+    showGreeting = !showGreeting
+  }
+
+  const handleEnterOnTigerHunt = () => {
+    if (e.keyCode === 13) {
+      handleGreetingClick()
+    }
+  }
+
   const classmateImage = getCloudinaryPhoto(cloudinaryId)
 
 </script>
@@ -56,7 +66,7 @@
       </a>
       {#if confirmed === 'FALSE'}
         <div class="flex flex-col ml-2">
-          <div on:click={ handleTigerHunt }
+          <div on:click={ handleTigerHunt } on:keydown={ handleEnterOnTigerHunt }
             class="bg-orange-500 text-white active:bg-gray-700 
             font-bold uppercase rounded shadow hover:shadow-lg
             outline-none focus:outline-none 

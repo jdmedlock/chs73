@@ -352,7 +352,7 @@
             outline-none focus:outline-none mt-3 mb-1
             transition duration-300 ease-in-out 
             hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
-              <a class="self-center" href="https://forms.gle/Qh3JGkdBxkAscrxm6" target="_blank">Take me to the Questionnaire!</a>
+              <a class="self-center" href="https://forms.gle/Qh3JGkdBxkAscrxm6" target="_blank" rel="noreferrer">Take me to the Questionnaire!</a>
             </div>
           </div>
         </div>

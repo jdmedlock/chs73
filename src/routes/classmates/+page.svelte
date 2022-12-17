@@ -25,6 +25,16 @@
     return ''
   }
 
+  const handleGreetingClick = () => {
+    showGreeting = !showGreeting
+  }
+
+  const handleEnterOnGreeting = () => {
+    if (e.keyCode === 13) {
+      handleGreetingClick()
+    }
+  }
+
 </script>
 
 <style>
@@ -76,7 +86,7 @@
       <div class="flex flex-col w-full mt-4 md:mt-0 mb-2 text-xl md:text-xl text-gray-500">
         <div class="flex flex-col flex-wrap w-3/4 justify-center m-auto">
 
-          <div on:click={ () => showGreeting = !showGreeting }>
+          <div on:click={ handleGreetingClick } on:keydown={ handleEnterOnGreeting }>
             <div class="text-xl md:text-3xl font-bold md:font-extrabold underline 
               italic text-center">
               3 Valuable Life Lessons Learned from a 50 Year Class Reunion
