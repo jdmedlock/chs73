@@ -10,6 +10,7 @@
     CREDITCARD_TXN_FEE, PAYPAY_TXN_FEE, EVENT_FEE, 
     TXN_COMPLETED
   } from '../../utils/constants.js'
+  import Receipt from './checkoutReceipt.svelte'
 
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
@@ -498,6 +499,22 @@
     {/if}
 
     {#if isPaymentSuccessful}
+      <Receipt id={ resultDetails.id } 
+        totalCharged={ resultDetails.purchase_units[0].amount.value }
+        txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
+        payerFirstName={ resultDetails.payer.name.given_name }
+        payerLastName={ resultDetails.payer.name.surname }
+        payerAddressLine1={ resultDetails.purchase_units[0].shipping.address.address_line_1 }
+        payerAddressLine2={ resultDetails.purchase_units[0].shipping.address.address_line_2 }
+        payerCity={ resultDetails.purchase_units[0].shipping.address.admin_area_2 }
+        payerState={ resultDetails.purchase_units[0].shipping.address.admin_area_1 }
+        payerPostalCode={ resultDetails.purchase_units[0].shipping.address.postal_code }
+        payerEmail={ resultDetails.payer.email_address }
+        isSponsor={ isSponsor }
+        classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
+        companionFirstName={ companionFirstName } companionLastName={ companionLastName }
+      />
+      <!--
       <div class="flex flex-col items-center bg-white text-base">
         <h3 id="paymentReceipt" class="mt-2 rounded-full font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600">Your payment was successfully processed (check your email for a reciept)</h3>
         <div class="grid grid-cols-2 gap-x-4 mt-4 ml-8 bg-gray-200 w-1/2 mb-20">
@@ -521,6 +538,7 @@
           {/if}
         </div>
       </div>
+      -->
     {/if}
 
   </div>
