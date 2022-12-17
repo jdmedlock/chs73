@@ -1,6 +1,6 @@
 <script>
 	import "../assets/app.css"
-	import Nav from '../components/Nav.svelte'
+	import Nav from '$lib/Nav.svelte'
 
 	const toggleNavbar = () => {
     var nav = document.getElementById('menu')

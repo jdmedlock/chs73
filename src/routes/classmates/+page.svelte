@@ -3,8 +3,8 @@
   import classmatesPromise from '../../stores/classmatesPromise.js'
   import createNameIndex from '../../utils/createNameIndex'
   import createPersonGroups from '../../utils/createPersonGroups'
-  import BackToTop from '../../components/BackToTop.svelte'
-  import LetterIndex from '../../components/LetterIndex.svelte'
+  import BackToTop from '$lib/BackToTop.svelte'
+  import LetterIndex from '$lib/LetterIndex.svelte'
 
   let letterIndex
   let showGreeting = false

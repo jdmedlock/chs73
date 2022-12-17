@@ -3,7 +3,7 @@
   import classmatesPromise from '../../stores/classmatesPromise.js'
   import createNameIndex from '../../utils/createNameIndex'
   import createPersonGroups from '../../utils/createPersonGroups'
-  import LetterIndex from '../../components/LetterIndex.svelte'
+  import LetterIndex from '$lib/LetterIndex.svelte'
 
   let deceased = []
   let classmateColumn1 = []
