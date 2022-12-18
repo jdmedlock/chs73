@@ -5,14 +5,16 @@
   export let isAttendeeError
   export let isClassmateNameError
   export let isCompanionNameError
-  export let showAttendees
-  export let showBadgeNames
   export let noAttendees
   export let classmateEmail
-  export let classmateFirstName
-  export let classmateLastName
-  export let companionFirstName
-  export let companionLastName
+  export let calculateOrder
+  
+  let showAttendees
+  let showBadgeNames
+  let classmateFirstName
+  let classmateLastName
+  let companionFirstName
+  let companionLastName
   
   const handleNoAttendees = (event) => {
     noAttendees = parseInt(event.target.text)

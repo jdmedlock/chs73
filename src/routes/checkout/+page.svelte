@@ -36,8 +36,6 @@
   let noAttendees = 0
   let orderTotal = 0
   
-  let showAttendees = false
-  let showBadgeNames = false
   let isAttendeeError = false
   let isClassmateNameError = false
   let isCompanionNameError = false
@@ -47,6 +45,8 @@
   let isSponsor = false
 
   const calculateOrder = (paymentSource) => {
+    // paymentSource is an optional parameter. It's only used when this
+    // function is invoked from the PayPal API
     if (paymentSource !== undefined && typeof paymentSource === 'string' && eventType === SATURDAY_EVENT) {
       estTxnFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAY_TXN_FEE
     } else {
@@ -315,7 +315,11 @@
                     <div class="ml-3 text-base text-gray-700">Who will be attending?</div>
                   </li>
 
-                  <Attendees />
+                  <Attendees eventType={ eventType } noAttendees={ noAttendees } 
+                    isAttendeeError={ isAttendeeError }
+                    isClassmateNameError={ isClassmateNameError } 
+                    isCompanionNameError={ isCompanionNameError } 
+                    calculateOrder={ calculateOrder }/>
 
                   {#if eventType === SATURDAY_EVENT}
                     <li class="flex items-start ml-8">
