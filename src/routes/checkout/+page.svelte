@@ -69,7 +69,7 @@
     setTimeout(() => event.target.checked = isSponsor, 0)
   }
 
-  const logPayment = (details) => {
+  const logPayment = (details, resultData) => {
     axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
       order_id: details.id,
       item_description: eventData.eventType,
@@ -77,7 +77,7 @@
       transaction_status: details.status, 
       transaction_creation_time: details.create_time, 
       transaction_update_time: details.update_time,
-      payer_source: data.paymentSource, 
+      payer_source: resultData ? resultData.paymentSource : '', 
       payer_email_address: details.payer.email_address, 
       payer_firstname: details.payer.name.given_name, 
       payer_lastname: details.payer.name.surname,
@@ -88,9 +88,9 @@
       shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
       shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
       shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
-      billing_token: data.billingToken, 
-      facilitator_access_token: data.facilitatorAccessToken, 
-      accelerated_payment: data.accelerated, 
+      billing_token: resultData.billingToken, 
+      facilitator_access_token: resultData.facilitatorAccessToken, 
+      accelerated_payment: resultData.accelerated, 
       soft_descriptor: details.softDescriptor, 
       is_sponsor: isSponsor ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
@@ -215,11 +215,12 @@
             onApprove: function (data, actions) {
               // Capture order after payment approved
               resultData = data
+              console.log('resultData: ', resultData)
               return actions.order.capture().then(function (details) {
                 resultDetails = details
                 console.log("Captured order: ", details)
                 isPaymentSuccessful = true
-                logPayment(details)
+                logPayment(details, resultData)
                 emailEventAcknowledgement(details)
               })
             },
@@ -315,11 +316,18 @@
                     <div class="ml-3 text-base text-gray-700">Who will be attending?</div>
                   </li>
 
-                  <Attendees eventType={ eventType } noAttendees={ noAttendees } 
+                  <Attendees eventType={ eventType } 
                     isAttendeeError={ isAttendeeError }
                     isClassmateNameError={ isClassmateNameError } 
                     isCompanionNameError={ isCompanionNameError } 
-                    calculateOrder={ calculateOrder }/>
+                    calculateOrder={ calculateOrder }
+                    bind:noAttendees={ noAttendees }
+                    bind:classmateEmail={ classmateEmail }
+                    bind:classmateFirstName={ classmateFirstName }
+                    bind:classmateLastName={ classmateLastName }
+                    bind:companionFirstName={ companionFirstName }
+                    bind:companionLastName={ companionLastName }
+                  />
 
                   {#if eventType === SATURDAY_EVENT}
                     <li class="flex items-start ml-8">

@@ -5,16 +5,16 @@
   export let isAttendeeError
   export let isClassmateNameError
   export let isCompanionNameError
+  export let calculateOrder
   export let noAttendees
   export let classmateEmail
-  export let calculateOrder
-  
+  export let classmateFirstName
+  export let classmateLastName
+  export let companionFirstName
+  export let companionLastName
+
   let showAttendees
   let showBadgeNames
-  let classmateFirstName
-  let classmateLastName
-  let companionFirstName
-  let companionLastName
   
   const handleNoAttendees = (event) => {
     noAttendees = parseInt(event.target.text)
@@ -142,7 +142,7 @@
             </span>
             {#if isCompanionNameError}
               <div name="companionError" class="font-bold text-red-700">
-                You must enter youe companions first and last name for their name badge
+                You must enter your companions first and last name for their name badge
               </div>
             {/if}
           {/if}
