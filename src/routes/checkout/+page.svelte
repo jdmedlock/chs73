@@ -18,7 +18,9 @@
   let back = $page.data.params.get('back') || ''
   let backPage = back === "signup" ? "events" : back
 
-  let eventType = $page.data.params.get('event') === 'friday' ? FRIDAY_EVENT : SATURDAY_EVENT
+  let eventType = $page.data.params.get('event')
+  console.log('event parm: ', $page.data.params.get('event'))
+  console.log('eventType: ', eventType)
   const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
   let resultData
@@ -88,9 +90,9 @@
       shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
       shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
       shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
-      billing_token: resultData.billingToken, 
-      facilitator_access_token: resultData.facilitatorAccessToken, 
-      accelerated_payment: resultData.accelerated, 
+      billing_token: resultData ? resultData.billingToken : '', 
+      facilitator_access_token: resultData ? resultData.facilitatorAccessToken : '', 
+      accelerated_payment: resultData ? resultData.accelerated : '', 
       soft_descriptor: details.softDescriptor, 
       is_sponsor: isSponsor ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
@@ -169,7 +171,6 @@
       ],  
     }
     console.log('details: ', details)
-
     logPayment(details)
     emailEventAcknowledgement(details)
   }
@@ -363,7 +364,7 @@
 
     </div>
 
-    {#if isPaymentVisible}
+    {#if isPaymentVisible && eventType === FRIDAY_EVENT}
       <div class="flex flex-col items-center bg-white">
         <div id="paypal-button-container" />
       </div>
