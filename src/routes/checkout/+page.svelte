@@ -362,7 +362,7 @@
 
     </div>
 
-    {#if isPaymentVisible && eventType === FRIDAY_EVENT}
+    {#if isPaymentVisible && eventType !== FRIDAY_EVENT}
       <div class="flex flex-col items-center bg-white">
         <div id="paypal-button-container" />
       </div>
