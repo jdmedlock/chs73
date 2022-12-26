@@ -4,7 +4,7 @@
 
 <eventsummary>
   {#each event.checkout.summaryInfo as summaryBullet}
-    <li class="flex items-start even:pt-4">
+    <li class="flex items-start pt-4">
       <div class="flex-shrink-0">
         <!-- Heroicon name: outline/check -->
         <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">

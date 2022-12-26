@@ -56,7 +56,7 @@
       {/if}
 
       {#if showBadgeNames}
-        <div class="flex flex-wrap relative w-full ml-5 mb-3 mt-1">
+        <div class="flex flex-wrap relative gap-1 w-full ml-5 mb-3 mt-1 ">
           {#if eventType === FRIDAY_EVENT}
             <span class="relative w-5/12 mb-3">
               <label
@@ -72,6 +72,8 @@
                 placeholder="Your email address"
                 style="transition: all 0.15s ease 0s;"
                 on:input={ classmateEmail } />
+            </span>
+            <span class="relative w-5/12 mb-3">
             </span>
           {/if}
           <span class="relative w-5/12 mb-3">

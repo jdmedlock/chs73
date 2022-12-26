@@ -19,8 +19,6 @@
   let backPage = back === "signup" ? "events" : back
 
   let eventType = $page.data.params.get('event')
-  console.log('event parm: ', $page.data.params.get('event'))
-  console.log('eventType: ', eventType)
   const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
   let resultData
@@ -73,7 +71,7 @@
 
   const logPayment = (details, resultData) => {
     axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
-      order_id: details.id,
+      order_id: `${ details.id }`,
       item_description: eventData.eventType,
       order_amount: parseFloat(details.purchase_units[0].amount.value), 
       transaction_status: details.status, 
@@ -141,7 +139,6 @@
   const processFridaySignup = () => {
     const currentDate = new Date()
     const currentTime = currentDate.toISOString()
-    console.log(`currentTime: ${ currentTime }`)
     const details = {
       id: generateOrderID(classmateFirstName.concat(classmateLastName)),
       status: TXN_COMPLETED, 
@@ -170,9 +167,10 @@
         },
       ],  
     }
-    console.log('details: ', details)
+    resultDetails = details
     logPayment(details)
     emailEventAcknowledgement(details)
+    isPaymentSuccessful = true
   }
 
   const processSaturdayPayment = () => {
@@ -297,7 +295,7 @@
             <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div class="px-6 py-8 bg-gray-50 sm:p-10 sm:pb-6">
                 <div>
-                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">September 16, 2023</h3>
+                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">{ eventData.date }</h3>
                 </div>
                 <div class="mt-4 flex items-baseline text-6xl font-extrabold">
                   { eventData.checkout.title }
@@ -348,8 +346,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <OrderSummary noattendees={ calculatedAttendees } subtotal={calculatedEventFee }
-                      esttxnfee={ estTxnFee } ordertotal={ orderTotal } />
+                    <OrderSummary noAttendees={ calculatedAttendees } subtotal={calculatedEventFee }
+                      estTxnFee={ estTxnFee } orderTotal={ orderTotal } />
                   </li>
 
                 </ul>
