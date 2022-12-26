@@ -167,9 +167,18 @@
         },
       ],  
     }
+    const resultData = {
+      accelerated: false,
+      billingToken: null,
+      facilitatorAccessToken: "na",
+      orderID: details.id,
+      payerID: "na",
+      paymentID: null,
+      paymentSource: "na"
+    }
     resultDetails = details
-    logPayment(details)
-    emailEventAcknowledgement(details)
+    logPayment(details, resultData)
+    emailEventAcknowledgement(details,resultData)
     isPaymentSuccessful = true
   }
 

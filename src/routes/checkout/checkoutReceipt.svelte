@@ -37,7 +37,7 @@
         <div>Zipcode:</div><div id="receiptPostalCode">{ payerPostalCode }</div>
       {/if}
       <div>Email:</div><div id="receiptEmail">{ payerEmail }</div>
-      <div>Agreed to isSponsor another classmate:</div><div id="receiptSponsor">{ isSponsor ? 'Yes' : 'No' }</div>
+      <div>Agreed to sponsor another classmate?:</div><div id="receiptSponsor">{ isSponsor ? 'Yes' : 'No' }</div>
       <div>Your badge name:</div><div id="receiptClassmateBadge">{ classmateFirstName } { classmateLastName }</div>
       {#if companionFirstName}
         <div>Companion badge name:</div><div id="receiptCompanionBadge">{ companionFirstName } { companionLastName }</div>
