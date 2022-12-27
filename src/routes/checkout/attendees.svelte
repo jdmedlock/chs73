@@ -62,14 +62,14 @@
               <label
                 class="flex-nowrap block uppercase text-gray-700 text-xs font-bold mb-2"
                 for="full-name">
-                Your email address:
+                Your email:
               </label>
               <input name="name" bind:value={ classmateEmail } 
                 type="text" required aria-required="true"
                 class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
                 bg-white rounded text-sm shadow focus:outline-none focus:ring
                 w-full"
-                placeholder="Your email address"
+                placeholder="Your email"
                 style="transition: all 0.15s ease 0s;"
                 on:input={ classmateEmail } />
             </span>

@@ -1,7 +1,7 @@
 import { chromium } from 'playwright'
 import { test, expect } from '@playwright/test'
 
-test.describe('Test credit card processing', async () => {
+test.describe('Test event signup', async () => {
   let browser
   let page
 
@@ -18,7 +18,7 @@ test.describe('Test credit card processing', async () => {
   const signupAndCheckout = async () => {
     // Go to the events page
     await page.goto('http://localhost:3000')
-    const eventsMenuItem = page.locator('a:has-text("events")')
+    const eventsMenuItem = page.locator('a:id("SaturdaySignupLink")')
     await expect(eventsMenuItem).toBeDefined()
     await eventsMenuItem.click()
     await page.waitForSelector('text="Upcoming Events"')

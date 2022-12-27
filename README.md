@@ -69,6 +69,13 @@ The following environment variables must be set up for the app to run properly:
 | VITE_CLOUDINARY_NAME | <your 9-character unique cloud name> |
 | PAYPAL_CLIENT_ID     | <your paypal API client id> |
 
+## Testing
+
+This app uses Playwright for end-to-end testing. Tests are maintained
+in the `tests` directory.
+
+To run all tests enter the command `npm test`. To run a specific test
+use the command `npx playwright test <test-file-name>`. For example, `npx playwright test 0201-fridayevent.spec.js`.
 ## Release History
 
 You can find what changed, when in the [release history](./docs/RELEASE_HISTORY.md)
