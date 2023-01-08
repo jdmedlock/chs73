@@ -6,8 +6,8 @@
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
   import { 
-    FRIDAY_EVENT, SATURDAY_EVENT, 
-    CREDITCARD_TXN_FEE, PAYPAY_TXN_FEE, EVENT_FEE, 
+    FRIDAY_EVENT, SATURDAY_EVENT, EVENT_FEE,
+    CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
     TXN_COMPLETED
   } from '../../utils/constants.js'
   import Attendees from './attendees.svelte'
@@ -32,6 +32,7 @@
 
   let calculatedAttendees = 0
   let calculatedEventFee = 0
+  let txnChargeFee = 0
   let estTxnFee = 0
   let noAttendees = 0
   let orderTotal = 0
@@ -48,17 +49,19 @@
     // paymentSource is an optional parameter. It's only used when this
     // function is invoked from the PayPal API
     if (paymentSource !== undefined && typeof paymentSource === 'string' && eventType === SATURDAY_EVENT) {
-      estTxnFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAY_TXN_FEE
+      txnChargeFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAL_TXN_FEE
     } else {
-      estTxnFee = 0
+      txnChargeFee = 0
     }
     calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
 
     if (eventType === SATURDAY_EVENT) {
       calculatedEventFee = EVENT_FEE * calculatedAttendees
+      estTxnFee = (calculatedEventFee * txnChargeFee) + PAYPAL_FIXED_FEE
       orderTotal = calculatedEventFee + estTxnFee
     } else {
       calculatedEventFee = 0
+      estTxnFee = 0
       orderTotal = 0
     }
   }
@@ -185,7 +188,10 @@
   const processSaturdayPayment = () => {
     loadScript({ 
         "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
-        "disable-funding": "paylater"
+        "integration-date": "2023-01-07",
+        "locale": "en_US",
+        "disable-funding": "paylater",
+        "enable-funding": "card",
       }).then((paypal) => {
         paypal
           .Buttons({
