@@ -44,18 +44,19 @@
   let isPaymentStarted = false
   let isPaymentSuccessful = false
   let isSponsor = false
+  let isVeteran = false
 
   const calculateOrder = (paymentSource) => {
     // paymentSource is an optional parameter. It's only used when this
     // function is invoked from the PayPal API
-    if (paymentSource !== undefined && typeof paymentSource === 'string' && eventType === SATURDAY_EVENT) {
+    if (paymentSource !== undefined && typeof paymentSource === 'string' && eventType === SATURDAY_EVENT && !isVeteran) {
       txnChargeFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAL_TXN_FEE
     } else {
       txnChargeFee = 0
     }
     calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
 
-    if (eventType === SATURDAY_EVENT) {
+    if (eventType === SATURDAY_EVENT && !isVeteran) {
       calculatedEventFee = EVENT_FEE * calculatedAttendees
       estTxnFee = (calculatedEventFee * txnChargeFee) + PAYPAL_FIXED_FEE
       orderTotal = calculatedEventFee + estTxnFee
@@ -70,6 +71,12 @@
     isSponsor = !isSponsor
     calculateOrder()
     setTimeout(() => event.target.checked = isSponsor, 0)
+  }
+
+  const handleVeteran = (event) => {
+    isVeteran = !isVeteran
+    calculateOrder()
+    setTimeout(() => event.target.checked = isVeteran, 0)
   }
 
   const logPayment = (details, resultData) => {
@@ -96,6 +103,7 @@
       accelerated_payment: resultData ? resultData.accelerated : '', 
       soft_descriptor: details.softDescriptor, 
       is_sponsor: isSponsor ? 'Yes' : 'No',
+      is_veteran: isVeteran ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
       classmateLastName: classmateLastName,
       companionFirstName: companionFirstName || '',
@@ -139,10 +147,10 @@
     })
   }
 
-  const processFridaySignup = () => {
+  const createNochargeDetails = () => {
     const currentDate = new Date()
     const currentTime = currentDate.toISOString()
-    const details = {
+    return ({
       id: generateOrderID(classmateFirstName.concat(classmateLastName)),
       status: TXN_COMPLETED, 
       create_time: currentTime, 
@@ -169,7 +177,12 @@
           },
         },
       ],  
-    }
+    })
+  }
+
+  const processFridaySignup = () => {
+    const details = createNochargeDetails()
+
     const resultData = {
       accelerated: false,
       billingToken: null,
@@ -255,6 +268,11 @@
     isCompanionNameError = false
 
     // Validate the input data
+    if (isVeteran) {
+      isAttendeeError = false
+      isPaymentVisible = false
+      return
+    } 
     if (noAttendees === 0) {
       isAttendeeError = true
       isPaymentVisible = false
@@ -352,6 +370,15 @@
                         </label>
                       </div>
                     </li>
+
+                    <li class="flex items-start ml-8">
+                      <div class="flex flex-col relative text-left">
+                        <label class="mt-2">
+                          <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
+                          Are you a Veteran? The admission for you and your companion is free.
+                        </label>
+                      </div>
+                    </li>
                   {/if}
 
                   <li class="flex items-start">
@@ -396,6 +423,7 @@
         payerPostalCode={ resultDetails.purchase_units[0].shipping.address.postal_code }
         payerEmail={ resultDetails.payer.email_address }
         isSponsor={ isSponsor }
+        isVeteran={ isVeteran }
         classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
         companionFirstName={ companionFirstName } companionLastName={ companionLastName }
       />
