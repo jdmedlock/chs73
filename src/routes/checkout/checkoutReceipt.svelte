@@ -12,6 +12,7 @@
   export let payerPostalCode
   export let payerEmail
   export let isSponsor
+  export let isVeteran
   export let classmateFirstName
   export let classmateLastName
   export let companionFirstName
@@ -36,8 +37,11 @@
         <div>State:</div><div id="receiptState">{ payerState }</div>
         <div>Zipcode:</div><div id="receiptPostalCode">{ payerPostalCode }</div>
       {/if}
-      <div>Email:</div><div id="receiptEmail">{ payerEmail }</div>
+      {#if payerEmail}
+        <div>Email:</div><div id="receiptEmail">{ payerEmail }</div>
+      {/if}
       <div>Agreed to sponsor another classmate?:</div><div id="receiptSponsor">{ isSponsor ? 'Yes' : 'No' }</div>
+      <div>Military Veteran?:</div><div id="receiptVeteran">{ isVeteran ? 'Yes' : 'No' }</div>
       <div>Your badge name:</div><div id="receiptClassmateBadge">{ classmateFirstName } { classmateLastName }</div>
       {#if companionFirstName}
         <div>Companion badge name:</div><div id="receiptCompanionBadge">{ companionFirstName } { companionLastName }</div>

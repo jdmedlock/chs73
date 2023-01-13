@@ -49,14 +49,22 @@
   const calculateOrder = (paymentSource) => {
     // paymentSource is an optional parameter. It's only used when this
     // function is invoked from the PayPal API
-    if (paymentSource !== undefined && typeof paymentSource === 'string' && eventType === SATURDAY_EVENT && !isVeteran) {
+    console.log('isVeteran: ', isVeteran)
+    calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
+    if (isVeteran) {
+      calculatedAttendees = isSponsor ? 1 : 0
+    }
+    console.log('calculatedAttendees: ', calculatedAttendees)
+
+    if (paymentSource !== undefined && typeof paymentSource === 'string' && 
+        eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
       txnChargeFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAL_TXN_FEE
     } else {
       txnChargeFee = 0
+      estTxnFee = 0
     }
-    calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
 
-    if (eventType === SATURDAY_EVENT && !isVeteran) {
+    if (eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
       calculatedEventFee = EVENT_FEE * calculatedAttendees
       estTxnFee = (calculatedEventFee * txnChargeFee) + PAYPAL_FIXED_FEE
       orderTotal = calculatedEventFee + estTxnFee
@@ -134,6 +142,7 @@
       shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
       shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
       is_sponsor: isSponsor ? 'Yes' : 'No',
+      is_veteran: isVeteran ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
       classmateLastName: classmateLastName,
       companionFirstName: companionFirstName || '',
@@ -180,31 +189,35 @@
     })
   }
 
-  const processFridaySignup = () => {
-    const details = createNochargeDetails()
-
+  const createNochargeResultData = (orderId) => {
     const resultData = {
       accelerated: false,
       billingToken: null,
       facilitatorAccessToken: "na",
-      orderID: details.id,
+      orderID: orderId,
       payerID: "na",
       paymentID: null,
       paymentSource: "na"
     }
+  }
+
+  const processFridaySignup = () => {
+    const details = createNochargeDetails()
+    const resultData = createNochargeResultData(details.orderId)
+
     resultDetails = details
     logPayment(details, resultData)
-    emailEventAcknowledgement(details,resultData)
+    emailEventAcknowledgement(details, resultData)
     isPaymentSuccessful = true
   }
 
   const processSaturdayPayment = () => {
     loadScript({ 
-        "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
-        "integration-date": "2023-01-07",
-        "locale": "en_US",
-        "disable-funding": "paylater",
-        "enable-funding": "card",
+      "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
+      "integration-date": "2023-01-07",
+      "locale": "en_US",
+      "disable-funding": "paylater",
+      "enable-funding": "card",
       }).then((paypal) => {
         paypal
           .Buttons({
@@ -244,7 +257,7 @@
               resultData = data
               console.log('resultData: ', resultData)
               return actions.order.capture().then(function (details) {
-                resultDetails = details
+                resultDetails = details // Save details to be rendered
                 console.log("Captured order: ", details)
                 isPaymentSuccessful = true
                 logPayment(details, resultData)
@@ -268,11 +281,6 @@
     isCompanionNameError = false
 
     // Validate the input data
-    if (isVeteran) {
-      isAttendeeError = false
-      isPaymentVisible = false
-      return
-    } 
     if (noAttendees === 0) {
       isAttendeeError = true
       isPaymentVisible = false
@@ -295,9 +303,23 @@
       processFridaySignup()
     }
 
-    if (isPaymentVisible && !isPaymentStarted && eventType === SATURDAY_EVENT) {
-      isPaymentStarted = true
-      processSaturdayPayment()
+    if (eventType === SATURDAY_EVENT) {
+      if (isVeteran && !isSponsor) {
+        isAttendeeError = false
+        isPaymentVisible = false
+        const details = createNochargeDetails()
+        const resultData = createNochargeResultData(details.orderId)
+
+        resultDetails = details
+        logPayment(details, resultData)
+        emailEventAcknowledgement(details, resultData)
+        isPaymentSuccessful = true
+      } 
+      
+      if (isPaymentVisible && !isPaymentStarted) {
+        isPaymentStarted = true
+        processSaturdayPayment()
+      }
     }
 
   }
@@ -349,6 +371,7 @@
                   </li>
 
                   <Attendees eventType={ eventType } 
+                    isVeteran={ isVeteran }
                     isAttendeeError={ isAttendeeError }
                     isClassmateNameError={ isClassmateNameError } 
                     isCompanionNameError={ isCompanionNameError } 

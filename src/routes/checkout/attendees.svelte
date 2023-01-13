@@ -2,6 +2,7 @@
   import { FRIDAY_EVENT } from '../../utils/constants.js'
 
   export let eventType
+  export let isVeteran
   export let isAttendeeError
   export let isClassmateNameError
   export let isCompanionNameError
@@ -57,7 +58,7 @@
 
       {#if showBadgeNames}
         <div class="flex flex-wrap relative gap-1 w-full ml-5 mb-3 mt-1 ">
-          {#if eventType === FRIDAY_EVENT}
+          {#if eventType === FRIDAY_EVENT || isVeteran}
             <span class="relative w-5/12 mb-3">
               <label
                 class="flex-nowrap block uppercase text-gray-700 text-xs font-bold mb-2"
