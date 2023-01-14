@@ -15,6 +15,9 @@ export async function load({ params, fetch }) {
       return classmatesStore.addClassmates(json)
     })
   })
+  .catch((err) => {
+    console.error('Error fetching classmates - ', err)
+  })
 
   const facultyResponse = fetch(facultyURL)
   .then(async (response) => {
@@ -23,6 +26,9 @@ export async function load({ params, fetch }) {
     facultyJSON.then((json) => {
       return facultyStore.addFaculty(json)
     })
+  })
+  .catch((err) => {
+    console.error('Error fetching faculty - ', err)
   })
 
   return {

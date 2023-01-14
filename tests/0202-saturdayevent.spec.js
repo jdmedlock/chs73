@@ -75,7 +75,7 @@ test.describe('Test event signup', async () => {
   // payment buttons and then a second, nested iframe within it containing
   // the card form.
   const fillInCardForm = async () => {
-    await page.getByRole('button', { name: 'Calculate & pay' }).click()
+    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
     const paypalFrame = await page.frameLocator('.component-frame')
     await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
     const cardFormFrame = await paypalFrame.frameLocator('[title=paypal_card_form]')
