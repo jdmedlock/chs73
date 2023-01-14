@@ -396,7 +396,7 @@
                       <div class="relative flex flex-col text-left">
                         <label class="mt-2">
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
-                          Are you a Veteran? The admission for you and your companion is free.
+                          Click here if you are a Veteran. There's no admission fee for you and your companion.
                         </label>
                       </div>
                     </li>
