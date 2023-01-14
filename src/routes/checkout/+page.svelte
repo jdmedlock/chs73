@@ -196,11 +196,13 @@
       paymentID: null,
       paymentSource: "na"
     }
+    return resultData
   }
 
   const processFridaySignup = () => {
     const details = createNochargeDetails()
     const resultData = createNochargeResultData(details.orderId)
+    console.log('resultData: ', resultData)
 
     resultDetails = details
     logPayment(details, resultData)
