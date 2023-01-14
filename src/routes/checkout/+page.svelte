@@ -15,9 +15,6 @@
   import OrderSummary from './orderSummary.svelte'
   import Receipt from './checkoutReceipt.svelte'
 
-  let back = $page.data.params.get('back') || ''
-  let backPage = back === "signup" ? "events" : back
-
   let eventType = $page.data.params.get('event')
   const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
 
@@ -334,9 +331,9 @@
 <section class="relative">
   <div class="bg-gray-900">
     <div class="pt-12 sm:pt-16 lg:pt-24">
-      <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <div class="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
-          <h2 class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">{ eventData.checkout.heading }</h2>
+          <h2 class="text-lg font-semibold leading-6 tracking-wider text-gray-300 uppercase">{ eventData.checkout.heading }</h2>
           <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">{ eventData.checkout.subheading }</p>
           <p class="text-xl text-gray-300"></p>
         </div>
@@ -344,26 +341,26 @@
     </div>
     <div class="mt-8 bg-white sm:mt-12 lg:mt-16">
       <div class="relative">
-        <div class="absolute inset-0 h-3/4 bg-gray-900"></div>
-        <div class="relative mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="absolute inset-0 bg-gray-900 h-3/4"></div>
+        <div class="relative px-4 mx-auto sm:px-6 lg:px-8">
           <div class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-1 lg:gap-5 lg:space-y-0">
-            <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
               <div class="px-6 py-8 bg-gray-50 sm:p-10 sm:pb-6">
                 <div>
-                  <h3 class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600" id="tier-standard">{ eventData.date }</h3>
+                  <h3 class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full" id="tier-standard">{ eventData.date }</h3>
                 </div>
-                <div class="mt-4 flex items-baseline text-6xl font-extrabold">
+                <div class="flex items-baseline mt-4 text-6xl font-extrabold">
                   { eventData.checkout.title }
                 </div>
               </div>
-              <div class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
+              <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
                 <ul class="space-y-4">
                   <EventSummary event={ eventData }/>
 
                   <li class="flex items-start">
                     <div class="flex-shrink-0">
                       <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -371,6 +368,7 @@
                   </li>
 
                   <Attendees eventType={ eventType } 
+                    isSponsor={ isSponsor }
                     isVeteran={ isVeteran }
                     isAttendeeError={ isAttendeeError }
                     isClassmateNameError={ isClassmateNameError } 
@@ -386,7 +384,7 @@
 
                   {#if eventType === SATURDAY_EVENT}
                     <li class="flex items-start ml-8">
-                      <div class="flex flex-col relative text-left">
+                      <div class="relative flex flex-col text-left">
                         <label class="mt-2">
                           <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
                           Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
@@ -395,7 +393,7 @@
                     </li>
 
                     <li class="flex items-start ml-8">
-                      <div class="flex flex-col relative text-left">
+                      <div class="relative flex flex-col text-left">
                         <label class="mt-2">
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
                           Are you a Veteran? The admission for you and your companion is free.
@@ -407,7 +405,7 @@
                   <li class="flex items-start">
                     <div class="flex-shrink-0">
                       <!-- Heroicon name: outline/check -->
-                      <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -434,7 +432,9 @@
     {/if}
 
     {#if isPaymentSuccessful}
-      <Receipt id={ resultDetails.id } 
+      <Receipt 
+        eventType={ eventType }
+        id={ resultDetails.id } 
         totalCharged={ resultDetails.purchase_units[0].amount.value }
         txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
         payerFirstName={ resultDetails.payer.name.given_name }

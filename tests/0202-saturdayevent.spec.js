@@ -1,6 +1,9 @@
 import { chromium } from 'playwright'
 import { test, expect } from '@playwright/test'
 
+const DO_SPONSOR_CLASSMATE = true
+const DONT_SPONSOR_CLASSMATE = false
+
 test.describe('Test event signup', async () => {
   let browser
   let page
@@ -117,6 +120,10 @@ test.describe('Test event signup', async () => {
     await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
   }
 
+  //--------------------------------------------------------------------------
+  // Tests
+  //--------------------------------------------------------------------------
+
   test('should signup with one attendee for Saturday gathering', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
@@ -124,9 +131,9 @@ test.describe('Test event signup', async () => {
     await selectNoAttendees('1', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
-    }, false)
+    }, DONT_SPONSOR_CLASSMATE)
     await fillInCardForm()
-    await validateReceipt('30.00', false)
+    await validateReceipt('30.00', DONT_SPONSOR_CLASSMATE)
   }, 2 * 60 * 1000)
 
   test('should signup with one attendee for Saturday gathering + donate', async () => {
@@ -136,9 +143,9 @@ test.describe('Test event signup', async () => {
     await selectNoAttendees('1', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
-    }, true)
+    }, DO_SPONSOR_CLASSMATE)
     await fillInCardForm()
-    await validateReceipt('60.00', true)
+    await validateReceipt('60.00', DO_SPONSOR_CLASSMATE)
   }, 2 * 60 * 1000)
 
   test('should signup with two attendees for Saturday gathering', async () => {
@@ -148,9 +155,9 @@ test.describe('Test event signup', async () => {
     await selectNoAttendees('2', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
-    }, false)
+    }, DONT_SPONSOR_CLASSMATE)
     await fillInCardForm()
-    await validateReceipt('60.00', false)
+    await validateReceipt('60.00', DONT_SPONSOR_CLASSMATE)
   }, 2 * 60 * 1000)
 
 })
