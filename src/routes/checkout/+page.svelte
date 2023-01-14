@@ -46,12 +46,10 @@
   const calculateOrder = (paymentSource) => {
     // paymentSource is an optional parameter. It's only used when this
     // function is invoked from the PayPal API
-    console.log('isVeteran: ', isVeteran)
     calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
     if (isVeteran) {
       calculatedAttendees = isSponsor ? 1 : 0
     }
-    console.log('calculatedAttendees: ', calculatedAttendees)
 
     if (paymentSource !== undefined && typeof paymentSource === 'string' && 
         eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
@@ -202,7 +200,6 @@
   const processFridaySignup = () => {
     const details = createNochargeDetails()
     const resultData = createNochargeResultData(details.orderId)
-    console.log('resultData: ', resultData)
 
     resultDetails = details
     logPayment(details, resultData)
