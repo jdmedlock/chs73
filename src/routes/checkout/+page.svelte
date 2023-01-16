@@ -35,6 +35,7 @@
   let orderTotal = 0
   
   let isAttendeeError = false
+  let isEmailError = false
   let isClassmateNameError = false
   let isCompanionNameError = false
   let isPaymentVisible = false
@@ -273,12 +274,18 @@
   const handleCalculateCheckout = () => {
     isPaymentVisible = true
     isAttendeeError = false
+    isEmailError = false
     isClassmateNameError = false
     isCompanionNameError = false
 
     // Validate the input data
     if (noAttendees === 0) {
       isAttendeeError = true
+      isPaymentVisible = false
+      return
+    }
+    if (!isSponsor && isVeteran && classmateEmail === '') {
+      isEmailError = true
       isPaymentVisible = false
       return
     }
@@ -370,6 +377,7 @@
                     isSponsor={ isSponsor }
                     isVeteran={ isVeteran }
                     isAttendeeError={ isAttendeeError }
+                    isEmailError={ isEmailError }
                     isClassmateNameError={ isClassmateNameError } 
                     isCompanionNameError={ isCompanionNameError } 
                     calculateOrder={ calculateOrder }

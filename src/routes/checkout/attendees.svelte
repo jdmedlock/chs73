@@ -5,6 +5,7 @@
   export let isSponsor
   export let isVeteran
   export let isAttendeeError
+  export let isEmailError
   export let isClassmateNameError
   export let isCompanionNameError
   export let calculateOrder
@@ -73,9 +74,17 @@
                 style="transition: all 0.15s ease 0s;"
                 on:input={ classmateEmail } />
             </span>
+            {#if isEmailError}
+              <div name="emailError" class="self-center font-bold text-red-700">
+                You must enter your email address
+              </div>
+              <span class="relative w-5/12 mb-3">
+              </span>
+            {/if}
             <span class="relative w-5/12 mb-3">
             </span>
           {/if}
+
           <span class="relative w-5/12 mb-3">
             <label
               class="block mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"

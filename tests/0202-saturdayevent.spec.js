@@ -112,12 +112,14 @@ test.describe('Test event signup', async () => {
     await expect(page.locator('#receiptOrderId')).not.toHaveText('')
     await expect(page.locator('#receiptAmount')).toHaveText(`${ receiptAmount }`)
     await expect(page.locator('#receiptStatus')).toHaveText('COMPLETED')
-    await expect(page.locator('#receiptName')).toHaveText('Jim Tester')
-    await expect(page.locator('#receiptAddress')).toHaveText('1245 Main Street')
-    await expect(page.locator('#receiptAddress2')).toHaveText('Apt. 34')
-    await expect(page.locator('#receiptCity')).toHaveText('Cape Girardeau')
-    await expect(page.locator('#receiptState')).toHaveText('MO')
-    await expect(page.locator('#receiptPostalCode')).toHaveText('63701')
+    if (receiptAmount > 0) {
+      await expect(page.locator('#receiptName')).toHaveText('Jim Tester')
+      await expect(page.locator('#receiptAddress')).toHaveText('1245 Main Street')
+      await expect(page.locator('#receiptAddress2')).toHaveText('Apt. 34')
+      await expect(page.locator('#receiptCity')).toHaveText('Cape Girardeau')
+      await expect(page.locator('#receiptState')).toHaveText('MO')
+      await expect(page.locator('#receiptPostalCode')).toHaveText('63701')
+    }
     await expect(page.locator('#receiptEmail')).toHaveText('jdmedlock@gmail.com')
 
     if (willHelpClassmate) {
@@ -139,7 +141,7 @@ test.describe('Test event signup', async () => {
   // Tests
   //--------------------------------------------------------------------------
 
-  test('should signup with one attendee for Saturday gathering', async () => {
+  test('should signup for Saturday with one attendee', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -148,10 +150,10 @@ test.describe('Test event signup', async () => {
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
-    await validateReceipt('30.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup with one attendee for Saturday gathering + donate', async () => {
+  test('should signup for Saturday with one attendee + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -160,34 +162,10 @@ test.describe('Test event signup', async () => {
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
-    await validateReceipt('60.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup with two attendees for Saturday gathering', async () => {
-    // Listen for all console logs
-    page.on('console', msg => console.log(msg.text()))
-    await signupAndCheckout()
-    await selectNoAttendees('2', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: 'Kay', lastName: 'Tester'}
-    }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await fillInCardForm()
-    await validateReceipt('60.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
-  }, 2 * 60 * 1000)
-
-  test('should signup as veteran with one attendee for Saturday gathering', async () => {
-    // Listen for all console logs
-    page.on('console', msg => console.log(msg.text()))
-    await signupAndCheckout()
-    await selectNoAttendees('1', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: '', lastName: ''}
-    }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await fillInCardForm()
-    await validateReceipt('0.00', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-  }, 2 * 60 * 1000)
-
-  test('should signup as veteran with one attendee for Saturday gathering + donate', async () => {
+  test('should signup for Saturday with one attendee + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -196,10 +174,34 @@ test.describe('Test event signup', async () => {
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await fillInCardForm()
-    await validateReceipt('30.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup as veteran with two attendees for Saturday gathering', async () => {
+  test('should signup for Saturday with two attendees', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('2', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: 'Kay', lastName: 'Tester'}
+    }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await fillInCardForm()
+    await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+  }, 2 * 60 * 1000)
+
+  test('should signup for Saturday with two attendees + sponsor', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('2', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: 'Kay', lastName: 'Tester'}
+    }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await fillInCardForm()
+    await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+  }, 2 * 60 * 1000)
+
+  test('should signup for Saturday with two attendees + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -207,7 +209,20 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await fillInCardForm()
-    await validateReceipt('30.00', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
+    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
+
+  test('should signup for Saturday with two attendees + sponsor + veteran', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('2', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: 'Kay', lastName: 'Tester'}
+    }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await fillInCardForm()
+    await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+  }, 2 * 60 * 1000)
+
 })
