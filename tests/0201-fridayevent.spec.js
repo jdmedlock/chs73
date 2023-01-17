@@ -66,7 +66,7 @@ test.describe('Test event signup', async () => {
     await page.waitForSelector('[id=paymentReceipt]')
     await expect(page.locator('#receiptOrderId')).not.toHaveText('')
     await expect(page.locator('#receiptAmount')).toHaveText(`${ receiptAmount }`)
-    await expect(page.locator('#receiptStatus')).toHaveText('Completed')
+    await expect(page.locator('#receiptStatus')).toHaveText('COMPLETED')
     await expect(page.locator('#receiptEmail')).toHaveText('jdmedlock@gmail.com')
     await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
   }

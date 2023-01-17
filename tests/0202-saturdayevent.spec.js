@@ -141,7 +141,7 @@ test.describe('Test event signup', async () => {
   // Tests
   //--------------------------------------------------------------------------
 
-  test('should signup for Saturday with one attendee', async () => {
+  test('0202:01-should signup for Saturday with one attendee', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -153,7 +153,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup for Saturday with one attendee + sponsor', async () => {
+  test('0202:02-should signup for Saturday with one attendee + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -165,7 +165,21 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup for Saturday with one attendee + sponsor + veteran', async () => {
+  test('0202:03-should signup for Saturday with one attendee + veteran', async () => {
+    // Listen for all console logs
+    page.on('console', msg => console.log(msg.text()))
+    await signupAndCheckout()
+    await selectNoAttendees('1', {
+      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      companion: {firstName: '', lastName: ''}
+    }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
+    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await page.getByPlaceholder('Your email').fill(`jdmedlock@gmail.com`)
+    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
+  }, 2 * 60 * 1000)
+
+  test('0202:04-should signup for Saturday with one attendee + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -177,7 +191,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup for Saturday with two attendees', async () => {
+  test('0202:05-should signup for Saturday with two attendees', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -189,7 +203,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup for Saturday with two attendees + sponsor', async () => {
+  test('0202:06-should signup for Saturday with two attendees + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -201,7 +215,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup for Saturday with two attendees + veteran', async () => {
+  test('0202:07-should signup for Saturday with two attendees + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -210,10 +224,12 @@ test.describe('Test event signup', async () => {
       companion: {firstName: 'Kay', lastName: 'Tester'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await page.getByPlaceholder('Your email').fill(`jdmedlock@gmail.com`)
+    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('should signup for Saturday with two attendees + sponsor + veteran', async () => {
+  test('0202:08-should signup for Saturday with two attendees + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
