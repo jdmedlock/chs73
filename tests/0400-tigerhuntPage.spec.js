@@ -14,7 +14,7 @@ test.describe('Test basic page navigation', async () => {
     await browser.close()
   })
 
-  test('should display the tigerhunt page', async () => {
+  test('0400:01-should display the tigerhunt page', async () => {
     await page.goto('http://localhost:3000')
     const tigerhuntMenuItem = await page.locator('a').filter({ hasText: 'tiger hunt' })
     await expect(tigerhuntMenuItem).toBeDefined()

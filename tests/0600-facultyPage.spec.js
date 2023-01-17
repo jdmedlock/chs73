@@ -2,7 +2,6 @@ import { chromium } from 'playwright'
 import { test, expect } from '@playwright/test'
 
 test.describe('Test basic page navigation', async () => {
-  let context
   let browser
   let page
 
@@ -15,7 +14,7 @@ test.describe('Test basic page navigation', async () => {
     await browser.close()
   })
 
-  test('should display the faculty page', async () => {
+  test('0600:01-should display the faculty page', async () => {
     await page.goto('http://localhost:3000')
     const facultyMenuItem = await page.getByRole('link', { name: 'faculty' })
     await expect(facultyMenuItem).toBeDefined()

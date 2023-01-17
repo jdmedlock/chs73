@@ -71,7 +71,7 @@ test.describe('Test event signup', async () => {
     await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
   }
 
-  test('should signup with one attendee for Friday gathering', async () => {
+  test('0201:01-should signup with one attendee for Friday gathering', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -82,7 +82,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 0')
   }, 1 * 60 * 1000)
 
-  test('should signup with two attendees for Friday gathering', async () => {
+  test('0201:01-should signup with two attendees for Friday gathering', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()

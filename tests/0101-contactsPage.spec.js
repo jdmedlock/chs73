@@ -14,7 +14,7 @@ test.describe('Test basic page navigation', async () => {
     await browser.close()
   })
 
-  test('should display the contact page', async () => {
+  test('0101:01-should display the contact page', async () => {
     await page.goto('http://localhost:3000')
     const contactMenuItem = await page.locator('a').filter({ hasText: 'contact' })
     await expect(contactMenuItem).toBeDefined()

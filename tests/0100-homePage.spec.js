@@ -14,7 +14,7 @@ test.describe('Test basic page navigation', async () => {
     await browser.close()
   })
 
-  test('should have the correct title', async () => {
+  test('0100:01-should have the correct title', async () => {
     await page.goto('http://localhost:3000')
     const title = await page.locator('heading:has-text("Cape Central High - Class of 1973")')
     await expect(title).toBeDefined()

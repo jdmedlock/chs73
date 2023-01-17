@@ -14,7 +14,7 @@ test.describe('Test basic page navigation', async () => {
     await browser.close()
   })
 
-  test('should display the events page', async () => {
+  test('0200:01-should display the events page', async () => {
     await page.goto('http://localhost:3000')
     const eventsMenuItem = await page.locator('a').filter({ hasText: 'events' })
     await expect(eventsMenuItem).toBeDefined()

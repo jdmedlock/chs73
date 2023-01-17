@@ -14,7 +14,7 @@ test.describe('Test basic page navigation', async () => {
     await browser.close()
   })
 
-  test('should display the classmates page', async () => {
+  test('0300:01-should display the classmates page', async () => {
     await page.goto('http://localhost:3000')
     const classmatesMenuItem = await page.locator('a').filter({ hasText: 'classmates' })
     await expect(classmatesMenuItem).toBeDefined()
