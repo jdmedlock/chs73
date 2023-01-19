@@ -13,6 +13,10 @@ test.describe('Test basic page navigation', async () => {
   test.afterAll(async () => {
     await browser.close()
   })
+  
+  //--------------------------------------------------------------------------
+  // Tests
+  //--------------------------------------------------------------------------
 
   test('0300:01-should display the classmates page', async () => {
     await page.goto('http://localhost:3000')

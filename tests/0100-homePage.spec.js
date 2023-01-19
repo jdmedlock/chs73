@@ -13,6 +13,10 @@ test.describe('Test basic page navigation', async () => {
   test.afterAll(async () => {
     await browser.close()
   })
+  
+  //--------------------------------------------------------------------------
+  // Tests
+  //--------------------------------------------------------------------------
 
   test('0100:01-should have the correct title', async () => {
     await page.goto('http://localhost:3000')

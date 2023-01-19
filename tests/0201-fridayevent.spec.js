@@ -71,6 +71,10 @@ test.describe('Test event signup', async () => {
     await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
   }
 
+  //--------------------------------------------------------------------------
+  // Tests
+  //--------------------------------------------------------------------------
+
   test('0201:01-should signup with one attendee for Friday gathering', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))

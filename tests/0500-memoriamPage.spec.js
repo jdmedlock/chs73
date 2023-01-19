@@ -13,6 +13,10 @@ test.describe('Test basic page navigation', async () => {
   test.afterAll(async () => {
     await browser.close()
   })
+  
+  //--------------------------------------------------------------------------
+  // Tests
+  //--------------------------------------------------------------------------
 
   test('0500:01-should display the memoriam page', async () => {
     await page.goto('http://localhost:3000')
