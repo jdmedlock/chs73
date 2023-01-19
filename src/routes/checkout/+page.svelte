@@ -43,6 +43,8 @@
   let isPaymentSuccessful = false
   let isSponsor = false
   let isVeteran = false
+  let isPayAtDoor = false
+  let isPayByMail = false
 
   const calculateOrder = (paymentSource) => {
     // paymentSource is an optional parameter. It's only used when this
@@ -81,6 +83,18 @@
     isVeteran = !isVeteran
     calculateOrder()
     setTimeout(() => event.target.checked = isVeteran, 0)
+  }
+
+  const handlePayAtDoor = (event) => {
+    isPayAtDoor = !isPayAtDoor
+    // TODO: Add payment logic
+    setTimeout(() => event.target.checked = isVeteran, 0)
+  }
+
+  const handlePayByMail = (event) => {
+    isPayByMail = !isPayByMail
+    // TODO: Add payment logic
+    setTimeout(() => event.target.checked = isPayByMail, 0)
   }
 
   const logPayment = (details, resultData) => {
@@ -434,7 +448,15 @@
 
     {#if isPaymentVisible && eventType !== FRIDAY_EVENT}
       <div class="flex flex-col items-center bg-white">
-        <div id="paypal-button-container" />
+        <div id="paypal-button-container"/>
+      </div>
+      <div class="flex flex-col items-center mb-10 bg-white -mt-7">
+        <button class="flex content-center m-auto" on:click={ handlePayAtDoor }>
+          <span class="w-48 mt-4 text-lg italic font-bold text-white align-middle bg-blue-600 h-9"> Pay at door </span>
+        </button>
+        <button class="flex content-center m-auto" on:click={ handlePayByMail }>
+          <span class="w-48 text-lg italic font-bold text-white align-middle bg-blue-500 h-9"> Pay by mail </span>
+        </button>
       </div>
     {/if}
 
