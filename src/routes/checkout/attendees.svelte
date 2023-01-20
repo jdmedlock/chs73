@@ -54,10 +54,10 @@
       {/if}
 
       {#if showBadgeNames}
-        <div class="relative flex flex-wrap w-full gap-1 mt-1 mb-3 ml-5 ">
-          <span class="relative w-5/12 mb-3">
+        <div class="relative flex flex-wrap w-full gap-1 mt-1 ml-5">
+          <span class="relative w-5/12">
             <label
-              class="block mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
+              class="block mt-1 text-xs font-bold text-gray-700 uppercase"
               for="full-name">
               Your name badge:
             </label>
@@ -68,9 +68,9 @@
               style="transition: all 0.15s ease 0s;"
               on:input={ classmateFirstName } />
           </span>
-          <span class="relative w-5/12 mb-3">
+          <span class="relative w-5/12">
             <label
-              class="block mb-2 text-xs font-bold text-gray-700 uppercase"
+              class="block text-xs font-bold text-gray-700 uppercase"
               for="full-name">
               &nbsp;
             </label>
@@ -87,9 +87,9 @@
             </div>
           {/if}
           {#if noAttendees > 1}
-            <span class="relative w-5/12 mb-3">
+            <span class="relative w-5/12">
               <label
-                class="block mb-2 text-xs font-bold text-gray-700 uppercase"
+                class="block mt-1 text-xs font-bold text-gray-700 uppercase"
                 for="full-name">
                 Companion name badge:
               </label>
@@ -100,9 +100,9 @@
                 style="transition: all 0.15s ease 0s;"
                 on:input={ companionFirstName } />
             </span>
-            <span class="relative w-5/12 mb-3">
+            <span class="relative w-5/12">
               <label
-                class="block mb-2 text-xs font-bold text-gray-700 uppercase"
+                class="block text-xs font-bold text-gray-700 uppercase"
                 for="full-name">
                 &nbsp;
               </label>

@@ -403,7 +403,7 @@
                   {#if eventType === SATURDAY_EVENT}
                     <li class="flex items-start ml-8">
                       <div class="relative flex flex-col text-left">
-                        <label class="mt-2">
+                        <label>
                           <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
                           Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
                         </label>
@@ -411,34 +411,33 @@
                     </li>
 
                     <li class="flex items-start ml-8">
-                      <div class="relative flex flex-col text-left">
+                      <div class="relative flex flex-col text-left w-full">
                         <label class="mt-2">
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
                           Click here if you are a Veteran. There's no admission fee for you and your companion.
                         </label>
                   
                         {#if eventType === FRIDAY_EVENT || (isVeteran && !isSponsor) }
-                          <div class="w-5/12 mb-3">
-                            <label
-                              class="block mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
-                              for="full-name">
-                              Your email:
-                            </label>
-                            <input name="name" bind:value={ classmateEmail } 
-                              type="text" required aria-required="true"
-                              class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                              placeholder="Your email"
-                              style="transition: all 0.15s ease 0s;"
-                              on:input={ classmateEmail } />
-                          </div>
-                          {#if isEmailError}
-                            <div name="emailError" class="self-center font-bold text-red-700">
-                              You must enter your email address
-                            </div>
-                            <span class="relative w-5/12 mb-3">
+                          <div class="flex items-start w-full">
+                            <span class="mb-3">
+                              <label
+                                class="block mt-2 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
+                                for="full-name">
+                                Your email:
+                              </label>
+                              <input name="name" bind:value={ classmateEmail } 
+                                type="text" required aria-required="true"
+                                class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                                placeholder="Your email"
+                                style="transition: all 0.15s ease 0s;"
+                                on:input={ classmateEmail } />
                             </span>
-                          {/if}
-                          <span class="relative w-5/12 mb-3" />
+                            {#if isEmailError}
+                              <span name="emailError" class="flex self-center ml-4 font-bold text-red-700">
+                                You must enter your email address
+                              </span>
+                            {/if}
+                          </div>
                         {/if}
                       </div>
                     </li>
