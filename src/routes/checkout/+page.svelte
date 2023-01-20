@@ -450,13 +450,12 @@
       <div class="flex flex-col mb-0 items-center bg-white">
         <div id="paypal-button-container"/>
       </div>
-      <div class="flex flex-col items-center mb-10 bg-white -mt-12">
-        <button class="flex items-center justify-center m-auto w-48 mt-4 text-lg italic font-bold text-white bg-blue-600 h-9" on:click={ handlePayAtDoor }>
-          Pay at door 
-        </button>
-
-        <button class="flex items-center justify-center m-auto w-48 mt-4 text-lg italic font-bold text-white bg-blue-600 h-9" on:click={ handlePayByMail }>
+      <div class="flex flex-col items-center mb-10 bg-white -mt-10">
+        <button class="flex items-center justify-center m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
           Pay by mail 
+        </button>
+        <button class="flex items-center justify-center m-auto w-[200px] mt-3 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
+          Pay at door 
         </button>
       </div>
     {/if}
