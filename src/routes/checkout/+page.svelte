@@ -447,15 +447,16 @@
     </div>
 
     {#if isPaymentVisible && eventType !== FRIDAY_EVENT}
-      <div class="flex flex-col items-center bg-white">
+      <div class="flex flex-col mb-0 items-center bg-white">
         <div id="paypal-button-container"/>
       </div>
-      <div class="flex flex-col items-center mb-10 bg-white -mt-7">
-        <button class="flex content-center m-auto" on:click={ handlePayAtDoor }>
-          <span class="w-48 mt-4 text-lg italic font-bold text-white align-middle bg-blue-600 h-9"> Pay at door </span>
+      <div class="flex flex-col items-center mb-10 bg-white -mt-12">
+        <button class="flex items-center justify-center m-auto w-48 mt-4 text-lg italic font-bold text-white bg-blue-600 h-9" on:click={ handlePayAtDoor }>
+          Pay at door 
         </button>
-        <button class="flex content-center m-auto" on:click={ handlePayByMail }>
-          <span class="w-48 text-lg italic font-bold text-white align-middle bg-blue-500 h-9"> Pay by mail </span>
+
+        <button class="flex items-center justify-center m-auto w-48 mt-4 text-lg italic font-bold text-white bg-blue-600 h-9" on:click={ handlePayByMail }>
+          Pay by mail 
         </button>
       </div>
     {/if}
