@@ -387,11 +387,8 @@
                     <div class="ml-3 text-base text-gray-700">Who will be attending?</div>
                   </li>
 
-                  <Attendees eventType={ eventType } 
-                    isSponsor={ isSponsor }
-                    isVeteran={ isVeteran }
+                  <Attendees
                     isAttendeeError={ isAttendeeError }
-                    isEmailError={ isEmailError }
                     isClassmateNameError={ isClassmateNameError } 
                     isCompanionNameError={ isCompanionNameError } 
                     calculateOrder={ calculateOrder }
@@ -419,6 +416,30 @@
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
                           Click here if you are a Veteran. There's no admission fee for you and your companion.
                         </label>
+                  
+                        {#if eventType === FRIDAY_EVENT || (isVeteran && !isSponsor) }
+                          <div class="w-5/12 mb-3">
+                            <label
+                              class="block mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
+                              for="full-name">
+                              Your email:
+                            </label>
+                            <input name="name" bind:value={ classmateEmail } 
+                              type="text" required aria-required="true"
+                              class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                              placeholder="Your email"
+                              style="transition: all 0.15s ease 0s;"
+                              on:input={ classmateEmail } />
+                          </div>
+                          {#if isEmailError}
+                            <div name="emailError" class="self-center font-bold text-red-700">
+                              You must enter your email address
+                            </div>
+                            <span class="relative w-5/12 mb-3">
+                            </span>
+                          {/if}
+                          <span class="relative w-5/12 mb-3" />
+                        {/if}
                       </div>
                     </li>
                   {/if}
