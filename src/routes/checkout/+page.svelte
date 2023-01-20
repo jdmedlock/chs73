@@ -419,7 +419,7 @@
                   
                         {#if eventType === FRIDAY_EVENT || (isVeteran && !isSponsor) }
                           <div class="flex items-start w-full">
-                            <span class="mb-3">
+                            <span class="mb-3 w-5/12">
                               <label
                                 class="block mt-2 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
                                 for="full-name">
