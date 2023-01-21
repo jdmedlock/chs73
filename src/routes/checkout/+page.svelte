@@ -8,7 +8,7 @@
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, EVENT_FEE,
     CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
-    TXN_COMPLETED
+    NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, TXN_COMPLETED
   } from '../../utils/constants.js'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
@@ -200,6 +200,13 @@
   }
 
   const createNochargeResultData = (orderId) => {
+    let calculatedPaymentSource = NO_CHARGE
+    if (isPayAtDoor) {
+      calculatedPaymentSource = PAY_AT_DOOR
+    } else if (isPayByMail) {
+      calculatedPaymentSource = PAY_BY_MAIL
+    }
+    
     const resultData = {
       accelerated: false,
       billingToken: null,
@@ -207,7 +214,7 @@
       orderID: orderId,
       payerID: "na",
       paymentID: null,
-      paymentSource: "na"
+      paymentSource: calculatedPaymentSource
     }
     return resultData
   }
