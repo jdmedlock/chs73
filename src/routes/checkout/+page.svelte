@@ -303,24 +303,24 @@
     if (noAttendees === 0) {
       isAttendeeError = true
       isPaymentVisible = false
-      return
     }
     if (!isSponsor && isVeteran && classmateEmail === '') {
       isEmailError = true
       isPaymentVisible = false
-      return
     }
     if (classmateFirstName === '' || classmateLastName === '') {
       isClassmateNameError = true
       isPaymentVisible = false
-      return
     }
     if (noAttendees > 1) {
       if (companionLastName === '' || companionLastName === '') {
         isCompanionNameError = true
         isPaymentVisible = false
-        return
       }
+    }
+
+    if (isAttendeeError || isEmailError || isClassmateNameError || isCompanionNameError) {
+      return
     }
 
     if(eventType === FRIDAY_EVENT) {
