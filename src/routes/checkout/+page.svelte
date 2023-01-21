@@ -481,6 +481,13 @@
         <button class="flex items-center justify-center m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
           Pay by mail 
         </button>
+        {#if isPayByMail}
+          <div>Please send your registration fee to:</div>
+          <div>CHS '73 Reunion Treasurer</div>
+          <div>1234 Dale St.</div>
+          <div>Cape Girardeau, MO  63301</div>
+          <div>Please add your order number, '1234', to your checks memo.</div>
+        {/if}
         <button class="flex items-center justify-center m-auto w-[200px] mt-3 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
           Pay at door 
         </button>
