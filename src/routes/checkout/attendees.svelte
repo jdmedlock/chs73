@@ -26,7 +26,7 @@
   <li class="flex items-start ml-8">
     <div class="relative flex flex-col text-left">
       <div>
-        <button type="button" class="flex justify-center mt-2 px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm no-wrap hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
+        <button type="button" class="flex justify-center px-3 py-1 mt-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm no-wrap hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
           id="NoAttendeesBtn" aria-expanded="true" aria-haspopup="true" on:click={() => (showAttendees = !showAttendees)}>
           No. Attendees
           <!-- Heroicon name: mini/chevron-down -->
@@ -63,12 +63,12 @@
             </label>
             <input name="name" bind:value={ classmateFirstName } 
               type="text" required aria-required="true"
-              class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+              class="w-full px-3 py-3 mt-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
               placeholder="Your first name"
               style="transition: all 0.15s ease 0s;"
               on:input={ classmateFirstName } />
           </span>
-          <span class="relative w-5/12 mt-1">
+          <span class="relative w-5/12 mt-3">
             <label
               class="block text-xs font-bold text-gray-700 uppercase"
               for="full-name">
@@ -108,7 +108,7 @@
               </label>
               <input name="name" bind:value={ companionLastName } 
                 type="text" required aria-required="true"
-                class="w-full px-3 py-3 ml-1 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                class="w-full px-3 py-3 ml-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Companion last name"
                 style="transition: all 0.15s ease 0s;"
                 on:input={ companionLastName } />
