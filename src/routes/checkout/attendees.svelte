@@ -26,7 +26,7 @@
   <li class="flex items-start ml-8">
     <div class="relative flex flex-col text-left">
       <div>
-        <button type="button" class="flex justify-center px-3 py-1 mt-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm no-wrap hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
+        <button type="button" class="flex justify-center px-3 py-1 mt-2 ml-5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm no-wrap hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
           id="NoAttendeesBtn" aria-expanded="true" aria-haspopup="true" on:click={() => (showAttendees = !showAttendees)}>
           No. Attendees
           <!-- Heroicon name: mini/chevron-down -->

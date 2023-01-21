@@ -411,15 +411,15 @@
                     </li>
 
                     <li class="flex items-start ml-8">
-                      <div class="relative flex flex-col text-left w-full">
+                      <div class="relative flex flex-col w-full text-left">
                         <label class="mt-2">
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
                           Click here if you are a Veteran. There's no admission fee for you and your companion.
                         </label>
                   
                         {#if eventType === FRIDAY_EVENT || (isVeteran && !isSponsor) }
-                          <div class="flex items-start w-full">
-                            <span class="mb-3 w-5/12">
+                          <div class="flex items-start w-full ml-5">
+                            <span class="w-5/12 mb-3">
                               <label
                                 class="block mt-2 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
                                 for="full-name">
@@ -467,10 +467,10 @@
     </div>
 
     {#if isPaymentVisible && eventType !== FRIDAY_EVENT}
-      <div class="flex flex-col mb-0 items-center bg-white">
+      <div class="flex flex-col items-center mb-0 bg-white">
         <div id="paypal-button-container"/>
       </div>
-      <div class="flex flex-col items-center mb-10 bg-white -mt-10">
+      <div class="flex flex-col items-center mb-10 -mt-10 bg-white">
         <button class="flex items-center justify-center m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
           Pay by mail 
         </button>
