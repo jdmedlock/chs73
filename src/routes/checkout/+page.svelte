@@ -13,6 +13,7 @@
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
   import OrderSummary from './orderSummary.svelte'
+  import PaymentOptions from './paymentOptions.svelte'
   import Receipt from './checkoutReceipt.svelte'
 
   let eventType = $page.data.params.get('event')
@@ -81,8 +82,14 @@
 
   const handleVeteran = (event) => {
     isVeteran = !isVeteran
-    calculateOrder()
-    setTimeout(() => event.target.checked = isVeteran, 0)
+    isPaymentVisible = false
+    const details = createNochargeDetails()
+    const resultData = createNochargeResultData(details.orderId)
+
+    resultDetails = details
+    logPayment(details, resultData)
+    emailEventAcknowledgement(details, resultData)
+    isPaymentSuccessful = true
   }
 
   const handlePayAtDoor = (event) => {
@@ -93,7 +100,7 @@
 
   const handlePayByMail = (event) => {
     isPayByMail = !isPayByMail
-    // TODO: Add payment logic
+    handleCalculateCheckout()
     setTimeout(() => event.target.checked = isPayByMail, 0)
   }
 
@@ -328,9 +335,9 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
-      if (isVeteran && !isSponsor) {
+      if ((isVeteran && !isSponsor) || isPayByMail) {
         isAttendeeError = false
-        isPaymentVisible = false
+        isPaymentVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData(details.orderId)
 
@@ -348,12 +355,6 @@
 
   }
 </script>
-
-<style>
-#paypal-button-container {
-  margin: 30px 0;
-}
-</style>
 
 <section class="relative">
   <div class="bg-gray-900">
@@ -465,6 +466,35 @@
                 <button class="flex items-center m-auto" on:click={ handleCalculateCheckout }>
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
                 </button>
+
+                <PaymentOptions eventType={ eventType }
+                  isPayByMail={ isPayByMail }
+                  isPaymentVisible={ isPaymentVisible }
+                  handlePayAtDoor={ handlePayAtDoor }
+                  handlePayByMail={ handlePayByMail }
+                </>
+
+                {#if isPaymentSuccessful}
+                  <Receipt 
+                    eventType={ eventType }
+                    id={ resultDetails.id } 
+                    totalCharged={ resultDetails.purchase_units[0].amount.value }
+                    txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
+                    payerFirstName={ resultDetails.payer.name.given_name }
+                    payerLastName={ resultDetails.payer.name.surname }
+                    payerAddressLine1={ resultDetails.purchase_units[0].shipping.address.address_line_1 }
+                    payerAddressLine2={ resultDetails.purchase_units[0].shipping.address.address_line_2 }
+                    payerCity={ resultDetails.purchase_units[0].shipping.address.admin_area_2 }
+                    payerState={ resultDetails.purchase_units[0].shipping.address.admin_area_1 }
+                    payerPostalCode={ resultDetails.purchase_units[0].shipping.address.postal_code }
+                    payerEmail={ resultDetails.payer.email_address }
+                    isSponsor={ isSponsor }
+                    isVeteran={ isVeteran }
+                    classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
+                    companionFirstName={ companionFirstName } companionLastName={ companionLastName }
+                  />
+                {/if}
+
               </div>
             </div>
           </div>
@@ -472,57 +502,6 @@
       </div>
 
     </div>
-
-    {#if isPaymentVisible && eventType !== FRIDAY_EVENT}
-      <div class="flex flex-col items-center mb-0 bg-white">
-        <div id="paypal-button-container"/>
-      </div>
-      <div class="flex flex-col items-center mb-10 -mt-10 bg-white">
-        <button class="flex items-center justify-center m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
-          Pay by mail 
-        </button>
-        {#if isPayByMail}
-          <div class="w-1/2 mt-4 ml-8 bg-gray-200">
-            <div class="flex justify-center content-center">
-              <span>Please make your check out to</span>
-              <span class="text-lg font-bold italic ml-2 mr-2 pl-1 pr-1 bg-orange-400">Central High Class of 1973</span>
-              <span>and mail to:</span>
-            </div>
-            <div class="grid grid-cols-3 mt-2 justify-left">
-              <div /><div>Central High Class of 1973</div><div />
-              <div /><div>C/o Dianna Todt</div><div />
-              <div /><div>2086 Southern Expressway</div><div />
-              <div /><div>Cape Girardeau, MO  63703</div><div />
-            </div>
-            <div class="flex mt-2 justify-center">Please add your order number, '1234', to your checks memo.</div>
-          </div>
-        {/if}
-        <button class="flex items-center justify-center m-auto w-[200px] mt-3 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
-          Pay at door 
-        </button>
-      </div>
-    {/if}
-
-    {#if isPaymentSuccessful}
-      <Receipt 
-        eventType={ eventType }
-        id={ resultDetails.id } 
-        totalCharged={ resultDetails.purchase_units[0].amount.value }
-        txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
-        payerFirstName={ resultDetails.payer.name.given_name }
-        payerLastName={ resultDetails.payer.name.surname }
-        payerAddressLine1={ resultDetails.purchase_units[0].shipping.address.address_line_1 }
-        payerAddressLine2={ resultDetails.purchase_units[0].shipping.address.address_line_2 }
-        payerCity={ resultDetails.purchase_units[0].shipping.address.admin_area_2 }
-        payerState={ resultDetails.purchase_units[0].shipping.address.admin_area_1 }
-        payerPostalCode={ resultDetails.purchase_units[0].shipping.address.postal_code }
-        payerEmail={ resultDetails.payer.email_address }
-        isSponsor={ isSponsor }
-        isVeteran={ isVeteran }
-        classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
-        companionFirstName={ companionFirstName } companionLastName={ companionLastName }
-      />
-    {/if}
 
   </div>
 </section>
