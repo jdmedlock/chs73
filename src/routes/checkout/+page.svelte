@@ -5,16 +5,16 @@
   import generateOrderID from '../../utils/generateOrderID.js'
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
-  import { 
-    FRIDAY_EVENT, SATURDAY_EVENT, EVENT_FEE,
-    CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
-    NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, TXN_COMPLETED
-  } from '../../utils/constants.js'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
   import OrderSummary from './orderSummary.svelte'
   import PaymentOptions from './paymentOptions.svelte'
   import Receipt from './checkoutReceipt.svelte'
+  import { 
+    FRIDAY_EVENT, SATURDAY_EVENT, EVENT_FEE,
+    CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
+    NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, TXN_COMPLETED
+  } from '../../utils/constants.js'
 
   let eventType = $page.data.params.get('event')
   const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
@@ -34,6 +34,7 @@
   let estTxnFee = 0
   let noAttendees = 0
   let orderTotal = 0
+  let orderId
   
   let isAttendeeError = false
   let isEmailError = false
@@ -94,13 +95,15 @@
 
   const handlePayAtDoor = (event) => {
     isPayAtDoor = !isPayAtDoor
-    // TODO: Add payment logic
+    isPaymentSuccessful = false
+    calculateCheckoutTotal()
     setTimeout(() => event.target.checked = isVeteran, 0)
   }
 
   const handlePayByMail = (event) => {
     isPayByMail = !isPayByMail
-    handleCalculateCheckout()
+    isPaymentSuccessful = false
+    calculateCheckoutTotal()
     setTimeout(() => event.target.checked = isPayByMail, 0)
   }
 
@@ -176,8 +179,9 @@
   const createNochargeDetails = () => {
     const currentDate = new Date()
     const currentTime = currentDate.toISOString()
+    orderId = generateOrderID(classmateFirstName.concat(classmateLastName))
     return ({
-      id: generateOrderID(classmateFirstName.concat(classmateLastName)),
+      id: orderId,
       status: TXN_COMPLETED, 
       create_time: currentTime, 
       update_time: currentTime,
@@ -206,7 +210,7 @@
     })
   }
 
-  const createNochargeResultData = (orderId) => {
+  const createNochargeResultData = () => {
     let calculatedPaymentSource = NO_CHARGE
     if (isPayAtDoor) {
       calculatedPaymentSource = PAY_AT_DOOR
@@ -228,7 +232,7 @@
 
   const processFridaySignup = () => {
     const details = createNochargeDetails()
-    const resultData = createNochargeResultData(details.orderId)
+    const resultData = createNochargeResultData()
 
     resultDetails = details
     logPayment(details, resultData)
@@ -283,6 +287,7 @@
               console.log('resultData: ', resultData)
               return actions.order.capture().then(function (details) {
                 resultDetails = details // Save details to be rendered
+                orderId = resultDetails.id
                 console.log("Captured order: ", details)
                 isPaymentSuccessful = true
                 logPayment(details, resultData)
@@ -299,7 +304,7 @@
         })
   }
 
-  const handleCalculateCheckout = () => {
+  const calculateCheckoutTotal = () => {
     isPaymentVisible = true
     isAttendeeError = false
     isEmailError = false
@@ -339,11 +344,12 @@
         isAttendeeError = false
         isPaymentVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
-        const resultData = createNochargeResultData(details.orderId)
+        const resultData = createNochargeResultData()
 
         resultDetails = details
         logPayment(details, resultData)
         emailEventAcknowledgement(details, resultData)
+        console.log('resultDetails: ', resultDetails)
         isPaymentSuccessful = true
       } 
       
@@ -355,6 +361,12 @@
 
   }
 </script>
+
+<style>
+  #paypal-button-container {
+    margin: 30px 0;
+  }
+</style>
 
 <section class="relative">
   <div class="bg-gray-900">
@@ -401,7 +413,6 @@
                     isCompanionNameError={ isCompanionNameError } 
                     calculateOrder={ calculateOrder }
                     bind:noAttendees={ noAttendees }
-                    bind:classmateEmail={ classmateEmail }
                     bind:classmateFirstName={ classmateFirstName }
                     bind:classmateLastName={ classmateLastName }
                     bind:companionFirstName={ companionFirstName }
@@ -463,21 +474,23 @@
                   </li>
 
                 </ul>
-                <button class="flex items-center m-auto" on:click={ handleCalculateCheckout }>
+                <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
                 </button>
 
                 <PaymentOptions eventType={ eventType }
-                  isPayByMail={ isPayByMail }
+                  bind:orderId={ orderId }
+                  bind:isPayAtDoor={ isPayAtDoor }
+                  bind:isPayByMail={ isPayByMail }
                   isPaymentVisible={ isPaymentVisible }
                   handlePayAtDoor={ handlePayAtDoor }
                   handlePayByMail={ handlePayByMail }
-                </>
+                />
 
                 {#if isPaymentSuccessful}
                   <Receipt 
                     eventType={ eventType }
-                    id={ resultDetails.id } 
+                    id={ orderId } 
                     totalCharged={ resultDetails.purchase_units[0].amount.value }
                     txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
                     payerFirstName={ resultDetails.payer.name.given_name }
