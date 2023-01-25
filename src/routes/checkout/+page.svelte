@@ -77,8 +77,8 @@
 
   const handleSponsor = (event) => {
     isSponsor = !isSponsor
-    calculateOrder()
     setTimeout(() => event.target.checked = isSponsor, 0)
+    calculateOrder()
   }
 
   const handleVeteran = (event) => {
@@ -98,7 +98,6 @@
     isPayByMail = !isPayByMail
     isPaymentSuccessful = false
     calculateCheckoutTotal()
-    setTimeout(() => event.target.checked = isPayByMail, 0)
   }
 
   const logPayment = (details, resultData) => {
@@ -337,7 +336,7 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
-      if ((isVeteran && !isSponsor) || isPayByMail) {
+      if (orderTotal === 0 || isPayAtDoor || isPayByMail) {
         isAttendeeError = false
         isPaymentVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
@@ -356,15 +355,8 @@
         processSaturdayPayment()
       }
     }
-
   }
 </script>
-
-<style>
-  #paypal-button-container {
-    margin: 30px 0;
-  }
-</style>
 
 <section class="relative">
   <div class="bg-gray-900">
@@ -373,11 +365,10 @@
         <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
           <h2 class="text-lg font-semibold leading-6 tracking-wider text-gray-300 uppercase">{ eventData.checkout.heading }</h2>
           <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">{ eventData.checkout.subheading }</p>
-          <p class="text-xl text-gray-300"></p>
         </div>
       </div>
     </div>
-    <div class="mt-8 bg-white sm:mt-12 lg:mt-16">
+    <div class="mt-8 bg-white sm:mt-12 lg:mt-10">
       <div class="relative">
         <div class="absolute inset-0 bg-gray-900 h-3/4"></div>
         <div class="relative px-4 mx-auto sm:px-6 lg:px-8">
@@ -446,8 +437,10 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <OrderSummary noAttendees={ calculatedAttendees } subtotal={calculatedEventFee }
-                      estTxnFee={ estTxnFee } orderTotal={ orderTotal } />
+                    <OrderSummary eventType={ eventType } 
+                      noAttendees={ calculatedAttendees } 
+                      subtotal={calculatedEventFee } estTxnFee={ estTxnFee } 
+                      orderTotal={ orderTotal } />
                   </li>
 
                 </ul>
