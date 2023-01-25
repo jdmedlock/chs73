@@ -91,7 +91,7 @@ test.describe('Test event signup', async () => {
     await cardFormFrame.locator('[autocomplete=cc-given-name]').click()
     await cardFormFrame.locator('[autocomplete=cc-given-name]').fill('Jim')
     await cardFormFrame.locator('[autocomplete=cc-family-name]').click()
-    await cardFormFrame.locator('[autocomplete=cc-family-name]').fill('Tester')
+    await cardFormFrame.locator('[autocomplete=cc-family-name]').fill('Playwright')
     await cardFormFrame.locator('[autocomplete="billing street-address"]').click()
     await cardFormFrame.locator('[autocomplete="billing street-address"]').fill('1245 Main Street')
     await cardFormFrame.locator('[autocomplete="billing street-address2"]').click()
@@ -114,7 +114,7 @@ test.describe('Test event signup', async () => {
     await expect(page.locator('#receiptAmount')).toHaveText(`${ receiptAmount }`)
     await expect(page.locator('#receiptStatus')).toHaveText('COMPLETED')
     if (receiptAmount > 0) {
-      await expect(page.locator('#receiptName')).toHaveText('Jim Tester')
+      await expect(page.locator('#receiptName')).toHaveText('Jim Playwright')
       await expect(page.locator('#receiptAddress')).toHaveText('1245 Main Street')
       await expect(page.locator('#receiptAddress2')).toHaveText('Apt. 34')
       await expect(page.locator('#receiptCity')).toHaveText('Cape Girardeau')
@@ -135,7 +135,7 @@ test.describe('Test event signup', async () => {
       await expect(page.locator('#receiptVeteran')).toHaveText('No')
     }
 
-    await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Tester')
+    await expect(page.locator('#receiptClassmateBadge')).toHaveText('Jim Playwright')
   }
 
   //--------------------------------------------------------------------------
@@ -147,7 +147,7 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('1', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
@@ -159,7 +159,7 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('1', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
@@ -171,7 +171,7 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('1', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
@@ -183,7 +183,7 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('1', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await fillInCardForm()
@@ -195,8 +195,8 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('2', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: 'Kay', lastName: 'Tester'}
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
+      companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
     await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
@@ -207,8 +207,8 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('2', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: 'Kay', lastName: 'Tester'}
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
+      companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
     await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
@@ -219,8 +219,8 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('2', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: 'Kay', lastName: 'Tester'}
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
+      companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
@@ -231,8 +231,8 @@ test.describe('Test event signup', async () => {
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
     await selectNoAttendees('2', 'jdmedlock@gmail.com', {
-      classmate: {firstName: 'Jim', lastName: 'Tester'}, 
-      companion: {firstName: 'Kay', lastName: 'Tester'}
+      classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
+      companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)

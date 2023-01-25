@@ -84,20 +84,14 @@
   const handleVeteran = (event) => {
     isVeteran = !isVeteran
     isPaymentVisible = false
-    const details = createNochargeDetails()
-    const resultData = createNochargeResultData(details.orderId)
-
-    resultDetails = details
-    logPayment(details, resultData)
-    emailEventAcknowledgement(details, resultData)
-    isPaymentSuccessful = true
+    setTimeout(() => event.target.checked = isVeteran, 0)
+    calculateOrder()
   }
 
   const handlePayAtDoor = (event) => {
     isPayAtDoor = !isPayAtDoor
     isPaymentSuccessful = false
     calculateCheckoutTotal()
-    setTimeout(() => event.target.checked = isVeteran, 0)
   }
 
   const handlePayByMail = (event) => {
@@ -319,7 +313,7 @@
       isAttendeeError = true
       isPaymentVisible = false
     }
-    if (!isSponsor && isVeteran && classmateEmail === '') {
+    if (classmateEmail === '') {
       isEmailError = true
       isPaymentVisible = false
     }
@@ -348,10 +342,7 @@
         isPaymentVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData()
-
-        if (isPayByMail && orderTotal > 0) {
-          details.purchase_units[0].amount.value = orderTotal
-        }
+        details.purchase_units[0].amount.value = orderTotal
 
         resultDetails = details
         logPayment(details, resultData)
@@ -439,8 +430,8 @@
                     </li>
 
                     <li class="flex items-start ml-8">
-                      <div class="relative flex flex-col w-full text-left">
-                        <label class="mt-2">
+                      <div class="relative flex flex-col w-full text-left mt-2">
+                        <label>
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
                           Click here if you are a Veteran. There's no admission fee for you and your companion.
                         </label>
