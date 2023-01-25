@@ -41,7 +41,7 @@ test.describe('Test event signup', async () => {
     await page.waitForSelector('text="Checkout"')
   }
 
-  const selectNoAttendees = async (noAttendees, badgeNames, willHelpClassmate, isVeteran) => {
+  const selectNoAttendees = async (noAttendees, email, badgeNames, willHelpClassmate, isVeteran) => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
     await noAttendeesBtn.click()
@@ -53,6 +53,9 @@ test.describe('Test event signup', async () => {
     await page.waitForSelector('text="Your name badge:"')
     const badgeNameLabel = await page.locator('label:has-text("Your name badge:")')
     await expect(badgeNameLabel).toBeDefined()
+    const emailLabel = await page.locator('label:has-text("Your email:")')
+    await expect(emailLabel).toBeDefined()
+    await page.getByPlaceholder('Your email').fill(`${ email }`)
     await page.getByPlaceholder('Your first name').fill(`${ badgeNames.classmate.firstName }`)
     await page.getByPlaceholder('Your last name').fill(`${ badgeNames.classmate.lastName }`)
     if (noAttendees === '2') {
@@ -80,7 +83,7 @@ test.describe('Test event signup', async () => {
     await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
     const cardFormFrame = await paypalFrame.frameLocator('[title=paypal_card_form]')
     await cardFormFrame.locator('#credit-card-number').click()
-    await cardFormFrame.locator('#credit-card-number').fill('4005519200000004')
+    await cardFormFrame.locator('#credit-card-number').fill('4012000033330026')
     await cardFormFrame.locator('#expiry-date').click()
     await cardFormFrame.locator('#expiry-date').fill('0523')
     await cardFormFrame.locator('#credit-card-security').click()
@@ -101,8 +104,6 @@ test.describe('Test event signup', async () => {
     await cardFormFrame.locator('[name=postcode]').fill('63701')
     await cardFormFrame.locator('[autocomplete=tel]').click()
     await cardFormFrame.locator('[autocomplete=tel]').fill('6365551212')
-    await cardFormFrame.locator('[autocomplete=email]').click()
-    await cardFormFrame.locator('[autocomplete=email]').fill('jdmedlock@gmail.com')
     await cardFormFrame.locator('#submit-button').click()
   }
 
@@ -145,7 +146,7 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('1', {
+    await selectNoAttendees('1', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
@@ -157,7 +158,7 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('1', {
+    await selectNoAttendees('1', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
@@ -169,12 +170,10 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('1', {
+    await selectNoAttendees('1', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
-    await page.getByPlaceholder('Your email').fill(`jdmedlock@gmail.com`)
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
@@ -183,7 +182,7 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('1', {
+    await selectNoAttendees('1', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
@@ -195,7 +194,7 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('2', {
+    await selectNoAttendees('2', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
@@ -207,7 +206,7 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('2', {
+    await selectNoAttendees('2', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
@@ -219,12 +218,10 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('2', {
+    await selectNoAttendees('2', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
-    await page.getByPlaceholder('Your email').fill(`jdmedlock@gmail.com`)
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
@@ -233,7 +230,7 @@ test.describe('Test event signup', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
-    await selectNoAttendees('2', {
+    await selectNoAttendees('2', 'jdmedlock@gmail.com', {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)

@@ -57,7 +57,7 @@
 
       {#if showBadgeNames}
         <div class="flex items-start w-full ml-5">
-          <span class="w-5/12 mb-3">
+          <span class="w-1/2 mb-3">
             <label
               class="block mt-2 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
               for="full-name">

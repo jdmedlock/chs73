@@ -272,6 +272,9 @@
               // Process the payment if no errors were detected
               calculateOrder(data.paymentSource)
               return actions.order.create({
+                payer: {
+                  email_address: classmateEmail,
+                },
                 purchase_units: [
                   {
                     amount: {
@@ -345,6 +348,10 @@
         isPaymentVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData()
+
+        if (isPayByMail && orderTotal > 0) {
+          details.purchase_units[0].amount.value = orderTotal
+        }
 
         resultDetails = details
         logPayment(details, resultData)
@@ -454,7 +461,7 @@
 
                 </ul>
                 <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
+                  <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
                 </button>
 
                 <PaymentOptions eventType={ eventType }
