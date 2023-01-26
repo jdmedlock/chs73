@@ -3,6 +3,7 @@
 
   export let eventType
   export let orderId
+  export let isPayByCard
   export let isPayAtDoor
   export let isPayByMail
   export let isPaymentVisible
@@ -18,14 +19,14 @@
 
 <section>
   {#if isPaymentVisible }
-    {#if !isPayAtDoor && !isPayByMail}
+    {#if !isPayByMail && !isPayAtDoor}
       <div class="flex flex-col items-center mb-0 bg-white">
         <div id="paypal-button-container" class="mt-4"/>
       </div>
     {/if}
     
-    {#if eventType === SATURDAY_EVENT}
-      <div class="flex flex-col items-center -mt-6 bg-white">
+    {#if !isPayByCard && !isPayAtDoor}
+      <div class="flex flex-col items-center -mt-8 bg-white">
         <button class="flex items-center justify-center mt-4 m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
           Pay by mail 
         </button>
@@ -46,11 +47,14 @@
               { orderId }, to your checks memo.</div>
           </div>
         {/if}
-        {#if !isPayByMail}
-          <button class="flex items-center justify-center m-auto w-[200px] mt-3 mb-5 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
-            Pay at door 
-          </button>
-        {/if}
+      </div>
+    {/if}
+
+    {#if !isPayByCard && !isPayByMail}
+      <div class="flex flex-col items-center bg-white">
+        <button class="flex items-center justify-center m-auto w-[200px] mt-3 mb-5 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
+          Pay at door 
+        </button>
       </div>
     {/if}
   {/if}

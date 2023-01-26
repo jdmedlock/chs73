@@ -45,6 +45,7 @@
   let isPaymentSuccessful = false
   let isSponsor = false
   let isVeteran = false
+  let isPayByCard = false
   let isPayAtDoor = false
   let isPayByMail = false
 
@@ -263,6 +264,7 @@
               console.log('Create order: ', data)
 
               // Process the payment if no errors were detected
+              isPayByCard = true
               calculateOrder(data.paymentSource)
               return actions.order.create({
                 payer: {
@@ -450,6 +452,7 @@
 
                 <PaymentOptions eventType={ eventType }
                   bind:orderId={ orderId }
+                  bind:isPayByCard={ isPayByCard }
                   bind:isPayAtDoor={ isPayAtDoor }
                   bind:isPayByMail={ isPayByMail }
                   isPaymentVisible={ isPaymentVisible }
