@@ -74,9 +74,7 @@ test.describe('Test event signup', async () => {
     }
   }
 
-  // Pay for the event. Note that PayPal adds an iframe containing the
-  // payment buttons and then a second, nested iframe within it containing
-  // the card form.
+  // Pay for the event by mail
   const fillInCardForm = async () => {
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
     await page.getByRole('button', { name: 'Pay by mail' }).click()
