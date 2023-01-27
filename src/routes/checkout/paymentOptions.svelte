@@ -22,7 +22,7 @@
   
   {#if !isPayByCard && !isPayAtDoor}
     <div class="flex flex-col items-center -mt-8 bg-white">
-      <button class="flex items-center justify-center mt-4 m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
+      <button id="payByMailBtn" class="flex items-center justify-center mt-4 m-auto w-[200px] text-base italic font-bold text-white bg-blue-600 h-9 rounded-[4px]" on:click={ handlePayByMail }>
         Pay by mail 
       </button>
       {#if isPayByMail}
@@ -47,7 +47,7 @@
 
   {#if !isPayByCard && !isPayByMail}
     <div class="flex flex-col items-center bg-white">
-      <button class="flex items-center justify-center m-auto w-[200px] mt-3 mb-5 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
+      <button id="payAtDoorBtn" class="flex items-center justify-center m-auto w-[200px] mt-3 mb-5 text-base italic font-bold text-white bg-blue-700 h-9 rounded-[4px]" on:click={ handlePayAtDoor }>
         Pay at door 
       </button>
     </div>

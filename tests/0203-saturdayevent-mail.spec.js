@@ -79,32 +79,7 @@ test.describe('Test event signup', async () => {
   // the card form.
   const fillInCardForm = async () => {
     await page.getByRole('button', { name: 'Calculate & checkout' }).click()
-    const paypalFrame = await page.frameLocator('.component-frame')
-    await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
-    const cardFormFrame = await paypalFrame.frameLocator('[title=paypal_card_form]')
-    await cardFormFrame.locator('#credit-card-number').click()
-    await cardFormFrame.locator('#credit-card-number').fill('4012000033330026')
-    await cardFormFrame.locator('#expiry-date').click()
-    await cardFormFrame.locator('#expiry-date').fill('0523')
-    await cardFormFrame.locator('#credit-card-security').click()
-    await cardFormFrame.locator('#credit-card-security').fill('523')
-    await cardFormFrame.locator('[autocomplete=cc-given-name]').click()
-    await cardFormFrame.locator('[autocomplete=cc-given-name]').fill('Jim')
-    await cardFormFrame.locator('[autocomplete=cc-family-name]').click()
-    await cardFormFrame.locator('[autocomplete=cc-family-name]').fill('Playwright')
-    await cardFormFrame.locator('[autocomplete="billing street-address"]').click()
-    await cardFormFrame.locator('[autocomplete="billing street-address"]').fill('1245 Main Street')
-    await cardFormFrame.locator('[autocomplete="billing street-address2"]').click()
-    await cardFormFrame.locator('[autocomplete="billing street-address2"]').fill('Apt. 34')
-    await cardFormFrame.locator('[autocomplete="billing address-level2"]').click()
-    await cardFormFrame.locator('[autocomplete="billing address-level2"]').fill('Cape Girardeau')
-    await cardFormFrame.locator('[name=state]').click()
-    await cardFormFrame.locator('[name=state]').selectOption('MO')
-    await cardFormFrame.locator('[name=postcode]').click()
-    await cardFormFrame.locator('[name=postcode]').fill('63701')
-    await cardFormFrame.locator('[autocomplete=tel]').click()
-    await cardFormFrame.locator('[autocomplete=tel]').fill('6365551212')
-    await cardFormFrame.locator('#submit-button').click()
+    await page.getByRole('button', { name: 'Pay by mail' }).click()
   }
 
   // Validate the payment receipt
@@ -142,7 +117,7 @@ test.describe('Test event signup', async () => {
   // Tests
   //--------------------------------------------------------------------------
 
-  test('0202:01-should signup for Saturday with one attendee', async () => {
+  test('0203:01-should signup for Saturday with one attendee', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -154,7 +129,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:02-should signup for Saturday with one attendee + sponsor', async () => {
+  test('0203:02-should signup for Saturday with one attendee + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -166,7 +141,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:03-should signup for Saturday with one attendee + veteran', async () => {
+  test('0203:03-should signup for Saturday with one attendee + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -178,7 +153,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:04-should signup for Saturday with one attendee + sponsor + veteran', async () => {
+  test('0203:04-should signup for Saturday with one attendee + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -190,7 +165,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:05-should signup for Saturday with two attendees', async () => {
+  test('0203:05-should signup for Saturday with two attendees', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -202,7 +177,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:06-should signup for Saturday with two attendees + sponsor', async () => {
+  test('0203:06-should signup for Saturday with two attendees + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -214,7 +189,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:07-should signup for Saturday with two attendees + veteran', async () => {
+  test('0203:07-should signup for Saturday with two attendees + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -226,7 +201,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:08-should signup for Saturday with two attendees + sponsor + veteran', async () => {
+  test('0203:08-should signup for Saturday with two attendees + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
