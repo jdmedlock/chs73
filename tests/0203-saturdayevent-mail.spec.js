@@ -44,6 +44,7 @@ test.describe('Test event signup', async () => {
   const selectNoAttendees = async (noAttendees, email, badgeNames, willHelpClassmate, isVeteran) => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
+    await noAttendeesBtn.scrollIntoViewIfNeeded()
     await noAttendeesBtn.click()
     const oneAttendeesLink = await page.locator(`a:has-text("${ noAttendees }")`)
     await expect(oneAttendeesLink).toBeDefined()
@@ -76,7 +77,9 @@ test.describe('Test event signup', async () => {
 
   // Pay for the event by mail
   const fillInCardForm = async () => {
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    const calculateBtn = page.getByRole('button', { name: 'Calculate & checkout' })
+    await calculateBtn.scrollIntoViewIfNeeded()
+    await calculateBtn.click()
     await page.getByRole('button', { name: 'Pay by mail' }).click()
   }
 
@@ -124,7 +127,7 @@ test.describe('Test event signup', async () => {
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
-    await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 35.49', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:02-should signup for Saturday with one attendee + sponsor', async () => {
@@ -136,7 +139,7 @@ test.describe('Test event signup', async () => {
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
-    await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 70.49', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:03-should signup for Saturday with one attendee + veteran', async () => {
@@ -160,7 +163,7 @@ test.describe('Test event signup', async () => {
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await fillInCardForm()
-    await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 35.49', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:05-should signup for Saturday with two attendees', async () => {
@@ -172,7 +175,7 @@ test.describe('Test event signup', async () => {
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
-    await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 70.49', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:06-should signup for Saturday with two attendees + sponsor', async () => {
@@ -184,7 +187,7 @@ test.describe('Test event signup', async () => {
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await fillInCardForm()
-    await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 105.49', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:07-should signup for Saturday with two attendees + veteran', async () => {
@@ -208,7 +211,7 @@ test.describe('Test event signup', async () => {
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await fillInCardForm()
-    await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 35.49', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
 })

@@ -44,6 +44,7 @@ test.describe('Test event signup', async () => {
   const selectNoAttendees = async (noAttendees, email, badgeNames, willHelpClassmate, isVeteran) => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
+    await noAttendeesBtn.scrollIntoViewIfNeeded()
     await noAttendeesBtn.click()
     const oneAttendeesLink = await page.locator(`a:has-text("${ noAttendees }")`)
     await expect(oneAttendeesLink).toBeDefined()
@@ -78,7 +79,9 @@ test.describe('Test event signup', async () => {
   // payment buttons and then a second, nested iframe within it containing
   // the card form.
   const fillInCardForm = async () => {
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    const calculateBtn = page.getByRole('button', { name: 'Calculate & checkout' })
+    await calculateBtn.scrollIntoViewIfNeeded()
+    await calculateBtn.click()
     const paypalFrame = await page.frameLocator('.component-frame')
     await paypalFrame.locator('span:has-text("Debit or Credit Card")').click()
     const cardFormFrame = await paypalFrame.frameLocator('[title=paypal_card_form]')

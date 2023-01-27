@@ -12,7 +12,7 @@ const config = {
 	}, 
 	use: {
     headless: false,
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: 1280, height: 820 },
     ignoreHTTPSErrors: true,
     //video: 'on-first-retry',
 		trace: 'retain-on-failure',
