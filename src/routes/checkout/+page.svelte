@@ -36,15 +36,21 @@
   let orderTotal = 0
   let orderId
   
+  // Error States
   let isAttendeeError = false
   let isEmailError = false
   let isClassmateNameError = false
   let isCompanionNameError = false
-  let isPaymentVisible = false
-  let isPaymentStarted = false
-  let isPaymentSuccessful = false
+
+  // Attendee Attribures
   let isSponsor = false
   let isVeteran = false
+
+  // Payment Processing States
+  let isPaymentOptionsVisible = false
+  let isPaymentSuccessful = false
+
+  // Payment Option States
   let isPayByCard = false
   let isPayAtDoor = false
   let isPayByMail = false
@@ -84,7 +90,6 @@
 
   const handleVeteran = (event) => {
     isVeteran = !isVeteran
-    isPaymentVisible = false
     setTimeout(() => event.target.checked = isVeteran, 0)
     calculateOrder()
   }
@@ -303,7 +308,10 @@
   }
 
   const calculateCheckoutTotal = () => {
-    isPaymentVisible = true
+    if (isPaymentSuccessful) {
+      return
+    }
+    isPaymentOptionsVisible = true
     isAttendeeError = false
     isEmailError = false
     isClassmateNameError = false
@@ -312,20 +320,20 @@
     // Validate the input data
     if (noAttendees === 0) {
       isAttendeeError = true
-      isPaymentVisible = false
+      isPaymentOptionsVisible = false
     }
     if (classmateEmail === '') {
       isEmailError = true
-      isPaymentVisible = false
+      isPaymentOptionsVisible = false
     }
     if (classmateFirstName === '' || classmateLastName === '') {
       isClassmateNameError = true
-      isPaymentVisible = false
+      isPaymentOptionsVisible = false
     }
     if (noAttendees > 1) {
       if (companionLastName === '' || companionLastName === '') {
         isCompanionNameError = true
-        isPaymentVisible = false
+        isPaymentOptionsVisible = false
       }
     }
 
@@ -338,9 +346,11 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
+      // Create payment no charge details & results when
+      // credit card payment isn't allowed
       if (orderTotal === 0 || isPayAtDoor || isPayByMail) {
         isAttendeeError = false
-        isPaymentVisible = isPayByMail ? true : false
+        isPaymentOptionsVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData()
         details.purchase_units[0].amount.value = orderTotal
@@ -352,8 +362,7 @@
         isPaymentSuccessful = true
       } 
       
-      if (isPaymentVisible && !isPaymentStarted) {
-        isPaymentStarted = true
+      if (orderTotal > 0 && isPaymentOptionsVisible) {
         processSaturdayPayment()
       }
     }
@@ -450,20 +459,20 @@
                   <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
                 </button>
 
-                <PaymentOptions eventType={ eventType }
-                  bind:orderId={ orderId }
-                  bind:isPayByCard={ isPayByCard }
-                  bind:isPayAtDoor={ isPayAtDoor }
-                  bind:isPayByMail={ isPayByMail }
-                  isPaymentVisible={ isPaymentVisible }
-                  handlePayAtDoor={ handlePayAtDoor }
-                  handlePayByMail={ handlePayByMail }
-                />
+                {#if isPaymentOptionsVisible }
+                  <PaymentOptions bind:orderId={ orderId }
+                    bind:isPayByCard={ isPayByCard }
+                    bind:isPayAtDoor={ isPayAtDoor }
+                    bind:isPayByMail={ isPayByMail }
+                    handlePayAtDoor={ handlePayAtDoor }
+                    handlePayByMail={ handlePayByMail }
+                  />
+                {/if}
 
                 {#if isPaymentSuccessful}
                   <Receipt 
                     eventType={ eventType }
-                    id={ orderId } 
+                    orderId={ orderId } 
                     totalCharged={ resultDetails.purchase_units[0].amount.value }
                     txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
                     payerFirstName={ resultDetails.payer.name.given_name }
