@@ -39,7 +39,7 @@
             <div /><div>Cape Girardeau, MO  63703</div><div />
           </div>
           <div class="flex justify-center mt-2">Please add your order number
-            ('{ orderId }')' to your check.</div>
+            ('{ orderId }') to your check and mail before August 5, 2023.</div>
         </div>
       {/if}
     </div>
