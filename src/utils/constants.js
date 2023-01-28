@@ -1,7 +1,9 @@
 const FRIDAY_EVENT = 'Friday Gathering'
 const SATURDAY_EVENT = 'Saturday Gathering'
 
-const EVENT_FEE = 35.00
+const PREPAY_FEE = 35.00
+const AT_DOOR_FEE = 40.00
+
 // Transaction fee doc --> https://www.paypal.com/us/business/pricing
 const CREDITCARD_TXN_FEE = .0349
 const PAYPAL_TXN_FEE = .0259
@@ -14,6 +16,6 @@ const PAY_BY_MAIL = 'mail'
 
 const TXN_COMPLETED = 'COMPLETED'
 
-export { FRIDAY_EVENT, SATURDAY_EVENT, EVENT_FEE, 
+export { FRIDAY_EVENT, SATURDAY_EVENT, PREPAY_FEE, AT_DOOR_FEE, 
   CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
   NO_CHARGE, PAY_BY_CARD, PAY_AT_DOOR, PAY_BY_MAIL, TXN_COMPLETED }

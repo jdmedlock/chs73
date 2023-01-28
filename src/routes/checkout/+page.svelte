@@ -11,7 +11,7 @@
   import PaymentOptions from './paymentOptions.svelte'
   import Receipt from './checkoutReceipt.svelte'
   import { 
-    FRIDAY_EVENT, SATURDAY_EVENT, EVENT_FEE,
+    FRIDAY_EVENT, SATURDAY_EVENT, PREPAY_FEE, AT_DOOR_FEE,
     CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
     NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, TXN_COMPLETED
   } from '../../utils/constants.js'
@@ -29,7 +29,8 @@
   let companionLastName = ''
 
   let calculatedAttendees = 0
-  let calculatedEventFee = 0
+  let calculatedAttendanceFee = 0
+  let attendanceFee = 0
   let txnChargeFee = 0
   let estTxnFee = 0
   let noAttendees = 0
@@ -71,15 +72,22 @@
       estTxnFee = 0
     }
 
+    attendanceFee = !isPayAtDoor ? PREPAY_FEE : AT_DOOR_FEE
+
     if (eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
-      calculatedEventFee = EVENT_FEE * calculatedAttendees
-      estTxnFee = (calculatedEventFee * txnChargeFee) + PAYPAL_FIXED_FEE
-      orderTotal = calculatedEventFee + estTxnFee
+      calculatedAttendanceFee = attendanceFee * calculatedAttendees
+      if (isPayAtDoor || isPayByMail) {
+        estTxnFee = 0
+      } else {
+        estTxnFee = (calculatedAttendanceFee * txnChargeFee) + PAYPAL_FIXED_FEE
+      }
+      orderTotal = calculatedAttendanceFee + estTxnFee
     } else {
-      calculatedEventFee = 0
+      calculatedAttendanceFee = 0
       estTxnFee = 0
       orderTotal = 0
     }
+
   }
 
   const handleSponsor = (event) => {
@@ -97,12 +105,14 @@
   const handlePayAtDoor = (event) => {
     isPayAtDoor = !isPayAtDoor
     isPaymentSuccessful = false
+    calculateOrder()
     calculateCheckoutTotal()
   }
 
   const handlePayByMail = (event) => {
     isPayByMail = !isPayByMail
     isPaymentSuccessful = false
+    calculateOrder()
     calculateCheckoutTotal()
   }
 
@@ -278,7 +288,7 @@
                 purchase_units: [
                   {
                     amount: {
-                      value: calculatedEventFee,
+                      value: calculatedAttendanceFee,
                     },
                   },
                 ],
@@ -408,10 +418,10 @@
                   </li>
 
                   <Attendees
-                    isAttendeeError={ isAttendeeError }
-                    isClassmateNameError={ isClassmateNameError } 
-                    isCompanionNameError={ isCompanionNameError } 
-                    isEmailError={ isEmailError }
+                    bind:isAttendeeError={ isAttendeeError }
+                    bind:isClassmateNameError={ isClassmateNameError } 
+                    bind:isCompanionNameError={ isCompanionNameError } 
+                    bind:isEmailError={ isEmailError }
                     calculateOrder={ calculateOrder }
                     bind:noAttendees={ noAttendees }
                     bind:classmateEmail={ classmateEmail }
@@ -432,7 +442,7 @@
                     </li>
 
                     <li class="flex items-start ml-8">
-                      <div class="relative flex flex-col w-full text-left mt-2">
+                      <div class="relative flex flex-col w-full mt-2 text-left">
                         <label>
                           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
                           Click here if you are a Veteran. There's no admission fee for you and your companion.
@@ -449,9 +459,10 @@
                       </svg>
                     </div>
                     <OrderSummary eventType={ eventType } 
-                      noAttendees={ calculatedAttendees } 
-                      subtotal={calculatedEventFee } estTxnFee={ estTxnFee } 
-                      orderTotal={ orderTotal } />
+                      bind:noAttendees={ calculatedAttendees } 
+                      bind:subtotal={calculatedAttendanceFee } 
+                      bind:estTxnFee={ estTxnFee } 
+                      bind:orderTotal={ orderTotal } />
                   </li>
 
                 </ul>
