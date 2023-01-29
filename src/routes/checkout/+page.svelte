@@ -91,18 +91,6 @@
 
   }
 
-  const handleSponsor = (event) => {
-    isSponsor = !isSponsor
-    setTimeout(() => event.target.checked = isSponsor, 0)
-    calculateOrder()
-  }
-
-  const handleVeteran = (event) => {
-    isVeteran = !isVeteran
-    setTimeout(() => event.target.checked = isVeteran, 0)
-    calculateOrder()
-  }
-
   const handlePayAtDoor = (event) => {
     isPayAtDoor = !isPayAtDoor
     isPaymentSuccessful = false
@@ -420,15 +408,13 @@
 
                   <Attendees
                     eventType={ eventType }
+                    calculateOrder={ calculateOrder }
                     bind:isSponsor={ isSponsor }
-                    handleSponsor={ handleSponsor }
                     bind:isVeteran={ isVeteran }
-                    handleVeteran={ handleVeteran }
                     bind:isAttendeeError={ isAttendeeError }
                     bind:isClassmateNameError={ isClassmateNameError } 
                     bind:isCompanionNameError={ isCompanionNameError } 
                     bind:isEmailError={ isEmailError }
-                    calculateOrder={ calculateOrder }
                     bind:noAttendees={ noAttendees }
                     bind:classmateEmail={ classmateEmail }
                     bind:classmateFirstName={ classmateFirstName }

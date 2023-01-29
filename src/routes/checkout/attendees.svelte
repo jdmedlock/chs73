@@ -2,15 +2,13 @@
   import { SATURDAY_EVENT } from '../../utils/constants.js'
 
   export let eventType
+  export let calculateOrder
   export let isSponsor
-  export let handleSponsor
   export let isVeteran
-  export let handleVeteran
   export let isAttendeeError
   export let isClassmateNameError
   export let isCompanionNameError
   export let isEmailError
-  export let calculateOrder
   export let noAttendees
   export let classmateEmail
   export let classmateFirstName
@@ -26,6 +24,18 @@
     calculateOrder()
     showAttendees = false
     showBadgeNames = true
+  }
+
+  const handleSponsor = (event) => {
+    isSponsor = !isSponsor
+    setTimeout(() => event.target.checked = isSponsor, 0)
+    calculateOrder()
+  }
+
+  const handleVeteran = (event) => {
+    isVeteran = !isVeteran
+    setTimeout(() => event.target.checked = isVeteran, 0)
+    calculateOrder()
   }
 </script>
 
