@@ -1,6 +1,13 @@
 <script>
+  import { PAY_BY_CARD, PAY_BY_MAIL, PAY_AT_DOOR } from '../../utils/constants.js'
+
   export let isPayByCard
   export let handlePayByCard
+
+  const handlePaymentMethod = () => {
+    const paymentMethod = document.querySelector('input[name="paymentmethod-radio"]:checked').value
+    console.log(`paymentMethod.svelte - paymentMethod: ${ paymentMethod }`)
+  }
 </script>
 
 <li class="flex relative">
@@ -16,20 +23,23 @@
   <div class="mt-10 flex justify-items-start">
     <li class="flex justify-items-start">
       <div class="relative flex items-center gap-1 -mx-40">
-        <input id="paybycard-radio" type="radio" value="" name="paybycard-radio" 
-          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <input id="paybycard-radio" type="radio" value="{ PAY_BY_CARD }" name="paymentmethod-radio" 
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          on:change={ handlePaymentMethod }>
         <label for="paybycard-radio" class="block ml-2">
           Credit/debit card
         </label>
 
-        <input id="paybymail-radio" type="radio" value="" name="paybymail-radio" 
-          class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <input id="paybymail-radio" type="radio" value="{ PAY_BY_MAIL }" name="paymentmethod-radio" 
+          class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          on:change={ handlePaymentMethod }>
         <label for="paybymail-radio" class="block ml-2">
           By Mail
         </label>
 
-        <input id="payatdoor-radio" type="radio" value="" name="payatdoor-radio" 
-          class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <input id="payatdoor-radio" type="radio" value="{ PAY_AT_DOOR }" name="paymentmethod-radio" 
+          class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          on:change={ handlePaymentMethod }>
         <label for="payatdoor-radio" class="block ml-2">
           At the door
         </label>
