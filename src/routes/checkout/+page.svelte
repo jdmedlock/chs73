@@ -437,7 +437,11 @@
                     bind:companionLastName={ companionLastName }
                   />
 
-                  <PaymentMethod />
+                  <PaymentMethod 
+                    bind:isPayByCard={ isPayByCard }
+                    bind:isPayByMail={ isPayByMail }
+                    bind:isPayAtDoor={ isPayAtDoor }
+                  />
 
                   <li class="flex items-start">
                     <div class="flex-shrink-0">
