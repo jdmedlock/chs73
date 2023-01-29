@@ -1,6 +1,11 @@
 <script>
-  import { FRIDAY_EVENT } from '../../utils/constants.js'
+  import { SATURDAY_EVENT } from '../../utils/constants.js'
 
+  export let eventType
+  export let isSponsor
+  export let handleSponsor
+  export let isVeteran
+  export let handleVeteran
   export let isAttendeeError
   export let isClassmateNameError
   export let isCompanionNameError
@@ -145,4 +150,24 @@
       {/if}
     </div>
   </li>
+
+  {#if eventType === SATURDAY_EVENT}
+    <li class="flex items-start mt-4 ml-14">
+      <div class="relative flex flex-col text-left">
+        <label>
+          <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
+          Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
+        </label>
+      </div>
+    </li>
+
+    <li class="flex items-start ml-14">
+      <div class="relative flex flex-col w-full mt-2 text-left">
+        <label>
+          <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
+          Click here if you are a Veteran. There's no admission fee for you and your companion.
+        </label>
+      </div>
+    </li>
+  {/if}
 </attendees>

@@ -9,7 +9,7 @@
 
 <ordersummary>
   <div class="flex flex-col gap-y-0">
-    <div class="ml-3 text-base text-gray-700 mb-2 font-bold">Order Summary:</div>
+    <div class="ml-3 text-base text-gray-700 mb-2">Order Summary:</div>
     <div class="grid grid-cols-2 gap-x-4 ml-8 pl-2 pr-2 bg-gray-200">
       <div>No. Attendees </div><div class="justify-self-end mr-2 mb-2">{ noAttendees }</div>
       {#if (eventType === SATURDAY_EVENT) }

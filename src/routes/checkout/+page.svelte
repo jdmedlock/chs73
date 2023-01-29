@@ -7,8 +7,9 @@
   import saturdayEvent from '../../assets/saturdayEvent.json'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
+  import PaymentMethod from './paymentMethod.svelte'
   import OrderSummary from './orderSummary.svelte'
-  import PaymentOptions from './paymentOptions.svelte'
+  import Payment from './payment.svelte'
   import Receipt from './checkoutReceipt.svelte'
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, PREPAY_FEE, AT_DOOR_FEE,
@@ -418,6 +419,11 @@
                   </li>
 
                   <Attendees
+                    eventType={ eventType }
+                    bind:isSponsor={ isSponsor }
+                    handleSponsor={ handleSponsor }
+                    bind:isVeteran={ isVeteran }
+                    handleVeteran={ handleVeteran }
                     bind:isAttendeeError={ isAttendeeError }
                     bind:isClassmateNameError={ isClassmateNameError } 
                     bind:isCompanionNameError={ isCompanionNameError } 
@@ -431,25 +437,7 @@
                     bind:companionLastName={ companionLastName }
                   />
 
-                  {#if eventType === SATURDAY_EVENT}
-                    <li class="flex items-start ml-8">
-                      <div class="relative flex flex-col text-left">
-                        <label>
-                          <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
-                          Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
-                        </label>
-                      </div>
-                    </li>
-
-                    <li class="flex items-start ml-8">
-                      <div class="relative flex flex-col w-full mt-2 text-left">
-                        <label>
-                          <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
-                          Click here if you are a Veteran. There's no admission fee for you and your companion.
-                        </label>
-                      </div>
-                    </li>
-                  {/if}
+                  <PaymentMethod />
 
                   <li class="flex items-start">
                     <div class="flex-shrink-0">
@@ -471,7 +459,7 @@
                 </button>
 
                 {#if isPaymentOptionsVisible }
-                  <PaymentOptions bind:orderId={ orderId }
+                  <Payment bind:orderId={ orderId }
                     bind:isPayByCard={ isPayByCard }
                     bind:isPayAtDoor={ isPayAtDoor }
                     bind:isPayByMail={ isPayByMail }
