@@ -3,19 +3,19 @@
   export let handlePayByCard
 </script>
 
-<li class="flex items-start">
-  <div class="flex-shrink-0">
+<li class="flex relative">
+  <div class="flex flex-shrink-0">
     <!-- Heroicon name: outline/check -->
     <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" 
       fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
     </svg>
+    <span class="ml-3 text-base text-gray-700">How will you be paying?</span>
   </div>
-  <div class="ml-3 text-base text-gray-700">How will you be paying?</div>
 
-  <div class="relative flex text-left mt-4">
-    <li class="flex mt-4">
-      <span class="relative flex items-center text-left">
+  <div class="mt-10 flex justify-items-start">
+    <li class="flex justify-items-start">
+      <div class="relative flex items-center gap-1 -mx-40">
         <input id="paybycard-radio" type="radio" value="" name="paybycard-radio" 
           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
         <label for="paybycard-radio" class="block ml-2">
@@ -33,7 +33,7 @@
         <label for="payatdoor-radio" class="block ml-2">
           At the door
         </label>
-      </span>
+      </div>
     </li>
   </div>
 </li>
