@@ -48,7 +48,7 @@
             class="w-4 h-4 ml-4 checked:bg-orange-600"
             on:change={ handlePaymentMethod }>
           <label for="paybymail-radio" class="block ml-2">
-            By Mail
+            By mail
           </label>
 
           <input id="payatdoor-radio" type="radio" value="{ PAY_AT_DOOR }" name="paymentmethod-radio" 

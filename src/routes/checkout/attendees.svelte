@@ -16,13 +16,13 @@
   export let companionFirstName
   export let companionLastName
 
-  let showAttendees
-  let showBadgeNames
+  let showAttendees = false
+  let showBadgeNames = false
   
   const handleNoAttendees = (event) => {
     noAttendees = parseInt(event.target.text)
     calculateOrder()
-    showAttendees = false
+    showAttendees = noAttendees > 0 ? true: false
     showBadgeNames = true
   }
 

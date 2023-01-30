@@ -49,7 +49,6 @@
   let isVeteran = false
 
   // Payment Processing States
-  let isPaymentOptionsVisible = false
   let isPaymentSuccessful = false
 
   // Payment Option States
@@ -89,20 +88,6 @@
       orderTotal = 0
     }
 
-  }
-
-  const handlePayAtDoor = (event) => {
-    isPayAtDoor = !isPayAtDoor
-    isPaymentSuccessful = false
-    calculateOrder()
-    calculateCheckoutTotal()
-  }
-
-  const handlePayByMail = (event) => {
-    isPayByMail = !isPayByMail
-    isPaymentSuccessful = false
-    calculateOrder()
-    calculateCheckoutTotal()
   }
 
   const logPayment = (details, resultData) => {
@@ -310,7 +295,6 @@
     if (isPaymentSuccessful) {
       return
     }
-    isPaymentOptionsVisible = true
     isAttendeeError = false
     isEmailError = false
     isClassmateNameError = false
@@ -319,20 +303,16 @@
     // Validate the input data
     if (noAttendees === 0) {
       isAttendeeError = true
-      isPaymentOptionsVisible = false
     }
     if (classmateEmail === '') {
       isEmailError = true
-      isPaymentOptionsVisible = false
     }
     if (classmateFirstName === '' || classmateLastName === '') {
       isClassmateNameError = true
-      isPaymentOptionsVisible = false
     }
     if (noAttendees > 1) {
       if (companionLastName === '' || companionLastName === '') {
         isCompanionNameError = true
-        isPaymentOptionsVisible = false
       }
     }
 
@@ -349,7 +329,6 @@
       // credit card payment isn't allowed
       if (orderTotal === 0 || isPayAtDoor || isPayByMail) {
         isAttendeeError = false
-        isPaymentOptionsVisible = isPayByMail ? true : false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData()
         details.purchase_units[0].amount.value = orderTotal
@@ -358,10 +337,9 @@
         logPayment(details, resultData)
         emailEventAcknowledgement(details, resultData)
         console.log('resultDetails: ', resultDetails)
-        isPaymentSuccessful = true
       } 
       
-      if (orderTotal > 0 && isPaymentOptionsVisible) {
+      if (orderTotal > 0) {
         processSaturdayPayment()
       }
     }
@@ -427,13 +405,15 @@
                     bind:estTxnFee={ estTxnFee } 
                     bind:orderTotal={ orderTotal }
                   />
-
                 </ul>
-                <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
-                  <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
-                </button>
 
-                {#if isPaymentOptionsVisible && eventType === SATURDAY_EVENT}
+                {#if isPayByCard}
+                  <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
+                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
+                  </button>
+                {/if}
+
+                {#if eventType === SATURDAY_EVENT}
                   <Payment bind:orderId={ orderId }
                     bind:isPayByCard={ isPayByCard }
                     bind:isPayAtDoor={ isPayAtDoor }
