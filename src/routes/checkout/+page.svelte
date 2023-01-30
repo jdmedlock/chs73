@@ -10,7 +10,7 @@
   import PaymentMethod from './paymentMethod.svelte'
   import OrderSummary from './orderSummary.svelte'
   import Payment from './payment.svelte'
-  import Receipt from './checkoutReceipt.svelte'
+  import Receipt from './receipt.svelte'
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, PREPAY_FEE, AT_DOOR_FEE,
     CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
@@ -408,16 +408,18 @@
                   />
                 </ul>
 
-                <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
-                  <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
-                </button>
+                {#if !isPaymentSuccessful}
+                  <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
+                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
+                  </button>
+                {/if}
 
                 {#if eventType === SATURDAY_EVENT}
                   <Payment bind:orderId={ orderId }
                     bind:isPayByCard={ isPayByCard }
                     bind:isPayAtDoor={ isPayAtDoor }
                     bind:isPayByMail={ isPayByMail }
-                    isPaymentSuccessful={ isPaymentSuccessful }
+                    bind:isPaymentSuccessful={ isPaymentSuccessful }
                   />
                 {/if}
 
@@ -439,6 +441,7 @@
                     isVeteran={ isVeteran }
                     classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
                     companionFirstName={ companionFirstName } companionLastName={ companionLastName }
+                    isPayByCard={ isPayByCard }
                   />
                 {/if}
 

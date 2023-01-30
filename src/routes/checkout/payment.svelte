@@ -13,7 +13,7 @@
 </style>
 
 <payment>
-  {#if isPayByCard}
+  {#if isPayByCard & !isPaymentSuccessful}
     <div class="flex flex-col items-center mb-0 bg-white">
       <div id="paypal-button-container" class="mt-4"/>
     </div>
@@ -40,7 +40,15 @@
   {/if}
 
   {#if isPayAtDoor && isPaymentSuccessful}
-    <div class="flex flex-col items-center bg-white">
+  <div class="flex flex-col items-center mt-4 bg-white">
+    <div class="w-3/4 mt-4 mb-5 ml-8 bg-gray-200">
+      <div class="flex content-center justify-center">
+        <span>
+          Remember to pay when you checkin at the event. Your order number
+          is { orderId }.
+        </span>
+      </div>
     </div>
+  </div>
   {/if}
 </payment>
