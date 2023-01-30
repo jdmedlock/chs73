@@ -1,5 +1,6 @@
 import { chromium } from 'playwright'
 import { test, expect } from '@playwright/test'
+import { PAY_BY_CARD, PAY_BY_MAIL, PAY_AT_DOOR } from '../src/utils/constants.js'
 
 const DO_SPONSOR_CLASSMATE = true
 const DONT_SPONSOR_CLASSMATE = false
@@ -75,12 +76,26 @@ test.describe('Test event signup', async () => {
     }
   }
 
+  // Select the payment method 
+  const choosePaymentMethod = async (method) => {
+    switch (method) {
+      case PAY_BY_CARD:
+        await page.getByLabel("Credit/debit card").check()
+        break
+      case PAY_BY_MAIL:
+        await page.getByLabel("By mail").check()
+        break
+      case PAY_AT_DOOR:
+        await page.getByLabel("At the door").check()
+        break
+    }
+  }
+
   // Pay for the event by mail
   const fillInCardForm = async () => {
-    const calculateBtn = page.getByRole('button', { name: 'Calculate & checkout' })
+    const calculateBtn = page.getByRole('button', { name: 'Register & pay' })
     await calculateBtn.scrollIntoViewIfNeeded()
     await calculateBtn.click()
-    await page.getByRole('button', { name: 'Pay by mail' }).click()
   }
 
   // Validate the payment receipt
@@ -126,6 +141,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -138,6 +154,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
     await fillInCardForm()
     await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -150,8 +167,9 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
-    await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
+    await page.getByRole('button', { name: 'Register' }).click()
+    await validateReceipt('$ 0.00', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:04-should signup for Saturday with one attendee + sponsor + veteran', async () => {
@@ -162,6 +180,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
@@ -174,6 +193,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
     await fillInCardForm()
     await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -186,6 +206,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
     await fillInCardForm()
     await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -198,8 +219,9 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
-    await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
+    await page.getByRole('button', { name: 'Register & pay' }).click()
+    await validateReceipt('$ 0.00', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0203:08-should signup for Saturday with two attendees + sponsor + veteran', async () => {
@@ -210,6 +232,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await choosePaymentMethod(PAY_BY_MAIL)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)

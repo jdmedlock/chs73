@@ -42,10 +42,10 @@ test.describe('Test event signup', async () => {
     await page.waitForSelector('text="Checkout"')
   }
 
-  // Specify attendee options
   const selectNoAttendees = async (noAttendees, email, badgeNames, willHelpClassmate, isVeteran) => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
+    await noAttendeesBtn.scrollIntoViewIfNeeded()
     await noAttendeesBtn.click()
     const oneAttendeesLink = await page.locator(`a:has-text("${ noAttendees }")`)
     await expect(oneAttendeesLink).toBeDefined()
@@ -91,40 +91,11 @@ test.describe('Test event signup', async () => {
     }
   }
 
-  // Pay for the event. Note that PayPal adds an iframe containing the
-  // payment buttons and then a second, nested iframe within it containing
-  // the card form.
+  // Pay for the event by mail
   const fillInCardForm = async () => {
     const calculateBtn = page.getByRole('button', { name: 'Register & pay' })
     await calculateBtn.scrollIntoViewIfNeeded()
     await calculateBtn.click()
-    const paypalFrame = await page.frameLocator('.component-frame')
-    const cardBtn = await paypalFrame.locator('span:has-text("Debit or Credit Card")')
-    await cardBtn.click()
-    const cardFormFrame = await paypalFrame.frameLocator('[title=paypal_card_form]')
-    await cardFormFrame.locator('#credit-card-number').click()
-    await cardFormFrame.locator('#credit-card-number').fill('4012000033330026')
-    await cardFormFrame.locator('#expiry-date').click()
-    await cardFormFrame.locator('#expiry-date').fill('0523')
-    await cardFormFrame.locator('#credit-card-security').click()
-    await cardFormFrame.locator('#credit-card-security').fill('523')
-    await cardFormFrame.locator('[autocomplete=cc-given-name]').click()
-    await cardFormFrame.locator('[autocomplete=cc-given-name]').fill('Jim')
-    await cardFormFrame.locator('[autocomplete=cc-family-name]').click()
-    await cardFormFrame.locator('[autocomplete=cc-family-name]').fill('Playwright')
-    await cardFormFrame.locator('[autocomplete="billing street-address"]').click()
-    await cardFormFrame.locator('[autocomplete="billing street-address"]').fill('1245 Main Street')
-    await cardFormFrame.locator('[autocomplete="billing street-address2"]').click()
-    await cardFormFrame.locator('[autocomplete="billing street-address2"]').fill('Apt. 34')
-    await cardFormFrame.locator('[autocomplete="billing address-level2"]').click()
-    await cardFormFrame.locator('[autocomplete="billing address-level2"]').fill('Cape Girardeau')
-    await cardFormFrame.locator('[name=state]').click()
-    await cardFormFrame.locator('[name=state]').selectOption('MO')
-    await cardFormFrame.locator('[name=postcode]').click()
-    await cardFormFrame.locator('[name=postcode]').fill('63701')
-    await cardFormFrame.locator('[autocomplete=tel]').click()
-    await cardFormFrame.locator('[autocomplete=tel]').fill('6365551212')
-    await cardFormFrame.locator('#submit-button').click()
   }
 
   // Validate the payment receipt
@@ -162,7 +133,7 @@ test.describe('Test event signup', async () => {
   // Tests
   //--------------------------------------------------------------------------
 
-  test('0202:01-should signup for Saturday with one attendee', async () => {
+  test('0204:01-should signup for Saturday with one attendee', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -170,12 +141,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 40.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:02-should signup for Saturday with one attendee + sponsor', async () => {
+  test('0204:02-should signup for Saturday with one attendee + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -183,12 +154,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 80.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:03-should signup for Saturday with one attendee + veteran', async () => {
+  test('0204:03-should signup for Saturday with one attendee + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -196,12 +167,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
-    await page.getByRole('button', { name: 'Register & pay' }).click()
+    await choosePaymentMethod(PAY_AT_DOOR)
+    await page.getByRole('button', { name: 'Register' }).click()
     await validateReceipt('$ 0.00', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:04-should signup for Saturday with one attendee + sponsor + veteran', async () => {
+  test('0204:04-should signup for Saturday with one attendee + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -209,12 +180,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 40.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:05-should signup for Saturday with two attendees', async () => {
+  test('0204:05-should signup for Saturday with two attendees', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -222,12 +193,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 80.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:06-should signup for Saturday with two attendees + sponsor', async () => {
+  test('0204:06-should signup for Saturday with two attendees + sponsor', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -235,12 +206,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 120.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:07-should signup for Saturday with two attendees + veteran', async () => {
+  test('0204:07-should signup for Saturday with two attendees + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -248,12 +219,12 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await page.getByRole('button', { name: 'Register & pay' }).click()
     await validateReceipt('$ 0.00', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
-  test('0202:08-should signup for Saturday with two attendees + sponsor + veteran', async () => {
+  test('0204:08-should signup for Saturday with two attendees + sponsor + veteran', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()
@@ -261,9 +232,9 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod(PAY_BY_CARD)
+    await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 40.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
 })

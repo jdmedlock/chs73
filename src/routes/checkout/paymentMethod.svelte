@@ -4,6 +4,7 @@
   export let isPayByCard
   export let isPayByMail
   export let isPayAtDoor
+  export let calculateOrder
 
   const handlePaymentMethod = () => {
     const paymentMethod = document.querySelector('input[name="paymentmethod-radio"]:checked').value
@@ -20,6 +21,7 @@
       default:
         throw new Error(`Unknown payment method selected - ${ paymentMethod }`)
     }
+    calculateOrder()
   }
 </script>
 

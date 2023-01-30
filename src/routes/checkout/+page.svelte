@@ -410,6 +410,7 @@
                       bind:isPayByCard={ isPayByCard }
                       bind:isPayByMail={ isPayByMail }
                       bind:isPayAtDoor={ isPayAtDoor }
+                      calculateOrder={ calculateOrder }
                     />
                   {/if}
 
