@@ -223,7 +223,7 @@
     isPaymentSuccessful = true
   }
 
-  const processSaturdayPayment = () => {
+  const processCardPayment = () => {
     loadScript({ 
       "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
       "integration-date": "2023-01-07",
@@ -291,7 +291,7 @@
         })
   }
 
-  const calculateCheckoutTotal = () => {
+  const handleRegisterAndPay = () => {
     if (isPaymentSuccessful) {
       return
     }
@@ -325,7 +325,6 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
-      console.log(`isPayByMail: ${ isPayByMail }`)
       // Create payment no charge details & results when
       // credit card payment isn't allowed
       if (isPayAtDoor || isPayByMail) {
@@ -337,11 +336,12 @@
         resultDetails = details
         logPayment(details, resultData)
         emailEventAcknowledgement(details, resultData)
+        isPaymentSuccessful = true
         console.log('resultDetails: ', resultDetails)
       } 
       
-      if (orderTotal > 0) {
-        processSaturdayPayment()
+      if (isPayByCard && orderTotal > 0) {
+        processCardPayment()
       }
     }
   }
@@ -408,8 +408,8 @@
                   />
                 </ul>
 
-                <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
-                  <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
+                <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
+                  <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
                 </button>
 
                 {#if eventType === SATURDAY_EVENT}
@@ -417,6 +417,7 @@
                     bind:isPayByCard={ isPayByCard }
                     bind:isPayAtDoor={ isPayAtDoor }
                     bind:isPayByMail={ isPayByMail }
+                    isPaymentSuccessful={ isPaymentSuccessful }
                   />
                 {/if}
 

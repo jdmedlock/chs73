@@ -2,7 +2,8 @@
   export let orderId
   export let isPayByCard
   export let isPayAtDoor
-  export let isPayByMail
+  export let isPayByMail 
+  export let isPaymentSuccessful 
 </script>
 
 <style>
@@ -18,7 +19,7 @@
     </div>
   {/if}
   
-  {#if isPayByMail}
+  {#if isPayByMail && isPaymentSuccessful}
     <div class="flex flex-col items-center mt-4 bg-white">
       <div class="w-3/4 mt-4 mb-5 ml-8 bg-gray-200">
         <div class="flex content-center justify-center">
@@ -38,7 +39,7 @@
     </div>
   {/if}
 
-  {#if isPayAtDoor}
+  {#if isPayAtDoor && isPaymentSuccessful}
     <div class="flex flex-col items-center bg-white">
     </div>
   {/if}
