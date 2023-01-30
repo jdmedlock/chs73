@@ -325,9 +325,10 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
+      console.log(`isPayByMail: ${ isPayByMail }`)
       // Create payment no charge details & results when
       // credit card payment isn't allowed
-      if (orderTotal === 0 || isPayAtDoor || isPayByMail) {
+      if (isPayAtDoor || isPayByMail) {
         isAttendeeError = false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData()
@@ -407,11 +408,9 @@
                   />
                 </ul>
 
-                {#if isPayByCard}
-                  <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
-                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
-                  </button>
-                {/if}
+                <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
+                  <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
+                </button>
 
                 {#if eventType === SATURDAY_EVENT}
                   <Payment bind:orderId={ orderId }

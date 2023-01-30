@@ -22,7 +22,7 @@
   const handleNoAttendees = (event) => {
     noAttendees = parseInt(event.target.text)
     calculateOrder()
-    showAttendees = noAttendees > 0 ? true: false
+    showAttendees = false
     showBadgeNames = true
   }
 
