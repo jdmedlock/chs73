@@ -40,6 +40,16 @@
 </script>
 
 <attendees>
+  <li class="flex items-start mt-4">
+    <div class="flex-shrink-0">
+      <!-- Heroicon name: outline/check -->
+      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <div class="ml-3 text-base text-gray-700">Who will be attending?</div>
+  </li>
+  
   <li class="flex items-start ml-8">
     <div class="relative flex flex-col text-left">
       <div>
@@ -162,7 +172,7 @@
   </li>
 
   {#if eventType === SATURDAY_EVENT}
-    <li class="flex items-start mt-4 ml-14">
+    <li class="flex items-start mt-4 text-gray-700 ml-14">
       <div class="relative flex flex-col text-left">
         <label>
           <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
@@ -171,7 +181,7 @@
       </div>
     </li>
 
-    <li class="flex items-start ml-14">
+    <li class="flex items-start text-gray-700 ml-14">
       <div class="relative flex flex-col w-full mt-2 text-left">
         <label>
           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>

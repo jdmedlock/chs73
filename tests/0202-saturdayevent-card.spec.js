@@ -44,7 +44,6 @@ test.describe('Test event signup', async () => {
   const selectNoAttendees = async (noAttendees, email, badgeNames, willHelpClassmate, isVeteran) => {
     // Select no. attendees
     const noAttendeesBtn = await page.locator('button:has-text("No. Attendees")')
-    await noAttendeesBtn.scrollIntoViewIfNeeded()
     await noAttendeesBtn.click()
     const oneAttendeesLink = await page.locator(`a:has-text("${ noAttendees }")`)
     await expect(oneAttendeesLink).toBeDefined()

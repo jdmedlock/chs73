@@ -86,7 +86,7 @@ test.describe('Test event signup', async () => {
     await validateReceipt('$ 0')
   }, 1 * 60 * 1000)
 
-  test('0201:01-should signup with two attendees for Friday gathering', async () => {
+  test('0201:02-should signup with two attendees for Friday gathering', async () => {
     // Listen for all console logs
     page.on('console', msg => console.log(msg.text()))
     await signupAndCheckout()

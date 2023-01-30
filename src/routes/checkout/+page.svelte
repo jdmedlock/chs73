@@ -396,16 +396,6 @@
                 <ul class="space-y-4">
                   <EventSummary event={ eventData }/>
 
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div class="ml-3 text-base text-gray-700">Who will be attending?</div>
-                  </li>
-
                   <Attendees
                     eventType={ eventType }
                     calculateOrder={ calculateOrder }
@@ -423,38 +413,31 @@
                     bind:companionLastName={ companionLastName }
                   />
 
-                  <PaymentMethod 
-                    bind:isPayByCard={ isPayByCard }
-                    bind:isPayByMail={ isPayByMail }
-                    bind:isPayAtDoor={ isPayAtDoor }
-                  />
+                  {#if eventType === SATURDAY_EVENT}
+                    <PaymentMethod 
+                      bind:isPayByCard={ isPayByCard }
+                      bind:isPayByMail={ isPayByMail }
+                      bind:isPayAtDoor={ isPayAtDoor }
+                    />
+                  {/if}
 
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <OrderSummary eventType={ eventType } 
-                      bind:noAttendees={ calculatedAttendees } 
-                      bind:subtotal={calculatedAttendanceFee } 
-                      bind:estTxnFee={ estTxnFee } 
-                      bind:orderTotal={ orderTotal } />
-                  </li>
+                  <OrderSummary eventType={ eventType } 
+                    bind:noAttendees={ calculatedAttendees } 
+                    bind:subtotal={calculatedAttendanceFee } 
+                    bind:estTxnFee={ estTxnFee } 
+                    bind:orderTotal={ orderTotal }
+                  />
 
                 </ul>
                 <button class="flex items-center m-auto" on:click={ calculateCheckoutTotal }>
                   <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Calculate & checkout </span>
                 </button>
 
-                {#if isPaymentOptionsVisible }
+                {#if isPaymentOptionsVisible && eventType === SATURDAY_EVENT}
                   <Payment bind:orderId={ orderId }
                     bind:isPayByCard={ isPayByCard }
                     bind:isPayAtDoor={ isPayAtDoor }
                     bind:isPayByMail={ isPayByMail }
-                    handlePayAtDoor={ handlePayAtDoor }
-                    handlePayByMail={ handlePayByMail }
                   />
                 {/if}
 

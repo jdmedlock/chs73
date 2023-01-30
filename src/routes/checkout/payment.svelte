@@ -13,7 +13,7 @@
   }
 </style>
 
-<section>
+<payment>
   {#if !isPayByMail && !isPayAtDoor}
     <div class="flex flex-col items-center mb-0 bg-white">
       <div id="paypal-button-container" class="mt-4"/>
@@ -52,4 +52,4 @@
       </button>
     </div>
   {/if}
-</section>
+  </payment>
