@@ -83,7 +83,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: '', lastName: ''}
     })
-    await validateReceipt('$ 0')
+    await validateReceipt('$ 0.00')
   }, 1 * 60 * 1000)
 
   test('0201:02-should signup with two attendees for Friday gathering', async () => {
@@ -94,7 +94,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Tester'}, 
       companion: {firstName: 'Kay', lastName: 'Tester'}
     })
-    await validateReceipt('$ 0')
+    await validateReceipt('$ 0.00')
   }, 1 * 60 * 1000)
 
 })
