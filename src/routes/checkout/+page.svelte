@@ -340,9 +340,22 @@
         console.log('resultDetails: ', resultDetails)
       } 
       
-      if (isPayByCard && orderTotal > 0) {
-        processCardPayment()
+      if (isPayByCard) {
+        if (orderTotal > 0) {
+          processCardPayment()
+        }
+        if (orderTotal === 0) {
+          const details = createNochargeDetails()
+          const resultData = createNochargeResultData()
+          details.purchase_units[0].amount.value = orderTotal
+
+          resultDetails = details
+          logPayment(details, resultData)
+          emailEventAcknowledgement(details, resultData)
+          isPaymentSuccessful = true
+        }
       }
+
     }
   }
 </script>
@@ -410,7 +423,13 @@
 
                 {#if !isPaymentSuccessful}
                   <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
-                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white"> Register & pay </span>
+                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">
+                      {#if eventType === FRIDAY_EVENT}
+                        Register
+                      {:else}
+                        Register & pay
+                      {/if}
+                    </span>
                   </button>
                 {/if}
 

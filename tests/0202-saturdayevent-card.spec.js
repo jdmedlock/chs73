@@ -95,7 +95,7 @@ test.describe('Test event signup', async () => {
   // payment buttons and then a second, nested iframe within it containing
   // the card form.
   const fillInCardForm = async () => {
-    const calculateBtn = page.getByRole('button', { name: 'Calculate & checkout' })
+    const calculateBtn = page.getByRole('button', { name: 'Register & pay' })
     await calculateBtn.scrollIntoViewIfNeeded()
     await calculateBtn.click()
     const paypalFrame = await page.frameLocator('.component-frame')
@@ -169,7 +169,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod()
+    await choosePaymentMethod(PAY_BY_CARD)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -182,7 +182,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod()
+    await choosePaymentMethod(PAY_BY_CARD)
     await fillInCardForm()
     await validateReceipt('$ 70.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -195,8 +195,8 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod()
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await choosePaymentMethod(PAY_BY_CARD)
+    await page.getByRole('button', { name: 'Register & pay' }).click()
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
@@ -208,7 +208,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: '', lastName: ''}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod()
+    await choosePaymentMethod(PAY_BY_CARD)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
@@ -221,7 +221,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod()
+    await choosePaymentMethod(PAY_BY_CARD)
     await fillInCardForm()
     await validateReceipt('$ 70.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -234,7 +234,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
-    await choosePaymentMethod()
+    await choosePaymentMethod(PAY_BY_CARD)
     await fillInCardForm()
     await validateReceipt('$ 105.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
@@ -247,8 +247,8 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DONT_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod()
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await choosePaymentMethod(PAY_BY_CARD)
+    await page.getByRole('button', { name: 'Register & pay' }).click()
     await validateReceipt('$ 0', DONT_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
@@ -260,7 +260,7 @@ test.describe('Test event signup', async () => {
       classmate: {firstName: 'Jim', lastName: 'Playwright'}, 
       companion: {firstName: 'Kay', lastName: 'Playwright'}
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
-    await choosePaymentMethod()
+    await choosePaymentMethod(PAY_BY_CARD)
     await fillInCardForm()
     await validateReceipt('$ 35.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)

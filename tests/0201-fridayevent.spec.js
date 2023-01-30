@@ -62,7 +62,7 @@ test.describe('Test event signup', async () => {
 
   // Validate the payment receipt
   const validateReceipt = async (receiptAmount) => {
-    await page.getByRole('button', { name: 'Calculate & checkout' }).click()
+    await page.getByRole('button', { name: 'Register' }).click()
     await page.waitForSelector('[id=paymentReceipt]')
     await expect(page.locator('#receiptOrderId')).not.toHaveText('')
     await expect(page.locator('#receiptAmount')).toHaveText(`${ receiptAmount }`)
