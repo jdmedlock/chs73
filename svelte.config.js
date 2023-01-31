@@ -8,7 +8,11 @@ const config = {
     adapter: adapter({
       edge: false,
       split: false
-    })
+    }),
+    env: {
+      dir: process.cwd(),
+      publicPrefix: 'PUBLIC_'
+    },
   }
 }
 
