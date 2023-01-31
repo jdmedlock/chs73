@@ -249,9 +249,6 @@
               iframes[0].style.zIndex = 5
             },
             createOrder: function (data, actions) {
-              // Set up the transaction
-              console.log('Create order: ', data)
-
               // Process the payment if no errors were detected
               isPayByCard = true
               calculateOrder(data.paymentSource)
@@ -271,11 +268,9 @@
             onApprove: function (data, actions) {
               // Capture order after payment approved
               resultData = data
-              console.log('resultData: ', resultData)
               return actions.order.capture().then(function (details) {
                 resultDetails = details // Save details to be rendered
                 orderId = resultDetails.id
-                console.log("Captured order: ", details)
                 isPaymentSuccessful = true
                 logPayment(details, resultData)
                 emailEventAcknowledgement(details)
@@ -337,7 +332,6 @@
         logPayment(details, resultData)
         emailEventAcknowledgement(details, resultData)
         isPaymentSuccessful = true
-        console.log('resultDetails: ', resultDetails)
       } 
       
       if (isPayByCard) {
