@@ -72,7 +72,7 @@
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Save this to my calendar!!!</span>
                 </button>
                 <a id="checkoutLink" class="flex items-center m-auto" href="checkout?event={ eventType }">
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Proceed to checkout</span>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Proceed to registration</span>
                 </a>
               </div>
             </div>
@@ -81,12 +81,6 @@
       </div>
 
     </div>
-
-    {#if isPaymentVisible}
-      <div class="flex flex-col items-center bg-gray-200 rounded-lg shadow-lg">
-        <div id="paypal-button-container" />
-      </div>
-    {/if}
 
   </div>
 </section>

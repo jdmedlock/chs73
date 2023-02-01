@@ -17,7 +17,7 @@
     </div>
 
     <div class="flex flex-col">
-      <div class="mb-2 ml-3 text-base text-gray-700">Order Summary:</div>
+      <div class="mb-2 ml-3 text-base text-gray-700">Registration Summary:</div>
       <div class="grid grid-cols-2 pl-2 pr-2 ml-8 bg-gray-200 gap-x-4">
         <div>No. Attendees </div><div class="mb-2 mr-2 justify-self-end">{ noAttendees }</div>
         {#if (eventType === SATURDAY_EVENT) }
