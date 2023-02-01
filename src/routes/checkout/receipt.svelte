@@ -33,7 +33,7 @@
       {/if}
     </h3>
     <div class="grid w-1/2 grid-cols-2 mt-4 mb-4 ml-8 bg-gray-200 gap-x-4">
-      <div>Order ID:</div><div id="receiptOrderId">{ orderId }</div>
+      <div>Registration ID:</div><div id="receiptOrderId">{ orderId }</div>
       <div>Order total:</div><div id="receiptAmount">$ { parseFloat(totalCharged).toFixed(2) }</div>
       <div>Transaction status:</div><div id="receiptStatus">{ txnStatus }</div>
       <div>Transaction created:</div><div id="receiptCreated">{ txnCreated }</div>

@@ -185,7 +185,7 @@
       <div class="relative flex flex-col w-full mt-2 text-left">
         <label>
           <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
-          Click here if you are a Veteran. There's no admission fee for you and your companion.
+          Click here if you are a Veteran. There's no admission or hors d'oeurves charge for you and your companion.
         </label>
       </div>
     </li>
