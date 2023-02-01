@@ -7,6 +7,7 @@ export async function load({ params, fetch }) {
 	const classmatesURL = `${ import.meta.env.VITE_BE_URL }/classmates`
 	const facultyURL = `${ import.meta.env.VITE_BE_URL }/faculty`
 
+  /*
   const classmatesResponse = fetch(classmatesURL)
   .then(async (response) => {
     const classmatesJSON = response.json()
@@ -29,6 +30,29 @@ export async function load({ params, fetch }) {
   })
   .catch((err) => {
     console.error('Error fetching faculty - ', err)
+  })
+  */
+  
+  let classmatesResponse
+  let facultyResponse
+
+  Promise.all([
+    fetch(classmatesURL),
+    fetch(facultyURL)
+  ])
+  .then(async([classmates, faculty]) => {
+    classmatesResponse = classmates
+    const classmatesJSON = await classmates.json()
+    classmatesPromise.addClassmatesPromise(classmatesJSON)
+    classmatesStore.addClassmates(classmatesJSON)
+
+    facultyResponse = faculty
+    const facultyJSON = await faculty.json()
+    facultyPromise.addFacultyPromise(facultyJSON)
+    facultyStore.addFaculty(facultyJSON)
+  })
+  .catch(error => {
+    console.log(error)
   })
 
   return {
