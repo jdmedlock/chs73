@@ -125,43 +125,43 @@
 <!-- Based on https://www.creative-tim.com/learning-lab/tailwind-starter-kit/landing -->
 <main>
   <section
-    class="relative pt-32 lg:pt-24 pb-28 flex content-center items-center justify-center"
+    class="relative flex items-center content-center justify-center pt-32 lg:pt-24 pb-28"
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
       style="background-image: url('chs_graduation2.webp');"
     />
     <div class="container relative mx-auto">
-      <div class="justify-items-center flex flex-wrap">
-        <div class="items-center w-full lg:w-11/12 px-4 ml-auto mr-auto text-center">
+      <div class="flex flex-wrap justify-items-center">
+        <div class="items-center w-full px-4 ml-auto mr-auto text-center lg:w-11/12">
           <div class="bg-sepia-800 bg-opacity-40 pr-none">
-            <div class="flex flex-row h-full w-full justify-center pt-4">
-              <div class="place-self-center pt-4 lg:pt-0">
-                <img class="w-16 h-12 lg:w-36 lg:h-28 invisible md:visible" 
+            <div class="flex flex-row justify-center w-full h-full pt-4">
+              <div class="pt-4 place-self-center lg:pt-0">
+                <img class="invisible w-16 h-12 lg:w-36 lg:h-28 md:visible" 
                   src="chs_tiger.png" alt="CHS Tiger"/>
               </div>
-              <h1 id="title" class="text-orange-500 pt-6 font-semibold text-3xl lg:text-6xl">
+              <h1 id="title" class="pt-6 text-3xl font-semibold text-orange-500 lg:text-6xl">
                 Cape Central High - Class of 1973
               </h1>
-              <div class="place-self-center pt-4 lg:pt-0">
-                <img class="w-16 h-12 lg:w-36 lg:h-28 invisible md:visible" 
+              <div class="pt-4 place-self-center lg:pt-0">
+                <img class="invisible w-16 h-12 lg:w-36 lg:h-28 md:visible" 
                   src="chs_tiger.png" alt="CHS Tiger"/>
               </div>
             </div>
-            <div class="flex flex-col rounded m-auto">
+            <div class="flex flex-col m-auto rounded">
               <div class="m-">
-                <h2 class="text-white font-semibold text-xl lg:text-4xl">
+                <h2 class="text-xl font-semibold text-white lg:text-4xl">
                   Your story started here!
                 </h2>
                 <!--
-                <p class="mt-10 text-lg lg:text-3xl text-white">
+                <p class="mt-10 text-lg text-white lg:text-3xl">
                   These were your formative years. This is the crucible where you
                   developed your identity, your independence, and your drive. It
                   was where you established lifelong friendships, as well as 
                   personal and professional interests.
                 </p>
                 -->
-                <p class="pt-8 pb-4 text-orange-300 text-3xl font-bold">
+                <p class="pt-8 pb-4 text-3xl font-bold text-orange-300">
                   It was the start of your journey...but, certainly not the end!
                 </p>
               </div>
@@ -172,8 +172,7 @@
     </div>
     
     <div
-      class="top-auto bottom-0 left-0 right-0 w-full absolute
-      pointer-events-none overflow-hidden"
+      class="absolute bottom-0 left-0 right-0 top-auto w-full overflow-hidden pointer-events-none"
       style="height: 70px;">
       <svg
         class="absolute bottom-0 overflow-hidden"
@@ -190,16 +189,15 @@
     </div>
   </section>
   
-  <section class="pb-20 bg-gray-900 -mt-24">
-    <div class="container mx-auto px-4">
+  <section class="pb-20 -mt-24 bg-gray-900">
+    <div class="container px-4 mx-auto">
       <div class="flex flex-wrap">
 
-        <div class="pt-36 md:pt-48 w-full md:w-4/12 px-4 text-center">
+        <div class="w-full px-4 text-center pt-36 md:pt-48 md:w-4/12">
           <div class="flex flex-wrap items-center">
-            <div class="w-full px-4 mr-auto ml-auto">
+            <div class="w-full px-4 ml-auto mr-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words
-                w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
+                class="relative flex flex-col w-full min-w-0 mb-6 break-words rounded-lg shadow-lg bg-sepia-300">
                 <picture>
                   <img
                     alt="Graduation"
@@ -211,16 +209,16 @@
                     preserveAspectRatio="none"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 583 95"
-                    class="absolute left-0 w-full block"
+                    class="absolute left-0 block w-full"
                     style="height: 95px; top: -94px;">
                     <polygon
                       points="-30,95 583,95 583,65"
-                      class="text-sepia-300 fill-current" />
+                      class="fill-current text-sepia-300" />
                   </svg>
                   <div class="text-xl font-bold text-black">
                     Our 50th Reunion!
                   </div>
-                  <p class="text-md font-light mt-2 text-black">
+                  <p class="mt-2 font-light text-black text-md">
                     Our 50th reunion in 2023 is closer than you think. It's 
                     time think back to our time together and to start getting
                     ready!
@@ -231,11 +229,10 @@
           </div>
         </div>
 
-				<div class="pt-8 md:pt-40 w-full md:w-4/12 px-4 text-center">
+				<div class="w-full px-4 pt-8 text-center md:pt-40 md:w-4/12">
           <div class="flex flex-wrap items-center">
-            <div class="w-full px-4 mr-auto ml-auto">
-              <div class="relative flex flex-col min-w-0 break-words
-                w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
+            <div class="w-full px-4 ml-auto mr-auto">
+              <div class="relative flex flex-col w-full min-w-0 mb-6 break-words rounded-lg shadow-lg bg-sepia-300">
                 <picture>
                   <img
                     alt="Friends"
@@ -248,16 +245,16 @@
                     preserveAspectRatio="none"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 583 95"
-                    class="absolute left-0 w-full block"
+                    class="absolute left-0 block w-full"
                     style="height: 95px; top: -94px;">
                     <polygon
                       points="-30,95 583,95 583,65"
-                      class="text-sepia-300 fill-current" />
+                      class="fill-current text-sepia-300" />
                   </svg>
-                  <div class="text-xl lg:2xl font-bold text-black">
+                  <div class="text-xl font-bold text-black lg:2xl">
                     Renew old friendships
                   </div>
-                  <p class="text-lg lg:xl font-light mt-2 text-black">
+                  <p class="mt-2 text-lg font-light text-black lg:xl">
 										It's going to be a lot of fun & it's the perfect time and 
                 		a great way to reconnect with old friends & acquaintances.                  
 									</p>
@@ -267,12 +264,11 @@
           </div>
         </div>				
 
-        <div class="pt-8 lg:pt-32 w-full md:w-4/12 px-4 text-center">
+        <div class="w-full px-4 pt-8 text-center lg:pt-32 md:w-4/12">
           <div class="flex flex-wrap items-center">
-            <div class="w-full px-4 mr-auto ml-auto">
+            <div class="w-full px-4 ml-auto mr-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words
-                w-full mb-6 shadow-lg rounded-lg bg-sepia-300">
+                class="relative flex flex-col w-full min-w-0 mb-6 break-words rounded-lg shadow-lg bg-sepia-300">
                 <picture>
                   <img
                     alt="Track"
@@ -284,16 +280,16 @@
                     preserveAspectRatio="none"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 583 95"
-                    class="absolute left-0 w-full block"
+                    class="absolute left-0 block w-full"
                     style="height: 95px; top: -94px;">
                     <polygon
                       points="-30,95 583,95 583,65"
-                      class="text-sepia-300 fill-current" />
+                      class="fill-current text-sepia-300" />
                   </svg>
                   <h4 class="text-xl font-bold text-black">
                     Be a Hero & Volunteer
                   </h4>
-                  <p class="text-md font-light mt-2 text-black">
+                  <p class="mt-2 font-light text-black text-md">
                     Locating all of our classmates is a huge job & we’d love
                     your help.  Our goal is to invite all to participate in 
                     the when, where, what of OUR event.
@@ -310,8 +306,7 @@
 
   <section class="relative py-12 lg:py-20">
     <div
-      class="bottom-auto top-0 left-0 right-0 w-full absolute
-      pointer-events-none overflow-hidden -mt-20"
+      class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
       style="height: 80px;">
       <svg
         class="absolute bottom-0 overflow-hidden"
@@ -326,44 +321,34 @@
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
-    <div class="container mx-auto py-8 lg:py-none px-4">
+    <div class="flex items-center px-4 py-8 mx-auto lg:py-none">
       <div class="flex flex-wrap">
-        <div class="flex justify-center w-full md:w-4/12 m-auto px-4">
+        <div class="flex justify-center w-full px-4 m-auto md:w-4/12">
           <img
             alt="Stay tuned"
-            class="max-w-full rounded-lg shadow-lg mb-8 lg:mb-none"
+            class="max-w-full mb-8 rounded-lg shadow-lg lg:mb-none"
             src="chs_memories.jpeg" />
         </div>
-        <div class="w-full md:w-5/12 m-auto px-4">
+        <div class="w-full m-auto md:w-5/12">
           <div class="md:pr-12">
-            <h3 class="text-3xl font-semibold">CHS '73 - 50th Reunion Questionnaire</h3>
+            <h3 class="text-3xl font-semibold">CHS '73 - 50th Reunion Events</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              As we prepare for our 50th Reunion we need to know your 
-              preferences to help make this event meaningful and fun for all!
+              We have two fun get together's planned to help you re-live 
+              memories and reconnect with old friends.
             </p>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              Take a few minutes to complete this survey to share your
-              thoughts. We'll report back once the results are in.
+              Take a few minutes to check them out in `events` and sign up to 
+              attend one or both. We hope to see you there!
             </p>
-          </div>
-          <div class="flex flex-col">
-            <div id="questionnaire" class="flex flex-wrap place-self-center w-auto bg-orange-500 text-white active:bg-gray-700 text-lg
-            font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-            outline-none focus:outline-none mt-3 mb-1
-            transition duration-300 ease-in-out 
-            hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
-              <a class="self-center" href="https://forms.gle/Qh3JGkdBxkAscrxm6" target="_blank" rel="noreferrer">Take me to the Questionnaire!</a>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="pb-20 relative block bg-gray-900" id="contact">
+  <section class="relative block pb-20 bg-gray-900" id="contact">
     <div
-      class="bottom-auto top-0 left-0 right-0 w-full absolute
-      pointer-events-none overflow-hidden -mt-20"
+      class="absolute top-0 left-0 right-0 bottom-auto w-full -mt-20 overflow-hidden pointer-events-none"
       style="height: 80px;">
       <svg
         class="absolute bottom-0 overflow-hidden"
@@ -378,60 +363,58 @@
           points="2560 0 2560 100 0 100" />
       </svg>
     </div>
-    <div class="container mx-auto px-4 pt-8 lg:pt-10 lg:pb-56">
-      <div class="flex flex-wrap text-center justify-center">
-        <div class="w-full lg:w-6/12 px-4">
+    <div class="container px-4 pt-8 mx-auto lg:pt-10 lg:pb-56">
+      <div class="flex flex-wrap justify-center text-center">
+        <div class="w-full px-4 lg:w-6/12">
           <h2 class="text-4xl font-semibold text-white">Get involved!</h2>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="relative block py-24 pt-32 lg:pt-0 bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
+  <section class="relative block py-24 pt-32 bg-gray-900 lg:pt-0">
+    <div class="container px-4 mx-auto">
+      <div class="flex flex-wrap justify-center -mt-48 lg:-mt-64">
+        <div class="w-full px-4 lg:w-6/12">
+          <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-gray-300 rounded-lg shadow-lg">
             <div class="flex-auto p-5 lg:p-10">
               <h4 class="text-2xl font-semibold">We want to hear from you!</h4>
-              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+              <p class="mt-1 mb-4 leading-relaxed text-gray-600">
                 Complete this form so we can stay in touch and provide valuable 
                 updates as they become available - especially if your contact
                 info has changed.
               </p>
-              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+              <p class="mt-1 mb-4 leading-relaxed text-gray-600">
                 We'll be reaching out in the coming months to get your input
                 on the when, where and what you’d 
                 like to see in your 50th High School Class Reunion.
               </p>
-              <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+              <p class="mt-1 mb-4 leading-relaxed text-gray-600">
                 Please share your thoughts and questions and we'll get back 
                 to you as soon as possible.
               </p>
               {#if emailResult !== ''}
-                <h2 class="text-green-700 italic">{ emailResult }</h2>
+                <h2 class="italic text-green-700">{ emailResult }</h2>
               {/if}
 
               <form on:submit|preventDefault={ handleSubmit } 
                 method="post" enctype="application/json" >
-                <div class="relative w-full mb-3 mt-8">
+                <div class="relative w-full mt-8 mb-3">
                   <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                     for="full-name">
                     Full Name (required)
                   </label>
                   <input name="name" bind:value={ emailName } 
                     type="text" required aria-required="true"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
+                    class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                     placeholder="First Last"
                     style="transition: all 0.15s ease 0s;"
                     on:input={ validateName } />
                 </div>
                 {#if !isNameValid}
                   <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
+                    <div class="text-red-500 place-self-end">
                       Please enter your first & last name
                     </div>
                   </div>
@@ -439,22 +422,20 @@
 
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                     for="email">
                     Email (required)
                   </label>
                   <input name="from" bind:value={ emailFrom } 
                     type="text" required aria-required="true"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
+                    class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                     placeholder="jdoe@domain.com"
                     style="transition: all 0.15s ease 0s;"
                     on:input={ validateEmail } />
                 </div>
                 {#if !isEmailValid}
                   <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
+                    <div class="text-red-500 place-self-end">
                       Please enter a valid email
                     </div>
                   </div>
@@ -462,59 +443,52 @@
 
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-3"
+                    class="block mb-3 text-xs font-bold text-gray-700 uppercase"
                     for="street">
                     Street 
                   </label>
                   <input name="from" bind:value={ emailStreet }
                     type="text"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
+                    class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                     placeholder="1111 Any St."
                     style="transition: all 0.15s ease 0s;" />
                 </div>
 
-                <div class="flex flex-wrap relative w-full mb-1">
-                  <span class="relaive w-8/12 mb-3">
+                <div class="relative flex flex-wrap w-full mb-1">
+                  <span class="w-8/12 mb-3 relaive">
                     <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                       for="city">
                       City 
                     </label>
                     <input name="from" bind:value={ emailCity }
                       type="text"
-                      class="w-full border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring"
+                      class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                       placeholder="Anytown"
                       style="transition: all 0.15s ease 0s;" />
                   </span>
-                  <span class="relative w-14 ml-4 mb-3">
+                  <span class="relative mb-3 ml-4 w-14">
                     <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                       for="state">
                       State 
                     </label>
                     <input name="from" bind:value={ emailState }
                       type="text"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
+                      class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                       placeholder="XX"
                       style="transition: all 0.15s ease 0s;"
                       on:input={ validateState } />
                   </span>
-                  <span class="relative w-20 ml-0 md:ml-4 mb-3">
+                  <span class="relative w-20 mb-3 ml-0 md:ml-4">
                     <label
-                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                       for="phone">
                       Zipcode
                     </label>
                     <input name="from" bind:value={ emailZipcode }
                       type="text"
-                      class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none focus:ring
-                      w-full"
+                      class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                       placeholder="00000"
                       style="transition: all 0.15s ease 0s;"
                       on:input={ validateZipcode }  />
@@ -522,45 +496,41 @@
                 </div>
                 {#if !isStateValid}
                   <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
+                    <div class="text-red-500 place-self-end">
                       Please enter a valid 2-character state
                     </div>
                   </div>
                 {/if}
                 {#if !isZipcodeValid}
                   <div class="flex justify-end">
-                    <div class="place-self-end text-red-500">
+                    <div class="text-red-500 place-self-end">
                       Please enter a valid 5-digit zipcode
                     </div>
                   </div>
                 {/if}
 
-                <div class="relative w-36 mb-3">
+                <div class="relative mb-3 w-36">
                   <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                     for="phone">
                     Phone
                   </label>
                   <input name="from" bind:value={ emailPhone }
                     type="tel"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full"
+                    class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                     placeholder="(999) 999-9999"
                     style="transition: all 0.15s ease 0s;" />
                 </div>
 
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-gray-700 uppercase"
                     for="message">
                     Message (required)
                   </label>
                   <textarea name="message" bind:value={ emailMessage }
                     rows="4" cols="80" required aria-required="true"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none focus:ring
-                    w-full" 
+                    class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring" 
                     placeholder="Type a message..." />
                 </div>
 
@@ -569,13 +539,9 @@
                   I'd like to help with the reunion
                 </label>
           
-                <div class="text-center mt-6">
+                <div class="mt-6 text-center">
                   <button type="submit"
-                    class="bg-orange-500 text-white active:bg-gray-700 text-lg
-                    font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-                    outline-none focus:outline-none mr-1 mb-1
-                    transition duration-300 ease-in-out 
-                    hover:text-gray-800 hover:font-semibold transform hover:-translate-y-0 hover:scale-110">
+                    class="px-6 py-3 mb-1 mr-1 text-lg font-bold text-white uppercase transition duration-300 ease-in-out transform bg-orange-500 rounded shadow outline-none active:bg-gray-700 hover:shadow-lg focus:outline-none hover:text-gray-800 hover:font-semibold hover:-translate-y-0 hover:scale-110">
                     Send Message
                   </button>
                 </div>
