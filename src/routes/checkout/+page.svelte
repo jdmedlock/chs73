@@ -14,7 +14,8 @@
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, PREPAY_FEE, AT_DOOR_FEE,
     CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
-    NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, TXN_COMPLETED
+    NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
+    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
   } from '../../utils/constants.js'
 
   let eventType = $page.data.params.get('event')
@@ -326,6 +327,7 @@
         isAttendeeError = false
         const details = createNochargeDetails()
         const resultData = createNochargeResultData()
+        details.status = isPayByMail ? TXN_PAYMENT_PENDING_MAIL : TXN_PAYMENT_PENDING_DOOR
         details.purchase_units[0].amount.value = orderTotal
 
         resultDetails = details
