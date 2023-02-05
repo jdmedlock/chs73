@@ -27,13 +27,13 @@ test.describe('Test event signup', async () => {
     const fridaySignupLink = await page.locator('[id=FridaySignupLink]')
     await expect(fridaySignupLink).toBeDefined()
     await fridaySignupLink.click()
-    await page.waitForSelector('text="Signup for Friday"')
+    await page.waitForSelector('text="Registration"')
 
     // Proceed to the checkout
-    const checkoutLink = await page.locator('a:has-text("Proceed to checkout")')
+    const checkoutLink = await page.locator('a:has-text("Proceed to registration")')
     await expect(checkoutLink).toBeDefined()
     await checkoutLink.click()
-    await page.waitForSelector('text="Checkout"')
+    await page.waitForSelector('text="Signup for Friday\'s Social Gathering"')
   }
 
   const selectNoAttendees = async (noAttendees, email, badgeNames) => {

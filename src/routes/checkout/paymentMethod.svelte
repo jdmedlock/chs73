@@ -11,12 +11,18 @@
     switch (paymentMethod) {
       case PAY_BY_CARD:
         isPayByCard = true
+        isPayByMail = false
+        isPayAtDoor = false
         break
       case PAY_BY_MAIL:
         isPayByMail = true
+        isPayByCard = false
+        isPayAtDoor = false
         break
       case PAY_AT_DOOR:
         isPayAtDoor = true
+        isPayByCard = false
+        isPayByMail = false
         break
       default:
         throw new Error(`Unknown payment method selected - ${ paymentMethod }`)
