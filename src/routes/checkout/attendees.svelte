@@ -102,12 +102,12 @@
           {/if}
         </div>
         <div class="relative flex flex-wrap w-full gap-1 mt-1 ml-5">
-          <span class="relative w-5/12">
-            <label
-              class="block mt-1 text-xs font-bold text-gray-700 uppercase"
-              for="full-name">
-              Your name badge:
-            </label>
+          <label
+            class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
+            for="full-name">
+            Your name badge:
+          </label>
+          <span class="flex flex-wrap relative w-5/12 items-center">
             <input name="name" bind:value={ classmateFirstName } 
               type="text" required aria-required="true"
               class="w-full px-3 py-3 mt-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
@@ -115,9 +115,9 @@
               style="transition: all 0.15s ease 0s;"
               on:input={ classmateFirstName } />
           </span>
-          <span class="relative w-5/12 mt-3">
+          <span class="flex relative w-5/12 mt-3 items-center">
             <label
-              class="block text-xs font-bold text-gray-700 uppercase"
+              class="block text-sm font-bold text-gray-700 uppercase"
               for="full-name">
               &nbsp;
             </label>
@@ -134,12 +134,12 @@
             </div>
           {/if}
           {#if noAttendees > 1}
-            <span class="relative w-5/12">
-              <label
-                class="block mt-1 text-xs font-bold text-gray-700 uppercase"
-                for="full-name">
-                Companion name badge:
-              </label>
+            <label
+              class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
+              for="full-name">
+              Companion name badge:
+            </label> 
+            <span class="flex relative w-5/12 mt-3 items-center">             
               <input name="name" bind:value={ companionFirstName } 
                 type="text" required aria-required="true"
                 class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
@@ -147,9 +147,9 @@
                 style="transition: all 0.15s ease 0s;"
                 on:input={ companionFirstName } />
             </span>
-            <span class="relative w-5/12 mt-1">
+            <span class="flex relative w-5/12 mt-3 items-center">
               <label
-                class="block text-xs font-bold text-gray-700 uppercase"
+                class="block text-sm font-bold text-gray-700 uppercase"
                 for="full-name">
                 &nbsp;
               </label>
