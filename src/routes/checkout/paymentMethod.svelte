@@ -44,7 +44,7 @@
 
     <div class="flex mt-10 justify-items-start">
       <li class="flex justify-items-start">
-        <div class="relative flex items-center gap-1 -mx-40">
+        <div class="flex items-center gap-1 -mx-40 sm:flex-wrap">
           <input id="paybycard-radio" type="radio" value="{ PAY_BY_CARD }" name="paymentmethod-radio" 
             class="w-4 h-4 checked:bg-orange-600"
             on:change={ handlePaymentMethod }>
