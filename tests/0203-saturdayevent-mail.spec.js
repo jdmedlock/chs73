@@ -33,13 +33,13 @@ test.describe('Test event signup', async () => {
     const saturdaySignupLink = await page.locator('[id=SaturdaySignupLink]')
     await expect(saturdaySignupLink).toBeDefined()
     await saturdaySignupLink.click()
-    await page.waitForSelector('text="Signup for Saturday"')
+    await page.waitForSelector('text="Signup for Saturday\'s Gathering"')
 
     // Proceed to the checkout
-    const checkoutLink = await page.locator('a:has-text("Proceed to checkout")')
+    const checkoutLink = await page.locator('a:has-text("Proceed to registration")')
     await expect(checkoutLink).toBeDefined()
     await checkoutLink.click()
-    await page.waitForSelector('text="Checkout"')
+    await page.waitForSelector('text="Review & pay for Saturday\'s Gathering"')
   }
 
   const selectNoAttendees = async (noAttendees, email, badgeNames, willHelpClassmate, isVeteran) => {
@@ -72,7 +72,7 @@ test.describe('Test event signup', async () => {
 
     // Check option for military veteran
     if (isVeteran) {
-      await page.getByLabel("Click here if you are a Veteran. There's no admission fee for you and your companion.").check()
+      await page.getByLabel("Click here if you are a Veteran. There's no admission or hors d'oeurves charge for you and your companion.").check()
     }
   }
 
@@ -103,7 +103,7 @@ test.describe('Test event signup', async () => {
     await page.waitForSelector('[id=paymentReceipt]')
     await expect(page.locator('#receiptOrderId')).not.toHaveText('')
     await expect(page.locator('#receiptAmount')).toHaveText(`${ receiptAmount }`)
-    await expect(page.locator('#receiptStatus')).toHaveText('COMPLETED')
+    await expect(page.locator('#receiptStatus')).toHaveText('PAYMENT PENDING - MAIL')
     if (receiptAmount > 0) {
       await expect(page.locator('#receiptName')).toHaveText('Jim Playwright')
       await expect(page.locator('#receiptAddress')).toHaveText('1245 Main Street')
