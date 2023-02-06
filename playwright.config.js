@@ -12,7 +12,7 @@ const config = {
 	}, 
 	use: {
     headless: false,
-    viewport: { width: 1280, height: 820 },
+    viewport: { width: 1280, height: 1200 },
     ignoreHTTPSErrors: true,
     //video: 'on-first-retry',
 		trace: 'retain-on-failure',
@@ -23,7 +23,7 @@ const config = {
 			testMatch: /.*.spec.js/,
 			use: {
 				browserName: 'chromium',
-				viewport: { width: 1280, height: 720 },
+				viewport: { width: 1280, height: 1200 },
 			},
 		},
 	],

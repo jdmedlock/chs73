@@ -116,7 +116,7 @@
                 style="transition: all 0.15s ease 0s;"
                 on:input={ classmateFirstName } />
             </div>
-            <div class="w-5/6 mt-0 lg:mt-2">
+            <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
               <label
                 class="block text-sm font-bold text-gray-700 uppercase"
                 for="classmate-lastname">
@@ -150,7 +150,7 @@
                 style="transition: all 0.15s ease 0s;"
                 on:input={ companionFirstName } />
             </div>
-            <div class="w-5/6 mt-0 lg:mt-2">
+            <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
               <label
                 class="block text-sm font-bold text-gray-700 uppercase"
                 for="companion-lastname">
