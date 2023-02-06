@@ -44,27 +44,33 @@
 
     <div class="flex mt-10 justify-items-start">
       <li class="flex justify-items-start">
-        <div class="flex items-center gap-1 -mx-40 sm:flex-wrap">
-          <input id="paybycard-radio" type="radio" value="{ PAY_BY_CARD }" name="paymentmethod-radio" 
-            class="w-4 h-4 checked:bg-orange-600"
-            on:change={ handlePaymentMethod }>
-          <label for="paybycard-radio" class="block ml-2">
-            Credit/debit card
-          </label>
+        <div class="grid grid-cols-2 lg:grid-cols-3 items-center gap-1 -mx-40">
+          <div class="flex items-center">
+            <input id="paybycard-radio" type="radio" value="{ PAY_BY_CARD }" name="paymentmethod-radio" 
+              class="w-4 h-4 checked:bg-orange-600"
+              on:change={ handlePaymentMethod }>
+            <label for="paybycard-radio" class="block ml-2">
+              Credit/debit card
+            </label>
+          </div>
 
-          <input id="paybymail-radio" type="radio" value="{ PAY_BY_MAIL }" name="paymentmethod-radio" 
-            class="w-4 h-4 ml-4 checked:bg-orange-600"
-            on:change={ handlePaymentMethod }>
-          <label for="paybymail-radio" class="block ml-2">
-            By mail
-          </label>
+          <div class="flex items-center">
+            <input id="paybymail-radio" type="radio" value="{ PAY_BY_MAIL }" name="paymentmethod-radio" 
+              class="w-4 h-4 ml-1 lg:ml-6 checked:bg-orange-600"
+              on:change={ handlePaymentMethod }>
+            <label for="paybymail-radio" class="block ml-2">
+              By mail
+            </label>
+          </div>
 
-          <input id="payatdoor-radio" type="radio" value="{ PAY_AT_DOOR }" name="paymentmethod-radio" 
-            class="w-4 h-4 ml-4 checked:bg-orange-600"
-            on:change={ handlePaymentMethod }>
-          <label for="payatdoor-radio" class="block ml-2">
-            At the door
-          </label>
+          <div class="flex items-center">
+            <input id="payatdoor-radio" type="radio" value="{ PAY_AT_DOOR }" name="paymentmethod-radio" 
+              class="w-4 h-4 ml-0  checked:bg-orange-600"
+              on:change={ handlePaymentMethod }>
+            <label for="payatdoor-radio" class="block ml-2">
+              At the door
+            </label>
+          </div>
         </div>
       </li>
     </div>
