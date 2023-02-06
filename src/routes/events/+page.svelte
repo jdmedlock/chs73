@@ -44,7 +44,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">7:00PM - Closing</p>
+                  <p class="ml-3 text-base text-gray-700">7:00 PM - Closing</p>
                 </li>
 
                 <li class="flex items-start">

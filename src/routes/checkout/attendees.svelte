@@ -84,11 +84,11 @@
         <div class="flex items-start w-full ml-5">
           <span class="w-1/2 mb-3">
             <label
-              class="block mt-2 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
-              for="full-name">
+              class="block mt-4 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
+              for="classmate-email">
               Your email:
             </label>
-            <input name="name" bind:value={ classmateEmail } 
+            <input name="classmate-emails" bind:value={ classmateEmail } 
               type="text" required aria-required="true"
               class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
               placeholder="Your email"
@@ -101,65 +101,69 @@
             </span>
           {/if}
         </div>
-        <div class="relative flex flex-wrap w-full gap-1 mt-1 ml-5">
-          <span class="relative w-5/12">
-            <label
-              class="block mt-1 text-xs font-bold text-gray-700 uppercase"
-              for="full-name">
-              Your name badge:
-            </label>
-            <input name="name" bind:value={ classmateFirstName } 
-              type="text" required aria-required="true"
-              class="w-full px-3 py-3 mt-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-              placeholder="Your first name"
-              style="transition: all 0.15s ease 0s;"
-              on:input={ classmateFirstName } />
-          </span>
-          <span class="relative w-5/12 mt-3">
-            <label
-              class="block text-xs font-bold text-gray-700 uppercase"
-              for="full-name">
-              &nbsp;
-            </label>
-            <input name="name" bind:value={ classmateLastName } 
-              type="text" required aria-required="true"
-              class="w-full px-3 py-3 ml-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-              placeholder="Your last name"
-              style="transition: all 0.15s ease 0s;"
-              on:input={ classmateLastName } />
-          </span>
+        <div class="flex flex-wrap w-full gap-1 mt-1 ml-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 w-full items-center">
+            <div class="w-5/6">
+              <label
+                class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
+                for="classmate-firstname">
+                Your name badge:
+              </label>
+              <input name="classmate-firstname" bind:value={ classmateFirstName } 
+                type="text" required aria-required="true"
+                class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                placeholder="Your first name"
+                style="transition: all 0.15s ease 0s;"
+                on:input={ classmateFirstName } />
+            </div>
+            <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
+              <label
+                class="block text-sm font-bold text-gray-700 uppercase"
+                for="classmate-lastname">
+                &nbsp;
+              </label>
+              <input name="classmate-lastname" bind:value={ classmateLastName } 
+                type="text" required aria-required="true"
+                class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                placeholder="Your last name"
+                style="transition: all 0.15s ease 0s;"
+                on:input={ classmateLastName } />
+            </div>
+          </div>
           {#if isClassmateNameError}
             <div name="classmateError" class="font-bold text-red-700">
               You must enter your first and last name for your name badge
             </div>
           {/if}
           {#if noAttendees > 1}
-            <span class="relative w-5/12">
+          <div class="grid grid-cols-1 md:grid-cols-2 mt-2 w-full items-center">
+            <div class="w-5/6">
               <label
-                class="block mt-1 text-xs font-bold text-gray-700 uppercase"
-                for="full-name">
+                class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
+                for="companion-firstname">
                 Companion name badge:
               </label>
-              <input name="name" bind:value={ companionFirstName } 
+              <input name="companion-firstname" bind:value={ companionFirstName } 
                 type="text" required aria-required="true"
-                class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Companion first name"
                 style="transition: all 0.15s ease 0s;"
                 on:input={ companionFirstName } />
-            </span>
-            <span class="relative w-5/12 mt-1">
+            </div>
+            <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
               <label
-                class="block text-xs font-bold text-gray-700 uppercase"
-                for="full-name">
+                class="block text-sm font-bold text-gray-700 uppercase"
+                for="companion-lastname">
                 &nbsp;
               </label>
-              <input name="name" bind:value={ companionLastName } 
+              <input name="companion-lastname" bind:value={ companionLastName } 
                 type="text" required aria-required="true"
-                class="w-full px-3 py-3 ml-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+                class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Companion last name"
                 style="transition: all 0.15s ease 0s;"
                 on:input={ companionLastName } />
-            </span>
+            </div>
+          </div>
             {#if isCompanionNameError}
               <div name="companionError" class="font-bold text-red-700">
                 You must enter your companions first and last name for their name badge
