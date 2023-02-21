@@ -120,7 +120,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar ($35 per person in advance, $40 at the door)</p>
+                  <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar ($25 per person in advance, $30 at the door)</p>
                 </li>
 
                 <li class="flex items-start">

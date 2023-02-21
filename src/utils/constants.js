@@ -1,8 +1,8 @@
 const FRIDAY_EVENT = 'Friday Gathering'
 const SATURDAY_EVENT = 'Saturday Gathering'
 
-const PREPAY_FEE = 35.00
-const AT_DOOR_FEE = 40.00
+const PREPAY_FEE = 25.00
+const AT_DOOR_FEE = 30.00
 
 // Transaction fee doc --> https://www.paypal.com/us/business/pricing
 const CREDITCARD_TXN_FEE = .0349
