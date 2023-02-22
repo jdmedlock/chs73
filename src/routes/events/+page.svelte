@@ -1,5 +1,6 @@
 <script>
-  let href = "#"
+  import fridayEvent from '../../assets/fridayEvent.json'
+  import saturdayEvent from '../../assets/saturdayEvent.json'
 </script>
 
 <style>
@@ -25,10 +26,12 @@
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
             <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
               <div>
-                <h3 class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full" id="tier-standard">September 15, 2023</h3>
+                <h3 class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full" id="tier-standard">
+                  { fridayEvent.date }
+                </h3>
               </div>
               <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                Dogwood Social House
+                { fridayEvent.events.title }
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="mt-5 text-xl text-gray-500">An informal gathering to relax & reconnect!</p>
@@ -37,35 +40,17 @@
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
               <ul class="space-y-4">
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">7:00 PM - Closing</p>
-                </li>
-
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">Cash bar & food</p>
-                </li>
-
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">80 S Plaza Way, Cape Girardeau, MO 63703. Phone: (573) 837-1260</p>
-                </li>
+                {#each fridayEvent.events.summaryInfo as summaryBullet}
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">{ summaryBullet }</p>
+                  </li>
+                {/each}
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
@@ -88,13 +73,15 @@
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
             <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
               <div>
-                <h3 class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full" id="tier-standard">September 16, 2023</h3>
+                <h3 class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full" id="tier-standard">
+                  {saturdayEvent.date}
+                </h3>
               </div>
               <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                Drury 
+                { saturdayEvent.events.title[0]}
               </div>
               <div class="flex items-baseline text-6xl font-extrabold">
-                Plaza 
+                { saturdayEvent.events.title[1]} 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="mt-5 text-xl text-gray-500">Hors d’oeurves, cash bar, & a time to remember!</p>
@@ -103,47 +90,21 @@
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
               <ul class="space-y-4">
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM</p>
-                </li>
+                {#each saturdayEvent.events.summaryInfo as summaryBullet}
+                  <li class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <!-- Heroicon name: outline/check -->
+                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="ml-3 text-base text-gray-700">
+                      { summaryBullet }
+                    </p>
+                  </li>
+                {/each}
 
                 <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">Hors d’oeurves + cash bar ($25 per person in advance, $30 at the door)</p>
-                </li>
-
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)</p>
-                </li>
-
-                <li class="flex items-start ml-8">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation</p>
-                </li>
-
-                <li class="flex items-start ml-8">
                   <div class="flex-shrink-0">
                     <!-- Heroicon name: outline/check -->
                     <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">

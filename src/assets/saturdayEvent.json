@@ -10,6 +10,18 @@
   "options": ["Apple", "Google", "iCal"],
   "iCalFileName": "CHS73_Reunion_20230916",
   "date": "September 16, 2023",
+  "events": {
+    "title": [
+      "Drury",
+      "Plaza"
+    ],
+    "summaryInfo": [
+      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
+      "Hors d’oeurves + cash bar ($25 per person in advance, $30 at the door)",
+      "Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)",
+      "Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation"
+    ]
+  },
   "signup": {
     "heading": "Registration",
     "subheading": "Signup for Saturday's Gathering",
