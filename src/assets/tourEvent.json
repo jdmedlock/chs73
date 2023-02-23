@@ -1,0 +1,36 @@
+{
+  "eventType": "CHS Tour",
+  "name": "CHS73 50th Reunion - Tour",
+  "location": "80 S Plaza Way, Cape Girardeau, MO 63703",
+  "description": "An informal gathering to relax & reconnect!\n\nCash bar & food",
+  "startDate": "2023-09-15",
+  "endDate": "2023-09-15",
+  "startTime":"17:00",
+  "endTime":"23:30",
+  "options": ["Apple", "Google", "iCal"],
+  "timeZone": "Europe/Berlin",
+  "iCalFileName": "CHS73_Reunion_20230915",
+  "date": "TBD",
+  "events": {
+    "title": "CHS Tour",
+    "summaryInfo": [
+    ]
+  },
+  "signup": {
+    "heading": "Registration",
+    "subheading": "Signup for CHS Tour",
+    "title": "CHS Tour",
+    "summaryInfo": [
+    ]
+  },
+  "checkout": {
+    "heading": "Registration",
+    "subheading": "Signup for Friday's Social Gathering",
+    "title": "Dogwood Social Club",
+    "summaryInfo": [
+      "Dogwood Social Club: 7:00 PM - Closing",
+      "Cash bar & food",
+      "...and admittance is FREE!!!"
+    ]
+  }
+}
