@@ -24,10 +24,10 @@
   <div class="pb-12 mt-8 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
     <div class="relative">
       <div class="absolute inset-0 bg-gray-900 h-1/2"></div>
-      <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="relative px-4 mx-auto sm:px-6 lg:px-8">
 
         <!-- Top row of event cards -->
-        <div class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0 mb-6">
+        <div class="max-w-md mx-auto space-y-4 lg:max-w-full lg:grid lg:grid-cols-4 lg:gap-3 lg:space-y-0 mb-6">
           
           <!-- Friday Night Event description -->
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
@@ -38,10 +38,10 @@
                 </h3>
               </div>
               <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                { fridayEvent.events.title }
+                { fridayEvent.events.heading }
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
-                <p class="mt-5 text-xl text-gray-500">An informal gathering to relax & reconnect!</p>
+                <p class="mt-5 text-xl text-gray-500">{ fridayEvent.events.subheading }</p>
                 <img class="w-96 h-96" src="dogwood_social_club.png" alt="Dogwood"/>
               </div>
             </div>
@@ -86,13 +86,13 @@
                 </h3>
               </div>
               <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                { saturdayEvent.events.title[0]}
+                { saturdayEvent.events.heading[0] }
               </div>
               <div class="flex items-baseline text-6xl font-extrabold">
-                { saturdayEvent.events.title[1]} 
+                { saturdayEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
-                <p class="mt-5 text-xl text-gray-500">Hors d’oeurves, cash bar, & a time to remember!</p>
+                <p class="mt-5 text-xl text-gray-500">{saturdayEvent.events.subheading }</p>
                 <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
@@ -127,6 +127,7 @@
               </a>
             </div>
           </div>
+  <!--
         </div>
       </div>
     </div>
@@ -135,8 +136,9 @@
       <div class="absolute inset-0 bg-gray-900 h-1/2"></div>
       <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
   
-        <!-- Bottom row of event cards -->
+        <!- Bottom row of event cards ->
         <div class="pt-6 max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+  -->
 
           <!-- Golfing Event description -->
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
@@ -147,10 +149,13 @@
                 </h3>
               </div>
               <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                { golfEvent.events.title }
+                { golfEvent.events.heading[0] }
+              </div>
+              <div class="flex items-baseline text-6xl font-extrabold">
+                { golfEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
-                <p class="mt-5 text-xl text-gray-500">Hors d’oeurves, cash bar, & a time to remember!</p>
+                <p class="self-start mt-5 text-xl text-gray-500">{ golfEvent.events.subheading }</p>
                 <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
@@ -171,7 +176,9 @@
                 {/each}
 
               </ul>
-      
+              <a id="GolfSignupLink" class="flex items-center m-auto" href="signup?event=golf">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+              </a>     
             </div>
           </div>
 
@@ -184,10 +191,13 @@
                 </h3>
               </div>
               <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                { tourEvent.events.title }
+                { tourEvent.events.heading[0] }
+              </div>
+              <div class="flex items-baseline text-6xl font-extrabold">
+                { tourEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
-                <p class="mt-5 text-xl text-gray-500">Hors d’oeurves, cash bar, & a time to remember!</p>
+                <p class="mt-5 text-xl text-gray-500">{ tourEvent.events.subheading }</p>
                 <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
@@ -208,6 +218,9 @@
                 {/each}
 
               </ul>
+              <a id="TourSignupLink" class="flex items-center m-auto" href="signup?event=tour">
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+              </a> 
             </div>
         </div>
       </div>

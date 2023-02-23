@@ -12,8 +12,14 @@
   "iCalFileName": "CHS73_Reunion_20230915",
   "date": "TBD",
   "events": {
-    "title": "CHS Tour",
+    "heading": [
+      "CHS",
+      "Tour"
+    ],
+    "subheading": "We've changed and so has Central High",
     "summaryInfo": [
+      "Lot's of changes have happened in our old school!",
+      "Signup if you'd like more information when details are available"   
     ]
   },
   "signup": {

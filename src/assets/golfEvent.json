@@ -2,7 +2,7 @@
   "eventType": "Golf Outing",
   "name": "CHS73 50th Reunion - Golfing",
   "location": "80 S Plaza Way, Cape Girardeau, MO 63703",
-  "description": "An informal gathering to relax & reconnect!\n\nCash bar & food",
+  "description": "Golf with your classmates!",
   "startDate": "TBD",
   "endDate": "TBD",
   "startTime":"17:00",
@@ -12,8 +12,14 @@
   "iCalFileName": "CHS73_Reunion_20230915",
   "date": "TBD",
   "events": {
-    "title": "Golf Outing",
+    "heading": [
+      "Golf",
+      "Outing"
+    ],
+    "subheading": "Join us on the links for some fun in the sun!",
     "summaryInfo": [
+      "Singles or couples",
+      "Signup if you'd like more information when details are available"
     ]
   },
   "signup": {
