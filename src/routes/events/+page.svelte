@@ -1,4 +1,5 @@
 <script>
+  import { FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT } from '../../utils/constants'
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
   import golfEvent from '../../assets/golfEvent.json'
@@ -49,7 +50,7 @@
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <a id="FridaySignupLink" class="flex items-center m-auto" href="signup?event=friday">
+              <a id="FridaySignupLink" class="flex items-center m-auto" href="checkout?event={ FRIDAY_EVENT }">
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a>
             </div>
@@ -75,7 +76,7 @@
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <a id="SaturdaySignupLink" class="flex items-center m-auto" href="signup?event=saturday">
+              <a id="SaturdaySignupLink" class="flex items-center m-auto" href="checkout?event={ SATURDAY_EVENT }">
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a>
             </div>
@@ -101,7 +102,7 @@
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <a id="GolfSignupLink" class="flex items-center m-auto" href="signup?event=golf">
+              <a id="GolfSignupLink" class="flex items-center m-auto" href="checkout?event={ GOLF_EVENT }">
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a>     
             </div>
@@ -127,7 +128,7 @@
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <a id="TourSignupLink" class="flex items-center m-auto" href="signup?event=tour">
+              <a id="TourSignupLink" class="flex items-center m-auto" href="checkout?event={ TOUR_EVENT }">
                 <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a> 
             </div>
