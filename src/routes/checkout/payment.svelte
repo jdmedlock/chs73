@@ -1,6 +1,5 @@
 <script>
   export let orderId
-  export let isPayByCard
   export let isPayAtDoor
   export let isPayByMail 
   export let isPaymentSuccessful 
@@ -13,12 +12,6 @@
 </style>
 
 <payment>
-  {#if isPayByCard & !isPaymentSuccessful}
-    <div class="flex flex-col items-center mb-0 bg-white">
-      <div id="paypal-button-container" class="mt-4"/>
-    </div>
-  {/if}
-  
   {#if isPayByMail && isPaymentSuccessful}
     <div class="flex flex-col items-center mt-4 bg-white">
       <div class="w-3/4 mt-4 mb-5 ml-8 bg-gray-200">

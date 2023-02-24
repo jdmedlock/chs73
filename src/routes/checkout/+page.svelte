@@ -15,13 +15,10 @@
   import Receipt from './receipt.svelte'
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT, 
-    PREPAY_FEE, AT_DOOR_FEE, CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
-    NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
+    PREPAY_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
     TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
   } from '../../utils/constants.js'
 
-  //let eventType = $page.data.params.get('event')
-  //const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
   let eventType = $page.data.params.get('event')
   let eventData
   switch (eventType) {
@@ -51,8 +48,6 @@
   let calculatedAttendees = 0
   let calculatedAttendanceFee = 0
   let attendanceFee = 0
-  let txnChargeFee = 0
-  let estTxnFee = 0
   let noAttendees = 0
   let orderTotal = 0
   let orderId
@@ -71,7 +66,6 @@
   let isPaymentSuccessful = false
 
   // Payment Option States
-  let isPayByCard = false
   let isPayAtDoor = false
   let isPayByMail = false
 
@@ -83,27 +77,13 @@
       calculatedAttendees = isSponsor ? 1 : 0
     }
 
-    if (paymentSource !== undefined && typeof paymentSource === 'string' && 
-        eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
-      txnChargeFee = paymentSource === 'card' ? CREDITCARD_TXN_FEE : PAYPAL_TXN_FEE
-    } else {
-      txnChargeFee = 0
-      estTxnFee = 0
-    }
-
     attendanceFee = !isPayAtDoor ? PREPAY_FEE : AT_DOOR_FEE
 
     if (eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
       calculatedAttendanceFee = attendanceFee * calculatedAttendees
-      if (isPayAtDoor || isPayByMail) {
-        estTxnFee = 0
-      } else {
-        estTxnFee = (calculatedAttendanceFee * txnChargeFee) + PAYPAL_FIXED_FEE
-      }
-      orderTotal = calculatedAttendanceFee + estTxnFee
+      orderTotal = calculatedAttendanceFee
     } else {
       calculatedAttendanceFee = 0
-      estTxnFee = 0
       orderTotal = 0
     }
 
@@ -121,17 +101,6 @@
       payer_email_address: details.payer.email_address, 
       payer_firstname: details.payer.name.given_name, 
       payer_lastname: details.payer.name.surname,
-      payer_id: details.payer.name.payer_id, 
-      shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-      shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-      shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-      shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-      shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
-      shipping_country_code: details.purchase_units[0].shipping.address.country_code, 
-      billing_token: resultData ? resultData.billingToken : '', 
-      facilitator_access_token: resultData ? resultData.facilitatorAccessToken : '', 
-      accelerated_payment: resultData ? resultData.accelerated : '', 
-      soft_descriptor: details.softDescriptor, 
       is_sponsor: isSponsor ? 'Yes' : 'No',
       is_veteran: isVeteran ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
@@ -157,12 +126,7 @@
       transaction_creation_time: details.create_time, 
       payer_email_address: details.payer.email_address, 
       payer_firstname: details.payer.name.given_name, 
-      payer_lastname: details.payer.name.surname,
-      shipping_address_line_1: details.purchase_units[0].shipping.address.address_line_1, 
-      shipping_address_line_2: details.purchase_units[0].shipping.address.address_line_2, 
-      shipping_city: details.purchase_units[0].shipping.address.admin_area_2, 
-      shipping_state: details.purchase_units[0].shipping.address.admin_area_1, 
-      shipping_postal_code: details.purchase_units[0].shipping.address.postal_code, 
+      payer_lastname: details.payer.name.surname, 
       is_sponsor: isSponsor ? 'Yes' : 'No',
       is_veteran: isVeteran ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
@@ -221,11 +185,7 @@
     }
     
     const resultData = {
-      accelerated: false,
-      billingToken: null,
-      facilitatorAccessToken: "na",
       orderID: orderId,
-      payerID: "na",
       paymentID: null,
       paymentSource: calculatedPaymentSource
     }
@@ -240,69 +200,6 @@
     logPayment(details, resultData)
     emailEventAcknowledgement(details, resultData)
     isPaymentSuccessful = true
-  }
-
-  const processCardPayment = () => {
-    loadScript({ 
-      "client-id": `${ import.meta.env.VITE_PAYPAL_CLIENT_ID }`, 
-      "integration-date": "2023-01-07",
-      "locale": "en_US",
-      "disable-funding": "paylater",
-      "enable-funding": "card",
-      }).then((paypal) => {
-        paypal
-          .Buttons({
-            style: {
-              color: "blue",
-              shape: "rect",
-              label: "paypal",
-              layout: "vertical"
-            },
-            onInit: function(data, actions) {
-              // Set the z-index of the iframe injected by Paypal so it won't
-              // overlay the top nav bar
-              const iframes = document.getElementsByTagName("iframe")
-              if (iframes.length === 0) {
-                throw new Error("PayPal iframe not found")
-              }
-              iframes[0].style.zIndex = 5
-            },
-            createOrder: function (data, actions) {
-              // Process the payment if no errors were detected
-              isPayByCard = true
-              calculateOrder(data.paymentSource)
-              return actions.order.create({
-                payer: {
-                  email_address: classmateEmail,
-                },
-                purchase_units: [
-                  {
-                    amount: {
-                      value: calculatedAttendanceFee,
-                    },
-                  },
-                ],
-              })
-            },
-            onApprove: function (data, actions) {
-              // Capture order after payment approved
-              resultData = data
-              return actions.order.capture().then(function (details) {
-                resultDetails = details // Save details to be rendered
-                orderId = resultDetails.id
-                isPaymentSuccessful = true
-                logPayment(details, resultData)
-                emailEventAcknowledgement(details)
-              })
-            },
-            
-            onError: function (err) {
-              // Log error if something goes wrong during approval
-              console.log("Something went wrong", err)
-            },
-          })
-          .render("#paypal-button-container")
-        })
   }
 
   const handleRegisterAndPay = () => {
@@ -339,37 +236,16 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
-      // Create payment no charge details & results when
-      // credit card payment isn't allowed
-      if (isPayAtDoor || isPayByMail) {
-        isAttendeeError = false
-        const details = createNochargeDetails()
-        const resultData = createNochargeResultData()
-        details.status = isPayByMail ? TXN_PAYMENT_PENDING_MAIL : TXN_PAYMENT_PENDING_DOOR
-        details.purchase_units[0].amount.value = orderTotal
+      isAttendeeError = false
+      const details = createNochargeDetails()
+      const resultData = createNochargeResultData()
+      details.status = isPayByMail ? TXN_PAYMENT_PENDING_MAIL : TXN_PAYMENT_PENDING_DOOR
+      details.purchase_units[0].amount.value = orderTotal
 
-        resultDetails = details
-        logPayment(details, resultData)
-        emailEventAcknowledgement(details, resultData)
-        isPaymentSuccessful = true
-      } 
-      
-      if (isPayByCard) {
-        if (orderTotal > 0) {
-          processCardPayment()
-        }
-        if (orderTotal === 0) {
-          const details = createNochargeDetails()
-          const resultData = createNochargeResultData()
-          details.purchase_units[0].amount.value = orderTotal
-
-          resultDetails = details
-          logPayment(details, resultData)
-          emailEventAcknowledgement(details, resultData)
-          isPaymentSuccessful = true
-        }
-      }
-
+      resultDetails = details
+      logPayment(details, resultData)
+      emailEventAcknowledgement(details, resultData)
+      isPaymentSuccessful = true
     }
   }
 </script>
@@ -421,7 +297,6 @@
 
                   {#if eventType === SATURDAY_EVENT}
                     <PaymentMethod 
-                      bind:isPayByCard={ isPayByCard }
                       bind:isPayByMail={ isPayByMail }
                       bind:isPayAtDoor={ isPayAtDoor }
                       calculateOrder={ calculateOrder }
@@ -430,8 +305,6 @@
 
                   <OrderSummary eventType={ eventType } 
                     bind:noAttendees={ calculatedAttendees } 
-                    bind:subtotal={calculatedAttendanceFee } 
-                    bind:estTxnFee={ estTxnFee } 
                     bind:orderTotal={ orderTotal }
                   />
                 </ul>
@@ -450,7 +323,6 @@
 
                 {#if eventType === SATURDAY_EVENT}
                   <Payment bind:orderId={ orderId }
-                    bind:isPayByCard={ isPayByCard }
                     bind:isPayAtDoor={ isPayAtDoor }
                     bind:isPayByMail={ isPayByMail }
                     bind:isPaymentSuccessful={ isPaymentSuccessful }
@@ -463,19 +335,11 @@
                     orderId={ orderId } 
                     totalCharged={ resultDetails.purchase_units[0].amount.value }
                     txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
-                    payerFirstName={ resultDetails.payer.name.given_name }
-                    payerLastName={ resultDetails.payer.name.surname }
-                    payerAddressLine1={ resultDetails.purchase_units[0].shipping.address.address_line_1 }
-                    payerAddressLine2={ resultDetails.purchase_units[0].shipping.address.address_line_2 }
-                    payerCity={ resultDetails.purchase_units[0].shipping.address.admin_area_2 }
-                    payerState={ resultDetails.purchase_units[0].shipping.address.admin_area_1 }
-                    payerPostalCode={ resultDetails.purchase_units[0].shipping.address.postal_code }
                     payerEmail={ resultDetails.payer.email_address }
                     isSponsor={ isSponsor }
                     isVeteran={ isVeteran }
                     classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
                     companionFirstName={ companionFirstName } companionLastName={ companionLastName }
-                    isPayByCard={ isPayByCard }
                   />
                 {/if}
 

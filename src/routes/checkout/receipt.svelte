@@ -8,11 +8,6 @@
   export let txnCreated
   export let payerFirstName
   export let payerLastName
-  export let payerAddressLine1
-  export let payerAddressLine2
-  export let payerCity
-  export let payerState
-  export let payerPostalCode
   export let payerEmail
   export let isSponsor
   export let isVeteran
@@ -20,17 +15,12 @@
   export let classmateLastName
   export let companionFirstName
   export let companionLastName
-  export let isPayByCard
 </script>
 
 <receipt>
   <div class="flex flex-col items-center mt-2 text-base bg-white">
     <h3 id="paymentReceipt" class="mt-4 font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full">
-      {#if isPayByCard}
-        Your payment was successfully processed (check your email)
-      {:else}
-        Your registration was successfully processed (check your email)
-      {/if}
+      Your registration was successfully processed (check your email)
     </h3>
     <div class="grid w-1/2 grid-cols-2 mt-4 mb-4 ml-8 bg-gray-200 gap-x-4">
       <div>Registration ID:</div><div id="receiptOrderId">{ orderId }</div>
@@ -39,15 +29,6 @@
       <div>Transaction created:</div><div id="receiptCreated">{ txnCreated }</div>
       {#if eventType === SATURDAY_EVENT}
         <div>Name:</div><div id="receiptName"> { payerFirstName } { payerLastName }</div>
-      {/if}
-      {#if payerAddressLine1}
-        <div>Address:</div><div id="receiptAddress">{ payerAddressLine1 }</div>
-        {#if payerAddressLine2}
-          <div>&nbsp;</div><div id="receiptAddress2">{ payerAddressLine2 }</div>
-        {/if}
-        <div>City:</div><div id="receiptCity">{ payerCity }</div>
-        <div>State:</div><div id="receiptState">{ payerState }</div>
-        <div>Zipcode:</div><div id="receiptPostalCode">{ payerPostalCode }</div>
       {/if}
       {#if payerEmail}
         <div>Email:</div><div id="receiptEmail">{ payerEmail }</div>

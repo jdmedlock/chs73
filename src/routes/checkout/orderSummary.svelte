@@ -2,8 +2,6 @@
   import { SATURDAY_EVENT } from "../../utils/constants"
   export let eventType
   export let noAttendees
-  export let subtotal
-  export let estTxnFee
   export let orderTotal 
 </script>
 
@@ -21,9 +19,6 @@
       <div class="grid grid-cols-2 pl-2 pr-2 ml-8 bg-gray-200 gap-x-4">
         <div>No. Attendees </div><div class="mb-2 mr-2 justify-self-end">{ noAttendees }</div>
         {#if (eventType === SATURDAY_EVENT) }
-          <div>Subtotal </div><div class="justify-self-end">${ subtotal.toFixed(2) }</div>
-          <div>Est. transaction fee </div><div class="justify-self-end">{ estTxnFee.toFixed(2) }</div>
-          <div>Taxes </div><div class="underline justify-self-end">0.00</div>
           <div class="font-bold">Order Total </div><div class="font-bold justify-self-end">${ orderTotal.toFixed(2) }</div>
         {/if}
       </div>
