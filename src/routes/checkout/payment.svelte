@@ -5,12 +5,6 @@
   export let isPaymentSuccessful 
 </script>
 
-<style>
-  #paypal-button-container {
-    margin: 30px 0;
-  }
-</style>
-
 <payment>
   {#if isPayByMail && isPaymentSuccessful}
     <div class="flex flex-col items-center mt-4 bg-white">
