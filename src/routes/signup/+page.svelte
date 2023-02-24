@@ -3,12 +3,33 @@
   import { atcb_action } from '../../utils/atcb.js'
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
-  import { FRIDAY_EVENT, SATURDAY_EVENT } from '../../utils/constants.js'
+  import golfEvent from '../../assets/golfEvent.json'
+  import tourEvent from '../../assets/tourEvent.json'
+  import { FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT } from '../../utils/constants.js'
 
   let isPaymentVisible = false
 
-  let eventType = $page.data.params.get('event') === 'friday' ? FRIDAY_EVENT : SATURDAY_EVENT
-  const eventData = eventType == FRIDAY_EVENT ? fridayEvent : saturdayEvent
+  let eventParam = $page.data.params.get('event')
+  let eventType
+  let eventData
+  switch (eventParam) {
+    case 'friday':
+      eventType = FRIDAY_EVENT 
+      eventData = fridayEvent
+      break
+    case 'saturday':
+      eventType = SATURDAY_EVENT 
+      eventData = saturdayEvent
+      break
+    case 'golf':
+      eventType = GOLF_EVENT
+      eventData = golfEvent
+      break
+    case 'tour':
+      eventType = TOUR_EVENT
+      eventData = tourEvent
+      break
+  }
 
   const handleAddEventToCalendar = (event) => {
     event.preventDefault()
@@ -40,6 +61,7 @@
         </div>
       </div>
     </div>
+
     <div class="pb-12 mt-8 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
       <div class="relative">
         <div class="absolute inset-0 bg-gray-900 h-3/4"></div>
@@ -79,8 +101,7 @@
           </div>
         </div>
       </div>
-
     </div>
-
+    
   </div>
 </section>

@@ -5,6 +5,8 @@
   import generateOrderID from '../../utils/generateOrderID.js'
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
+  import golfEvent from '../../assets/golfEvent.json'
+  import tourEvent from '../../assets/golfEvent.json'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
   import PaymentMethod from './paymentMethod.svelte'
@@ -12,14 +14,30 @@
   import Payment from './payment.svelte'
   import Receipt from './receipt.svelte'
   import { 
-    FRIDAY_EVENT, SATURDAY_EVENT, PREPAY_FEE, AT_DOOR_FEE,
-    CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
+    FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT, 
+    PREPAY_FEE, AT_DOOR_FEE, CREDITCARD_TXN_FEE, PAYPAL_TXN_FEE, PAYPAL_FIXED_FEE, 
     NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
     TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
   } from '../../utils/constants.js'
 
+  //let eventType = $page.data.params.get('event')
+  //const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
   let eventType = $page.data.params.get('event')
-  const eventData = eventType === FRIDAY_EVENT ? fridayEvent : saturdayEvent
+  let eventData
+  switch (eventType) {
+    case FRIDAY_EVENT: 
+      eventData = fridayEvent
+      break
+    case SATURDAY_EVENT:
+      eventData = saturdayEvent
+      break
+    case GOLF_EVENT:
+      eventData = golfEvent
+      break
+    case TOUR_EVENT:
+      eventData = tourEvent
+      break
+  }
 
   let resultData
   let resultDetails
@@ -316,7 +334,7 @@
       return
     }
 
-    if(eventType === FRIDAY_EVENT) {
+    if(eventType !== SATURDAY_EVENT) {
       processFridaySignup()
     }
 
@@ -421,10 +439,10 @@
                 {#if !isPaymentSuccessful}
                   <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
                     <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">
-                      {#if eventType === FRIDAY_EVENT}
-                        Register
-                      {:else}
+                      {#if eventType === SATURDAY_EVENT}
                         Register & pay
+                      {:else}
+                        Register
                       {/if}
                     </span>
                   </button>

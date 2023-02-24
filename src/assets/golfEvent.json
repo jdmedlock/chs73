@@ -1,15 +1,14 @@
 {
   "eventType": "Golf Outing",
   "name": "CHS73 50th Reunion - Golfing",
-  "location": "80 S Plaza Way, Cape Girardeau, MO 63703",
+  "location": "250 Country Club Drive, Cape Girardeau, MO 63701",
   "description": "Golf with your classmates!",
   "startDate": "TBD",
   "endDate": "TBD",
-  "startTime":"17:00",
-  "endTime":"23:30",
+  "startTime":"TBD",
+  "endTime":"TBD",
   "options": ["Apple", "Google", "iCal"],
-  "timeZone": "Europe/Berlin",
-  "iCalFileName": "CHS73_Reunion_20230915",
+  "iCalFileName": "",
   "date": "TBD",
   "events": {
     "heading": [
@@ -27,16 +26,18 @@
     "subheading": "Signup for an afternoon of golfing",
     "title": "Golf Outing",
     "summaryInfo": [
+      "Singles or couples",
+      "Signup if you'd like more information when details are available"
     ]
   },
   "checkout": {
     "heading": "Registration",
-    "subheading": "Signup for Friday's Social Gathering",
-    "title": "Dogwood Social Club",
+    "subheading": "Signup for an afternoon of golfing",
+    "title": "Cape Girardeau Country Club",
     "summaryInfo": [
-      "Dogwood Social Club: 7:00 PM - Closing",
-      "Cash bar & food",
-      "...and admittance is FREE!!!"
+      "A round of golf to relax and get reacquainted",
+      "Singles or couples",
+      "Signup if you'd like more information when details are available"
     ]
   }
 }

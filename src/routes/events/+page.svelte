@@ -27,7 +27,7 @@
       <div class="relative px-4 mx-auto sm:px-6 lg:px-8">
 
         <!-- Top row of event cards -->
-        <div class="max-w-md mx-auto space-y-4 lg:max-w-full lg:grid lg:grid-cols-4 lg:gap-3 lg:space-y-0 mb-6">
+        <div class="max-w-md mx-auto space-y-4 md:max-w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-4 md:space-y-0 mb-6">
           
           <!-- Friday Night Event description -->
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
@@ -37,43 +37,21 @@
                   { fridayEvent.date }
                 </h3>
               </div>
-              <div class="flex items-baseline mt-4 text-6xl font-extrabold">
-                { fridayEvent.events.heading }
+              <div class="flex items-baseline mt-4 text-4xl font-extrabold">
+                { fridayEvent.events.heading[0] }
+              </div>
+              <div class="flex items-baseline text-4xl font-extrabold">
+                { fridayEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="mt-5 text-xl text-gray-500">{ fridayEvent.events.subheading }</p>
-                <img class="w-96 h-96" src="dogwood_social_club.png" alt="Dogwood"/>
+                <img class="w-72 h-72" src="dogwood_social_club.png" alt="Dogwood"/>
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <ul class="space-y-4">
-                {#each fridayEvent.events.summaryInfo as summaryBullet}
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">{ summaryBullet }</p>
-                  </li>
-                {/each}
-
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700 underline"><a href="https://dogwood-social-house.business.site/" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
-                </li>
-              </ul>
-
               <a id="FridaySignupLink" class="flex items-center m-auto" href="signup?event=friday">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a>
-
             </div>
           </div>
 
@@ -85,60 +63,23 @@
                   {saturdayEvent.date}
                 </h3>
               </div>
-              <div class="flex items-baseline mt-4 text-6xl font-extrabold">
+              <div class="flex items-baseline mt-4 text-4xl font-extrabold">
                 { saturdayEvent.events.heading[0] }
               </div>
-              <div class="flex items-baseline text-6xl font-extrabold">
+              <div class="flex items-baseline text-4xl font-extrabold">
                 { saturdayEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="mt-5 text-xl text-gray-500">{saturdayEvent.events.subheading }</p>
-                <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
+                <img class="w-72 h-72" src="drury_plaza.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <ul class="space-y-4">
-                {#each saturdayEvent.events.summaryInfo as summaryBullet}
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">
-                      { summaryBullet }
-                    </p>
-                  </li>
-                {/each}
-
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: outline/check -->
-                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700 underline"><a href="https://www.druryhotels.com/locations/cape-girardeau-mo/drury-plaza-hotel-cape-girardeau-conference-center" target="_blank" rel="noopener noreferrer">Click for Website</a></p>
-                </li>
-              </ul>
               <a id="SaturdaySignupLink" class="flex items-center m-auto" href="signup?event=saturday">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a>
             </div>
           </div>
-  <!--
-        </div>
-      </div>
-    </div>
-
-    <div class="relative">
-      <div class="absolute inset-0 bg-gray-900 h-1/2"></div>
-      <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-  
-        <!- Bottom row of event cards ->
-        <div class="pt-6 max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
-  -->
 
           <!-- Golfing Event description -->
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
@@ -148,36 +89,20 @@
                   { golfEvent.date }
                 </h3>
               </div>
-              <div class="flex items-baseline mt-4 text-6xl font-extrabold">
+              <div class="flex items-baseline mt-4 text-4xl font-extrabold">
                 { golfEvent.events.heading[0] }
               </div>
-              <div class="flex items-baseline text-6xl font-extrabold">
+              <div class="flex items-baseline text-4xl font-extrabold">
                 { golfEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="self-start mt-5 text-xl text-gray-500">{ golfEvent.events.subheading }</p>
-                <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
+                <img class="w-72 h-72" src="cape_country_club.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <ul class="space-y-4">
-                {#each golfEvent.events.summaryInfo as summaryBullet}
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">
-                      { summaryBullet }
-                    </p>
-                  </li>
-                {/each}
-
-              </ul>
               <a id="GolfSignupLink" class="flex items-center m-auto" href="signup?event=golf">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a>     
             </div>
           </div>
@@ -190,36 +115,20 @@
                   {tourEvent.date}
                 </h3>
               </div>
-              <div class="flex items-baseline mt-4 text-6xl font-extrabold">
+              <div class="flex items-baseline mt-4 text-4xl font-extrabold">
                 { tourEvent.events.heading[0] }
               </div>
-              <div class="flex items-baseline text-6xl font-extrabold">
+              <div class="flex items-baseline text-4xl font-extrabold">
                 { tourEvent.events.heading[1] } 
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="mt-5 text-xl text-gray-500">{ tourEvent.events.subheading }</p>
-                <img class="w-96 h-96" src="drury_plaza.jpeg" alt="Drury Plaza"/>
+                <img class="w-72 h-72" src="chs_building.jpeg" alt="Drury Plaza"/>
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-gray-50 sm:p-10 sm:pt-6">
-              <ul class="space-y-4">
-                {#each tourEvent.events.summaryInfo as summaryBullet}
-                  <li class="flex items-start">
-                    <div class="flex-shrink-0">
-                      <!-- Heroicon name: outline/check -->
-                      <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <p class="ml-3 text-base text-gray-700">
-                      { summaryBullet }
-                    </p>
-                  </li>
-                {/each}
-
-              </ul>
               <a id="TourSignupLink" class="flex items-center m-auto" href="signup?event=tour">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Sign me up!!!</span>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
               </a> 
             </div>
         </div>
