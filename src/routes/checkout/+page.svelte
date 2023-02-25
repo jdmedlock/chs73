@@ -15,7 +15,7 @@
   import Receipt from './receipt.svelte'
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT, 
-    PREPAY_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
+    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
     TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
   } from '../../utils/constants.js'
 
@@ -178,11 +178,7 @@
 
   const createNochargeResultData = () => {
     let calculatedPaymentSource = NO_CHARGE
-    if (isPayAtDoor) {
-      calculatedPaymentSource = PAY_AT_DOOR
-    } else if (isPayByMail) {
-      calculatedPaymentSource = PAY_BY_MAIL
-    }
+    calculatedPaymentSource = isPayAtDoor ? PAY_AT_DOOR : PAY_BY_MAIL
     
     const resultData = {
       orderID: orderId,

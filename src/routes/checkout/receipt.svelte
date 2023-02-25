@@ -25,9 +25,6 @@
       <div>Order total:</div><div id="receiptAmount">$ { parseFloat(totalCharged).toFixed(2) }</div>
       <div>Transaction status:</div><div id="receiptStatus">{ txnStatus }</div>
       <div>Transaction created:</div><div id="receiptCreated">{ txnCreated }</div>
-      {#if eventType === SATURDAY_EVENT}
-        <div>Name:</div><div id="receiptName"> { payerFirstName } { payerLastName }</div>
-      {/if}
       {#if payerEmail}
         <div>Email:</div><div id="receiptEmail">{ payerEmail }</div>
       {/if}
