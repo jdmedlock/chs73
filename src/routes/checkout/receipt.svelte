@@ -6,8 +6,6 @@
   export let totalCharged
   export let txnStatus
   export let txnCreated
-  export let payerFirstName
-  export let payerLastName
   export let payerEmail
   export let isSponsor
   export let isVeteran

@@ -8,10 +8,6 @@
   const handlePaymentMethod = () => {
     const paymentMethod = document.querySelector('input[name="paymentmethod-radio"]:checked').value
     switch (paymentMethod) {
-      case PAY_BY_CARD:
-        isPayByMail = false
-        isPayAtDoor = false
-        break
       case PAY_BY_MAIL:
         isPayByMail = true
         isPayAtDoor = false
@@ -40,7 +36,7 @@
 
     <div class="flex mt-10 justify-items-start">
       <li class="flex justify-items-start">
-        <div class="grid grid-cols-2 lg:grid-cols-3 items-center gap-1 -mx-40">
+        <div class="grid items-center grid-cols-2 gap-1 -mx-40 lg:grid-cols-3">
 
           <div class="flex items-center">
             <input id="paybymail-radio" type="radio" value="{ PAY_BY_MAIL }" name="paymentmethod-radio" 
@@ -53,7 +49,7 @@
 
           <div class="flex items-center">
             <input id="payatdoor-radio" type="radio" value="{ PAY_AT_DOOR }" name="paymentmethod-radio" 
-              class="w-4 h-4 ml-0  checked:bg-orange-600"
+              class="w-4 h-4 ml-0 checked:bg-orange-600"
               on:change={ handlePaymentMethod }>
             <label for="payatdoor-radio" class="block ml-2">
               At the door

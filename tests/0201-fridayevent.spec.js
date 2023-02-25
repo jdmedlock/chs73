@@ -23,16 +23,10 @@ test.describe('Test event signup', async () => {
     await eventsMenuItem.click()
     await page.waitForSelector('text="Upcoming Events"')
 
-    // Signup for the Saturday event
+    // Signup for the Friday event
     const fridaySignupLink = await page.locator('[id=FridaySignupLink]')
     await expect(fridaySignupLink).toBeDefined()
     await fridaySignupLink.click()
-    await page.waitForSelector('text="Registration"')
-
-    // Proceed to the checkout
-    const checkoutLink = await page.locator('a:has-text("Proceed to registration")')
-    await expect(checkoutLink).toBeDefined()
-    await checkoutLink.click()
     await page.waitForSelector('text="Signup for Friday\'s Social Gathering"')
   }
 

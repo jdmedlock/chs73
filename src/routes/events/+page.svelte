@@ -28,7 +28,7 @@
       <div class="relative px-4 mx-auto sm:px-6 lg:px-8">
 
         <!-- Top row of event cards -->
-        <div class="max-w-md mx-auto space-y-4 md:max-w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-4 md:space-y-0 mb-6">
+        <div class="max-w-md mx-auto mb-6 space-y-4 md:max-w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-4 md:space-y-0">
           
           <!-- Friday Night Event description -->
           <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">

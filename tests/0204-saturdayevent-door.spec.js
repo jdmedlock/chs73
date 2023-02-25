@@ -1,6 +1,6 @@
 import { chromium } from 'playwright'
 import { test, expect } from '@playwright/test'
-import { PAY_BY_CARD, PAY_BY_MAIL, PAY_AT_DOOR } from '../src/utils/constants.js'
+import { PAY_BY_MAIL, PAY_AT_DOOR } from '../src/utils/constants.js'
 
 const DO_SPONSOR_CLASSMATE = true
 const DONT_SPONSOR_CLASSMATE = false
@@ -33,12 +33,6 @@ test.describe('Test event signup', async () => {
     const saturdaySignupLink = await page.locator('[id=SaturdaySignupLink]')
     await expect(saturdaySignupLink).toBeDefined()
     await saturdaySignupLink.click()
-    await page.waitForSelector('text="Signup for Saturday\'s Gathering"')
-
-    // Proceed to the checkout
-    const checkoutLink = await page.locator('a:has-text("Proceed to registration")')
-    await expect(checkoutLink).toBeDefined()
-    await checkoutLink.click()
     await page.waitForSelector('text="Review & pay for Saturday\'s Gathering"')
   }
 
@@ -79,9 +73,6 @@ test.describe('Test event signup', async () => {
   // Select the payment method 
   const choosePaymentMethod = async (method) => {
     switch (method) {
-      case PAY_BY_CARD:
-        await page.getByLabel("Credit/debit card").check()
-        break
       case PAY_BY_MAIL:
         await page.getByLabel("By mail").check()
         break
@@ -94,7 +85,7 @@ test.describe('Test event signup', async () => {
   // Pay for the event by mail
   const fillInCardForm = async () => {
     const calculateBtn = page.getByRole('button', { name: 'Register & pay' })
-    await calculateBtn.scrollIntoViewIfNeeded()
+    //await calculateBtn.scrollIntoViewIfNeeded()
     await calculateBtn.click()
   }
 
@@ -143,7 +134,7 @@ test.describe('Test event signup', async () => {
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 40.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 30.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0204:02-should signup for Saturday with one attendee + sponsor', async () => {
@@ -156,7 +147,7 @@ test.describe('Test event signup', async () => {
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 80.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 60.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0204:03-should signup for Saturday with one attendee + veteran', async () => {
@@ -182,7 +173,7 @@ test.describe('Test event signup', async () => {
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 40.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 30.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0204:05-should signup for Saturday with two attendees', async () => {
@@ -195,7 +186,7 @@ test.describe('Test event signup', async () => {
     }, DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 80.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 60.00', DONT_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0204:06-should signup for Saturday with two attendees + sponsor', async () => {
@@ -208,7 +199,7 @@ test.describe('Test event signup', async () => {
     }, DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
     await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 120.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
+    await validateReceipt('$ 90.00', DO_SPONSOR_CLASSMATE, ISNT_VETERAN)
   }, 2 * 60 * 1000)
 
   test('0204:07-should signup for Saturday with two attendees + veteran', async () => {
@@ -234,7 +225,7 @@ test.describe('Test event signup', async () => {
     }, DO_SPONSOR_CLASSMATE, IS_VETERAN)
     await choosePaymentMethod(PAY_AT_DOOR)
     await fillInCardForm()
-    await validateReceipt('$ 40.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
+    await validateReceipt('$ 30.00', DO_SPONSOR_CLASSMATE, IS_VETERAN)
   }, 2 * 60 * 1000)
 
 })
