@@ -6,7 +6,7 @@
   import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
   import golfEvent from '../../assets/golfEvent.json'
-  import tourEvent from '../../assets/golfEvent.json'
+  import tourEvent from '../../assets/tourEvent.json'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
   import PaymentMethod from './paymentMethod.svelte'
@@ -15,8 +15,9 @@
   import Receipt from './receipt.svelte'
   import { 
     FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT, 
-    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, 
-    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
+    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, PAY_IS_PENDING,
+    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR,
+    TXN_DETAILS_PENDING
   } from '../../utils/constants.js'
 
   let eventType = $page.data.params.get('event')
@@ -148,7 +149,8 @@
     orderId = generateOrderID(classmateFirstName.concat(classmateLastName))
     return ({
       id: orderId,
-      status: TXN_COMPLETED, 
+      status: (eventType === GOLF_EVENT || eventType === TOUR_EVENT) 
+        ? TXN_DETAILS_PENDING : TXN_COMPLETED, 
       create_time: currentTime, 
       update_time: currentTime,
       payer: {
@@ -179,6 +181,13 @@
   const createNochargeResultData = () => {
     let calculatedPaymentSource = NO_CHARGE
     calculatedPaymentSource = isPayAtDoor ? PAY_AT_DOOR : PAY_BY_MAIL
+    if (isPayAtDoor) {
+      calculatedPaymentSource = PAY_AT_DOOR
+    } else if (isPayByMail) {
+      calculatedPaymentSource = PAY_BY_MAIL
+    } else {
+      calculatedPaymentSource = PAY_IS_PENDING
+    }
     
     const resultData = {
       orderID: orderId,
