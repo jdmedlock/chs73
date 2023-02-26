@@ -1,0 +1,42 @@
+{
+  "eventType": "CHS Tour",
+  "name": "CHS73 50th Reunion - Tour",
+  "location": "80 S Plaza Way, Cape Girardeau, MO 63703",
+  "description": "An informal gathering to relax & reconnect!\n\nCash bar & food",
+  "startDate": "2023-09-15",
+  "endDate": "2023-09-15",
+  "startTime":"17:00",
+  "endTime":"23:30",
+  "options": ["Apple", "Google", "iCal"],
+  "timeZone": "Europe/Berlin",
+  "iCalFileName": "CHS73_Reunion_20230915",
+  "date": "TBD",
+  "events": {
+    "heading": [
+      "CHS",
+      "Tour"
+    ],
+    "subheading": "We've changed and so has Central High",
+    "summaryInfo": [
+      "Lot's of changes have happened in our old school!",
+      "Signup if you'd like more information when details are available"   
+    ]
+  },
+  "signup": {
+    "heading": "Registration",
+    "subheading": "Signup for CHS Tour",
+    "title": "CHS Tour",
+    "summaryInfo": [
+      "Lot's of changes have happened in our old school!",
+      "Signup if you'd like more information when details are available"   
+    ]
+  },
+  "checkout": {
+    "heading": "Registration",
+    "subheading": "Signup for a tour of CHS",
+    "title": "CHS Tour",
+    "summaryInfo": [
+      "Signup if you'd like more information when details are available"   
+    ]
+  }
+}

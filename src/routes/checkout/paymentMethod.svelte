@@ -1,7 +1,6 @@
 <script>
-  import { PAY_BY_CARD, PAY_BY_MAIL, PAY_AT_DOOR } from '../../utils/constants.js'
+  import { PAY_BY_MAIL, PAY_AT_DOOR } from '../../utils/constants.js'
 
-  export let isPayByCard
   export let isPayByMail
   export let isPayAtDoor
   export let calculateOrder
@@ -9,19 +8,12 @@
   const handlePaymentMethod = () => {
     const paymentMethod = document.querySelector('input[name="paymentmethod-radio"]:checked').value
     switch (paymentMethod) {
-      case PAY_BY_CARD:
-        isPayByCard = true
-        isPayByMail = false
-        isPayAtDoor = false
-        break
       case PAY_BY_MAIL:
         isPayByMail = true
-        isPayByCard = false
         isPayAtDoor = false
         break
       case PAY_AT_DOOR:
         isPayAtDoor = true
-        isPayByCard = false
         isPayByMail = false
         break
       default:
@@ -44,15 +36,7 @@
 
     <div class="flex mt-10 justify-items-start">
       <li class="flex justify-items-start">
-        <div class="grid grid-cols-2 lg:grid-cols-3 items-center gap-1 -mx-40">
-          <div class="flex items-center">
-            <input id="paybycard-radio" type="radio" value="{ PAY_BY_CARD }" name="paymentmethod-radio" 
-              class="w-4 h-4 checked:bg-orange-600"
-              on:change={ handlePaymentMethod }>
-            <label for="paybycard-radio" class="block ml-2">
-              Credit/debit card
-            </label>
-          </div>
+        <div class="grid items-center grid-cols-2 gap-1 -mx-40 lg:grid-cols-3">
 
           <div class="flex items-center">
             <input id="paybymail-radio" type="radio" value="{ PAY_BY_MAIL }" name="paymentmethod-radio" 
@@ -65,7 +49,7 @@
 
           <div class="flex items-center">
             <input id="payatdoor-radio" type="radio" value="{ PAY_AT_DOOR }" name="paymentmethod-radio" 
-              class="w-4 h-4 ml-0  checked:bg-orange-600"
+              class="w-4 h-4 ml-0 checked:bg-orange-600"
               on:change={ handlePaymentMethod }>
             <label for="payatdoor-radio" class="block ml-2">
               At the door
