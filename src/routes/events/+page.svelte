@@ -80,7 +80,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+          <div class="flex flex-col overflow-hidden">
             <!-- Golfing Event description -->
             <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
               <div class="px-6 py-4 bg-white sm:p-10 sm:pb-6">
@@ -105,7 +105,7 @@
             </div>
 
             <!-- CHS Tour description -->
-            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg mt-9">
+            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg mt-8">
               <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
                 <div>
                   <h3 class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full" id="tier-standard">
