@@ -12,8 +12,7 @@
   "date": "TBD",
   "events": {
     "heading": [
-      "Golf",
-      "Outing"
+      "Golf Outing"
     ],
     "subheading": "Join us on the links for some fun in the sun!",
     "summaryInfo": [
@@ -21,18 +20,9 @@
       "Signup if you'd like more information when details are available"
     ]
   },
-  "signup": {
-    "heading": "Registration",
-    "subheading": "Signup for an afternoon of golfing",
-    "title": "Golf Outing",
-    "summaryInfo": [
-      "Singles or couples",
-      "Signup if you'd like more information when details are available"
-    ]
-  },
   "checkout": {
     "heading": "Registration",
-    "subheading": "Signup for an afternoon of golfing",
+    "subheading": "Signup for a Class of '73 golf outing",
     "title": "Cape Girardeau Country Club",
     "summaryInfo": [
       "A round of golf to relax and get reacquainted",

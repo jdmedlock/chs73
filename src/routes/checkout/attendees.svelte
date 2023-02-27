@@ -63,7 +63,7 @@
         </button>
         {#if isAttendeeError}
           <div name="attendeeError" class="font-bold text-red-700">
-            You must choose the number of attendees before selecting a payment option
+            You must choose the number of attendees before proceeding
           </div>
         {/if}
       </div>
