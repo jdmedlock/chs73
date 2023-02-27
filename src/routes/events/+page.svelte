@@ -80,7 +80,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col overflow-hidden">
+          <div class="flex flex-col overflow-hidden sm:grid sm:grid-cols-2 md:grid-rows-2 md:gap-4">
             <!-- Golfing Event description -->
             <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
               <div class="px-6 py-4 bg-white sm:p-10 sm:pb-6">
