@@ -333,12 +333,12 @@
           <div class="md:pr-12">
             <h3 class="text-3xl font-semibold">CHS '73 - 50th Reunion Events</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              We have two fun get together's planned to help you re-live 
+              We have some fun get together's planned to help you re-live 
               memories and reconnect with old friends.
             </p>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
               Take a few minutes to check them out in `events` and sign up to 
-              attend one or both. We hope to see you there!
+              attend one or all of them. We hope to see you there!
             </p>
           </div>
         </div>

@@ -12,8 +12,8 @@
 <section class="relative">
   
 <div class="bg-gray-900">
-  <div class="pt-12 sm:pt-16 lg:pt-24">
-    <div class="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
+  <div class="pt-20">
+    <div class="mx-auto text-center max-w-7xl px-8">
       <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
         <h2 class="text-lg font-semibold leading-6 tracking-wider text-gray-300 uppercase">Upcoming Events</h2>
         <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Reconnect with classmates at these events!</p>
