@@ -1,0 +1,33 @@
+{
+  "eventType": "Golf Outing",
+  "name": "CHS73 50th Reunion - Golfing",
+  "location": "250 Country Club Drive, Cape Girardeau, MO 63701",
+  "description": "Golf with your classmates!",
+  "startDate": "TBD",
+  "endDate": "TBD",
+  "startTime":"TBD",
+  "endTime":"TBD",
+  "options": ["Apple", "Google", "iCal"],
+  "iCalFileName": "",
+  "date": "TBD",
+  "events": {
+    "heading": [
+      "Golf Outing"
+    ],
+    "subheading": "Join us on the links for some fun in the sun!",
+    "summaryInfo": [
+      "Singles or couples",
+      "Signup if you'd like more information when details are available"
+    ]
+  },
+  "checkout": {
+    "heading": "Registration",
+    "subheading": "Signup for a Class of '73 golf outing",
+    "title": "We'll announce which course as soon as it's available",
+    "summaryInfo": [
+      "A round of golf to relax and get reacquainted",
+      "Singles or couples",
+      "Signup if you'd like more information when details are available"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "eventType": "CHS Tour",
+  "name": "CHS73 50th Reunion - Tour",
+  "location": "80 S Plaza Way, Cape Girardeau, MO 63703",
+  "description": "An informal gathering to relax & reconnect!\n\nCash bar & food",
+  "startDate": "2023-09-15",
+  "endDate": "2023-09-15",
+  "startTime":"17:00",
+  "endTime":"23:30",
+  "options": ["Apple", "Google", "iCal"],
+  "timeZone": "Europe/Berlin",
+  "iCalFileName": "CHS73_Reunion_20230915",
+  "date": "September 16, 2023 @ 10:00 am",
+  "events": {
+    "heading": [
+      "CHS Tour"
+    ],
+    "subheading": "We've changed and so has our old school",
+    "summaryInfo": [
+      "Lot's of changes have happened in our old school!",
+      "Signup if you'd like more information when details are available"   
+    ]
+  },
+  "checkout": {
+    "heading": "Registration",
+    "subheading": "Signup for a tour of CHS",
+    "title": "A tour of our High School facility",
+    "summaryInfo": [
+      "What was our High School is now the Terry W. Kitchen Central Jr. High. Come see the changes, stroll through the halls, and walk through your memories.",
+      "Signup if you'd like more information when details are available"   
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "eventType": "Saturday Gathering",
+  "name": "CHS73 50th Reunion - Dinner",
+  "location": "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
+  "description": "Hors d’oeurves, a cash bar and a time to remember!\n\n- Hors d’oeurves + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
+  "startDate": "2023-09-16",
+  "endDate": "2023-09-16",
+  "startTime":"16:00",
+  "endTime":"23:30",
+  "options": ["Apple", "Google", "iCal"],
+  "iCalFileName": "CHS73_Reunion_20230916",
+  "date": "September 16, 2023",
+  "events": {
+    "heading": [
+      "Drury",
+      "Plaza"
+    ],
+    "subheading": "Hors d’oeurves, a cash bar and a time to remember!",
+    "summaryInfo": [
+      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
+      "Hors d’oeurves + cash bar ($25 per person in advance, $30 at the door)",
+      "Sorry, but there will be no accommodations for allergies or special dietary needs",
+      "Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)",
+      "Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation"
+    ]
+  },
+  "signup": {
+    "heading": "Registration",
+    "subheading": "Signup for Saturday's Gathering",
+    "title": "Drury Plaza Conference Center",
+    "summaryInfo": [
+      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
+      "Hors d’oeurves + cash bar ($25 per person in advance, $30 at the door)",
+      "...PLUS music, a drawing, and a few fun surprises!",
+      "Sorry, but there will be no accommodations for allergies or special dietary needs",
+      "Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)",
+      "Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
+      "No admittance or hors d'oeurves charge for Veterans & their companion"
+    ]
+  },
+  "checkout": {
+    "heading": "Registration",
+    "subheading": "Review & pay for Saturday's Gathering",
+    "title": "Saturday's Reunion Gathering",
+    "summaryInfo": [
+      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
+      "Admission, hors d’oeurves & cash bar ($25 per person in advance, $30 at the door)"
+    ]
+  }
+}
