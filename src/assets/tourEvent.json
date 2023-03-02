@@ -10,7 +10,7 @@
   "options": ["Apple", "Google", "iCal"],
   "timeZone": "Europe/Berlin",
   "iCalFileName": "CHS73_Reunion_20230915",
-  "date": "TBD",
+  "date": "September 16, 2023 @ 10:00 am",
   "events": {
     "heading": [
       "CHS Tour"
@@ -24,8 +24,9 @@
   "checkout": {
     "heading": "Registration",
     "subheading": "Signup for a tour of CHS",
-    "title": "CHS Tour",
+    "title": "A tour of our High School facility",
     "summaryInfo": [
+      "What was our High School is now the Terry W. Kitchen Central Jr. High. Come see the changes, stroll through the halls, and walk through your memories.",
       "Signup if you'd like more information when details are available"   
     ]
   }
