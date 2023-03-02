@@ -385,11 +385,6 @@
                 info has changed.
               </p>
               <p class="mt-1 mb-4 leading-relaxed text-gray-600">
-                We'll be reaching out in the coming months to get your input
-                on the when, where and what you’d 
-                like to see in your 50th High School Class Reunion.
-              </p>
-              <p class="mt-1 mb-4 leading-relaxed text-gray-600">
                 Please share your thoughts and questions and we'll get back 
                 to you as soon as possible.
               </p>
