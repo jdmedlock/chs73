@@ -22,23 +22,15 @@
       "80 S Plaza Way, Cape Girardeau, MO 63703. Phone: (573) 837-1260"
     ]
   },
-  "signup": {
-    "heading": "Registration",
-    "subheading": "Signup for Friday's Gathering",
-    "title": "Dogwood Social Club",
-    "summaryInfo": [
-      "Dogwood Social Club: 7:00 PM - Closing",
-      "Cash bar & food",
-      "Attendance is FREE!!! Help us prepare by registering below"
-    ]
-  },
   "checkout": {
     "heading": "Registration",
     "subheading": "Signup for Friday's Social Gathering",
     "title": "Dogwood Social Club",
     "summaryInfo": [
       "Dogwood Social Club: 7:00 PM - Closing",
+      "80 S Plaza Way, Cape Girardeau, MO 63703. Phone: (573) 837-1260",
       "Cash bar & food",
+      "Raffle tickets will be available on Friday for a drawing on Saturday evening!  You MUST be present Saturday to win.  All cash collected will be distributed as a 1st, 2nd and 3rd prize.",
       "...and admittance is FREE!!!"
     ]
   }
