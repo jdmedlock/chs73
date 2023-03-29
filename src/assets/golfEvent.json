@@ -1,6 +1,6 @@
 {
   "eventType": "Golf Outing",
-  "name": "CHS73 50th Reunion - Golfing",
+  "name": "Class of ‘73 Golf Scramble",
   "location": "Cape Jaycee Municipal Golf Course",
   "description": "Golf with your classmates!",
   "startDate": "2023-09-16",
@@ -26,10 +26,13 @@
     "subheading": "Signup for a Class of '73 golf outing",
     "title": "Cape Jaycee Municipal Golf Course",
     "summaryInfo": [
-      "A round of golf to relax and get reacquainted",
-      "Singles or couples",
-      "Consecutive tee times starting at 10:00 am",
-      "Those registered will be assigned final tee times and notified one week prior to the event."
+      "Cape Jaycee Municipal Golf Course",
+      "Consecutive tee times starting at 10:00 am – scramble format",
+      "Sign up as a single or as a couple, we’ll try to keep the couples grouped together",
+      "Those registered will be assigned groupings and tee times one week prior to the event",
+      "Proper attire required; no metal spikes allowed. Practice green and hitting nets, pro shop, snack bar, and concession carts available. All major credit cards accepted.",
+      "Prevailing course rates will apply. $31.00 for seniors includes 18 holes, greens fee and carts. If your plus one is under 60 years old, you’ll be paying $8.00 more for them (and rightfully so). Players will need to check in and pay at the course at least 15 minutes prior to their tee time. Jaycee annual memberships will be honored for our event.",
+      "Participants must be registered via this website by September 8, 2023"
     ]
   }
 }
