@@ -318,9 +318,9 @@
                   <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
                     <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">
                       {#if eventType === SATURDAY_EVENT}
-                        Register & pay
+                        Click to register & pay
                       {:else}
-                        Register
+                        Click to register
                       {/if}
                     </span>
                   </button>

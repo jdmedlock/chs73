@@ -49,7 +49,7 @@
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-white sm:p-10 sm:pt-6">
               <a id="FridaySignupLink" class="flex items-center m-auto" href="checkout?event={ FRIDAY_EVENT }">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Click for more info!!!</span>
               </a>
             </div>
           </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-white sm:p-10 sm:pt-6">
               <a id="SaturdaySignupLink" class="flex items-center m-auto" href="checkout?event={ SATURDAY_EVENT }">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Click for more info!!!</span>
               </a>
             </div>
           </div>
@@ -99,7 +99,7 @@
               </div>
               <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-white sm:p-10 sm:pt-6">
                 <a id="GolfSignupLink" class="flex items-center m-auto" href="checkout?event={ GOLF_EVENT }">
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Click for more info!!!</span>
                 </a>     
               </div>
             </div>
@@ -122,7 +122,7 @@
               </div>
               <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-white sm:p-10 sm:pt-6">
                 <a id="TourSignupLink" class="flex items-center m-auto" href="checkout?event={ TOUR_EVENT }">
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">More info!!!</span>
+                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">Click for more info!!!</span>
                 </a> 
               </div>
             </div>
