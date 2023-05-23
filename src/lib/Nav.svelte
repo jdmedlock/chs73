@@ -4,8 +4,11 @@
 
 	const toggleNavbar = () => {
     let nav = document.getElementById('menu')
+		let hint = document.getElementById('menuHint')
     nav.classList.toggle('flex')
+		hint.classList.toggle('flex')
     nav.classList.toggle('hidden')
+		hint.classList.toggle('hidden')
 	}
 </script>
 
@@ -31,10 +34,13 @@
 </style>
 
 <nav class="fixed flex flex-col w-full z-10 top-0 bg-gray-900 text-white text-xl">
-	<button id="menuBtn" class="block focus:outline-none" type="button" 
-		on:click={ toggleNavbar } aria-label="Menu">
-		<img class="md:hidden m-2 w-12 h-10" src="chs_tiger.png" alt="CHS Tiger"/>
-	</button>
+	<span class="flex flex-row w-full">
+		<button id="menuBtn" class="block focus:outline-none" type="button" 
+			on:click={ toggleNavbar } aria-label="Menu">
+			<img class="md:hidden m-2 w-12 h-10" src="hamburger-icon.png" alt="Mobile Menu"/>
+		</button>
+		<span id="menuHint" class="py-3 h-10 md:hidden">Click for menu</span>
+	</span>
 	<div id="menu" class="w-full sm:w-auto self-end sm:self-center sm:flex 
 		flex-col sm:flex-row items-center h-full py-1 pb-4 sm:py-0 sm:pb-0 hidden
 		m-3">
