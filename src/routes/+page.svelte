@@ -340,9 +340,9 @@
               Take a few minutes to check them out in `events` and sign up to 
               attend one or all of them. We hope to see you there!
             </p>
-            <div class="mt-4 text-lg leading-relaxed text-gray-600">
+            <div class="mt-4 text-lg leading-relaxed text-red-600">
               You'll need to go to each event you wish to attend and then
-              <span class="text-2xl italic text-red-600">'Click for More Info'</span> to register.
+              <span class="text-2xl italic text-red-600 bold">'Click for More Info'</span> to register.
             </div>
           </div>
         </div>
