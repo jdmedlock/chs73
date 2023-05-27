@@ -33,21 +33,19 @@
 
 </style>
 
-<nav class="fixed flex flex-col w-full z-10 top-0 bg-gray-900 text-white text-xl">
+<nav class="fixed top-0 z-10 flex flex-col w-full text-xl text-white bg-gray-900">
 	<span class="flex flex-row w-full">
 		<button id="menuBtn" class="block focus:outline-none" type="button" 
 			on:click={ toggleNavbar } aria-label="Menu">
-			<img class="md:hidden m-2 w-12 h-10" src="hamburger-icon.png" alt="Mobile Menu"/>
+			<img class="w-12 h-10 m-2 md:hidden" src="hamburger-icon.png" alt="Mobile Menu"/>
 		</button>
-		<span id="menuHint" class="py-3 h-10 md:hidden">Click for menu</span>
+		<span id="menuHint" class="h-10 py-3 md:hidden">Click for menu</span>
 	</span>
-	<div id="menu" class="w-full sm:w-auto self-end sm:self-center sm:flex 
-		flex-col sm:flex-row items-center h-full py-1 pb-4 sm:py-0 sm:pb-0 hidden
-		m-3">
+	<div id="menu" class="flex-col items-center self-end hidden w-full h-full py-1 pb-4 m-3 sm:w-auto sm:self-center sm:flex sm:flex-row sm:py-0 sm:pb-0">
 		<a aria-current="{$page.url.pathname.slice(1) === undefined ? 'page' : undefined}" href="." on:click={ toggleNavbar }>home</a>
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 				the event data when we hover over the link or tap it on a touchscreen -->
-		<a rel=prefetch aria-current="{$page.url.pathname.slice(1) === 'events' ? 'page' : undefined}" href="events" on:click={ toggleNavbar }>events</a>
+		<a class="animate-bounce" rel=prefetch aria-current="{$page.url.pathname.slice(1) === 'events' ? 'page' : undefined}" href="events" on:click={ toggleNavbar }>events</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'classmates' ? 'page' : undefined}" href="classmates" on:click={ toggleNavbar }>classmates</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'tigerhunt' ? 'page' : undefined}" href="tigerhunt" on:click={ toggleNavbar }>tiger hunt</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'memoriam' ? 'page' : undefined}" href="memoriam" on:click={ toggleNavbar }>memoriam</a>

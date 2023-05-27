@@ -340,6 +340,10 @@
               Take a few minutes to check them out in `events` and sign up to 
               attend one or all of them. We hope to see you there!
             </p>
+            <p class="mt-4 text-lg font-bold leading-relaxed text-red-600">
+              You'll need to go to each event you wish to attend and then
+              'Click for More Info' to register.
+            </p>
           </div>
         </div>
       </div>
@@ -541,6 +545,9 @@
                   </button>
                 </div>
               </form>
+              <p class="mt-4 text-lg font-bold leading-relaxed text-red-600">
+                Don't forget to register for all the events you plan to attend!
+              </p>
             </div>
           </div>
         </div>
