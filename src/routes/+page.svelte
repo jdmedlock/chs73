@@ -129,8 +129,8 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_graduation2.webp');"
-    />
+      style="background-image: url('chs_graduation2.webp');">
+    </div>
     <div class="container relative mx-auto">
       <div class="flex flex-wrap justify-items-center">
         <div class="items-center w-full px-4 ml-auto mr-auto text-center lg:w-11/12">
@@ -530,7 +530,7 @@
                   <textarea name="message" bind:value={ emailMessage }
                     rows="4" cols="80" required aria-required="true"
                     class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring" 
-                    placeholder="Type a message..." />
+                    placeholder="Type a message..."></textarea>
                 </div>
 
                 <label>
