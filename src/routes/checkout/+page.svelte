@@ -1,12 +1,8 @@
 <script>
   import axios from 'axios'
   import { page } from '$app/stores';
-  import { loadScript } from "@paypal/paypal-js"
   import generateOrderID from '../../utils/generateOrderID.js'
-  import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
-  import golfEvent from '../../assets/golfEvent.json'
-  import tourEvent from '../../assets/tourEvent.json'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
   import PaymentMethod from './paymentMethod.svelte'
@@ -14,7 +10,7 @@
   import Payment from './payment.svelte'
   import Receipt from './receipt.svelte'
   import { 
-    FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT, 
+    SATURDAY_EVENT,
     PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, PAY_IS_PENDING,
     TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR,
     TXN_DETAILS_PENDING
@@ -23,17 +19,8 @@
   let eventType = $page.data.params.get('event')
   let eventData
   switch (eventType) {
-    case FRIDAY_EVENT: 
-      eventData = fridayEvent
-      break
     case SATURDAY_EVENT:
       eventData = saturdayEvent
-      break
-    case GOLF_EVENT:
-      eventData = golfEvent
-      break
-    case TOUR_EVENT:
-      eventData = tourEvent
       break
   }
 
@@ -149,8 +136,7 @@
     orderId = generateOrderID(classmateFirstName.concat(classmateLastName))
     return ({
       id: orderId,
-      status: (eventType === GOLF_EVENT || eventType === TOUR_EVENT) 
-        ? TXN_DETAILS_PENDING : TXN_COMPLETED, 
+      status: TXN_COMPLETED, 
       create_time: currentTime, 
       update_time: currentTime,
       payer: {
@@ -197,7 +183,7 @@
     return resultData
   }
 
-  const processFridaySignup = () => {
+  const processSaturdaySignup = () => {
     const details = createNochargeDetails()
     const resultData = createNochargeResultData()
 
@@ -234,10 +220,6 @@
 
     if (isAttendeeError || isEmailError || isClassmateNameError || isCompanionNameError) {
       return
-    }
-
-    if(eventType !== SATURDAY_EVENT) {
-      processFridaySignup()
     }
 
     if (eventType === SATURDAY_EVENT) {
@@ -299,15 +281,6 @@
                     bind:companionFirstName={ companionFirstName }
                     bind:companionLastName={ companionLastName }
                   />
-
-                  {#if eventType === SATURDAY_EVENT}
-                    <PaymentMethod 
-                      bind:isPayByMail={ isPayByMail }
-                      bind:isPayAtDoor={ isPayAtDoor }
-                      calculateOrder={ calculateOrder }
-                    />
-                  {/if}
-
                   <OrderSummary eventType={ eventType } 
                     bind:noAttendees={ calculatedAttendees } 
                     bind:orderTotal={ orderTotal }
@@ -317,21 +290,9 @@
                 {#if !isPaymentSuccessful}
                   <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
                     <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">
-                      {#if eventType === SATURDAY_EVENT}
-                        Click to register & pay
-                      {:else}
                         Click to register
-                      {/if}
                     </span>
                   </button>
-                {/if}
-
-                {#if eventType === SATURDAY_EVENT}
-                  <Payment bind:orderId={ orderId }
-                    bind:isPayAtDoor={ isPayAtDoor }
-                    bind:isPayByMail={ isPayByMail }
-                    bind:isPaymentSuccessful={ isPaymentSuccessful }
-                  />
                 {/if}
 
                 {#if isPaymentSuccessful}
