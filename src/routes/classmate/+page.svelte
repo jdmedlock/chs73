@@ -66,7 +66,7 @@
       </a>
       {#if confirmed === 'FALSE'}
         <div class="flex flex-col ml-2">
-          <div on:click={ handleTigerHunt } on:keydown={ handleEnterOnTigerHunt }
+          <div role="link" tabindex="0" on:click={ handleTigerHunt } on:keydown={ handleEnterOnTigerHunt }
             class="bg-orange-500 text-white active:bg-gray-700 
             font-bold uppercase rounded shadow hover:shadow-lg
             outline-none focus:outline-none 
