@@ -1,5 +1,5 @@
 <script>
-  import { FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT } from '../../utils/constants'
+  import { SATURDAY_EVENT } from '../../utils/constants'
   import saturdayEvent from '../../assets/saturdayEvent.json'
 </script>
 
@@ -41,7 +41,7 @@
               </div>
               <div class="flex flex-wrap justify-center w-full p-0 m-0">
                 <p class="mt-5 text-xl text-gray-500">{saturdayEvent.events.subheading }</p>
-                <img class="w-72 h-72" src="drury_plaza.jpeg" alt="Drury Plaza"/>
+                <img class="w-72 h-72" src="cape_county_park_shelter.jpg" alt="Park Shelter"/>
               </div>
             </div>
             <div class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-white sm:p-10 sm:pt-6">

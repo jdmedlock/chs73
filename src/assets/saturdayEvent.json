@@ -2,18 +2,18 @@
   "eventType": "Saturday Gathering",
   "name": "CHS73 52nd Reunion - Picnic",
   "location": "Cape County Park, South County Park Shelter #20, Cape Girardeau, MO 63703",
-  "description": "An informal gathering to relax & reconnect!\n\nCash bar & food",
+  "description": "An informal gathering to relax & reconnect!",
   "startDate": "2025-09-13",
   "endDate": "2025-09-13",
-  "startTime":"17:00",
-  "endTime":"23:30",
+  "startTime":"10:00",
+  "endTime":"18:00",
   "options": ["Apple", "Google", "iCal"],
   "iCalFileName": "CHS73_Reunion_20250913",
   "date": "September 13, 2025",
   "events": {
     "heading": [
-      "Dogwood",
-      "Social Club"
+      "Cape County",
+      "Park South"
     ],
     "subheading": "An informal gathering to relax & reconnect!",
     "summaryInfo": [
@@ -25,7 +25,7 @@
   "checkout": {
     "heading": "Registration",
     "subheading": "Signup for this Gathering",
-    "title": "Dogwood Social Club",
+    "title": "Cape County Park South",
     "summaryInfo": [
       "Cape County Park: 10:00 AM - 6:00 PM",
       "South County Park Shelter #20, Cape Girardeau, MO 63703",

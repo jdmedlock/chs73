@@ -25,18 +25,6 @@
     showAttendees = false
     showBadgeNames = true
   }
-
-  const handleSponsor = (event) => {
-    isSponsor = !isSponsor
-    setTimeout(() => event.target.checked = isSponsor, 0)
-    calculateOrder()
-  }
-
-  const handleVeteran = (event) => {
-    isVeteran = !isVeteran
-    setTimeout(() => event.target.checked = isVeteran, 0)
-    calculateOrder()
-  }
 </script>
 
 <attendees>
@@ -93,7 +81,7 @@
               class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
               placeholder="Your email"
               style="transition: all 0.15s ease 0s;"
-              on:input={ classmateEmail } />
+              on:capture={ classmateEmail } />
           </span>
           {#if isEmailError}
             <span name="emailError" class="flex self-center ml-4 font-bold text-red-700">
@@ -114,7 +102,7 @@
                 class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Your first name"
                 style="transition: all 0.15s ease 0s;"
-                on:input={ classmateFirstName } />
+                on:capture={ classmateFirstName } />
             </div>
             <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
               <label
@@ -127,7 +115,7 @@
                 class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Your last name"
                 style="transition: all 0.15s ease 0s;"
-                on:input={ classmateLastName } />
+                on:capture={ classmateLastName } />
             </div>
           </div>
           {#if isClassmateNameError}
@@ -148,7 +136,7 @@
                 class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Companion first name"
                 style="transition: all 0.15s ease 0s;"
-                on:input={ companionFirstName } />
+                on:capture={ companionFirstName } />
             </div>
             <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
               <label
@@ -161,7 +149,7 @@
                 class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="Companion last name"
                 style="transition: all 0.15s ease 0s;"
-                on:input={ companionLastName } />
+                on:capture={ companionLastName } />
             </div>
           </div>
             {#if isCompanionNameError}
@@ -174,24 +162,4 @@
       {/if}
     </div>
   </li>
-
-  {#if eventType === SATURDAY_EVENT}
-    <li class="flex items-start mt-4 text-gray-700 ml-14">
-      <div class="relative flex flex-col text-left">
-        <label>
-          <input type="checkbox" bind:checked={ isSponsor } on:click|preventDefault={ handleSponsor }/>
-          Click here if you'd like to help a classmate who might otherwise not be able to attend. You will be billed for one additional admittance.
-        </label>
-      </div>
-    </li>
-
-    <li class="flex items-start text-gray-700 ml-14">
-      <div class="relative flex flex-col w-full mt-2 text-left">
-        <label>
-          <input type="checkbox" bind:checked={ isVeteran } on:click|preventDefault={ handleVeteran }/>
-          Click here if you are a Veteran. There's no admission or hors d'oeurves charge for you and your companion.
-        </label>
-      </div>
-    </li>
-  {/if}
 </attendees>

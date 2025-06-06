@@ -15,10 +15,10 @@
           <span>and mail to:</span>
         </div>
         <div class="grid grid-cols-3 mt-2 justify-left">
-          <div /><div>Central High Class of 1973</div><div />
-          <div /><div>C/o Dianna Todt</div><div />
-          <div /><div>2086 Southern Expressway</div><div />
-          <div /><div>Cape Girardeau, MO  63703</div><div />
+          <div></div><div>Central High Class of 1973</div>
+          <div></div><div>C/o Dianna Todt</div>
+          <div></div><div>2086 Southern Expressway</div>
+          <div></div><div>Cape Girardeau, MO  63703</div>
         </div>
         <div class="flex justify-center mt-2">Please add your registration number
           ('{ orderId }') to your check and mail before August 5, 2023.</div>
