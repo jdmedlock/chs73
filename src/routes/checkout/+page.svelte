@@ -5,24 +5,16 @@
   import saturdayEvent from '../../assets/saturdayEvent.json'
   import Attendees from './attendees.svelte'
   import EventSummary from './eventSummary.svelte'
-  import PaymentMethod from './paymentMethod.svelte'
   import OrderSummary from './orderSummary.svelte'
-  import Payment from './payment.svelte'
   import Receipt from './receipt.svelte'
   import { 
     SATURDAY_EVENT,
-    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, PAY_IS_PENDING,
-    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR,
-    TXN_DETAILS_PENDING
+    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE,
+    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
   } from '../../utils/constants.js'
 
   let eventType = $page.data.params.get('event')
-  let eventData
-  switch (eventType) {
-    case SATURDAY_EVENT:
-      eventData = saturdayEvent
-      break
-  }
+  let eventData = saturdayEvent
 
   let resultData
   let resultDetails
@@ -81,7 +73,7 @@
     axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
       order_id: `${ details.id }`,
       item_description: eventData.eventType,
-      order_amount: parseFloat(details.purchase_units[0].amount.value), 
+      order_amount: 0, 
       transaction_status: details.status, 
       transaction_creation_time: details.create_time, 
       transaction_update_time: details.update_time,
@@ -97,19 +89,20 @@
       companionLastName: companionLastName || '',
     })
     .then(function (response) {
-      console.log(response);
+      console.log(`Payment successfully logged.`, response)
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(`Payment unsuccessful.`, error)
     })
   }
 
   const emailEventAcknowledgement = (details) => {
+    console.log(`emailEventAcknowledgement called with details:`, details)
     axios.post(`${ import.meta.env.VITE_BE_URL }/sendEventAck`, {
       order_id: details.id,
       item_description: eventData.eventType, 
       event_date: eventData.startDate,
-      order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
+      order_amount: 0.00, 
       transaction_status: details.status, 
       transaction_creation_time: details.create_time, 
       payer_email_address: details.payer.email_address, 
@@ -123,10 +116,11 @@
       companionLastName: companionLastName || '',
     })
     .then(function (response) {
-      console.log(response);
+      console.log(`Event acknowledgement email sent successfully.`, response)
+      console.log(response)
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(`Event acknowledgement email failed to send.`, error)
     })
   }
 
@@ -166,15 +160,7 @@
 
   const createNochargeResultData = () => {
     let calculatedPaymentSource = NO_CHARGE
-    calculatedPaymentSource = isPayAtDoor ? PAY_AT_DOOR : PAY_BY_MAIL
-    if (isPayAtDoor) {
-      calculatedPaymentSource = PAY_AT_DOOR
-    } else if (isPayByMail) {
-      calculatedPaymentSource = PAY_BY_MAIL
-    } else {
-      calculatedPaymentSource = PAY_IS_PENDING
-    }
-    
+  
     const resultData = {
       orderID: orderId,
       paymentID: null,
@@ -183,17 +169,8 @@
     return resultData
   }
 
-  const processSaturdaySignup = () => {
-    const details = createNochargeDetails()
-    const resultData = createNochargeResultData()
-
-    resultDetails = details
-    logPayment(details, resultData)
-    emailEventAcknowledgement(details, resultData)
-    isPaymentSuccessful = true
-  }
-
   const handleRegisterAndPay = () => {
+    console.log(`handleRegisterAndPay called with eventType: ${eventType}`)
     if (isPaymentSuccessful) {
       return
     }
@@ -223,10 +200,11 @@
     }
 
     if (eventType === SATURDAY_EVENT) {
+      console.log(`Calculating order for ${eventType} with noAttendees: ${noAttendees}`)
       isAttendeeError = false
       const details = createNochargeDetails()
       const resultData = createNochargeResultData()
-      details.status = isPayByMail ? TXN_PAYMENT_PENDING_MAIL : TXN_PAYMENT_PENDING_DOOR
+      details.status = TXN_COMPLETED
       details.purchase_units[0].amount.value = orderTotal
 
       resultDetails = details

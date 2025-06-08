@@ -1,6 +1,4 @@
 <script>
-  import { SATURDAY_EVENT } from '../../utils/constants.js'
-
   export let eventType
   export let orderId
   export let totalCharged
@@ -16,7 +14,7 @@
 <receipt>
   <div class="flex flex-col items-center mt-2 text-base bg-white">
     <h3 id="paymentReceipt" class="mt-4 font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full">
-      Your registration was successfully processed (check your email)
+      Your registration for { eventType } was successfully processed (check your email)
     </h3>
     <div class="grid w-1/2 grid-cols-2 mt-4 mb-4 ml-8 bg-gray-200 gap-x-4">
       <div>Registration ID:</div><div id="receiptOrderId">{ orderId }</div>
