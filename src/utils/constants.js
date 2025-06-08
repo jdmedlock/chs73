@@ -1,4 +1,4 @@
-const SATURDAY_EVENT = 'Saturday Gathering'
+const SATURDAY_EVENT = '52nd Reunion Picnic'
 
 const PREPAY_FEE = 0.00
 const AT_DOOR_FEE = 0.00

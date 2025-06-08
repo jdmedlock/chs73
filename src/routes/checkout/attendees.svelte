@@ -3,8 +3,6 @@
 
   export let eventType
   export let calculateOrder
-  export let isSponsor
-  export let isVeteran
   export let isAttendeeError
   export let isClassmateNameError
   export let isCompanionNameError
