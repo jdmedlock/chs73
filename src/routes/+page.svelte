@@ -324,7 +324,7 @@
           <div class="md:pr-12">
             <h3 class="text-3xl font-semibold">CHS '73 - 52nd Reunion</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              We have planned and informal event for September 13, 2025 to help 
+              We have planned an informal event for September 13, 2025 to help 
               you re-live memories and reconnect with old friends.
             </p>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
