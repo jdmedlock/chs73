@@ -183,29 +183,23 @@
     if (classmateFirstName === '' || classmateLastName === '') {
       isClassmateNameError = true
     }
-    if (noAttendees > 1) {
-      if (companionLastName === '' || companionLastName === '') {
-        isCompanionNameError = true
-      }
-    }
 
     if (isAttendeeError || isEmailError || isClassmateNameError || isCompanionNameError) {
       return
     }
 
-    if (eventType === SATURDAY_EVENT) {
-      console.log(`Calculating order for ${eventType} with noAttendees: ${noAttendees}`)
-      isAttendeeError = false
-      const details = createNochargeDetails()
-      const resultData = createNochargeResultData()
-      details.status = TXN_COMPLETED
-      details.purchase_units[0].amount.value = orderTotal
+    console.log(`Calculating order for ${eventType} with noAttendees: ${noAttendees}`)
+    isAttendeeError = false
+    calculateOrder()
+    const details = createNochargeDetails()
+    const resultData = createNochargeResultData()
+    details.status = TXN_COMPLETED
+    details.purchase_units[0].amount.value = orderTotal
 
-      resultDetails = details
-      logPayment(details, resultData)
-      emailEventAcknowledgement(details, resultData)
-      isPaymentSuccessful = true
-    }
+    resultDetails = details
+    logPayment(details, resultData)
+    emailEventAcknowledgement(details, resultData)
+    isPaymentSuccessful = true
   }
 </script>
 
@@ -250,8 +244,6 @@
                     bind:classmateEmail={ classmateEmail }
                     bind:classmateFirstName={ classmateFirstName }
                     bind:classmateLastName={ classmateLastName }
-                    bind:companionFirstName={ companionFirstName }
-                    bind:companionLastName={ companionLastName }
                   />
                   <OrderSummary eventType={ eventType } 
                     bind:noAttendees={ calculatedAttendees } 

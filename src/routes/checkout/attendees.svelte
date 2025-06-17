@@ -2,27 +2,24 @@
   import { SATURDAY_EVENT } from '../../utils/constants.js'
 
   export let eventType
-  export let calculateOrder
   export let isAttendeeError
   export let isClassmateNameError
-  export let isCompanionNameError
   export let isEmailError
   export let noAttendees
   export let classmateEmail
   export let classmateFirstName
   export let classmateLastName
-  export let companionFirstName
-  export let companionLastName
 
-  let showAttendees = false
+  noAttendees = 1
   let showBadgeNames = false
-  
-  const handleNoAttendees = (event) => {
-    noAttendees = parseInt(event.target.text)
-    calculateOrder()
-    showAttendees = false
-    showBadgeNames = true
-  }
+  let pressed = []
+
+  function handleKeydown(e) {
+		pressed = [e.key, ...pressed]
+    console.log(`pressed: ${pressed}`)
+    console.log(`noAttendees: ${noAttendees}`)
+	}
+
 </script>
 
 <attendees>
@@ -39,125 +36,87 @@
   <li class="flex items-start ml-8">
     <div class="relative flex flex-col text-left">
       <div>
-        <button type="button" class="flex justify-center px-3 py-1 mt-2 ml-5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm no-wrap hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" 
-          id="NoAttendeesBtn" aria-expanded="true" aria-haspopup="true" on:click={() => (showAttendees = !showAttendees)}>
-          No. Attendees
-          <!-- Heroicon name: mini/chevron-down -->
-          <svg class="w-5 h-5 ml-2 -mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-          </svg>
-        </button>
-        {#if isAttendeeError}
-          <div name="attendeeError" class="font-bold text-red-700">
-            You must choose the number of attendees before proceeding
-          </div>
-        {/if}
-      </div>
-
-      {#if showAttendees}
-        <div class="relative z-10 w-8 mt-2 origin-top-right bg-white rounded-md shadow-lg ml-28 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-          <div class="py-1" role="none">
-            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-            <a href="#top" class="block px-4 py-2 text-sm text-gray-700" 
-              role="menuitem" tabindex="0" id="menu-item-0" on:click={ handleNoAttendees }>1</a>
-            <a href="#top" class="block px-4 py-2 text-sm text-gray-700" 
-              role="menuitem" tabindex="0" id="menu-item-1" on:click={ handleNoAttendees }>2</a>
-          </div>
-        </div>
-      {/if}
-
-      {#if showBadgeNames}
         <div class="flex items-start w-full ml-5">
           <span class="w-1/2 mb-3">
             <label
               class="block mt-4 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
               for="classmate-email">
-              Your email:
+              No attendees:
             </label>
-            <input name="classmate-emails" bind:value={ classmateEmail } 
+            <input name="classmate-emails" bind:value={ noAttendees } 
               type="text" required aria-required="true"
               class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-              placeholder="Your email"
+              placeholder="No. of attendees"
               style="transition: all 0.15s ease 0s;"
-              on:capture={ classmateEmail } />
+              min="1" max="10"
+              on:capture={ noAttendees } 
+              on:keydown={ handleKeydown }
+            />
           </span>
-          {#if isEmailError}
-            <span name="emailError" class="flex self-center ml-4 font-bold text-red-700">
-              You must enter your email address
+          {#if isAttendeeError}
+            <span name="noAttendeeError" class="flex self-center ml-4 font-bold text-red-700">
+              You must enter the number of attendees in your party 
             </span>
           {/if}
         </div>
-        <div class="flex flex-wrap w-full gap-1 mt-1 ml-5">
-          <div class="grid grid-cols-1 md:grid-cols-2 w-full items-center">
-            <div class="w-5/6">
-              <label
-                class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
-                for="classmate-firstname">
-                Your name badge:
-              </label>
-              <input name="classmate-firstname" bind:value={ classmateFirstName } 
-                type="text" required aria-required="true"
-                class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                placeholder="Your first name"
-                style="transition: all 0.15s ease 0s;"
-                on:capture={ classmateFirstName } />
-            </div>
-            <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
-              <label
-                class="block text-sm font-bold text-gray-700 uppercase"
-                for="classmate-lastname">
-                &nbsp;
-              </label>
-              <input name="classmate-lastname" bind:value={ classmateLastName } 
-                type="text" required aria-required="true"
-                class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                placeholder="Your last name"
-                style="transition: all 0.15s ease 0s;"
-                on:capture={ classmateLastName } />
-            </div>
+      </div>
+
+      <div class="flex items-start w-full ml-5">
+        <span class="w-1/2 mb-3">
+          <label
+            class="block mt-4 mb-2 text-xs font-bold text-gray-700 uppercase flex-nowrap"
+            for="classmate-email">
+            Your email:
+          </label>
+          <input name="classmate-emails" bind:value={ classmateEmail } 
+            type="text" required aria-required="true"
+            class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+            placeholder="Your email"
+            style="transition: all 0.15s ease 0s;"
+            on:capture={ classmateEmail } />
+        </span>
+        {#if isEmailError}
+          <span name="emailError" class="flex self-center ml-4 font-bold text-red-700">
+            You must enter your email address
+          </span>
+        {/if}
+      </div>
+      <div class="flex flex-wrap w-full gap-1 mt-1 ml-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 w-full items-center">
+          <div class="w-5/6">
+            <label
+              class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
+              for="classmate-firstname">
+              You:
+            </label>
+            <input name="classmate-firstname" bind:value={ classmateFirstName } 
+              type="text" required aria-required="true"
+              class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+              placeholder="Your first name"
+              style="transition: all 0.15s ease 0s;"
+              on:capture={ classmateFirstName } />
           </div>
-          {#if isClassmateNameError}
-            <div name="classmateError" class="font-bold text-red-700">
-              You must enter your first and last name for your name badge
-            </div>
-          {/if}
-          {#if noAttendees > 1}
-          <div class="grid grid-cols-1 md:grid-cols-2 mt-2 w-full items-center">
-            <div class="w-5/6">
-              <label
-                class="w-full block mt-1 text-xs font-bold text-gray-700 uppercase"
-                for="companion-firstname">
-                Companion name badge:
-              </label>
-              <input name="companion-firstname" bind:value={ companionFirstName } 
-                type="text" required aria-required="true"
-                class="w-full px-3 py-3 mt-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                placeholder="Companion first name"
-                style="transition: all 0.15s ease 0s;"
-                on:capture={ companionFirstName } />
-            </div>
-            <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
-              <label
-                class="block text-sm font-bold text-gray-700 uppercase"
-                for="companion-lastname">
-                &nbsp;
-              </label>
-              <input name="companion-lastname" bind:value={ companionLastName } 
-                type="text" required aria-required="true"
-                class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                placeholder="Companion last name"
-                style="transition: all 0.15s ease 0s;"
-                on:capture={ companionLastName } />
-            </div>
+          <div class="w-5/6 mt-0 md:mt-6 lg:mt-2">
+            <label
+              class="block text-sm font-bold text-gray-700 uppercase"
+              for="classmate-lastname">
+              &nbsp;
+            </label>
+            <input name="classmate-lastname" bind:value={ classmateLastName } 
+              type="text" required aria-required="true"
+              class="w-full px-3 py-3 lg:ml-0 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
+              placeholder="Your last name"
+              style="transition: all 0.15s ease 0s;"
+              on:capture={ classmateLastName } />
           </div>
-            {#if isCompanionNameError}
-              <div name="companionError" class="font-bold text-red-700">
-                You must enter your companions first and last name for their name badge
-              </div>
-            {/if}
-          {/if}
         </div>
-      {/if}
+        {#if isClassmateNameError}
+          <div name="classmateError" class="font-bold text-red-700">
+            You must enter your first and last name for your name badge
+          </div>
+        {/if}
+
+      </div>
     </div>
   </li>
 </attendees>
