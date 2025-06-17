@@ -7,21 +7,21 @@
   export let classmateLastName
   export let handleRegisterAndPay
 
-  let isAttendeeError = false
+  let isNoAttendeeError = false
   let isClassmateNameError = false
   let isEmailError = false
 
-  noAttendees = 1
+  noAttendees = 0
 
   function handleRegister(e) {
     console.log(`noAttendees: ${noAttendees} classmateEmail: ${classmateEmail} classmateFirstName: ${classmateFirstName} classmateLastName: ${classmateLastName}`)
-    isAttendeeError = false
+    isNoAttendeeError = false
     isEmailError = false
     isClassmateNameError = false
 
     // Validate the input data
-    if (noAttendees === 0) {
-      isAttendeeError = true
+    if (noAttendees < 1 || noAttendees > 9) {
+      isNoAttendeeError = true
     }
     if (classmateEmail === '') {
       isEmailError = true
@@ -30,7 +30,7 @@
       isClassmateNameError = true
     }
 
-    if (isAttendeeError || isEmailError || isClassmateNameError) {
+    if (isNoAttendeeError || isEmailError || isClassmateNameError) {
       return
     }
 
@@ -61,16 +61,15 @@
                 for="classmate-email">
                 No attendees:
               </label>
-              <input name="classmate-emails" bind:value={ noAttendees } 
-                type="text" required aria-required="true"
+              <input name="attendees" bind:value={ noAttendees } 
+                type="number" 
+                aria-required="true"
                 class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
-                placeholder="No. of attendees"
+                placeholder="1"
                 style="transition: all 0.15s ease 0s;"
-                min="1" max="10"
-                on:capture={ noAttendees } 
               />
             </span>
-            {#if isAttendeeError}
+            {#if isNoAttendeeError}
               <span name="noAttendeeError" class="flex self-center ml-4 font-bold text-red-700">
                 You must enter the number of attendees in your party 
               </span>
