@@ -21,22 +21,12 @@
   let classmateFirstName = ''
   let classmateLastName = ''
 
-  let calculatedAttendanceFee = 0
-  let attendanceFee = 0
   let noAttendees = 0
   let orderTotal = 0
   let orderId
 
   // Payment Processing States
   let isPaymentSuccessful = false
-
-  const calculateOrder = (paymentSource) => {
-    // paymentSource is an optional parameter. It's only used when this
-    // function is invoked from the PayPal API
-    calculatedAttendanceFee = 0
-    orderTotal = 0
-
-  }
 
   const logPayment = (details, resultData) => {
     axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
@@ -56,7 +46,7 @@
       classmateLastName: classmateLastName,
       companionFirstName: '',
       companionLastName: '',
-      noAttendees: parseInt(noAttendees),
+      noAttendees: noAttendees,
     })
     .then(function (response) {
       console.log(`Payment successfully logged.`, response)
@@ -78,7 +68,7 @@
       classmateLastName: classmateLastName,
       companionFirstName: '',
       companionLastName: '',
-      noAttendees: parseInt(noAttendees),
+      noAttendees: noAttendees,
     })
     .then(function (response) {
       console.log(`Event acknowledgement email sent successfully.`, response)
@@ -141,7 +131,7 @@
     }
 
     console.log(`Calculating order for ${eventType} with noAttendees: ${noAttendees}`)
-    calculateOrder()
+    noAttendees = parseInt(noAttendees)
     const details = createNochargeDetails()
     const resultData = createNochargeResultData()
     details.status = TXN_COMPLETED
@@ -151,6 +141,10 @@
     logPayment(details, resultData)
     emailEventAcknowledgement(details, resultData)
     isPaymentSuccessful = true
+    noAttendees = 0
+    classmateEmail = ''
+    classmateFirstName = ''
+    classmateLastName = ''
   }
 </script>
 
@@ -183,7 +177,6 @@
                   <EventSummary event={ eventData }/>
 
                   <AttendeeForm
-                    calculateOrder={ calculateOrder }
                     handleRegisterAndPay={ handleRegisterAndPay }
                     bind:noAttendees={ noAttendees }
                     bind:classmateEmail={ classmateEmail }
