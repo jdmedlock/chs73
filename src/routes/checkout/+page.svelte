@@ -3,14 +3,12 @@
   import { page } from '$app/stores';
   import generateOrderID from '../../utils/generateOrderID.js'
   import saturdayEvent from '../../assets/saturdayEvent.json'
-  import Attendees from './attendees.svelte'
+  import AttendeeForm from './attendeeForm.svelte'
   import EventSummary from './eventSummary.svelte'
   import OrderSummary from './orderSummary.svelte'
   import Receipt from './receipt.svelte'
   import { 
-    SATURDAY_EVENT,
-    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE,
-    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR
+    NO_CHARGE, TXN_COMPLETED
   } from '../../utils/constants.js'
 
   let eventType = $page.data.params.get('event')
@@ -22,50 +20,21 @@
   let classmateEmail = ''
   let classmateFirstName = ''
   let classmateLastName = ''
-  let companionFirstName = ''
-  let companionLastName = ''
 
-  let calculatedAttendees = 0
   let calculatedAttendanceFee = 0
   let attendanceFee = 0
   let noAttendees = 0
   let orderTotal = 0
   let orderId
-  
-  // Error States
-  let isAttendeeError = false
-  let isEmailError = false
-  let isClassmateNameError = false
-  let isCompanionNameError = false
-
-  // Attendee Attribures
-  let isSponsor = false
-  let isVeteran = false
 
   // Payment Processing States
   let isPaymentSuccessful = false
 
-  // Payment Option States
-  let isPayAtDoor = false
-  let isPayByMail = false
-
   const calculateOrder = (paymentSource) => {
     // paymentSource is an optional parameter. It's only used when this
     // function is invoked from the PayPal API
-    calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
-    if (isVeteran) {
-      calculatedAttendees = isSponsor ? 1 : 0
-    }
-
-    attendanceFee = !isPayAtDoor ? PREPAY_FEE : AT_DOOR_FEE
-
-    if (eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
-      calculatedAttendanceFee = attendanceFee * calculatedAttendees
-      orderTotal = calculatedAttendanceFee
-    } else {
-      calculatedAttendanceFee = 0
-      orderTotal = 0
-    }
+    calculatedAttendanceFee = 0
+    orderTotal = 0
 
   }
 
@@ -81,12 +50,13 @@
       payer_email_address: details.payer.email_address, 
       payer_firstname: details.payer.name.given_name, 
       payer_lastname: details.payer.name.surname,
-      is_sponsor: isSponsor ? 'Yes' : 'No',
-      is_veteran: isVeteran ? 'Yes' : 'No',
+      is_sponsor: 'No',
+      is_veteran: 'No',
       classmateFirstName: classmateFirstName,
       classmateLastName: classmateLastName,
-      companionFirstName: companionFirstName || '',
-      companionLastName: companionLastName || '',
+      companionFirstName: '',
+      companionLastName: '',
+      noAttendees: parseInt(noAttendees),
     })
     .then(function (response) {
       console.log(`Payment successfully logged.`, response)
@@ -106,8 +76,9 @@
       payer_email_address: details.payer.email_address, 
       classmateFirstName: classmateFirstName,
       classmateLastName: classmateLastName,
-      companionFirstName: companionFirstName || '',
-      companionLastName: companionLastName || '',
+      companionFirstName: '',
+      companionLastName: '',
+      noAttendees: parseInt(noAttendees),
     })
     .then(function (response) {
       console.log(`Event acknowledgement email sent successfully.`, response)
@@ -168,28 +139,8 @@
     if (isPaymentSuccessful) {
       return
     }
-    isAttendeeError = false
-    isEmailError = false
-    isClassmateNameError = false
-    isCompanionNameError = false
-
-    // Validate the input data
-    if (noAttendees === 0) {
-      isAttendeeError = true
-    }
-    if (classmateEmail === '') {
-      isEmailError = true
-    }
-    if (classmateFirstName === '' || classmateLastName === '') {
-      isClassmateNameError = true
-    }
-
-    if (isAttendeeError || isEmailError || isClassmateNameError || isCompanionNameError) {
-      return
-    }
 
     console.log(`Calculating order for ${eventType} with noAttendees: ${noAttendees}`)
-    isAttendeeError = false
     calculateOrder()
     const details = createNochargeDetails()
     const resultData = createNochargeResultData()
@@ -231,33 +182,18 @@
                 <ul class="space-y-4">
                   <EventSummary event={ eventData }/>
 
-                  <Attendees
-                    eventType={ eventType }
+                  <AttendeeForm
                     calculateOrder={ calculateOrder }
-                    bind:isSponsor={ isSponsor }
-                    bind:isVeteran={ isVeteran }
-                    bind:isAttendeeError={ isAttendeeError }
-                    bind:isClassmateNameError={ isClassmateNameError } 
-                    bind:isCompanionNameError={ isCompanionNameError } 
-                    bind:isEmailError={ isEmailError }
+                    handleRegisterAndPay={ handleRegisterAndPay }
                     bind:noAttendees={ noAttendees }
                     bind:classmateEmail={ classmateEmail }
                     bind:classmateFirstName={ classmateFirstName }
                     bind:classmateLastName={ classmateLastName }
                   />
                   <OrderSummary eventType={ eventType } 
-                    bind:noAttendees={ calculatedAttendees } 
+                    bind:noAttendees={ noAttendees } 
                     bind:orderTotal={ orderTotal }
                   />
-                </ul>
-
-                {#if !isPaymentSuccessful}
-                  <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
-                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">
-                        Click to register
-                    </span>
-                  </button>
-                {/if}
 
                 {#if isPaymentSuccessful}
                   <Receipt 
@@ -266,10 +202,7 @@
                     totalCharged={ resultDetails.purchase_units[0].amount.value }
                     txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
                     payerEmail={ resultDetails.payer.email_address }
-                    isSponsor={ isSponsor }
-                    isVeteran={ isVeteran }
                     classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
-                    companionFirstName={ companionFirstName } companionLastName={ companionLastName }
                   />
                 {/if}
 

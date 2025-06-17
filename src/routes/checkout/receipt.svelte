@@ -7,8 +7,6 @@
   export let payerEmail
   export let classmateFirstName
   export let classmateLastName
-  export let companionFirstName
-  export let companionLastName
 </script>
 
 <receipt>
@@ -25,10 +23,7 @@
         <div>Email:</div><div id="receiptEmail">{ payerEmail }</div>
       {/if}
 
-      <div>Your badge name:</div><div id="receiptClassmateBadge">{ classmateFirstName } { classmateLastName }</div>
-      {#if companionFirstName}
-        <div>Companion badge name:</div><div id="receiptCompanionBadge">{ companionFirstName } { companionLastName }</div>
-      {/if}
+      <div>Name:</div><div id="receiptClassmateBadge">{ classmateFirstName } { classmateLastName }</div>
     </div>
   </div>
 </receipt>
