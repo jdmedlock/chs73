@@ -63,7 +63,6 @@
               </label>
               <input name="attendees" bind:value={ noAttendees } 
                 type="number" 
-                aria-required="true"
                 class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring"
                 placeholder="1"
                 style="transition: all 0.15s ease 0s;"
