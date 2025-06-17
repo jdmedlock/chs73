@@ -141,10 +141,6 @@
     logPayment(details, resultData)
     emailEventAcknowledgement(details, resultData)
     isPaymentSuccessful = true
-    noAttendees = 0
-    classmateEmail = ''
-    classmateFirstName = ''
-    classmateLastName = ''
   }
 </script>
 
