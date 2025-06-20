@@ -45,7 +45,7 @@
 		<a aria-current="{$page.url.pathname.slice(1) === undefined ? 'page' : undefined}" href="." on:click={ toggleNavbar }>home</a>
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 				the event data when we hover over the link or tap it on a touchscreen -->
-		<a class="animate-bounce" rel=prefetch aria-current="{$page.url.pathname.slice(1) === 'events' ? 'page' : undefined}" href="events" on:click={ toggleNavbar }>events</a>
+		<a class="animate-bounce" rel=prefetch aria-current="{$page.url.pathname.slice(1) === 'events' ? 'page' : undefined}" href="checkout" on:click={ toggleNavbar }>events</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'classmates' ? 'page' : undefined}" href="classmates" on:click={ toggleNavbar }>classmates</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'tigerhunt' ? 'page' : undefined}" href="tigerhunt" on:click={ toggleNavbar }>tiger hunt</a>
 		<a aria-current="{$page.url.pathname.slice(1) === 'memoriam' ? 'page' : undefined}" href="memoriam" on:click={ toggleNavbar }>memoriam</a>

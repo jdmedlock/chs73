@@ -25,5 +25,8 @@
 
       <div>Name:</div><div id="receiptClassmateBadge">{ classmateFirstName } { classmateLastName }</div>
     </div>
+    <div class="text-sm text-center text-gray-500">
+      If you don't see the acknowledgment email in your inbox, please check your spam folder.
+    </div>
   </div>
 </receipt>
