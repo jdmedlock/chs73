@@ -1,41 +1,18 @@
 <script>
   import axios from 'axios'
   import { page } from '$app/stores';
-  import { loadScript } from "@paypal/paypal-js"
   import generateOrderID from '../../utils/generateOrderID.js'
-  import fridayEvent from '../../assets/fridayEvent.json'
   import saturdayEvent from '../../assets/saturdayEvent.json'
-  import golfEvent from '../../assets/golfEvent.json'
-  import tourEvent from '../../assets/tourEvent.json'
-  import Attendees from './attendees.svelte'
+  import AttendeeForm from './attendeeForm.svelte'
   import EventSummary from './eventSummary.svelte'
-  import PaymentMethod from './paymentMethod.svelte'
   import OrderSummary from './orderSummary.svelte'
-  import Payment from './payment.svelte'
   import Receipt from './receipt.svelte'
   import { 
-    FRIDAY_EVENT, SATURDAY_EVENT, GOLF_EVENT, TOUR_EVENT, 
-    PREPAY_FEE, AT_DOOR_FEE, NO_CHARGE, PAY_AT_DOOR, PAY_BY_MAIL, PAY_IS_PENDING,
-    TXN_COMPLETED, TXN_PAYMENT_PENDING_MAIL, TXN_PAYMENT_PENDING_DOOR,
-    TXN_DETAILS_PENDING
+    NO_CHARGE, TXN_COMPLETED
   } from '../../utils/constants.js'
 
   let eventType = $page.data.params.get('event')
-  let eventData
-  switch (eventType) {
-    case FRIDAY_EVENT: 
-      eventData = fridayEvent
-      break
-    case SATURDAY_EVENT:
-      eventData = saturdayEvent
-      break
-    case GOLF_EVENT:
-      eventData = golfEvent
-      break
-    case TOUR_EVENT:
-      eventData = tourEvent
-      break
-  }
+  let eventData = saturdayEvent
 
   let resultData
   let resultDetails
@@ -43,58 +20,19 @@
   let classmateEmail = ''
   let classmateFirstName = ''
   let classmateLastName = ''
-  let companionFirstName = ''
-  let companionLastName = ''
 
-  let calculatedAttendees = 0
-  let calculatedAttendanceFee = 0
-  let attendanceFee = 0
   let noAttendees = 0
   let orderTotal = 0
   let orderId
-  
-  // Error States
-  let isAttendeeError = false
-  let isEmailError = false
-  let isClassmateNameError = false
-  let isCompanionNameError = false
-
-  // Attendee Attribures
-  let isSponsor = false
-  let isVeteran = false
 
   // Payment Processing States
   let isPaymentSuccessful = false
-
-  // Payment Option States
-  let isPayAtDoor = false
-  let isPayByMail = false
-
-  const calculateOrder = (paymentSource) => {
-    // paymentSource is an optional parameter. It's only used when this
-    // function is invoked from the PayPal API
-    calculatedAttendees = isSponsor ? noAttendees + 1 : noAttendees
-    if (isVeteran) {
-      calculatedAttendees = isSponsor ? 1 : 0
-    }
-
-    attendanceFee = !isPayAtDoor ? PREPAY_FEE : AT_DOOR_FEE
-
-    if (eventType === SATURDAY_EVENT && calculatedAttendees > 0) {
-      calculatedAttendanceFee = attendanceFee * calculatedAttendees
-      orderTotal = calculatedAttendanceFee
-    } else {
-      calculatedAttendanceFee = 0
-      orderTotal = 0
-    }
-
-  }
 
   const logPayment = (details, resultData) => {
     axios.post(`${ import.meta.env.VITE_BE_URL }/logPayment`, {
       order_id: `${ details.id }`,
       item_description: eventData.eventType,
-      order_amount: parseFloat(details.purchase_units[0].amount.value), 
+      order_amount: 0, 
       transaction_status: details.status, 
       transaction_creation_time: details.create_time, 
       transaction_update_time: details.update_time,
@@ -102,44 +40,42 @@
       payer_email_address: details.payer.email_address, 
       payer_firstname: details.payer.name.given_name, 
       payer_lastname: details.payer.name.surname,
-      is_sponsor: isSponsor ? 'Yes' : 'No',
-      is_veteran: isVeteran ? 'Yes' : 'No',
+      is_sponsor: 'No',
+      is_veteran: 'No',
       classmateFirstName: classmateFirstName,
       classmateLastName: classmateLastName,
-      companionFirstName: companionFirstName || '',
-      companionLastName: companionLastName || '',
+      companionFirstName: '',
+      companionLastName: '',
+      noAttendees: noAttendees,
     })
     .then(function (response) {
-      console.log(response);
+      console.log(`Payment successfully logged.`, response)
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(`Payment unsuccessful.`, error)
     })
   }
 
   const emailEventAcknowledgement = (details) => {
+    console.log(`emailEventAcknowledgement called with details:`, details)
     axios.post(`${ import.meta.env.VITE_BE_URL }/sendEventAck`, {
       order_id: details.id,
       item_description: eventData.eventType, 
-      event_date: eventData.startDate,
-      order_amount: parseFloat(details.purchase_units[0].amount.value).toFixed(2), 
       transaction_status: details.status, 
       transaction_creation_time: details.create_time, 
       payer_email_address: details.payer.email_address, 
-      payer_firstname: details.payer.name.given_name, 
-      payer_lastname: details.payer.name.surname, 
-      is_sponsor: isSponsor ? 'Yes' : 'No',
-      is_veteran: isVeteran ? 'Yes' : 'No',
       classmateFirstName: classmateFirstName,
       classmateLastName: classmateLastName,
-      companionFirstName: companionFirstName || '',
-      companionLastName: companionLastName || '',
+      companionFirstName: '',
+      companionLastName: '',
+      noAttendees: noAttendees,
     })
     .then(function (response) {
-      console.log(response);
+      console.log(`Event acknowledgement email sent successfully.`, response)
+      console.log(response)
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(`Event acknowledgement email failed to send.`, error)
     })
   }
 
@@ -149,8 +85,7 @@
     orderId = generateOrderID(classmateFirstName.concat(classmateLastName))
     return ({
       id: orderId,
-      status: (eventType === GOLF_EVENT || eventType === TOUR_EVENT) 
-        ? TXN_DETAILS_PENDING : TXN_COMPLETED, 
+      status: TXN_COMPLETED, 
       create_time: currentTime, 
       update_time: currentTime,
       payer: {
@@ -180,15 +115,7 @@
 
   const createNochargeResultData = () => {
     let calculatedPaymentSource = NO_CHARGE
-    calculatedPaymentSource = isPayAtDoor ? PAY_AT_DOOR : PAY_BY_MAIL
-    if (isPayAtDoor) {
-      calculatedPaymentSource = PAY_AT_DOOR
-    } else if (isPayByMail) {
-      calculatedPaymentSource = PAY_BY_MAIL
-    } else {
-      calculatedPaymentSource = PAY_IS_PENDING
-    }
-    
+  
     const resultData = {
       orderID: orderId,
       paymentID: null,
@@ -197,61 +124,23 @@
     return resultData
   }
 
-  const processFridaySignup = () => {
+  const handleRegisterAndPay = () => {
+    console.log(`handleRegisterAndPay called with eventType: ${eventType}`)
+    if (isPaymentSuccessful) {
+      return
+    }
+
+    console.log(`Calculating order for ${eventType} with noAttendees: ${noAttendees}`)
+    noAttendees = parseInt(noAttendees)
     const details = createNochargeDetails()
     const resultData = createNochargeResultData()
+    details.status = TXN_COMPLETED
+    details.purchase_units[0].amount.value = orderTotal
 
     resultDetails = details
     logPayment(details, resultData)
     emailEventAcknowledgement(details, resultData)
     isPaymentSuccessful = true
-  }
-
-  const handleRegisterAndPay = () => {
-    if (isPaymentSuccessful) {
-      return
-    }
-    isAttendeeError = false
-    isEmailError = false
-    isClassmateNameError = false
-    isCompanionNameError = false
-
-    // Validate the input data
-    if (noAttendees === 0) {
-      isAttendeeError = true
-    }
-    if (classmateEmail === '') {
-      isEmailError = true
-    }
-    if (classmateFirstName === '' || classmateLastName === '') {
-      isClassmateNameError = true
-    }
-    if (noAttendees > 1) {
-      if (companionLastName === '' || companionLastName === '') {
-        isCompanionNameError = true
-      }
-    }
-
-    if (isAttendeeError || isEmailError || isClassmateNameError || isCompanionNameError) {
-      return
-    }
-
-    if(eventType !== SATURDAY_EVENT) {
-      processFridaySignup()
-    }
-
-    if (eventType === SATURDAY_EVENT) {
-      isAttendeeError = false
-      const details = createNochargeDetails()
-      const resultData = createNochargeResultData()
-      details.status = isPayByMail ? TXN_PAYMENT_PENDING_MAIL : TXN_PAYMENT_PENDING_DOOR
-      details.purchase_units[0].amount.value = orderTotal
-
-      resultDetails = details
-      logPayment(details, resultData)
-      emailEventAcknowledgement(details, resultData)
-      isPaymentSuccessful = true
-    }
   }
 </script>
 
@@ -283,56 +172,17 @@
                 <ul class="space-y-4">
                   <EventSummary event={ eventData }/>
 
-                  <Attendees
-                    eventType={ eventType }
-                    calculateOrder={ calculateOrder }
-                    bind:isSponsor={ isSponsor }
-                    bind:isVeteran={ isVeteran }
-                    bind:isAttendeeError={ isAttendeeError }
-                    bind:isClassmateNameError={ isClassmateNameError } 
-                    bind:isCompanionNameError={ isCompanionNameError } 
-                    bind:isEmailError={ isEmailError }
+                  <AttendeeForm
+                    handleRegisterAndPay={ handleRegisterAndPay }
                     bind:noAttendees={ noAttendees }
                     bind:classmateEmail={ classmateEmail }
                     bind:classmateFirstName={ classmateFirstName }
                     bind:classmateLastName={ classmateLastName }
-                    bind:companionFirstName={ companionFirstName }
-                    bind:companionLastName={ companionLastName }
                   />
-
-                  {#if eventType === SATURDAY_EVENT}
-                    <PaymentMethod 
-                      bind:isPayByMail={ isPayByMail }
-                      bind:isPayAtDoor={ isPayAtDoor }
-                      calculateOrder={ calculateOrder }
-                    />
-                  {/if}
-
                   <OrderSummary eventType={ eventType } 
-                    bind:noAttendees={ calculatedAttendees } 
+                    bind:noAttendees={ noAttendees } 
                     bind:orderTotal={ orderTotal }
                   />
-                </ul>
-
-                {#if !isPaymentSuccessful}
-                  <button class="flex items-center m-auto" on:click={ handleRegisterAndPay }>
-                    <span class="inline-flex items-center mb-4 px-3 py-0.5 rounded-full text-2xl font-medium bg-orange-500 text-white">
-                      {#if eventType === SATURDAY_EVENT}
-                        Click to register & pay
-                      {:else}
-                        Click to register
-                      {/if}
-                    </span>
-                  </button>
-                {/if}
-
-                {#if eventType === SATURDAY_EVENT}
-                  <Payment bind:orderId={ orderId }
-                    bind:isPayAtDoor={ isPayAtDoor }
-                    bind:isPayByMail={ isPayByMail }
-                    bind:isPaymentSuccessful={ isPaymentSuccessful }
-                  />
-                {/if}
 
                 {#if isPaymentSuccessful}
                   <Receipt 
@@ -341,10 +191,7 @@
                     totalCharged={ resultDetails.purchase_units[0].amount.value }
                     txnStatus={ resultDetails.status } txnCreated={ resultDetails.create_time }
                     payerEmail={ resultDetails.payer.email_address }
-                    isSponsor={ isSponsor }
-                    isVeteran={ isVeteran }
                     classmateFirstName={ classmateFirstName } classmateLastName={ classmateLastName }
-                    companionFirstName={ companionFirstName } companionLastName={ companionLastName }
                   />
                 {/if}
 

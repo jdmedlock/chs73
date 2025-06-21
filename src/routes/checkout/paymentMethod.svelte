@@ -5,7 +5,9 @@
   export let isPayAtDoor
   export let calculateOrder
 
-  const handlePaymentMethod = () => {
+  console.log(`paymentMethod - isPayByMail: ${isPayByMail}, isPayAtDoor: ${isPayAtDoor}`)
+
+  const handlePaymentMethod = async () => {
     const paymentMethod = document.querySelector('input[name="paymentmethod-radio"]:checked').value
     switch (paymentMethod) {
       case PAY_BY_MAIL:
@@ -23,7 +25,7 @@
   }
 </script>
 
-<paymentmethod>
+<paymentMethod>
   <li class="relative flex mt-4 text-gray-700">
     <div class="flex flex-shrink-0">
       <!-- Heroicon name: outline/check -->
@@ -59,4 +61,4 @@
       </li>
     </div>
   </li>
-</paymentmethod>
+</paymentMethod>

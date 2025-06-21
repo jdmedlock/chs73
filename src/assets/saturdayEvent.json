@@ -1,38 +1,37 @@
 {
-  "eventType": "Saturday Gathering",
-  "name": "CHS73 50th Reunion - Dinner",
-  "location": "Drury Inn, 3351 Percy Drive, Cape Girardeau, MO 63701",
-  "description": "Hors d’oeurves, a cash bar and a time to remember!\n\n- Hors d’oeurves + cash bar\n- Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)\n- Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation",
-  "startDate": "2023-09-16",
-  "endDate": "2023-09-16",
-  "startTime":"16:00",
-  "endTime":"23:30",
+  "eventType": "52nd Reunion Picnic",
+  "name": "CHS73 52nd Reunion - Picnic",
+  "location": "Cape County Park, South County Park Shelter #20, Cape Girardeau, MO 63703",
+  "description": "An informal gathering to relax & reconnect!",
+  "startDate": "2025-09-13",
+  "endDate": "2025-09-13",
+  "startTime":"10:00",
+  "endTime":"18:00",
   "options": ["Apple", "Google", "iCal"],
-  "iCalFileName": "CHS73_Reunion_20230916",
-  "date": "September 16, 2023",
+  "iCalFileName": "CHS73_Reunion_20250913",
+  "date": "September 13, 2025",
   "events": {
     "heading": [
-      "Drury",
-      "Plaza"
+      "Cape County",
+      "Park South"
     ],
-    "subheading": "Hors d’oeurves, a cash bar and a time to remember!",
+    "subheading": "An informal gathering to relax & reconnect!",
     "summaryInfo": [
-      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
-      "Hors d’oeurves + cash bar ($25 per person in advance, $30 at the door)",
-      "Sorry, but there will be no accommodations for allergies or special dietary needs",
-      "Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks)",
-      "Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation"
+      "10:00 AM - 6:00 PM",
+      "???",
+      "Cape County Park, South County Park Shelter #20, Cape Girardeau, MO 63703"
     ]
   },
   "checkout": {
     "heading": "Registration",
-    "subheading": "Review & pay for Saturday's Gathering",
-    "title": "Saturday's Reunion Gathering",
+    "subheading": "Admission is FREE!",
+    "title": "50th+2 😄 Reunion Picnic",
     "summaryInfo": [
-      "Drury Plaza Hotel Conf. Center: 6:00 PM - 11:30 PM",
-      "Admission, hors d’oeurves & cash bar ($25 per person in advance, $30 at the door)",
-      "Sorry, but there will be no accommodations for allergies or special dietary needs",
-      "Discounted room rate of $148/night for Sept. 15 & 16 (includes free breakfast + evening drinks & snacks). Call 1-800-325-0720 before August 28, 2023 and use Group number 10018741 to make your reservation"
+      "Where: Cape County Park, South County Park Shelter #20, Cape Girardeau, MO 63703",
+      "When: Saturday, September 13, 2025 from 11 AM to 3 PM",
+      "Provided: Hot dogs, buns, chips, & condiments",
+      "You should bring: Drinks, chairs, & any snacks or food you want to share",
+      "Signup below before September 8, 2025"
     ]
   }
 }

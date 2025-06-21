@@ -129,8 +129,8 @@
     style="min-height: 60vh;">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
-      style="background-image: url('chs_graduation2.webp');"
-    />
+      style="background-image: url('chs_graduation2.webp');">
+    </div>
     <div class="container relative mx-auto">
       <div class="flex flex-wrap justify-items-center">
         <div class="items-center w-full px-4 ml-auto mr-auto text-center lg:w-11/12">
@@ -153,14 +153,6 @@
                 <h2 class="text-xl font-semibold text-white lg:text-4xl">
                   Your story started here!
                 </h2>
-                <!--
-                <p class="mt-10 text-lg text-white lg:text-3xl">
-                  These were your formative years. This is the crucible where you
-                  developed your identity, your independence, and your drive. It
-                  was where you established lifelong friendships, as well as 
-                  personal and professional interests.
-                </p>
-                -->
                 <p class="pt-8 pb-4 text-3xl font-bold text-orange-300">
                   It was the start of your journey...but, certainly not the end!
                 </p>
@@ -219,9 +211,8 @@
                     Our 50th Reunion!
                   </div>
                   <p class="mt-2 font-light text-black text-md">
-                    Our 50th reunion in 2023 is closer than you think. It's 
-                    time think back to our time together and to start getting
-                    ready!
+                    Our 50th reunion in 2023 was a smashing success. But it's 
+                    time get togeter again!
                   </p>
                 </blockquote>
               </div>
@@ -331,19 +322,15 @@
         </div>
         <div class="w-full m-auto md:w-5/12">
           <div class="md:pr-12">
-            <h3 class="text-3xl font-semibold">CHS '73 - 50th Reunion Events</h3>
+            <h3 class="text-3xl font-semibold">CHS '73 - 52nd Reunion</h3>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              We have some fun get together's planned to help you re-live 
-              memories and reconnect with old friends.
+              We have planned an informal event for September 13, 2025 to help 
+              you re-live memories and reconnect with old friends.
             </p>
             <p class="mt-4 text-lg leading-relaxed text-gray-600">
-              Take a few minutes to check them out in `events` and sign up to 
-              attend one or all of them. We hope to see you there!
+              Take a few minutes to check it out in `events` and sign up to 
+              attend. We hope to see you there!
             </p>
-            <div class="mt-4 text-lg leading-relaxed text-red-600">
-              You'll need to go to each event you wish to attend and then
-              <span class="text-2xl italic text-red-600 bold">'Click for More Info'</span> to register.
-            </div>
           </div>
         </div>
       </div>
@@ -530,7 +517,7 @@
                   <textarea name="message" bind:value={ emailMessage }
                     rows="4" cols="80" required aria-required="true"
                     class="w-full px-3 py-3 text-sm text-gray-700 placeholder-gray-400 bg-white border-0 rounded shadow focus:outline-none focus:ring" 
-                    placeholder="Type a message..." />
+                    placeholder="Type a message..."></textarea>
                 </div>
 
                 <label>

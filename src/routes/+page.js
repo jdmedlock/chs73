@@ -41,6 +41,7 @@ export async function load({ params, fetch }) {
     fetch(facultyURL)
   ])
   .then(async([classmates, faculty]) => {
+    console.log('Fetching classmates and faculty data...')
     classmatesResponse = classmates
     const classmatesJSON = await classmates.json()
     classmatesPromise.addClassmatesPromise(classmatesJSON)
@@ -52,7 +53,7 @@ export async function load({ params, fetch }) {
     facultyStore.addFaculty(facultyJSON)
   })
   .catch(error => {
-    console.log(error)
+    console.log(`page.js load - Error fetching:`, error)
   })
 
   return {
